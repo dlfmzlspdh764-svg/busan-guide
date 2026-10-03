@@ -308,7 +308,7 @@ function event(){
  const cnt=(k,v)=>evFilter(all,{[k]:"전체"}).filter(e=>v==="전체"||(k==="gu"?e.gu:k==="type"?e.type:null)===v).length;
  const perCnt=p=>evFilter(all,{per:p}).length;
  const chipRow=(arr,cur,attr,cf)=>`<div class="catchips">`+arr.map(v=>{const n=cf(v);return `<button class="chip sm ${cur===v?"on":""} ${n?"":"dim"}" data-${attr}="${v}">${v} ${n}</button>`}).join("")+`</div>`;
- const run=evRun?`${evRun.t} (KST)${evRun.c==="success"?" · 성공":evRun.c?" · "+evRun.c:""}`:(EVD.updated?EVD.updated+" (KST)":"");
+ const run=evRun?`${evRun.t} (KST)${evRun.c==="success"?" · 성공":evRun.c?" · "+evRun.c:""}`:(EVD.updated?EVD.updated+" (KST, 마지막 데이터 변경)":"");
  const nConf=list.filter(e=>e.st==="confirmed").length,nChk=list.filter(e=>e.st==="check").length,nExp=list.filter(e=>e.st==="expected").length;
  let html=`<div class="banner"><b>부산 행사·축제 (${list.length}건)</b><p>날짜 확인됨 ${nConf} · 일정 확인 필요 ${nChk} · 예상 시기(미발표) ${nExp}</p><p>행사 자동 업데이트: ${run||"-"}</p></div>`+
  `<div class="evf"><div class="evl">기간</div>`+chipRow(EPERS,eper,"eper",perCnt)+`<div class="evl">구·군</div>`+chipRow(["전체",...GUS],egu,"egu",v=>cnt("gu",v))+`<div class="evl">종류</div>`+chipRow(["전체",...ETYPES],etype,"etype",v=>cnt("type",v))+`</div>`+
@@ -347,7 +347,8 @@ function openEvent(id){
 }
 async function loadEvents(){
  try{const r=await fetch("events.json?t="+Date.now(),{cache:"no-store"});if(r.ok){const j=await r.json();if(j&&Array.isArray(j.events)&&j.events.length){EVD=j;if(tab==="event")render()}}}catch(_){}
- try{const r=await fetch("https://api.github.com/repos/dlfmzlspdh764-svg/busan-guide/actions/workflows/update-events.yml/runs?per_page=1&status=completed");if(r.ok){const j=await r.json();const w=(j.workflow_runs||[])[0];if(w){const t=new Date(new Date(w.updated_at).getTime()+9*3600e3);evRun={t:t.toISOString().slice(0,16).replace("T"," "),c:w.conclusion};if(tab==="event")render()}}}catch(_){}
+ try{const c=JSON.parse(localStorage.getItem("busan_evrun")||"null");if(c&&Date.now()-c.at<3600e3){evRun=c;if(tab==="event")render();return}}catch(_){}
+ try{const r=await fetch("https://api.github.com/repos/dlfmzlspdh764-svg/busan-guide/actions/workflows/update-events.yml/runs?per_page=1&status=completed");if(r.ok){const j=await r.json();const w=(j.workflow_runs||[])[0];if(w){const t=new Date(new Date(w.updated_at).getTime()+9*3600e3);evRun={t:t.toISOString().slice(0,16).replace("T"," "),c:w.conclusion,at:Date.now()};localStorage.setItem("busan_evrun",JSON.stringify(evRun));if(tab==="event")render()}}}catch(_){}
 }
 function stay(){
  const s=STAY.filter(x=>match(x.h,x.t)).map(x=>`<div class="card"><h3>🏨 ${x.h}</h3><p class="note">${esc(x.t)}</p><div class="links">${mapLinks(x.h+" 호텔")}</div></div>`).join("");
