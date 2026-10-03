@@ -15,7 +15,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -24,7 +24,7 @@ jobs:
       - name: Update events.json
         env:
           TZ: Asia/Seoul
-        run: python3 scripts/update_events.py
+        run: python3 -u scripts/update_events.py
       - name: Validate
         run: python3 -c "import json;d=json.load(open('events.json'));assert len(d['events'])>20, len(d['events']);print('events',len(d['events']))"
       - name: Commit if changed

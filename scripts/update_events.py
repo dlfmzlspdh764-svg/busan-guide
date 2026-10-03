@@ -50,12 +50,23 @@ TYPE_RULES = [
 ]
 
 
-def fetch(url, tries=3, verify=True):
+DEADLINE = {}
+SOURCE_BUDGET = 9 * 60  # 소스별 최대 9분 → 넘으면 해당 소스는 이전 데이터 유지
+
+
+def log(*a):
+    print(*a, file=sys.stderr, flush=True)
+
+
+def fetch(url, tries=2, verify=True, timeout=20):
     last = None
+    dl = DEADLINE.get("t")
+    if dl and time.time() > dl:
+        raise TimeoutError("source time budget exceeded")
     for i in range(tries):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (busan-guide events bot; +https://github.com/dlfmzlspdh764-svg/busan-guide)"})
-            with urllib.request.urlopen(req, timeout=30, context=CTX if verify else CTX_NOVERIFY) as r:
+            with urllib.request.urlopen(req, timeout=timeout, context=CTX if verify else CTX_NOVERIFY) as r:
                 return r.read().decode("utf-8", "replace")
         except Exception as e:  # noqa
             last = e
@@ -314,9 +325,11 @@ def scrape_kfes():
         for _ in range(10):
             data = urllib.parse.urlencode(dict(startIdx=idx, searchType="A", searchDate=m, searchArea="6", searchCate="",
                                                locationx="undefined", locationy="undefined", filterExcluded="true")).encode()
+            if DEADLINE.get("t") and time.time() > DEADLINE["t"]:
+                raise TimeoutError("source time budget exceeded")
             try:
                 req = urllib.request.Request(KF_LIST, data=data, headers={"User-Agent": "Mozilla/5.0", "Referer": "https://korean.visitkorea.or.kr/kfes/list/wntyFstvlList.do"})
-                d = json.loads(urllib.request.urlopen(req, timeout=30, context=CTX).read().decode("utf-8"))
+                d = json.loads(urllib.request.urlopen(req, timeout=20, context=CTX).read().decode("utf-8"))
             except Exception as e:  # noqa
                 errors += 1; print("kfes fail", m, e, file=sys.stderr); break
             r = d.get("resultList") or []
@@ -429,14 +442,30 @@ def is_current(e):
     return end >= (TODAY[:7] if len(end) == 7 else TODAY)
 
 
+PROBE = {"visitbusan": (VB + "/index.do", False), "kfes": ("https://korean.visitkorea.or.kr/kfes/list/wntyFstvlList.do", True),
+         "bexco": (BX + "/kor/Main.do", True)}
+
+
 def run_source(name, fn, prev_events, status, min_ratio=0.5, min_abs=3):
     prev_src = [e for e in prev_events if e.get("origin") == name]
+    t0 = time.time()
     try:
+        url, verify = PROBE[name]
+        fetch(url, tries=1, verify=verify, timeout=15)  # 접속 불가면 바로 실패 처리
+        DEADLINE["t"] = time.time() + SOURCE_BUDGET
+        log(f"[{name}] 수집 시작")
         res = fn()
+        DEADLINE.pop("t", None)
+        log(f"[{name}] {len(res[0])}건 ({time.time() - t0:.0f}s)")
         items, extra = res[0], res[1:]
         errs = extra[-1] if extra else 0
         status[name] = {"ok": True, "count": len(items), "errors": errs}
         floor = max(min_abs, int(len([e for e in prev_src if is_current(e)]) * min_ratio))
+        if time.time() - t0 > SOURCE_BUDGET or (isinstance(errs, int) and errs > max(3, len(items) * 0.2)):
+            log(f"{name}: 시간 초과 또는 오류 {errs}건 → 이전 데이터 유지")
+            status[name]["ok"] = False
+            status[name]["kept_previous"] = True
+            return prev_src, (extra if name != "kfes" else ())
         if len(items) < floor:
             print(f"{name}: 결과 {len(items)}건 < 기준 {floor} → 이전 데이터 유지", file=sys.stderr)
             status[name]["ok"] = False
@@ -444,7 +473,8 @@ def run_source(name, fn, prev_events, status, min_ratio=0.5, min_abs=3):
             return prev_src, extra
         return items, extra
     except Exception as e:  # noqa
-        print(f"{name}: 수집 실패 → 이전 데이터 유지: {e}", file=sys.stderr)
+        DEADLINE.pop("t", None)
+        log(f"{name}: 수집 실패 → 이전 데이터 유지: {e!r} ({time.time() - t0:.0f}s)")
         status[name] = {"ok": False, "error": str(e)[:200], "kept_previous": True}
         return prev_src, ()
 
