@@ -805,7 +805,8 @@ def scrape_gu_source(sid, gu, name, url, kind):
             continue
         if (ev["e"] and ev["s"] and (_date(ev["e"]) - _date(ev["s"])).days > 200) and not re.search(EV_STRONG, ev["n"]):
             continue  # 상시 모집·장기 운영 공지 제외
-        ev["id"] = "gu-" + sid + "-" + re.sub(r"\D", "", ev["srcu"])[-12:] if kind != "hd_calendar" else "gu-hd-" + norm(ev["n"])[:20] + ev["s"][:4]
+        pid = re.search(r"(?:dataSid|bIdx|idx|sno|epId)=(\d+)", ev["srcu"])
+        ev["id"] = ("gu-" + sid + "-" + (pid.group(1) if pid else norm(ev["n"])[:16] + ev["s"])) if kind != "hd_calendar" else "gu-hd-" + norm(ev["n"])[:20] + ev["s"][:4]
         ev["origin"] = "gu:" + sid
         out.append(ev)
     return out, errors

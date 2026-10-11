@@ -1,0 +1,58 @@
+name: notify-telegram
+
+on:
+  schedule:
+    - cron: "0 23 * * *"   # 매일 08:00 KST (23:00 UTC) 아침 다이제스트 (월요일은 주간 요약)
+  workflow_run:
+    workflows: ["update-events"]
+    types: [completed]     # 행사 자동 업데이트 직후 → 새 행사 알림 (+ 그날 다이제스트를 아직 안 보냈으면 같이)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "auto | digest | weekly | new"
+        default: "auto"
+      force:
+        description: "오늘 이미 보냈어도 다이제스트 다시 보내기 (true/false)"
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: notify-telegram
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Send Telegram notifications
+        env:
+          TZ: Asia/Seoul
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MODE: ${{ github.event.inputs.mode || 'auto' }}
+          FORCE: ${{ github.event.inputs.force || 'false' }}
+        run: |
+          ARGS="--mode $MODE"
+          if [ "$FORCE" = "true" ]; then ARGS="$ARGS --force"; fi
+          python3 -u scripts/notify_telegram.py $ARGS
+      - name: Commit notified state
+        if: always()
+        run: |
+          if git diff --quiet -- data/notified.json 2>/dev/null && [ -z "$(git status --porcelain data/notified.json)" ]; then
+            echo "상태 변경 없음"; exit 0
+          fi
+          git config user.name "busan-guide-bot"
+          git config user.email "dlfmzlspdh764-svg@users.noreply.github.com"
+          git add data/notified.json
+          git commit -m "텔레그램 알림 상태 $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          for i in 1 2 3; do git pull --rebase origin main && git push origin main && break; sleep 5; done
