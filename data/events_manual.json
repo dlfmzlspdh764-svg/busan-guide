@@ -1,5 +1,5 @@
 {
- "note": "직접 확인한 행사(events)와 다음 회차 예상 근거(series). 자동 업데이트 스크립트가 지우지 않음.",
+ "note": "직접 확인한 행사(events)와 다음 회차 예상 근거(series). 자동 업데이트 스크립트가 지우지 않음. lineups: 공개된 출연진(이름·역할·시간·출처·확인일). match(제목 일부)+s(시작 연월)로 행사에 붙임. 출처 없는 이름은 넣지 않음.",
  "events": [
   {
    "id": "m-biff-eve",
@@ -422,6 +422,66 @@
    "x": "KBO 정규시즌은 매년 3월 말~9월(포스트시즌 10월). 2027 일정 미발표",
    "exp": "2027년 3~9월경 예상 (일정 미발표)",
    "basis": "KBO 정규시즌 통상 3월 말 개막"
+  },
+  {
+   "id": "m-bj-busking",
+   "n": "제6회 부산진구 버스킹 페스티벌",
+   "s": "2026-10-17",
+   "e": "2026-10-17",
+   "gu": "부산진구",
+   "type": "공연",
+   "p": "서면 젊음의 거리 나이키 사거리",
+   "addr": "부산 부산진구 중앙대로692번길 일대",
+   "hours": "18:00~ (약 90분 + 초대가수)",
+   "fee": "무료",
+   "org": "부산진구",
+   "u": "https://www.busanjin.go.kr/board/view.busanjin?boardId=BBS_0000009&menuCd=DOM_000000110001001000&dataSid=3979293",
+   "src": "부산진구청 공지사항 · 국토일보",
+   "srcu": "http://www.ikld.kr/news/articleView.html?idxno=341921",
+   "chk": "2026-10-11",
+   "st": "confirmed",
+   "origin": "manual",
+   "x": "공모 선정 7팀·우수버스커 2팀 버스킹 후 초대가수 레드오파츠 공연"
+  },
+  {
+   "id": "m-yd-byunjinsub",
+   "n": "Playlist : Yeongdo 〈발라드의 전설 변진섭 in 영도〉",
+   "s": "2026-10-13",
+   "e": "2026-10-13",
+   "gu": "영도구",
+   "type": "공연",
+   "p": "영도문화예술회관 봉래홀",
+   "addr": "",
+   "hours": "19:30",
+   "fee": "",
+   "org": "영도문화예술회관",
+   "u": "https://www.yeongdo.go.kr/culture/01250/01251.web?sno=14630&amode=view",
+   "src": "영도문화예술회관 공연/전시",
+   "srcu": "https://www.yeongdo.go.kr/culture/01250/01251.web?sno=14630&amode=view",
+   "chk": "2026-10-11",
+   "st": "confirmed",
+   "origin": "manual",
+   "x": "숙녀에게·새들처럼·너에게로 또다시 등 대표곡 무대"
+  },
+  {
+   "id": "m-yd-youngblue",
+   "n": "2026 영블루 페스타(Young Blue Festa)",
+   "s": "2026-10-17",
+   "e": "2026-10-18",
+   "gu": "영도구",
+   "type": "축제",
+   "p": "봉래동 물양장 일대 (봉래나루로 112)",
+   "addr": "부산 영도구 봉래나루로 112",
+   "hours": "15:00~21:00",
+   "fee": "",
+   "org": "영도구",
+   "u": "https://www.yeongdo.go.kr/00000/00007/02409.web?gcode=1026&idx=334296&amode=view",
+   "src": "영도구청 행사/교육",
+   "srcu": "https://www.yeongdo.go.kr/00000/00007/02409.web?gcode=1026&idx=334296&amode=view",
+   "chk": "2026-10-11",
+   "st": "confirmed",
+   "origin": "manual",
+   "x": ""
   }
  ],
  "series": [
@@ -1112,6 +1172,438 @@
    "basis": "2025년 9.18~10.19, 2026년 6월·9~10월 운영",
    "fee": "",
    "org": ""
+  }
+ ],
+ "lineups": [
+  {
+   "match": "자갈치축제",
+   "s": "2026-10",
+   "lineup": [
+    {
+     "name": "송가인",
+     "role": "개막 축하공연",
+     "when": "10.15(목) 19:00",
+     "src": "뉴스부산",
+     "srcu": "https://www.newsbusan.com/m/view.php?idx=17187",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "손민채",
+     "role": "개막 축하공연",
+     "when": "10.15(목) 19:00",
+     "src": "뉴스부산",
+     "srcu": "https://www.newsbusan.com/m/view.php?idx=17187",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "백수정",
+     "role": "개막 축하공연",
+     "when": "10.15(목) 19:00",
+     "src": "뉴스부산",
+     "srcu": "https://www.newsbusan.com/m/view.php?idx=17187",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "김시훈",
+     "role": "초청가수",
+     "when": "",
+     "src": "타임스프레드(링커리어) 일정",
+     "srcu": "https://www.timespread.co.kr/subscription-event/%EC%A0%9C-33%ED%9A%8C-%EB%B6%80%EC%82%B0-%EC%9E%90%EA%B0%88%EC%B9%98-%EC%B6%95%EC%A0%9C-2026-10-15",
+     "chk": "2026-10-11"
+    }
+   ]
+  },
+  {
+   "match": "동래읍성역사축제",
+   "s": "2026-10",
+   "lineup": [
+    {
+     "name": "울랄라세션",
+     "role": "동래읍성가요제 축하공연",
+     "when": "10.18(일) 저녁",
+     "src": "위클리오늘 동래구 소식",
+     "srcu": "http://www.weeklytoday.com/news/articleView.html?idxno=795495",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "김다현",
+     "role": "동래읍성가요제 축하공연",
+     "when": "10.18(일) 저녁",
+     "src": "위클리오늘 동래구 소식",
+     "srcu": "http://www.weeklytoday.com/news/articleView.html?idxno=795495",
+     "chk": "2026-10-11"
+    }
+   ]
+  },
+  {
+   "match": "금정산성축제",
+   "s": "2026-10",
+   "lineup": [
+    {
+     "name": "진성",
+     "role": "개막 축하공연(흥나는 콘서트)",
+     "when": "10.16(금) 18:00~18:30",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=129074",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "신승태",
+     "role": "폐막 공연",
+     "when": "10.18(일) 17:30~18:00",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=129074",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "그냥동네밴드",
+     "role": "막걸리 페스티벌",
+     "when": "10.17(토) 18:00~",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=129074",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "차혜림",
+     "role": "막걸리 페스티벌",
+     "when": "10.17(토) 18:00~",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=129074",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "황인아",
+     "role": "막걸리 페스티벌",
+     "when": "10.17(토) 18:00~",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=129074",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "최지예",
+     "role": "막걸리 페스티벌",
+     "when": "10.17(토) 18:00~",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=129074",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "임다운",
+     "role": "막걸리 페스티벌",
+     "when": "10.17(토) 18:00~",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=129074",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "송슬기",
+     "role": "MC(막걸리 페스티벌)",
+     "when": "10.17(토)",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=129074",
+     "chk": "2026-10-11"
+    }
+   ]
+  },
+  {
+   "match": "사상강변축제",
+   "s": "2026-10",
+   "lineup": [
+    {
+     "name": "안성훈",
+     "role": "초대가수(개막식·사상리버트롯)",
+     "when": "10.17(토) 17:00~",
+     "src": "부산진(busanzine)",
+     "srcu": "https://busanzine.com/7746",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "백지영",
+     "role": "초대가수(부산MBC 강변가요제)",
+     "when": "10.18(일) 18:00~",
+     "src": "부산진(busanzine)",
+     "srcu": "https://busanzine.com/7746",
+     "chk": "2026-10-11"
+    }
+   ]
+  },
+  {
+   "match": "해운대재즈페스티벌",
+   "s": "2026-10",
+   "lineup": [
+    {
+     "name": "신관웅 퀸텟",
+     "role": "공연(해운 That 재즈)",
+     "when": "10.23(금)",
+     "src": "kpopfinder(KOPIS PF300167)",
+     "srcu": "https://kpopfinder.co.kr/concerts/13th-haeundae-jazz-festival-haeun-that-jazz-shin-gwan-woong-quintet-2026-10-23-pf300167",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "신관웅",
+     "role": "피아노(신관웅 퀸텟)",
+     "when": "10.23(금)",
+     "src": "kpopfinder(KOPIS PF300167)",
+     "srcu": "https://kpopfinder.co.kr/concerts/13th-haeundae-jazz-festival-haeun-that-jazz-shin-gwan-woong-quintet-2026-10-23-pf300167",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "김현일",
+     "role": "출연",
+     "when": "10.23(금)",
+     "src": "kpopfinder(KOPIS PF300167)",
+     "srcu": "https://kpopfinder.co.kr/concerts/13th-haeundae-jazz-festival-haeun-that-jazz-shin-gwan-woong-quintet-2026-10-23-pf300167",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "주화준",
+     "role": "출연",
+     "when": "10.23(금)",
+     "src": "kpopfinder(KOPIS PF300167)",
+     "srcu": "https://kpopfinder.co.kr/concerts/13th-haeundae-jazz-festival-haeun-that-jazz-shin-gwan-woong-quintet-2026-10-23-pf300167",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "오정택",
+     "role": "출연",
+     "when": "10.23(금)",
+     "src": "kpopfinder(KOPIS PF300167)",
+     "srcu": "https://kpopfinder.co.kr/concerts/13th-haeundae-jazz-festival-haeun-that-jazz-shin-gwan-woong-quintet-2026-10-23-pf300167",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "장유정",
+     "role": "출연",
+     "when": "10.23(금)",
+     "src": "kpopfinder(KOPIS PF300167)",
+     "srcu": "https://kpopfinder.co.kr/concerts/13th-haeundae-jazz-festival-haeun-that-jazz-shin-gwan-woong-quintet-2026-10-23-pf300167",
+     "chk": "2026-10-11"
+    }
+   ]
+  },
+  {
+   "match": "구포나루",
+   "s": "2026-10",
+   "lineup": [
+    {
+     "name": "박지현",
+     "role": "축하공연",
+     "when": "10.16(금)",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=124197",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "김태연",
+     "role": "축하공연",
+     "when": "10.16(금)",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=124197",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "김진훈",
+     "role": "성악(축하공연)",
+     "when": "10.16(금)",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=124197",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "북구청소년오케스트라",
+     "role": "축하공연",
+     "when": "10.16(금)",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=124197",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "최수호",
+     "role": "구포나루 가요제 초대가수",
+     "when": "10.18(일) 18:30~20:30",
+     "src": "호수뉴스",
+     "srcu": "https://www.hosu-news.com/news/articleView.html?idxno=124197",
+     "chk": "2026-10-11"
+    }
+   ]
+  },
+  {
+   "match": "부산진구 버스킹 페스티벌",
+   "s": "2026-10",
+   "lineup": [
+    {
+     "name": "레드오파츠(RED OOPART)",
+     "role": "초대가수",
+     "when": "10.17(토) 버스킹 후",
+     "src": "국토일보",
+     "srcu": "http://www.ikld.kr/news/articleView.html?idxno=341921",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "곡식",
+     "role": "버스킹(공모 선정)",
+     "when": "10.17(토) 18:00~",
+     "src": "국토일보",
+     "srcu": "http://www.ikld.kr/news/articleView.html?idxno=341921",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "OVUS(오버스)",
+     "role": "버스킹(공모 선정)",
+     "when": "10.17(토) 18:00~",
+     "src": "국토일보",
+     "srcu": "http://www.ikld.kr/news/articleView.html?idxno=341921",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "아웃오브캠퍼스",
+     "role": "버스킹(공모 선정)",
+     "when": "10.17(토) 18:00~",
+     "src": "국토일보",
+     "srcu": "http://www.ikld.kr/news/articleView.html?idxno=341921",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "브라스고(Brass Go)",
+     "role": "버스킹(공모 선정)",
+     "when": "10.17(토) 18:00~",
+     "src": "국토일보",
+     "srcu": "http://www.ikld.kr/news/articleView.html?idxno=341921",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "B-error",
+     "role": "버스킹(공모 선정)",
+     "when": "10.17(토) 18:00~",
+     "src": "국토일보",
+     "srcu": "http://www.ikld.kr/news/articleView.html?idxno=341921",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "애일",
+     "role": "버스킹(공모 선정)",
+     "when": "10.17(토) 18:00~",
+     "src": "국토일보",
+     "srcu": "http://www.ikld.kr/news/articleView.html?idxno=341921",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "픽가드밴드",
+     "role": "버스킹(공모 선정)",
+     "when": "10.17(토) 18:00~",
+     "src": "국토일보",
+     "srcu": "http://www.ikld.kr/news/articleView.html?idxno=341921",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "박지훈",
+     "role": "버스킹(우수버스커)",
+     "when": "10.17(토) 18:00~",
+     "src": "국토일보",
+     "srcu": "http://www.ikld.kr/news/articleView.html?idxno=341921",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "슬러",
+     "role": "버스킹(우수버스커)",
+     "when": "10.17(토) 18:00~",
+     "src": "국토일보",
+     "srcu": "http://www.ikld.kr/news/articleView.html?idxno=341921",
+     "chk": "2026-10-11"
+    }
+   ]
+  },
+  {
+   "match": "가수 션 초청강연",
+   "s": "2026-10",
+   "lineup": [
+    {
+     "name": "션",
+     "role": "초청강연(가수)",
+     "when": "10.21(수) 19:00~20:30",
+     "src": "북구청 새소식",
+     "srcu": "https://www.bsbukgu.go.kr/board/view.bsbukgu?boardId=BBS_0000023&menuCd=DOM_000000105001001000&dataSid=1108192",
+     "chk": "2026-10-11"
+    }
+   ]
+  },
+  {
+   "match": "변진섭",
+   "s": "2026-10",
+   "lineup": [
+    {
+     "name": "변진섭",
+     "role": "가수(단독 공연)",
+     "when": "10.13(화) 19:30",
+     "src": "영도문화예술회관 공연/전시",
+     "srcu": "https://www.yeongdo.go.kr/culture/01250/01251.web?sno=14630&amode=view",
+     "chk": "2026-10-11"
+    }
+   ]
+  },
+  {
+   "match": "하루 첫 팬콘서트",
+   "s": "2026-10",
+   "lineup": [
+    {
+     "name": "하루",
+     "role": "팬콘서트 주인공",
+     "when": "10.17(토)",
+     "src": "벡스코 행사일정(행사명)",
+     "srcu": "https://www.bexco.co.kr/kor/CMS/EventScheduleMgr/view.do?mCode=MN214&event_seq=16745",
+     "chk": "2026-10-11"
+    }
+   ]
+  },
+  {
+   "match": "이창섭 단독 콘서트",
+   "s": "2026-10",
+   "lineup": [
+    {
+     "name": "이창섭",
+     "role": "단독 콘서트",
+     "when": "10.31(토)~11.1(일)",
+     "src": "벡스코 행사일정(행사명)",
+     "srcu": "https://www.bexco.co.kr/kor/CMS/EventScheduleMgr/view.do?mCode=MN214&event_seq=16708",
+     "chk": "2026-10-11"
+    }
+   ]
+  },
+  {
+   "match": "최유리 콘서트",
+   "s": "2026-11",
+   "lineup": [
+    {
+     "name": "최유리",
+     "role": "단독 콘서트",
+     "when": "11.7(토)~11.8(일)",
+     "src": "벡스코 행사일정(행사명)",
+     "srcu": "https://www.bexco.co.kr/kor/CMS/EventScheduleMgr/view.do?mCode=MN214&event_seq=16709",
+     "chk": "2026-10-11"
+    }
+   ]
+  },
+  {
+   "match": "어썸스테이지",
+   "s": "2026-11",
+   "lineup": [
+    {
+     "name": "N.Flying(엔플라잉)",
+     "role": "출연",
+     "when": "11.14(토)~11.15(일)",
+     "src": "벡스코 행사일정(행사명)",
+     "srcu": "https://www.bexco.co.kr/kor/CMS/EventScheduleMgr/view.do?mCode=MN214&event_seq=16710",
+     "chk": "2026-10-11"
+    },
+    {
+     "name": "Hi-Fi Un!corn(하이파이유니콘)",
+     "role": "출연",
+     "when": "11.14(토)~11.15(일)",
+     "src": "벡스코 행사일정(행사명)",
+     "srcu": "https://www.bexco.co.kr/kor/CMS/EventScheduleMgr/view.do?mCode=MN214&event_seq=16710",
+     "chk": "2026-10-11"
+    }
+   ]
   }
  ]
 }
