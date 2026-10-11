@@ -117,13 +117,15 @@ def main():
     except Exception:
         st = {}
     known = set(st.get("known_ids", []))
+    kkey = lambda e: "".join(ch for ch in (e.get("n") or "") if ch.isalnum()).lower()[:30] + "|" + (e.get("s") or "")
+    known_keys = set(st.get("known_keys", []))
     first_run = not known
     sent_any, ok_all = False, True
 
     # 1) 새 행사 알림 (첫 실행은 기준선만 저장)
     new = []
     if not first_run and a.mode in ("auto", "new"):
-        new = [e for e in events if e["id"] not in known and (d(e.get("e")) or d(e.get("s"))) >= TODAY]
+        new = [e for e in events if e["id"] not in known and kkey(e) not in known_keys and (d(e.get("e")) or d(e.get("s"))) >= TODAY]
         new.sort(key=lambda e: e.get("s") or "")
         if new:
             hdr = f"🆕 <b>부산 새 행사 {len(new)}건</b> (자동 업데이트 {esc(data.get('updated', ''))} KST)"
@@ -169,6 +171,7 @@ def main():
         print("보낼 내용 없음")
     if not a.dry_run and ok_all:
         st["known_ids"] = sorted(known | {e["id"] for e in events})
+        st["known_keys"] = sorted(known_keys | {kkey(e) for e in events})
         st["updated"] = NOW.strftime("%Y-%m-%d %H:%M")
         st.setdefault("note", "텔레그램 알림 상태: known_ids=이미 알고 있는 행사 id(새 행사 알림 기준), last_digest=마지막 아침 다이제스트 날짜(KST)")
         tmp = STATE + ".tmp"
