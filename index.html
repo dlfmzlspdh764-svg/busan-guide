@@ -81,7 +81,7 @@ footer{font-size:11px;color:var(--sub);text-align:center;padding:10px 16px 20px;
 .pop2{font-size:11px;background:#e8f0ff;color:#2a4fd6;border-radius:6px;padding:2px 6px;margin-left:4px}
 .goog{background:#4285f4;color:#fff}.insta{background:linear-gradient(45deg,#f9a825,#e91e63,#7b1fa2);color:#fff}
 .hide{display:none!important}
-.note.lu{color:#7c3aed;font-weight:600}.lineup{list-style:none;padding:0;margin:6px 0}.lineup li{padding:5px 0;border-bottom:1px dashed #e5e7eb;font-size:14px}.lineup li:last-child{border-bottom:0}
+.note.lu{color:#7c3aed;font-weight:600}.card.ended{opacity:.55;background:#f3f4f6}.card.ended h3{color:#6b7280}.tag.ended{background:#9ca3af;color:#fff}.sec-past{color:#6b7280!important}.lineup{list-style:none;padding:0;margin:6px 0}.lineup li{padding:5px 0;border-bottom:1px dashed #e5e7eb;font-size:14px}.lineup li:last-child{border-bottom:0}
 </style>
 </head>
 <body>
@@ -167,7 +167,7 @@ let EVD={"updated":"2026-10-11 11:27","events":[{"id":"bx15661","n":"2026 상상
 const GUS=["중구","서구","동구","영도구","부산진구","동래구","남구","북구","해운대구","사하구","금정구","강서구","연제구","수영구","사상구","기장군","부산 전역"];
 const ETYPES=["축제","공연","전시","마켓","체험·프로그램","스포츠"];
 const EPERS=["전체","이번 주","이번 달","다음 달","2026","2027"];
-let egu="전체",etype="전체",eper="전체",evRun=null;
+let egu="전체",etype="전체",eper="2026",evRun=null;
 
 const STAY=[
  {h:"해운대",t:"바다 앞 호텔이 가장 많고 해변·맛집·BIFF(센텀) 접근이 좋아요. 2호선·동해선 이용."},
@@ -279,6 +279,7 @@ function openSpot(id){
  document.getElementById("sheet").classList.add("open");document.body.style.overflow="hidden";
 }
 function fmt(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function todayKST(){return new Date(Date.now()+9*3600e3).toISOString().slice(0,10)}
 const DOW="일월화수목금토";
 function pd(x){return new Date(x+"T00:00:00")}
 function evRange(e){
@@ -298,20 +299,20 @@ function evWhen(e){
 }
 function evBadge(e){return e.st==="confirmed"?'<span class="tag ok">날짜 확인됨</span>':e.st==="check"?'<span class="tag warn">일정 확인 필요</span>':'<span class="tag exp">예상 시기 · 일정 미발표</span>'}
 function perWin(p){
- const t=new Date(),today=fmt(t);
+ const today=todayKST();
+ const t=new Date(today+"T12:00:00+09:00");
  if(p==="이번 주"){const dow=t.getDay(),mon=new Date(t);mon.setDate(t.getDate()-((dow+6)%7));const sun=new Date(mon);sun.setDate(mon.getDate()+6);return [today,fmt(sun)]}
  if(p==="이번 달")return [today,fmt(new Date(t.getFullYear(),t.getMonth()+1,0))];
  if(p==="다음 달")return [fmt(new Date(t.getFullYear(),t.getMonth()+1,1)),fmt(new Date(t.getFullYear(),t.getMonth()+2,0))];
- if(p==="2026"||p==="2027")return [p===String(t.getFullYear())?today:p+"-01-01",p+"-12-31"];
+ if(p==="2026"||p==="2027")return [p+"-01-01",p+"-12-31"];
  return [today,"9999-12-31"];
 }
 function evList(){
- const today=fmt(new Date());
- return (EVD.events||[]).filter(e=>evRange(e)[1]>=today);
+ return EVD.events||[];
 }
 let luOnly=false;
 function luNames(e){return (e.lineup||[]).map(x=>x.name).join(" ")}
-function luPreview(e){const L=e.lineup||[];if(!L.length)return "";const n=L.slice(0,3).map(x=>x.name).join(" · ");return `<p class="note lu">🎤 ${esc(n)}${L.length>3?` 외 ${L.length-3}`:""}</p>`}
+function luPreview(e){const L=e.lineup||[];if(!L.length)return "";return `<p class="note lu">🎤 ${esc(L.map(x=>x.name).join(" · "))}</p>`}
 function evFilter(list,{gu=egu,type=etype,per=eper}={}){
  const [w0,w1]=perWin(per);
  return list.filter(e=>{const [a,b]=evRange(e);return a<=w1&&b>=w0&&(gu==="전체"||e.gu===gu)&&(type==="전체"||e.type===type)&&(!favOnly||favs.includes("e:"+e.id))&&(!luOnly||(e.lineup||[]).length)&&match(e.n,e.p||"",e.addr||"",e.org||"",e.gu,e.type,luNames(e))});
@@ -323,25 +324,39 @@ function event(){
  const perCnt=p=>evFilter(all,{per:p}).length;
  const chipRow=(arr,cur,attr,cf)=>`<div class="catchips">`+arr.map(v=>{const n=cf(v);return `<button class="chip sm ${cur===v?"on":""} ${n?"":"dim"}" data-${attr}="${v}">${v} ${n}</button>`}).join("")+`</div>`;
  const run=evRun?`${evRun.t} (KST)${evRun.c==="success"?" · 성공":evRun.c?" · "+evRun.c:""}`:(EVD.updated?EVD.updated+" (KST, 마지막 데이터 변경)":"");
- const nConf=list.filter(e=>e.st==="confirmed").length,nChk=list.filter(e=>e.st==="check").length,nExp=list.filter(e=>e.st==="expected").length;
- let html=`<div class="banner"><b>부산 행사·축제 (${list.length}건)</b><p>날짜 확인됨 ${nConf} · 일정 확인 필요 ${nChk} · 예상 시기(미발표) ${nExp}</p><p>행사 자동 업데이트: ${run||"-"}</p></div>`+
- `<div class="evf"><div class="evl">기간</div>`+chipRow(EPERS,eper,"eper",perCnt)+`<div class="evl">구·군</div>`+chipRow(["전체",...GUS],egu,"egu",v=>cnt("gu",v))+`<div class="evl">종류</div>`+chipRow(["전체",...ETYPES],etype,"etype",v=>cnt("type",v))+`<div class="catchips"><button class="chip sm ${luOnly?"on":""}" id="luOnly">🎤 출연진 공개된 행사만 ${evFilter(all,{}).filter(e=>(e.lineup||[]).length).length}</button></div></div>`+
- `<details class="rule"><summary>ⓘ 데이터 출처·표시 기준</summary><p>Visit Busan 축제·행사, 한국관광공사 ‘대한민국 구석구석 축제’, 벡스코 행사일정, <b>부산 16개 구·군청 홈페이지(행사·공지·문화회관 게시판)</b>를 매일 오전 6시(KST)에 자동으로 다시 읽어 오고, 구·군청·공식 홈페이지·언론 보도로 직접 확인한 행사를 더했어요. <b>날짜 확인됨</b>=공식·보도로 날짜 확인, <b>일정 확인 필요</b>=2차 출처만 있거나 ‘10월 중’처럼 날짜 미발표, <b>예상 시기</b>=매년 열리는 행사의 지난 개최 시기를 바탕으로 한 추정(정확한 날짜 아님). 끝난 행사는 자동으로 빠져요. <b>🎤 출연진</b>은 주최 측 공지·언론 보도로 공개된 이름만 출처·확인일과 함께 넣었고, 발표 전이면 ‘출연진 미공개’로 표시해요. 한국관광공사 TourAPI는 인증키가 필요해 쓰지 않았어요.</p></details>`;
- if(!list.length) html+=`<div class="empty">조건에 맞는 행사가 없어요.</div>`;
- const today=fmt(new Date());
- const card=e=>`<div class="card tap" data-ev="${esc(e.id)}">${heart("e:"+e.id)}<div class="date">${esc(evWhen(e))}</div><h3>${esc(e.n)}</h3><div class="meta">${evBadge(e)}<span class="tag">${esc(e.gu)}</span><span class="tag cat">${esc(e.type)}</span>${e.fee&&/무료/.test(e.fee)&&!/유료/.test(e.fee)?'<span class="tag gray">무료</span>':""}</div>${e.p?`<p class="note">📍 ${esc(e.p)}</p>`:""}${luPreview(e)}<div class="more">상세 보기 ›</div></div>`;
- const ongoing=list.filter(e=>evRange(e)[0]<=today&&e.st!=="expected"&&(e.s||"").length===10).sort((x,y)=>evRange(x)[1].localeCompare(evRange(y)[1]));
- const ids=new Set(ongoing.map(e=>e.id));
- if(ongoing.length)html+=`<div class="sec-title">지금 진행 중 <span style="color:var(--sub);font-weight:400;font-size:13px">${ongoing.length}건 · 곧 끝나는 순</span></div>`+ongoing.map(card).join("");
- let lastM="";
- list.filter(e=>!ids.has(e.id)).forEach(e=>{
-  const [a]=evRange(e);const w0=perWin(eper)[0];const st0=[a,today,w0].sort().pop();const m=st0.slice(0,7);
-  if(m!==lastM){lastM=m;html+=`<div class="sec-title">${m.slice(0,4)}년 ${+m.slice(5,7)}월</div>`}
-  html+=card(e);
+ const today=todayKST();
+ const active=list.filter(e=>evRange(e)[1]>=today);
+ const past=list.filter(e=>evRange(e)[1]<today).sort((x,y)=>evRange(y)[1].localeCompare(evRange(x)[1])||evRange(y)[0].localeCompare(evRange(x)[0]));
+ const ongoing=active.filter(e=>evRange(e)[0]<=today&&e.st!=="expected"&&(e.s||"").length===10).sort((x,y)=>evRange(x)[1].localeCompare(evRange(y)[1])||evRange(x)[0].localeCompare(evRange(y)[0]));
+ const onIds=new Set(ongoing.map(e=>e.id));
+ const upcoming=active.filter(e=>!onIds.has(e.id)).sort((x,y)=>{
+  const [ax]=evRange(x),[ay]=evRange(y);
+  return ax.localeCompare(ay)||evRange(x)[1].localeCompare(evRange(y)[1])||(x.n||"").localeCompare(y.n||"");
  });
+ const nConf=active.filter(e=>e.st==="confirmed").length,nChk=active.filter(e=>e.st==="check").length,nExp=active.filter(e=>e.st==="expected").length;
+ let html=`<div class="banner"><b>부산 행사·축제 (${active.length}건 · 다가오는 순)</b><p>날짜 확인됨 ${nConf} · 일정 확인 필요 ${nChk} · 예상 시기(미발표) ${nExp}${past.length?` · 지난 행사 ${past.length}`:""}</p><p>행사 자동 업데이트: ${run||"-"}</p></div>`+
+ `<div class="evf"><div class="evl">기간</div>`+chipRow(EPERS,eper,"eper",perCnt)+`<div class="evl">구·군</div>`+chipRow(["전체",...GUS],egu,"egu",v=>cnt("gu",v))+`<div class="evl">종류</div>`+chipRow(["전체",...ETYPES],etype,"etype",v=>cnt("type",v))+`<div class="catchips"><button class="chip sm ${luOnly?"on":""}" id="luOnly">🎤 출연진 공개된 행사만 ${evFilter(all,{}).filter(e=>(e.lineup||[]).length).length}</button></div></div>`+
+ `<details class="rule"><summary>ⓘ 데이터 출처·표시 기준</summary><p>Visit Busan 축제·행사, 한국관광공사 ‘대한민국 구석구석 축제’, 벡스코 행사일정, <b>부산 16개 구·군청 홈페이지(행사·공지·문화회관 게시판)</b>를 매일 오전 6시(KST)에 자동으로 다시 읽어 오고, 구·군청·공식 홈페이지·언론 보도로 직접 확인한 행사를 더했어요. <b>날짜 확인됨</b>=공식·보도로 날짜 확인, <b>일정 확인 필요</b>=2차 출처만 있거나 ‘10월 중’처럼 날짜 미발표, <b>예상 시기</b>=매년 열리는 행사의 지난 개최 시기를 바탕으로 한 추정(정확한 날짜 아님). 끝난 행사는 아래 ‘지난 행사’로 내려가요. <b>🎤 출연진</b>은 주최 측 공지·언론 보도로 공개된 이름만 출처·확인일과 함께 넣었고, 발표 전이면 카드에 표시하지 않아요. 한국관광공사 TourAPI는 인증키가 필요해 쓰지 않았어요. 기본 목록은 2026년 12월 31일까지예요.</p></details>`;
+ if(!active.length&&!past.length) html+=`<div class="empty">조건에 맞는 행사가 없어요.</div>`;
+ const card=(e,ended=false)=>`<div class="card tap${ended?" ended":""}" data-ev="${esc(e.id)}">${heart("e:"+e.id)}<div class="date">${esc(evWhen(e))}</div><h3>${esc(e.n)}</h3><div class="meta">${ended?'<span class="tag ended">행사 종료</span>':evBadge(e)}<span class="tag">${esc(e.gu)}</span><span class="tag cat">${esc(e.type)}</span>${!ended&&e.fee&&/무료/.test(e.fee)&&!/유료/.test(e.fee)?'<span class="tag gray">무료</span>':""}</div>${e.p?`<p class="note">📍 ${esc(e.p)}</p>`:""}${luPreview(e)}<div class="more">상세 보기 ›</div></div>`;
+ if(ongoing.length)html+=`<div class="sec-title">지금 진행 중 <span style="color:var(--sub);font-weight:400;font-size:13px">${ongoing.length}건 · 곧 끝나는 순</span></div>`+ongoing.map(e=>card(e)).join("");
+ if(upcoming.length){
+  html+=`<div class="sec-title">다가오는 행사 <span style="color:var(--sub);font-weight:400;font-size:13px">${upcoming.length}건 · 시작일 빠른 순</span></div>`;
+  let lastM="";
+  upcoming.forEach(e=>{
+   const [a]=evRange(e);const m=a.slice(0,7);
+   if(m!==lastM&&m.length===7){lastM=m;html+=`<div class="sec-title" style="font-size:14px;margin-top:10px">${m.slice(0,4)}년 ${+m.slice(5,7)}월</div>`}
+   html+=card(e);
+  });
+ }
+ if(past.length){
+  html+=`<div class="sec-title sec-past">지난 행사 <span style="font-weight:400;font-size:13px">${past.length}건 · 최근 종료 순</span></div>`;
+  html+=past.map(e=>card(e,true)).join("");
+ }
  html+=`<div class="sec-title">공연장·전시장 일정 바로가기</div><p class="hint">공연·전시는 각 공연장 일정표가 가장 정확해요.</p><div class="card"><div class="links">${VENUES.map(v=>`<a class="off" href="${v[1]}" target="_blank" rel="noopener">${v[0]}</a>`).join("")}</div></div>`;
  return html;
 }
+
 const VENUES=[["부산문화회관","https://www.bscc.or.kr/01_perfor/?mcode=0401010000"],["부산시민회관","https://www.bscc.or.kr/"],["영화의전당","https://www.dureraum.org/"],["부산콘서트홀","https://www.bscc.or.kr/"],["드림씨어터","https://www.dreamtheatre.co.kr/"],["벡스코 행사일정","https://www.bexco.co.kr/kor/CMS/EventScheduleMgr/list.do?mCode=MN214"],["부산시립미술관","https://art.busan.go.kr/"],["부산현대미술관","https://www.busan.go.kr/moca/"],["Visit Busan 축제·행사","https://www.visitbusan.net/schedule/list.do?boardId=BBS_0000009&menuCd=DOM_000000204012000000"],["KOPIS 공연정보","https://www.kopis.or.kr/"]];
 function luSection(e){
  const L=e.lineup||[];
