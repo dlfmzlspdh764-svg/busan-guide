@@ -83,7 +83,7 @@ footer{font-size:11px;color:var(--sub);text-align:center;padding:10px 16px 20px;
 .hide{display:none!important}
 .note.lu{color:#7c3aed;font-weight:600}.card.ended{opacity:.55;background:#f3f4f6}.card.ended h3{color:#6b7280}.tag.ended{background:#9ca3af;color:#fff}.sec-past{color:#6b7280!important}.lineup{list-style:none;padding:0;margin:6px 0}.lineup li{padding:5px 0;border-bottom:1px dashed #e5e7eb;font-size:14px}.lineup li:last-child{border-bottom:0}
 .gcst{list-style:none;padding:0;margin:8px 0}.gcs{padding:7px 10px;background:#f3f6fb;border-radius:10px;cursor:pointer}.gcmv{font-size:12px;color:var(--sub);padding:3px 0 3px 18px;border-left:2px dashed #b8c6dc;margin-left:14px}
-.tl{position:relative;margin-left:58px;border-left:2px solid #c9d6ea;padding-left:12px}.tlr{position:relative}.tld{position:absolute;left:-72px;top:14px;width:54px;text-align:right;font-size:12px;font-weight:700;color:var(--blue);line-height:1.2}.tlr:before{content:"";position:absolute;left:-18px;top:17px;width:10px;height:10px;border-radius:50%;background:var(--blue)}.tlr.on:before{background:#e5484d}.tag.live{background:#ffe3e3;color:#c92a2a}.seg{display:flex;gap:6px;margin:10px 0}.seg button{flex:1}
+.tl{position:relative;margin-left:64px;border-left:2px solid #c9d6ea;padding-left:12px}.tlr{position:relative}.tld{position:absolute;left:-78px;top:14px;width:60px;text-align:right;font-size:12px;font-weight:700;color:var(--blue);line-height:1.2}.tlr:before{content:"";position:absolute;left:-18px;top:17px;width:10px;height:10px;border-radius:50%;background:var(--blue)}.tlr.on:before{background:#e5484d}.tag.live{background:#ffe3e3;color:#c92a2a}.seg{display:flex;gap:6px;margin:10px 0}.seg button{flex:1}
 </style>
 </head>
 <body>
@@ -369,7 +369,7 @@ function event(){
  const isS=e=>(e.st==="expected"||(e.s||"").length!==10||(e.e&&e.e.length!==10))?e.type!=="전시":dur(e)<=7, nS=ongoing.concat(upcoming).filter(isS).length, nL=ongoing.length+upcoming.length-nS;
  html+=`<div class="seg"><button class="chip ${edur==="단기"?"on":""}" data-edur="단기">⚡ 단기 행사 (7일 이하) ${nS}</button><button class="chip ${edur==="장기"?"on":""}" data-edur="장기">📆 장기 행사 (8일 이상) ${nL}</button></div>`;
  const want=e=>edur==="단기"?isS(e):!isS(e);
- const tlRow=(e,on)=>{const [a,b]=evRange(e);const left=Math.round((pd(b)-pd(today))/864e5);return `<div class="tlr${on?" on":""}"><div class="tld">${on?"진행 중":dLabel(a).replace("(","<br>(")}</div>`+card(e).replace('<div class="meta">',`<div class="meta">${on?`<span class="tag live">진행 중 · ${left?left+"일 남음":"오늘 종료"}</span>`:""}${(e.s||"").length===10&&e.st!=="expected"?`<span class="tag gray">${dur(e)}일간</span>`:""}`)+`</div>`};
+ const tlRow=(e,on)=>{const [a,b]=evRange(e);const left=Math.round((pd(b)-pd(today))/864e5);return `<div class="tlr${on?" on":""}"><div class="tld">${on?"진행 중":(e.s||"").length===7?(+a.slice(5,7))+"월<br>중":dLabel(a).replace("(","<br>(")}</div>`+card(e).replace('<div class="meta">',`<div class="meta">${on?`<span class="tag live">진행 중 · ${left?left+"일 남음":"오늘 종료"}</span>`:""}${(e.s||"").length===10&&e.st!=="expected"?`<span class="tag gray">${dur(e)}일간</span>`:""}`)+`</div>`};
  const og=ongoing.filter(want),up=upcoming.filter(want);
  html+=`<div class="sec-title">${edur==="단기"?"단기 행사":"장기 행사"} 타임라인 <span style="color:var(--sub);font-weight:400;font-size:13px">${og.length+up.length}건 · 진행 중 → 시작일 빠른 순</span></div>`;
  if(!og.length&&!up.length)html+=`<div class="empty">조건에 맞는 행사가 없어요.</div>`;
