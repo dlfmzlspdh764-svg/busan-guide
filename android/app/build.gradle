@@ -1,0 +1,9 @@
+plugins { id 'com.android.application' }
+android {
+  namespace 'io.github.dlfmzlspdh764.busanguide'
+  compileSdk 34
+  defaultConfig { applicationId 'io.github.dlfmzlspdh764.busanguide'; minSdk 23; targetSdk 34; versionCode 1; versionName '1.0' }
+  signingConfigs { release {
+    storeFile file(System.getenv('KS_PATH') ?: 'none'); storePassword System.getenv('KS_PASS'); keyAlias 'busan'; keyPassword System.getenv('KS_PASS'); storeType 'pkcs12' } }
+  buildTypes { release { minifyEnabled false; signingConfig signingConfigs.release } }
+}

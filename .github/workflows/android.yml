@@ -1,0 +1,29 @@
+name: android
+on:
+  workflow_dispatch:
+  push:
+    tags: ['android-v*']
+permissions: { contents: write }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '8.7' }
+      - name: Build
+        working-directory: android
+        env: { KS_PASS: "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" }
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE_B64 }}" | base64 -d > $RUNNER_TEMP/ks.p12
+          KS_PATH=$RUNNER_TEMP/ks.p12 gradle assembleRelease --no-daemon
+          cp app/build/outputs/apk/release/app-release.apk ../busan-guide.apk
+          $ANDROID_HOME/build-tools/$(ls $ANDROID_HOME/build-tools | sort -V | tail -1)/apksigner verify --print-certs ../busan-guide.apk
+      - name: Release
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          TAG=${GITHUB_REF_NAME}; [[ $TAG == android-v* ]] || TAG=android-v1.0
+          gh release view $TAG || gh release create $TAG --title "부산저기여기요기 Android $TAG" --notes "안드로이드 앱 (APK). 설치 시 '출처를 알 수 없는 앱' 허용이 필요할 수 있어요." --latest
+          gh release upload $TAG busan-guide.apk --clobber
