@@ -1,0 +1,41 @@
+name: gu-watch
+
+on:
+  schedule:
+    - cron: "23 * * * *"   # 매시간 (구·군청·문화회관 게시판 새 행사 추적)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gu-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Poll boards
+        env:
+          TZ: Asia/Seoul
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 -u scripts/gu_watch.py
+      - name: Validate
+        run: python3 -c "import json;d=json.load(open('events.json'));assert len(d['events'])>20;print('events',len(d['events']))"
+      - name: Commit if changed
+        run: |
+          if [ -z "$(git status --porcelain events.json data/gu_watch.json data/notified.json)" ]; then echo "변경 없음"; exit 0; fi
+          git config user.name "busan-guide-bot"
+          git config user.email "dlfmzlspdh764-svg@users.noreply.github.com"
+          git add events.json data/gu_watch.json data/notified.json
+          git commit -q -m "구·군청 행사 추적 $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin main && break; sleep 5; done

@@ -443,7 +443,7 @@ def is_current(e):
 
 
 PROBE = {"visitbusan": (VB + "/index.do", False), "kfes": ("https://korean.visitkorea.or.kr/kfes/list/wntyFstvlList.do", True),
-         "bexco": (BX + "/kor/Main.do", True)}
+         "bexco": (BX + "/kor/Main.do", True), "concert": ("https://tickets.interpark.com/", True)}
 
 
 def run_source(name, fn, prev_events, status, min_ratio=0.5, min_abs=3):
@@ -477,6 +477,109 @@ def run_source(name, fn, prev_events, status, min_ratio=0.5, min_abs=3):
         log(f"{name}: 수집 실패 → 이전 데이터 유지: {e!r} ({time.time() - t0:.0f}s)")
         status[name] = {"ok": False, "error": str(e)[:200], "kept_previous": True}
         return prev_src, ()
+
+
+
+# ───────────────────────── 가수 공연(콘서트) 수집 ─────────────────────────
+# 예스24 티켓 콘서트 목록(전 지역, 페이지당 20건) + NOL(인터파크) 콘서트 페이지에서 부산 공연만 골라 type='콘서트'로 넣습니다.
+# KOPIS 오픈API는 인증키가 필요하고, 멜론티켓은 봇 접속을 막아(423) 제외했어요.
+CONCERT_END = "2026-12-31"
+BUSAN_VENUE = (r"부산|벡스코|BEXCO|KBS\s*부산|소향\s*씨어터|드림\s*씨어터|시민회관|사직|영화의전당|해운대|광안|센텀|을숙도|"
+               r"부경대|경성대|동아대|부산대|기장군|기장읍|금정문화|동래문화|BNK|롯데\s*콘서트홀\s*부산|부산콘서트홀|오디토리움\s*부산")
+OTHER_CITY = r"^\s*[\[［]\s*(서울|대구|대전|광주|인천|울산|창원|수원|성남|고양|여수|전주|청주|천안|포항|진주|제주|강릉|원주|춘천|김해|구미|안동|익산|목포|순천)"
+
+
+CONCERT_GU = [(r"KBS\s*부산", "수영구"), (r"부경대|경성대", "남구"), (r"소향|벡스코|BEXCO|영화의전당|센텀|해운대", "해운대구"),
+              (r"가톨릭센터|광복|남포", "중구"), (r"시민회관", "동구"), (r"드림\s*씨어터|문현", "남구"), (r"사직", "동래구"), (r"을숙도", "사하구")]
+
+
+def fetch_h(url, headers, timeout=25, tries=4):
+    last = None
+    for i in range(tries):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124 Safari/537.36", **headers})
+            with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
+                return r.read().decode("utf-8", "replace")
+        except Exception as e:  # noqa
+            last = e; time.sleep(2 * (i + 1))
+    raise last
+
+
+def concert_artist(title):
+    t = re.sub(r"[\[［(（][^\]］)）]*[\]］)）]", " ", title)
+    t = re.sub(r"[〈<《「『＂\"‘'].*", " ", t)
+    t = re.sub(r"^\s*(20\d\d(?:\s*-\s*\d\d)?)\s*", "", t.strip())
+    parts = re.split(r"\s*(?:전국\s*투어|단독\s*콘서트|콘서트|CONCERT|Concert|LIVE|Live|TOUR|Tour|WORLD|투어|팬미팅|FAN\s*MEETING|내한공연|단독공연|토크\s*콘서트|-|:|in\s)", t, 1)
+    if len(parts) < 2:
+        return ""
+    m = re.sub(r"\s*(라이브|\d+\s*주년|단독|뮤직|토크)$", "", parts[0].strip(" -:,")).strip()
+    if not m or len(m) > 20 or re.search(r"\d+(th|회)", m) or re.search(r"페스티벌|축제|가요제|뮤직|어워드|AWARD|FESTIVAL|대학|합창|오케스트라", m, re.I):
+        return ""
+    return m
+
+
+def concert_event(eid, title, s, e, venue, url, src, srcu, extra=None):
+    title = re.sub(r"\s+", " ", html.unescape(title)).strip()
+    venue = re.sub(r"\s+", " ", html.unescape(venue or "")).strip()
+    art = concert_artist(title)
+    ev = {"id": eid, "n": title, "s": s, "e": e or s, "gu": next((g for pat, g in CONCERT_GU if re.search(pat, venue)), None) or guess_gu(venue, title), "type": "콘서트", "p": venue, "addr": "", "hours": "", "fee": "",
+          "org": "", "tel": "", "u": url, "srcu": srcu, "src": src, "chk": TODAY, "st": "confirmed", "origin": "concert",
+          "lineup": ([{"name": art, "role": "출연", "src": src, "srcu": url, "chk": TODAY}] if art else [])}
+    ev.update(extra or {})
+    return ev
+
+
+def scrape_concerts():
+    out, errs, ok = {}, 0, 0
+    # 1) 예스24 티켓 (genre 15456 = 콘서트 전체)
+    base = "https://ticket.yes24.com/New/Genre/Ajax/GenreList_Data.aspx?genre=15456&sort=1&area=&genretype=1&pPageSize=20&pCurPage="
+    seen, total = set(), 999
+    for pg in range(1, 13):
+        if (pg - 1) * 20 >= total:
+            break
+        try:
+            page = fetch_h(base + str(pg), {"Referer": "https://ticket.yes24.com/New/Genre/GenreList.aspx?genretype=1&genre=15456", "X-Requested-With": "XMLHttpRequest"})
+            ok += 1
+        except Exception as e:  # noqa
+            errs += 1; log(f"  [concert] yes24 p{pg} 실패: {e!r}"); continue
+        m = re.search(r'id="ListTotalCnt" value="(\d+)"', page)
+        if m:
+            total = int(m.group(1))
+        for b in re.split(r"(?=<a style='cursor:pointer;' onclick='jsf_base_GoToPerfDetail)", page):
+            m = re.search(r"GoToPerfDetail\((\d+)\);' title='([^']*)'", b)
+            if not m or m.group(1) in seen:
+                continue
+            seen.add(m.group(1))
+            ps = [html.unescape(x).strip() for x in re.findall(r"<p class='list-b-tit2[^']*'>([^<]*)</p>", b)]
+            dates = re.findall(r"(20\d\d)\.(\d\d)\.(\d\d)", ps[0] if ps else "")
+            title = html.unescape(m.group(2)); venue = ps[1] if len(ps) > 1 else ""
+            if not dates or re.search(OTHER_CITY, title) or not re.search(BUSAN_VENUE, title + " " + venue):
+                continue
+            s_, e_ = "-".join(dates[0]), "-".join(dates[-1])
+            u = f"https://ticket.yes24.com/Perf/{m.group(1)}"
+            out["y" + m.group(1)] = concert_event("cc-y" + m.group(1), title, s_, e_, venue, u, "예스24 티켓", u)
+    # 2) NOL(인터파크) 티켓 콘서트 장르 페이지
+    try:
+        page = fetch_h("https://tickets.interpark.com/contents/genre/concert", {})
+        ok += 1
+        for m in re.finditer(r'<a [^>]*?href="(https://nol\.yanolja\.com/ticket/[^"]*?products/(\d+))"[^>]*?aria-label="([^"]*)"', page):
+            lab = html.unescape(m.group(3))
+            mm = re.search(r"^(.*?), (?:단독판매, |좌석우위, |\d+위, )*공연장: (.*?), 공연 기간: (\d\d)\.(\d\d)\.(\d\d)\s*[-~]\s*(\d\d)\.(\d\d)\.(\d\d)", lab)
+            if not mm:
+                continue
+            title, venue = re.sub(r"^(단독판매, )", "", mm.group(1)), mm.group(2)
+            if "," in venue or re.search(OTHER_CITY, title) or not re.search(BUSAN_VENUE, venue + " " + title) or "서울" in venue:
+                continue
+            s_ = f"20{mm.group(3)}-{mm.group(4)}-{mm.group(5)}"; e_ = f"20{mm.group(6)}-{mm.group(7)}-{mm.group(8)}"
+            if any(same({"n": title, "s": s_}, v) for v in out.values()):
+                continue
+            out.setdefault("i" + m.group(2), concert_event("cc-i" + m.group(2), title, s_, e_, venue, m.group(1), "NOL 티켓(인터파크)", m.group(1)))
+    except Exception as e:  # noqa
+        errs += 1; log(f"  [concert] interpark 실패: {e!r}")
+    items = [v for v in out.values() if v["e"] >= TODAY and v["s"] <= CONCERT_END]
+    if not ok:
+        raise ConnectionError("콘서트 소스 모두 접속 실패")
+    return items, 0
 
 
 # ───────────────────────── 구·군청 홈페이지 행사 수집 ─────────────────────────
@@ -894,16 +997,19 @@ def main():
     kf, kx = run_source("kfes", scrape_kfes, prev_events, status, min_abs=3)
     kf_series = kx[0] if len(kx) >= 2 else prev.get("kfes_series", [])
     bx, _ = run_source("bexco", scrape_bexco, prev_events, status, min_abs=3)
+    cc, _ = run_source("concert", scrape_concerts, prev_events, status, min_ratio=0.4, min_abs=2) if os.environ.get("SKIP_CONCERT") != "1" else ([e for e in prev_events if e.get("origin") == "concert"], ())
     gu_ev = run_gu_sources(prev_events, status) if os.environ.get("SKIP_GU") != "1" else [e for e in prev_events if (e.get("origin") or "").startswith("gu:")]
 
     events = []
     for m in manual["events"]:
         events.append(dict(m))
-    for group in (vb, kf, bx, gu_ev):
+    for group in (vb, kf, bx, cc, gu_ev):
         for v in group:
             hit = next((e for e in events if same(e, v)), None)
             if hit:
                 merge_into(hit, v)
+                if v.get("type") == "콘서트":
+                    hit["type"] = "콘서트"
             else:
                 events.append(dict(v))
 
@@ -929,6 +1035,7 @@ def main():
             "sources": {"visitbusan": "https://www.visitbusan.net/schedule/list.do?boardId=BBS_0000009&menuCd=DOM_000000204012000000",
                         "kfes": "https://korean.visitkorea.or.kr/kfes/list/wntyFstvlList.do",
                         "bexco": "https://www.bexco.co.kr/kor/CMS/EventScheduleMgr/list.do?mCode=MN214",
+                        "concert": "https://ticket.yes24.com/New/Genre/GenreList.aspx?genretype=1&genre=15456 , https://tickets.interpark.com/contents/genre/concert",
                         **{"gu:" + x[0]: x[3] for x in GU_SOURCES}},
             "kfes_series": kf_series, "events": events}
     if prev.get("events") == events and prev.get("kfes_series") == kf_series:
