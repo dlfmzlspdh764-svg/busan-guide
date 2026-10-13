@@ -84,6 +84,22 @@ footer{font-size:11px;color:var(--sub);text-align:center;padding:10px 16px 20px;
 .note.lu{color:#7c3aed;font-weight:600}.card.ended{opacity:.55;background:#f3f4f6}.card.ended h3{color:#6b7280}.tag.ended{background:#9ca3af;color:#fff}.sec-past{color:#6b7280!important}.lineup{list-style:none;padding:0;margin:6px 0}.lineup li{padding:5px 0;border-bottom:1px dashed #e5e7eb;font-size:14px}.lineup li:last-child{border-bottom:0}
 .gcst{list-style:none;padding:0;margin:8px 0}.gcs{padding:7px 10px;background:#f3f6fb;border-radius:10px;cursor:pointer}.gcmv{font-size:12px;color:var(--sub);padding:3px 0 3px 18px;border-left:2px dashed #b8c6dc;margin-left:14px}
 .tl{position:relative;margin-left:64px;border-left:2px solid #c9d6ea;padding-left:12px}.tlr{position:relative}.tld{position:absolute;left:-78px;top:14px;width:60px;text-align:right;font-size:12px;font-weight:700;color:var(--blue);line-height:1.2}.tlr:before{content:"";position:absolute;left:-18px;top:17px;width:10px;height:10px;border-radius:50%;background:var(--blue)}.tlr.on:before{background:#e5484d}.tag.live{background:#ffe3e3;color:#c92a2a}.seg{display:flex;gap:6px;margin:10px 0}.seg button{flex:1}
+
+.newsbox{margin:10px 16px 0;background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(20,40,80,.06);overflow:hidden}
+.newsbox .nb-top{display:flex;align-items:center;justify-content:space-between;padding:8px 12px 0;gap:8px}
+.newsbox .nb-lab{font-size:12px;font-weight:700;color:var(--blue)}
+.newsbox .nb-tog{border:0;background:#eef4fb;color:var(--blue);font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer}
+.newsbox .nb-item{display:block;padding:10px 12px;text-decoration:none;color:inherit;border-top:1px solid var(--line)}
+.newsbox .nb-item:first-of-type{border-top:0}
+.newsbox .nb-item.primary{border-top:0;padding-top:6px}
+.newsbox .nb-title{font-size:14px;font-weight:700;line-height:1.35;margin:0 0 4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.newsbox .nb-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:11px;color:var(--sub)}
+.newsbox .nb-topic{background:#eef4fb;color:var(--blue);font-weight:700;padding:2px 6px;border-radius:5px}
+.newsbox .nb-more{display:none;border-top:1px solid var(--line)}
+.newsbox.open .nb-more{display:block}
+.newsbox.open .nb-tog::after{content:""}
+.newsbox .nb-empty{padding:12px;font-size:12px;color:var(--sub)}
+
 </style>
 </head>
 <body>
@@ -98,6 +114,10 @@ footer{font-size:11px;color:var(--sub);text-align:center;padding:10px 16px 20px;
     <button class="favbtn" id="favOnly" aria-pressed="false">♥ 찜</button>
   </div>
 </header>
+<div id="newsbox" class="newsbox" aria-live="polite">
+  <div class="nb-top"><span class="nb-lab">📰 부산 뉴스</span><button type="button" class="nb-tog" id="newsTog" aria-expanded="false">펼치기 ▼</button></div>
+  <div id="newsBody"><div class="nb-empty">뉴스를 불러오는 중…</div></div>
+</div>
 <div class="chips" id="chips"></div>
 <main id="main"></main>
 <footer>
@@ -436,6 +456,7 @@ function render(){
  document.documentElement.style.setProperty("--hh",document.getElementById("hdr").offsetHeight+"px");
 }
 document.addEventListener("click",e=>{
+ if(e.target.closest("#newsTog")){newsOpen=!newsOpen;renderNews();return}
  if(e.target.closest("[data-close]")){closeSheet();return}
  const t=e.target.closest("[data-tab],[data-cgu],[data-area],[data-fsort],[data-cat],[data-ccat],[data-fav],#favOnly,#luOnly,[data-open],[data-spot],[data-egu],[data-etype],[data-eper],[data-ev],[data-edur]");if(!t)return;
  if(t.dataset.tab){tab=t.dataset.tab;window.scrollTo(0,0)}
@@ -460,6 +481,34 @@ document.getElementById("q").addEventListener("input",e=>{query=e.target.value.t
 render();
 const _m=location.hash.match(/^#place-(\d+)/);if(_m)openSheet(_m[1]);
 const _e=location.hash.match(/^#event-(.+)$/);if(_e){tab="event";render();openEvent(decodeURIComponent(_e[1]));}
+
+let NEWS={items:[],updated:null};let newsOpen=false;
+const TOPIC_LABEL={여행:"여행",맛집:"맛집",명소:"명소",외국인:"해외관광객",교통:"교통"};
+function relTime(iso){
+ try{const t=new Date(iso).getTime();if(!t)return"";const m=Math.max(0,Math.floor((Date.now()-t)/60000));
+  if(m<1)return"방금";if(m<60)return m+"분 전";const h=Math.floor(m/60);if(h<24)return h+"시간 전";const d=Math.floor(h/24);return d+"일 전"}catch(_){return""}
+}
+function newsItemHtml(it,primary){
+ const topic=TOPIC_LABEL[it.topic]||it.topic||"";
+ return `<a class="nb-item${primary?" primary":""}" href="${esc(it.link)}" target="_blank" rel="noopener"><p class="nb-title">${esc(it.title)}</p><div class="nb-meta">${topic?`<span class="nb-topic">${esc(topic)}</span>`:""}<span>${esc(it.source||"")}</span><span>${relTime(it.published)}</span></div></a>`;
+}
+function renderNews(){
+ const box=document.getElementById("newsbox");const body=document.getElementById("newsBody");const tog=document.getElementById("newsTog");
+ if(!box||!body)return;
+ box.classList.toggle("open",newsOpen);
+ if(tog){tog.setAttribute("aria-expanded",newsOpen?"true":"false");tog.textContent=newsOpen?"접기 ▲":"펼치기 ▼"}
+ const items=NEWS.items||[];
+ if(!items.length){body.innerHTML=`<div class="nb-empty">표시할 뉴스가 없어요</div>`;return}
+ const first=items[0];
+ const rest=items.slice(1,20);
+ body.innerHTML=newsItemHtml(first,true)+(rest.length?`<div class="nb-more">${rest.map(it=>newsItemHtml(it,false)).join("")}</div>`:"");
+}
+async function loadNews(){
+ try{const r=await fetch("news.json?t="+Date.now(),{cache:"no-store"});if(r.ok){const j=await r.json();if(j&&Array.isArray(j.items)&&j.items.length){NEWS=j;renderNews()}}else{document.getElementById("newsBody").innerHTML=`<div class="nb-empty">뉴스를 불러오지 못했어요</div>`}}
+ catch(_){const el=document.getElementById("newsBody");if(el)el.innerHTML=`<div class="nb-empty">뉴스를 불러오지 못했어요</div>`}
+}
+
+loadNews();
 loadEvents();
 const _s=location.hash.match(/^#spot-(\d+)/);if(_s){tab="course";ccat="BEST 10";const _p=SPOTS.find(x=>x.id===_s[1]);if(_p)cgu=_p.gu;render();openSpot(_s[1]);}
 const _g=location.hash.match(/^#course-(.+)$/);if(_g){tab="course";cgu=decodeURIComponent(_g[1]);render();}
