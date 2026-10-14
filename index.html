@@ -101,6 +101,33 @@ footer{font-size:11px;color:var(--sub);text-align:center;padding:10px 16px 20px;
 .newsbox.open .nb-tog::after{content:""}
 .newsbox .nb-empty{padding:12px;font-size:12px;color:var(--sub)}
 
+
+.cal{background:#fff;border-radius:14px;padding:10px;margin:0 0 10px;box-shadow:0 1px 3px rgba(20,40,80,.06)}
+.cal-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px}
+.cal-hd b{font-size:15px}
+.cal-nav{border:1px solid var(--line);background:#fff;border-radius:10px;width:36px;height:36px;font-size:16px;cursor:pointer;color:var(--ink)}
+.cal-nav:disabled{opacity:.35;cursor:default}
+.cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:2px}
+.cal-dow span{text-align:center;font-size:11px;color:var(--sub);font-weight:700;padding:4px 0}
+.cal-dow span:first-child{color:#e5484d}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-cell{min-height:52px;border-radius:10px;border:1px solid transparent;background:#f7f9fc;padding:4px 2px 3px;display:flex;flex-direction:column;align-items:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.cal-cell.out{background:transparent;cursor:default;opacity:.35}
+.cal-cell.today{border-color:#7aa2e3;background:#eef4fb}
+.cal-cell.on{border-color:var(--ink);background:#1c2430;color:#fff}
+.cal-cell.on .cal-n{color:#fff}
+.cal-cell.on .cal-badge{background:#fff;color:var(--ink)}
+.cal-n{font-size:12px;font-weight:700;line-height:1.2;color:var(--ink)}
+.cal-cell.sun .cal-n{color:#e5484d}
+.cal-cell.on.sun .cal-n{color:#ffb4b4}
+.cal-dots{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;margin-top:3px;min-height:8px}
+.cal-dot{width:6px;height:6px;border-radius:50%}
+.cal-dot.c{background:#e5484d}.cal-dot.f{background:#2a6af0}.cal-dot.o{background:#9aa5b5}
+.cal-badge{font-size:9px;font-weight:700;background:#1c2430;color:#fff;border-radius:8px;padding:0 4px;margin-top:2px;line-height:14px}
+.cal-leg{display:flex;flex-wrap:wrap;gap:8px;font-size:11px;color:var(--sub);margin:6px 2px 0;align-items:center}
+.cal-leg i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:3px;vertical-align:1px}
+.cal-und{font-size:11px;color:var(--sub);margin:8px 2px 0;line-height:1.4}
+
 </style>
 </head>
 <body>
@@ -195,7 +222,7 @@ const GUS=["중구","서구","동구","영도구","부산진구","동래구","�
 const ETYPES=["콘서트","축제","공연","전시","마켓","체험·프로그램","스포츠"];
 const ETLBL=v=>v==="콘서트"?"🎤 가수 공연":v;
 const EPERS=["전체","이번 주","이번 달","다음 달","2026","2027"];
-let edur="단기",egu="전체",etype="전체",eper="2026",evRun=null;
+let edur="단기",egu="전체",etype="전체",eper="2026",evRun=null,ecalYM=null,ecalDay=null;
 
 const STAY=[
  {h:"해운대",t:"바다 앞 호텔이 가장 많고 해변·맛집·BIFF(센텀) 접근이 좋아요. 2호선·동해선 이용."},
@@ -397,16 +424,69 @@ function event(){
  const card=(e,ended=false)=>`<div class="card tap${ended?" ended":""}" data-ev="${esc(e.id)}">${heart("e:"+e.id)}<div class="date">${esc(evWhen(e))}</div><h3>${esc(e.n)}</h3><div class="meta">${ended?'<span class="tag ended">행사 종료</span>':evBadge(e)}<span class="tag">${esc(e.gu)}</span><span class="tag cat">${esc(ETLBL(e.type))}</span>${!ended&&e.fee&&/무료/.test(e.fee)&&!/유료/.test(e.fee)?'<span class="tag gray">무료</span>':""}</div>${e.p?`<p class="note">📍 ${esc(e.p)}</p>`:""}${luPreview(e)}<div class="more">상세 보기 ›</div></div>`;
  const dur=e=>{const [a,b]=evRange(e);return Math.round((pd(b)-pd(a))/864e5)+1};
  const isS=e=>(e.st==="expected"||(e.s||"").length!==10||(e.e&&e.e.length!==10))?e.type!=="전시":dur(e)<=7, nS=ongoing.concat(upcoming).filter(isS).length, nL=ongoing.length+upcoming.length-nS;
- html+=`<div class="seg"><button class="chip ${edur==="단기"?"on":""}" data-edur="단기">⚡ 단기 행사 (7일 이하) ${nS}</button><button class="chip ${edur==="장기"?"on":""}" data-edur="장기">📆 장기 행사 (8일 이상) ${nL}</button></div>`;
- const want=e=>edur==="단기"?isS(e):!isS(e);
- const tlRow=(e,on)=>{const [a,b]=evRange(e);const left=Math.round((pd(b)-pd(today))/864e5);return `<div class="tlr${on?" on":""}"><div class="tld">${on?"진행 중":(e.s||"").length===7?(+a.slice(5,7))+"월<br>중":dLabel(a).replace("(","<br>(")}</div>`+card(e).replace('<div class="meta">',`<div class="meta">${on?`<span class="tag live">진행 중 · ${left?left+"일 남음":"오늘 종료"}</span>`:""}${(e.s||"").length===10&&e.st!=="expected"?`<span class="tag gray">${dur(e)}일간</span>`:""}`)+`</div>`};
- const og=ongoing.filter(want),up=upcoming.filter(want);
- html+=`<div class="sec-title">${edur==="단기"?"단기 행사":"장기 행사"} 타임라인 <span style="color:var(--sub);font-weight:400;font-size:13px">${og.length+up.length}건 · 진행 중 → 시작일 빠른 순</span></div>`;
- if(!og.length&&!up.length)html+=`<div class="empty">조건에 맞는 행사가 없어요.</div>`;
- html+=`<div class="tl">`+og.map(e=>tlRow(e,true)).join("");
- let lm="";up.forEach(e=>{const m=evRange(e)[0].slice(0,7);if(m!==lm&&m.length===7){lm=m;html+=`<div class="sec-title" style="font-size:14px;margin:12px 0 6px">${m.slice(0,4)}년 ${+m.slice(5,7)}월</div>`}html+=tlRow(e,false)});
- html+=`</div>`;
- if(false&&ongoing.length)html+=`<div class="sec-title">지금 진행 중 <span style="color:var(--sub);font-weight:400;font-size:13px">${ongoing.length}건 · 곧 끝나는 순</span></div>`+ongoing.map(e=>card(e)).join("");
+ html+=`<div class="seg"><button class="chip ${edur==="단기"?"on":""}" data-edur="단기">⚡ 단기 ${nS}</button><button class="chip ${edur==="장기"?"on":""}" data-edur="장기">📆 장기 ${nL}</button><button class="chip ${edur==="달력"?"on":""}" data-edur="달력">📅 달력</button></div>`;
+ const calSrc=active; // chip-filtered, hide ended
+ if(edur==="달력"){
+  const today=todayKST();
+  const [w0,w1]=perWin(eper);
+  let minYM=w0.slice(0,7), maxYM=w1.slice(0,7)==="9999-12"?"2026-12":w1.slice(0,7);
+  if(minYM<today.slice(0,7)) minYM=today.slice(0,7);
+  if(!ecalYM||ecalYM<minYM||ecalYM>maxYM) ecalYM=minYM>today.slice(0,7)?minYM: (today.slice(0,7)<=maxYM?today.slice(0,7):minYM);
+  if(!ecalDay||ecalDay.slice(0,7)!==ecalYM) ecalDay=(ecalYM===today.slice(0,7)?today:ecalYM+"-01");
+  const [yy,mm]=ecalYM.split("-").map(Number);
+  const first=new Date(yy,mm-1,1), days=new Date(yy,mm,0).getDate(), startDow=first.getDay();
+  const dated=calSrc.filter(e=>(e.s||"").length===10);
+  const undated=calSrc.filter(e=>(e.s||"").length===7 && e.s.slice(0,7)<=ecalYM && (e.e||e.s).slice(0,7)>=ecalYM);
+  const durDays=e=>{const [a,b]=evRange(e);return Math.round((pd(b)-pd(a))/864e5)+1};
+  const kind=e=>e.type==="콘서트"?"c":e.type==="축제"?"f":"o";
+  const byDay={};
+  dated.forEach(e=>{
+   if(durDays(e)>30) return; // long events: no dots (listed on tap)
+   const [a,b]=evRange(e);
+   let d=a<ecalYM+"-01"?ecalYM+"-01":a;
+   const end=b>ecalYM+`-`+String(days).padStart(2,"0")?ecalYM+`-`+String(days).padStart(2,"0"):b;
+   while(d<=end){ (byDay[d]=byDay[d]||[]).push(e); const t=pd(d); t.setDate(t.getDate()+1); d=fmt(t); }
+  });
+  const longOn=d=>dated.filter(e=>{if(durDays(e)<=30)return false;const [a,b]=evRange(e);return a<=d&&b>=d});
+  const canPrev=ecalYM>minYM, canNext=ecalYM<maxYM;
+  html+=`<div class="cal"><div class="cal-hd"><button class="cal-nav" data-ecal="prev" ${canPrev?"":"disabled"} aria-label="이전 달">‹</button><b>${yy}년 ${mm}월</b><button class="cal-nav" data-ecal="next" ${canNext?"":"disabled"} aria-label="다음 달">›</button></div>`;
+  html+=`<div class="cal-dow">${[...DOW].map(d=>`<span>${d}</span>`).join("")}</div><div class="cal-grid">`;
+  for(let i=0;i<startDow;i++) html+=`<div class="cal-cell out"></div>`;
+  for(let day=1;day<=days;day++){
+   const ds=ecalYM+"-"+String(day).padStart(2,"0");
+   const items=byDay[ds]||[];
+   const n=items.length;
+   const kinds=[]; items.forEach(e=>{const k=kind(e); if(!kinds.includes(k)) kinds.push(k)});
+   const cls=["cal-cell", pd(ds).getDay()===0?"sun":"", ds===today?"today":"", ds===ecalDay?"on":""].filter(Boolean).join(" ");
+   let marks="";
+   if(n>3) marks=`<span class="cal-badge">${n}</span>`;
+   else if(n) marks=`<div class="cal-dots">${kinds.slice(0,3).map(k=>`<i class="cal-dot ${k}"></i>`).join("")}</div>`;
+   else marks=`<div class="cal-dots"></div>`;
+   html+=`<button type="button" class="${cls}" data-eday="${ds}"><span class="cal-n">${day}</span>${marks}</button>`;
+  }
+  html+=`</div><div class="cal-leg"><span><i class="cal-dot c"></i>가수 공연</span><span><i class="cal-dot f"></i>축제</span><span><i class="cal-dot o"></i>전시·기타</span></div><p class="cal-und">30일 넘는 장기 행사는 점 표시에서 빼 두었어요. 날짜를 누르면 목록에 나와요.</p></div>`;
+  const dayList=[...(byDay[ecalDay]||[]), ...longOn(ecalDay)].sort((x,y)=>evRange(x)[0].localeCompare(evRange(y)[0])||(x.n||"").localeCompare(y.n||""));
+  // de-dupe by id
+  const seen=new Set(); const uniq=dayList.filter(e=>{if(seen.has(e.id))return false;seen.add(e.id);return true});
+  html+=`<div class="sec-title">${dLabel(ecalDay)} 행사 <span style="color:var(--sub);font-weight:400;font-size:13px">${uniq.length}건</span></div>`;
+  if(!uniq.length) html+=`<div class="empty">이 날짜에 일정이 없어요.</div>`;
+  else html+=uniq.map(e=>card(e)).join("");
+  if(undated.length){
+   html+=`<div class="sec-title">날짜 미정 <span style="color:var(--sub);font-weight:400;font-size:13px">${undated.length}건 · ${mm}월 중</span></div>`;
+   html+=`<p class="hint">정확한 날짜가 아직 발표되지 않은 행사예요.</p>`;
+   html+=undated.map(e=>card(e)).join("");
+  }
+ } else {
+  const want=e=>edur==="단기"?isS(e):!isS(e);
+  const tlRow=(e,on)=>{const [a,b]=evRange(e);const left=Math.round((pd(b)-pd(today))/864e5);return `<div class="tlr${on?" on":""}"><div class="tld">${on?"진행 중":(e.s||"").length===7?(+a.slice(5,7))+"월<br>중":dLabel(a).replace("(","<br>(")}</div>`+card(e).replace('<div class="meta">',`<div class="meta">${on?`<span class="tag live">진행 중 · ${left?left+"일 남음":"오늘 종료"}</span>`:""}${(e.s||"").length===10&&e.st!=="expected"?`<span class="tag gray">${dur(e)}일간</span>`:""}`)+`</div>`};
+  const og=ongoing.filter(want),up=upcoming.filter(want);
+  html+=`<div class="sec-title">${edur==="단기"?"단기 행사":"장기 행사"} 타임라인 <span style="color:var(--sub);font-weight:400;font-size:13px">${og.length+up.length}건 · 진행 중 → 시작일 빠른 순</span></div>`;
+  if(!og.length&&!up.length)html+=`<div class="empty">조건에 맞는 행사가 없어요.</div>`;
+  html+=`<div class="tl">`+og.map(e=>tlRow(e,true)).join("");
+  let lm="";up.forEach(e=>{const m=evRange(e)[0].slice(0,7);if(m!==lm&&m.length===7){lm=m;html+=`<div class="sec-title" style="font-size:14px;margin:12px 0 6px">${m.slice(0,4)}년 ${+m.slice(5,7)}월</div>`}html+=tlRow(e,false)});
+  html+=`</div>`;
+ }
+  if(false&&ongoing.length)html+=`<div class="sec-title">지금 진행 중 <span style="color:var(--sub);font-weight:400;font-size:13px">${ongoing.length}건 · 곧 끝나는 순</span></div>`+ongoing.map(e=>card(e)).join("");
  if(false&&upcoming.length){
   html+=`<div class="sec-title">다가오는 행사 <span style="color:var(--sub);font-weight:400;font-size:13px">${upcoming.length}건 · 시작일 빠른 순</span></div>`;
   let lastM="";
@@ -468,7 +548,7 @@ function render(){
 document.addEventListener("click",e=>{
  if(e.target.closest("#newsTog")){newsOpen=!newsOpen;renderNews();return}
  if(e.target.closest("[data-close]")){closeSheet();return}
- const t=e.target.closest("[data-tab],[data-cgu],[data-area],[data-fsort],[data-cat],[data-ccat],[data-fav],#favOnly,#luOnly,[data-open],[data-spot],[data-egu],[data-etype],[data-eper],[data-ev],[data-edur]");if(!t)return;
+ const t=e.target.closest("[data-tab],[data-cgu],[data-area],[data-fsort],[data-cat],[data-ccat],[data-fav],#favOnly,#luOnly,[data-open],[data-spot],[data-egu],[data-etype],[data-eper],[data-ev],[data-edur],[data-ecal],[data-eday]");if(!t)return;
  if(t.dataset.tab){tab=t.dataset.tab;window.scrollTo(0,0)}
  else if(t.dataset.cgu){cgu=t.dataset.cgu;ccat="BEST 10"}
  else if(t.dataset.area){area=t.dataset.area;cat="전체"}
@@ -476,6 +556,8 @@ document.addEventListener("click",e=>{
  else if(t.dataset.cat){cat=t.dataset.cat}
  else if(t.dataset.ccat){ccat=t.dataset.ccat}
  else if(t.dataset.edur){edur=t.dataset.edur}
+ else if(t.dataset.ecal){const [y,m]=ecalYM.split("-").map(Number);const d=new Date(y,m-1+ (t.dataset.ecal==="next"?1:-1),1);ecalYM=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");ecalDay=null}
+ else if(t.dataset.eday){ecalDay=t.dataset.eday;edur="달력"}
  else if(t.dataset.spot){openSpot(t.dataset.spot);return}
  else if(t.dataset.egu){egu=t.dataset.egu}
  else if(t.dataset.etype){etype=t.dataset.etype}
