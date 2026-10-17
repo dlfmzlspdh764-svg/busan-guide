@@ -429,12 +429,76 @@ def same(a, b):
 
 def merge_into(base, extra):
     for k, v in extra.items():
-        if v and not base.get(k):
+        if not v:
+            continue
+        cur = base.get(k)
+        # 월만 있던 일정(N월 중)에 구체 날짜가 생기면 덮어씀 → 달력으로 자동 이동
+        if k in ("s", "e") and isinstance(v, str) and len(v) == 10 and isinstance(cur, str) and len(cur) == 7:
+            base[k] = v
+            if k == "s":
+                base["st"] = "confirmed"
+                base["chk"] = TODAY
+            continue
+        if not cur:
             base[k] = v
     srcs = base.setdefault("srcs", [])
     for x in ([{"src": extra.get("src"), "u": extra.get("srcu")}] if extra.get("srcu") else []):
         if x["u"] != base.get("srcu") and x not in srcs:
             srcs.append(x)
+
+
+def resolve_tbd_event(e, budget_ok=lambda: True):
+    """날짜 미정(YYYY-MM) 행사의 출처 페이지를 읽어 구체 날짜를 찾으면 (s,e) 반환, 없으면 None."""
+    if not budget_ok():
+        return None
+    s0 = e.get("s") or ""
+    if len(s0) != 7:
+        return None
+    url = (e.get("srcu") or e.get("url") or "").strip()
+    if not url or not url.startswith("http"):
+        return None
+    low = url.lower()
+    if e.get("st") == "expected" and ("view" not in low and "detail" not in low and "fstvl" not in low):
+        return None
+    try:
+        page = fetch(url, verify=False, timeout=12, tries=1)
+    except Exception:
+        return None
+    if not page or len(page) < 80:
+        return None
+    title = e.get("n") or ""
+    B = body_lines(page, title)
+    year_hint = int(s0[:4])
+    when = labeled(B, LABEL_DATE)
+    rng = parse_range(when, year_hint) or parse_range("\n".join(B)[:500], year_hint) or parse_range(title, year_hint)
+    if not rng:
+        iso = re.findall(r"20\d\d-\d\d-\d\d", page[:12000])
+        dotted = re.findall(r"(20\d\d)[./](\d{1,2})[./](\d{1,2})", page[:12000])
+        if iso:
+            rng = (iso[0], iso[-1] if len(iso) > 1 else iso[0])
+        elif dotted:
+            a = f"{dotted[0][0]}-{int(dotted[0][1]):02d}-{int(dotted[0][2]):02d}"
+            b = f"{dotted[-1][0]}-{int(dotted[-1][1]):02d}-{int(dotted[-1][2]):02d}"
+            try:
+                datetime.date.fromisoformat(a); datetime.date.fromisoformat(b)
+                rng = (a, b)
+            except ValueError:
+                rng = None
+    if not rng:
+        return None
+    s, en = rng
+    if s[:7] != s0 and en[:7] != s0:
+        try:
+            sm = datetime.date.fromisoformat(s0 + "-01")
+            sd = datetime.date.fromisoformat(s)
+            if abs((sd.year - sm.year) * 12 + sd.month - sm.month) > 2:
+                return None
+        except ValueError:
+            return None
+    if s > en:
+        s, en = en, s
+    return s, en
+
 
 
 def is_current(e):

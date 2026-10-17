@@ -2,7 +2,7 @@ name: gu-watch
 
 on:
   schedule:
-    - cron: "23 * * * *"   # 매시간 (구·군청·문화회관 게시판 새 행사 추적)
+    - cron: "23 * * * *"   # 매시간 (구·군청 새 행사 + 날짜 미정 재확인)
   workflow_dispatch:
 
 permissions:

@@ -127,6 +127,7 @@ footer{font-size:11px;color:var(--sub);text-align:center;padding:10px 16px 20px;
 .cal-leg{display:flex;flex-wrap:wrap;gap:8px;font-size:11px;color:var(--sub);margin:6px 2px 0;align-items:center}
 .cal-leg i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:3px;vertical-align:1px}
 .cal-und{font-size:11px;color:var(--sub);margin:8px 2px 0;line-height:1.4}
+.cal-long{margin:10px 0}.cal-long summary{font-size:14px}
 
 </style>
 </head>
@@ -447,7 +448,6 @@ function event(){
    const end=b>ecalYM+`-`+String(days).padStart(2,"0")?ecalYM+`-`+String(days).padStart(2,"0"):b;
    while(d<=end){ (byDay[d]=byDay[d]||[]).push(e); const t=pd(d); t.setDate(t.getDate()+1); d=fmt(t); }
   });
-  const longOn=d=>dated.filter(e=>{if(durDays(e)<=30)return false;const [a,b]=evRange(e);return a<=d&&b>=d});
   const canPrev=ecalYM>minYM, canNext=ecalYM<maxYM;
   html+=`<div class="cal"><div class="cal-hd"><button class="cal-nav" data-ecal="prev" ${canPrev?"":"disabled"} aria-label="이전 달">‹</button><b>${yy}년 ${mm}월</b><button class="cal-nav" data-ecal="next" ${canNext?"":"disabled"} aria-label="다음 달">›</button></div>`;
   html+=`<div class="cal-dow">${[...DOW].map(d=>`<span>${d}</span>`).join("")}</div><div class="cal-grid">`;
@@ -464,16 +464,21 @@ function event(){
    else marks=`<div class="cal-dots"></div>`;
    html+=`<button type="button" class="${cls}" data-eday="${ds}"><span class="cal-n">${day}</span>${marks}</button>`;
   }
-  html+=`</div><div class="cal-leg"><span><i class="cal-dot c"></i>가수 공연</span><span><i class="cal-dot f"></i>축제</span><span><i class="cal-dot o"></i>전시·기타</span></div><p class="cal-und">30일 넘는 장기 행사는 점 표시에서 빼 두었어요. 날짜를 누르면 목록에 나와요.</p></div>`;
-  const dayList=[...(byDay[ecalDay]||[]), ...longOn(ecalDay)].sort((x,y)=>evRange(x)[0].localeCompare(evRange(y)[0])||(x.n||"").localeCompare(y.n||""));
-  // de-dupe by id
+  html+=`</div><div class="cal-leg"><span><i class="cal-dot c"></i>가수 공연</span><span><i class="cal-dot f"></i>축제</span><span><i class="cal-dot o"></i>전시·기타</span></div><p class="cal-und">달력·날짜 목록에는 30일 이하 단기 행사만 표시해요. 긴 행사는 아래 ‘긴 행사’에서 보세요.</p></div>`;
+  const dayList=(byDay[ecalDay]||[]).slice().sort((x,y)=>evRange(x)[0].localeCompare(evRange(y)[0])||(x.n||"").localeCompare(y.n||""));
   const seen=new Set(); const uniq=dayList.filter(e=>{if(seen.has(e.id))return false;seen.add(e.id);return true});
-  html+=`<div class="sec-title">${dLabel(ecalDay)} 행사 <span style="color:var(--sub);font-weight:400;font-size:13px">${uniq.length}건</span></div>`;
-  if(!uniq.length) html+=`<div class="empty">이 날짜에 일정이 없어요.</div>`;
+  html+=`<div class="sec-title">${dLabel(ecalDay)} 단기 행사 <span style="color:var(--sub);font-weight:400;font-size:13px">${uniq.length}건</span></div>`;
+  if(!uniq.length) html+=`<div class="empty">이 날짜에 단기 행사가 없어요.</div>`;
   else html+=uniq.map(e=>card(e)).join("");
+  const monthEnd=ecalYM+"-"+String(days).padStart(2,"0"), monthStart=ecalYM+"-01";
+  const longs=dated.filter(e=>{if(durDays(e)<=30)return false;const [a,b]=evRange(e);return a<=monthEnd&&b>=monthStart}).sort((x,y)=>evRange(x)[0].localeCompare(evRange(y)[0])||(x.n||"").localeCompare(y.n||""));
+  html+=`<details class="rule cal-long"><summary>📆 긴 행사 ${longs.length}건 <span style="font-weight:400;color:var(--sub)">(30일 초과 · 달력/일별 목록 제외)</span></summary>`;
+  if(!longs.length) html+=`<p class="hint" style="margin:8px 0">이번 달에 해당하는 긴 행사가 없어요.</p>`;
+  else html+=longs.map(e=>card(e)).join("");
+  html+=`</details>`;
   if(undated.length){
    html+=`<div class="sec-title">날짜 미정 <span style="color:var(--sub);font-weight:400;font-size:13px">${undated.length}건 · ${mm}월 중</span></div>`;
-   html+=`<p class="hint">정확한 날짜가 아직 발표되지 않은 행사예요.</p>`;
+   html+=`<p class="hint">정확한 날짜가 아직 발표되지 않은 행사예요. 날짜가 확정되면 달력으로 자동 이동해요.</p>`;
    html+=undated.map(e=>card(e)).join("");
   }
  } else {
