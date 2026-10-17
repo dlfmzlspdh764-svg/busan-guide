@@ -1,6 +1,6 @@
 {
 "seeded": true,
-"updated": "2026-10-17 13:57",
+"updated": "2026-10-17 18:15",
 "note": "속보 알림 상태: event_ids=본 행사 id, news=보낸/본 뉴스 키, lineups=행사별 출연진 스냅샷",
 "event_ids": [
 "bx15661",
