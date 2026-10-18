@@ -253,22 +253,73 @@ S.sort(key=lambda r: (-r["sc"], -r["rc"]))
 for k, r in enumerate(S): r["sb"] = k + 1
 S = S[:15]
 
+
+# ---------- 4b) 대표 중식 TOP 10 (부산 전체) ----------
+_CH_DISHES = [
+    ("북경오리", __import__("re").compile(r"북경오리|훈제오리|오리탕"), "🦆"),
+    ("마라", __import__("re").compile(r"마라|훠궈|마파"), "🌶️"),
+    ("만두", __import__("re").compile(r"만두|교자|딤섬|하가우|샤오롱|물만두|군만두|찐만두"), "🥟"),
+    ("볶음밥", __import__("re").compile(r"볶음밥|볶밥"), "🍳"),
+    ("짬뽕", __import__("re").compile(r"짬뽕"), "🍜"),
+    ("짜장면", __import__("re").compile(r"짜장면|간짜장|쟁반짜장|(?<![가-힣])짜장(?![가-힣밥])"), "🖤"),
+    ("탕수육", __import__("re").compile(r"탕수육"), "🍖"),
+]
+def _chin_sp(p):
+    name = p.get("n") or ""; menus = p.get("m") or []; mns = [(m[0] or "") for m in menus]
+    scores = []
+    for dn, rx, emo in _CH_DISHES:
+        sc = 0
+        if rx.search(name): sc += 12
+        hits = [i for i, mn in enumerate(mns) if rx.search(mn)]
+        if hits:
+            sc += 4 * len(hits) + max(0, 6 - min(hits)) + int(8 * len(hits) / max(len(mns), 1))
+            if 0 in hits: sc += 5
+        if sc: scores.append((sc, dn, emo))
+    if not scores or scores[0][0] < 8: return None, None
+    scores.sort(key=lambda x: -x[0]); return scores[0][1], scores[0][2]
+
+_chin_pool = [p for p in out if p.get("c") == "중식" and (p.get("rc") or 0) >= 20 and p.get("sc") and not CH.search(p.get("n") or "")]
+def _pct(m):
+    vals = sorted(p[m] for p in _chin_pool if p.get(m)); N = len(vals); res = {}
+    for p in _chin_pool:
+        if p.get(m):
+            res[p["id"]] = (sum(1 for x in vals if x < p[m]) + (vals.count(p[m]) - 1) / 2) / max(N - 1, 1)
+    return res
+_CPV, _CPR, _CPB = _pct("vi"), _pct("rc"), _pct("bl")
+_chin_ranked = []
+for p in _chin_pool:
+    parts, w = [], 0
+    if p["id"] in _CPV: parts.append(0.40 * _CPV[p["id"]]); w += 0.40
+    if p["id"] in _CPR: parts.append(0.25 * _CPR[p["id"]]); w += 0.25
+    if p.get("sc"): parts.append(0.20 * max(0, min(1, (p["sc"] - 1) / 4))); w += 0.20
+    if p["id"] in _CPB: parts.append(0.15 * _CPB[p["id"]]); w += 0.15
+    sc = sum(parts) / w if w else 0
+    sp, emo = _chin_sp(p)
+    _chin_ranked.append((sc, p, sp, emo))
+_chin_ranked.sort(key=lambda x: (-x[0], -(x[1].get("rc") or 0)))
+CHIN = []
+for k, (sc, p, sp, emo) in enumerate(_chin_ranked[:10]):
+    r = dict(p)
+    r.update(c="중식", sp=sp, spe=emo, cs=round(100 * sc), cb=k + 1)
+    CHIN.append(r)
+print("중식 TOP", len(CHIN), [p["n"] for p in CHIN])
+
 # ---------- 5) 안전 검사 ----------
 if len(out) < 0.8 * len(OLD) or sum(1 for p in out if p.get("gr10", 99) <= 10) < 120 or len(S) < 8:
     print("결과가 비정상적으로 작아 기존 데이터 유지", len(out), len(S)); sys.exit(0)
 
 # ---------- 6) NEW 표시 ----------
-ranked = [p for p in out if p.get("gr10", 99) <= 10] + S[:10]
+ranked = [p for p in out if p.get("gr10", 99) <= 10] + S[:10] + CHIN
 fresh = []
 for p in ranked:
     if p["id"] not in FS:
         FS[p["id"]] = "seed" if SEED else TODAY
         if not SEED: fresh.append(p)
-for p in out + S:
+for p in out + S + CHIN:
     if p["id"] in FS: p["fs"] = FS[p["id"]]
     else: p.pop("fs", None)
 
-newdb = {"updated": DB.get("updated"), "food": out, "sushi": S, "first_seen": FS}
+newdb = {"updated": DB.get("updated"), "food": out, "sushi": S, "chinese": CHIN, "first_seen": FS}
 def body(x): return json.dumps({k: v for k, v in x.items() if k != "updated"}, ensure_ascii=False, sort_keys=True)
 changed = (not os.path.exists(FJ)) or body(newdb) != body(DB)
 if changed:
