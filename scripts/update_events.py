@@ -12,6 +12,8 @@ import json, re, ssl, sys, html, time, datetime, urllib.request, urllib.parse, u
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "events.json")
 MANUAL = os.path.join(ROOT, "data", "events_manual.json")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import local_festivals as LF  # noqa: E402
 KST = datetime.timezone(datetime.timedelta(hours=9))
 NOW = datetime.datetime.now(KST)
 TODAY = NOW.date().isoformat()
@@ -1063,11 +1065,18 @@ def main():
     bx, _ = run_source("bexco", scrape_bexco, prev_events, status, min_abs=3)
     cc, _ = run_source("concert", scrape_concerts, prev_events, status, min_ratio=0.4, min_abs=2) if os.environ.get("SKIP_CONCERT") != "1" else ([e for e in prev_events if e.get("origin") == "concert"], ())
     gu_ev = run_gu_sources(prev_events, status) if os.environ.get("SKIP_GU") != "1" else [e for e in prev_events if (e.get("origin") or "").startswith("gu:")]
+    try:
+        local_ev = LF.scrape_local_festivals(sys.modules[__name__]) if os.environ.get("SKIP_LOCAL") != "1" else [e for e in prev_events if e.get("origin") == "local_news" or e.get("type") == "동네축제"]
+        status["local_fest"] = {"ok": True, "count": len(local_ev)}
+    except Exception as ex:
+        log("local fest fail", ex)
+        local_ev = [e for e in prev_events if e.get("origin") == "local_news" or e.get("type") == "동네축제"]
+        status["local_fest"] = {"ok": False, "error": str(ex), "kept_previous": True}
 
     events = []
     for m in manual["events"]:
         events.append(dict(m))
-    for group in (vb, kf, bx, cc, gu_ev):
+    for group in (vb, kf, bx, cc, gu_ev, local_ev):
         for v in group:
             hit = next((e for e in events if same(e, v)), None)
             if hit:
@@ -1100,7 +1109,8 @@ def main():
                         "kfes": "https://korean.visitkorea.or.kr/kfes/list/wntyFstvlList.do",
                         "bexco": "https://www.bexco.co.kr/kor/CMS/EventScheduleMgr/list.do?mCode=MN214",
                         "concert": "https://ticket.yes24.com/New/Genre/GenreList.aspx?genretype=1&genre=15456 , https://tickets.interpark.com/contents/genre/concert",
-                        **{"gu:" + x[0]: x[3] for x in GU_SOURCES}},
+                        **{"gu:" + x[0]: x[3] for x in GU_SOURCES},
+                        "local_fest": "Google News RSS (상점가·골목·동·상인회·주민자치 축제)"},
             "kfes_series": kf_series, "events": events}
     if prev.get("events") == events and prev.get("kfes_series") == kf_series:
         print("변경 없음 (events.json 유지)", len(events), status)

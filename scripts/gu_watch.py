@@ -3,8 +3,7 @@
 
 update_events.py의 GU_SOURCES/스크래퍼를 그대로 재사용해 게시판 1쪽만 빠르게 읽고,
 events.json에 없던 행사성 글을 바로 추가(기존 데이터는 유지)하고 텔레그램 🚨 속보를 보냅니다.
-추가로 날짜 미정(YYYY-MM / N월 중) 행사의 출처 페이지를 소량 재확인해 구체 날짜가
-나오면 events.json을 갱신하고 📅 날짜 확정 알림을 보냅니다.
+추가로 날짜 미정은 tbd_radar(30분)가 전체를 담당하고, 여기서는 구청 스크랩 중 발견분·소량 보조만 처리합니다.
 상태: data/gu_watch.json (첫 실행은 조용히 기준만 저장). 1회 최대 5건 전송(+날짜확정 최대 5).
 사용: python3 scripts/gu_watch.py [--dry-run] [--seed]
 """
@@ -18,7 +17,7 @@ from tg_style import send, frame, esc  # noqa: E402
 STATE = os.path.join(U.ROOT, "data", "gu_watch.json")
 NOTIFIED = os.path.join(U.ROOT, "data", "notified.json")
 MAX_SEND = 5
-TBD_FETCH_MAX = 10   # 시간당 출처 재확인 상한(저비용)
+TBD_FETCH_MAX = 5   # tbd_radar(30분)가 전체 담당 · 여기선 소량 보조
 TBD_ALERT_MAX = 5
 U.GU_VIEW_MAX = 8
 U.GU_BUDGET = 45
