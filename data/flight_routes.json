@@ -1,0 +1,21 @@
+{
+ "routes": [
+  "BKK",
+  "CNX",
+  "CXR",
+  "DAD",
+  "HAN",
+  "PQC",
+  "SGN"
+ ],
+ "active": [
+  "BKK",
+  "CNX",
+  "CXR",
+  "DAD",
+  "HAN",
+  "PQC",
+  "SGN"
+ ],
+ "checked": "2026-10-18 14:13"
+}

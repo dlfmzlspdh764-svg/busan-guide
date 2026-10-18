@@ -1,0 +1,44 @@
+name: flights
+
+on:
+  schedule:
+    - cron: "43 * * * *"   # 매시간 :43 (UTC 기준, 매시간)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: flights
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q fast-flights==3.1.0
+      - name: Update flights.json + Telegram alerts
+        env:
+          TZ: Asia/Seoul
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 -u scripts/update_flights.py
+      - name: Validate
+        run: python3 -c "import json;d=json.load(open('flights.json'));n=sum(len(v['fares']) for v in d['routes'].values());assert n>50,n;print('fares',n)"
+      - name: Commit if changed
+        run: |
+          git config user.name "busan-guide-bot"
+          git config user.email "dlfmzlspdh764-svg@users.noreply.github.com"
+          git add flights.json data/flight_routes.json data/flight_alerted.json
+          if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
+          git commit -q -m "항공 요금 자동 업데이트 $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs origin main && git push origin main && exit 0
+            sleep $((i*7))
+          done
+          exit 1

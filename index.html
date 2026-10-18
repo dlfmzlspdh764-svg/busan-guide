@@ -135,7 +135,7 @@ footer{font-size:11px;color:var(--sub);text-align:center;padding:10px 16px 20px;
 <div class="app">
 <header id="hdr">
   <h1>🌊 부산저기여기</h1>
-  <p>매주 부산 가는 사람을 위한 맛집·코스·행사·교통 가이드</p>
+  <p>매주 부산 가는 사람을 위한 맛집·행사·항공편 가이드</p>
   <a id="apkdl" href="https://github.com/dlfmzlspdh764-svg/busan-guide/releases/latest/download/busan-guide.apk" style="display:inline-block;margin:6px 0;padding:6px 12px;border-radius:16px;background:#fff;color:#0a5;font-weight:700;text-decoration:none;font-size:14px">📲 안드로이드 앱 다운로드</a>
   <script>if(/BusanGuideApp|iPhone|iPad/.test(navigator.userAgent))document.getElementById("apkdl").style.display="none"</script>
   <div class="search">
@@ -156,9 +156,8 @@ footer{font-size:11px;color:var(--sub);text-align:center;padding:10px 16px 20px;
 <div id="sheet"><div class="sheet-bg" data-close></div><div class="sheet-panel"><div class="grab" data-close></div><button class="sheet-x" data-close aria-label="닫기">✕</button><div class="sheet-body"></div></div></div>
 <nav id="nav">
   <button data-tab="food" class="on"><span class="ic">🍜</span>맛집·카페</button>
-  <button data-tab="course"><span class="ic">🗺️</span>코스</button>
   <button data-tab="event"><span class="ic">🎉</span>행사·축제</button>
-  <button data-tab="stay"><span class="ic">🚇</span>숙소·교통</button>
+  <button data-tab="flight"><span class="ic">✈️</span>항공편</button>
 </nav>
 </div>
 <script>
@@ -243,7 +242,7 @@ const TRANS=[
 ];
 
 let cat="전체";
-let tab=(["food","course","event","stay"].includes(location.hash.slice(1))?location.hash.slice(1):"food"),area="전체",favOnly=false,query="";
+let tab=(["food","event","flight"].includes(location.hash.slice(1))?location.hash.slice(1):"food"),area="전체",favOnly=false,query="";
 let favs=JSON.parse(localStorage.getItem("busan_favs")||"[]");
 const saveFav=()=>localStorage.setItem("busan_favs",JSON.stringify(favs));
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -554,7 +553,7 @@ function stay(){
 }
 function render(){
  renderChips();
- document.getElementById("main").innerHTML={food,course,event,stay}[tab]();
+ document.getElementById("main").innerHTML=({food,course,event,stay,flight:()=>typeof flight==="function"?flight():"<div class=\"empty\">불러오는 중…</div>"}[tab]||food)();
  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.tab===tab));
  const fb=document.getElementById("favOnly");fb.classList.toggle("on",favOnly);fb.setAttribute("aria-pressed",favOnly);
  document.documentElement.style.setProperty("--hh",document.getElementById("hdr").offsetHeight+"px");
@@ -616,13 +615,67 @@ async function loadNews(){
 
 loadNews();
 loadEvents();
-const _s=location.hash.match(/^#spot-(\d+)/);if(_s){tab="course";ccat="BEST 10";const _p=SPOTS.find(x=>x.id===_s[1]);if(_p)cgu=_p.gu;render();openSpot(_s[1]);}
-const _g=location.hash.match(/^#course-(.+)$/);if(_g){tab="course";cgu=decodeURIComponent(_g[1]);render();}
+const _s=null&&location.hash.match(/^#spot-(\d+)/);if(_s){tab="course";ccat="BEST 10";const _p=SPOTS.find(x=>x.id===_s[1]);if(_p)cgu=_p.gu;render();openSpot(_s[1]);}
+const _g=null&&location.hash.match(/^#course-(.+)$/);if(_g){tab="course";cgu=decodeURIComponent(_g[1]);render();}
 </script>
 <script>
 /* food.json 주간 자동 업데이트 로더 (실패하면 위 내장 데이터 사용) */
 (async()=>{try{const r=await fetch("food.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)return;const j=await r.json();
 if(j&&Array.isArray(j.food)&&j.food.length>100){FOOD=j.food;if(Array.isArray(j.sushi)&&j.sushi.length)SUSHI=j.sushi;if(Array.isArray(j.chinese)&&j.chinese.length)CHINESE=j.chinese;FUPD=j.updated||FUPD;if(typeof tab!=="undefined"&&tab==="food")render()}}catch(_){}})();
+</script>
+<style>
+.fl-row{display:flex;align-items:center;gap:10px;cursor:pointer}
+.fl-row .fl-l{flex:1;min-width:0}.fl-row .fl-d{font-weight:700;font-size:14px}.fl-row .fl-s{font-size:12px;color:var(--sub);margin-top:2px}
+.fl-p{font-weight:800;font-size:16px;color:#e5484d;white-space:nowrap;text-align:right}.fl-p small{display:block;font-size:10px;color:var(--sub);font-weight:500}
+.fl-hot{font-size:10px;background:#ffe9e9;color:#e5484d;border-radius:6px;padding:1px 5px;margin-left:4px;font-weight:700}
+.fl-opt{border:1px solid var(--line);border-radius:12px;padding:10px;margin:6px 0;font-size:13px}.fl-opt b{font-size:14px}
+.fl-more{width:100%;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:13px;margin:4px 0 10px}
+</style>
+<script>
+/* ✈️ 항공편 탭: flights.json (매시간 자동 수집) */
+let FLD=null,fr=null,fn="전체",fmax=30;
+const FLWD="일월화수목금토";
+const flDay=d=>{const t=new Date(d+"T00:00:00");return (t.getMonth()+1)+"/"+t.getDate()+"("+FLWD[t.getDay()]+")"};
+const flWon=n=>n?n.toLocaleString("ko-KR")+"원":"요금 미제공";
+const flDur=m=>m?Math.floor(m/60)+"시간 "+(m%60?m%60+"분":""):"";
+function flUrl(c,d1,d2){const L=(d,a,b)=>"\x1a\x1c\x12\x0a"+d+"(\x00j\x05\x12\x03"+a+"r\x05\x12\x03"+b;return "https://www.google.com/travel/flights/search?tfs="+encodeURIComponent(btoa(L(d1,"PUS",c)+L(d2,c,"PUS")+"B\x01\x01H\x01\x98\x01\x01"))+"&hl=ko&curr=KRW"}
+const flNaver=(c,d1,d2)=>`https://flight.naver.com/flights/international/PUS-${c}-${d1.replace(/-/g,"")}/${c}-PUS-${d2.replace(/-/g,"")}?adult=1&isDirect=true&fareType=Y`;
+async function loadFlights(){try{const r=await fetch("flights.json?t="+Date.now(),{cache:"no-store"});if(r.ok){FLD=await r.json();if(tab==="flight")render()}}catch(_){if(tab==="flight")render()}}
+function flight(){
+ if(!FLD)return `<div class="empty">항공 요금 불러오는 중…</div>`;
+ const R=FLD.routes||{},codes=Object.keys(R).filter(c=>(R[c].fares||[]).length);
+ if(!fr||!R[fr])fr=codes[0];
+ const flag=c=>R[c].country==="태국"?"🇹🇭":"🇻🇳";
+ let h=`<div class="sec-title">✈️ 부산(김해) 출발 직항 왕복 최저가</div><p class="hint">${esc(FLD.basis)} · ${esc(FLD.window)}<br>업데이트 ${esc(FLD.updated)} (KST, 매시간 자동) · 출처: ${esc(FLD.source)}</p>`;
+ h+=`<div class="catchips">${codes.map(c=>`<button class="chip sm ${c===fr?"on":""}" data-fr="${c}">${flag(c)} ${esc(R[c].city.replace(/\(.*\)/,""))} ${R[c].min?Math.round(R[c].min/1e4)+"만~":""}</button>`).join("")}</div>`;
+ const ro=R[fr];if(!ro)return h+`<div class="empty">현재 수집된 직항 요금이 없어요</div>`;
+ h+=`<div class="catchips">${["전체","3박","4박","5박"].map(n=>`<button class="chip sm ${n===fn?"on":""}" data-fnn="${n}">${n}</button>`).join("")}</div>`;
+ const list=(ro.fares||[]).filter(e=>fn==="전체"||e.n+"박"===fn).filter(e=>!query||e.o.some(o=>(o.al+o.fn).toLowerCase().includes(query)));
+ h+=`<p class="hint">${flag(fr)} 부산 → ${esc(ro.city)} (${fr}) · 운항: ${esc((ro.airlines||[]).join(", "))}${ro.median?` · 중간값 ${flWon(ro.median)}`:""} · 최저가순</p>`;
+ h+=list.slice(0,fmax).map(e=>{const o=e.o[0]||{};const hot=e.p&&ro.median&&e.p<=ro.median*0.8;
+  return `<div class="card fl-row" data-fo="${fr}|${e.k}"><div class="fl-l"><div class="fl-d">${flDay(e.d)} → ${flDay(e.r)} · ${e.n}박${hot?'<span class="fl-hot">🔥 특가</span>':""}</div><div class="fl-s">${esc(o.al||"")} ${esc(o.fn||"")} · ${esc(o.dt||"")} 출발${e.o.length>1?` · 직항 ${e.o.length}편+`:""}</div></div><div class="fl-p">${flWon(e.p)}<small>왕복 1인</small></div></div>`}).join("")||`<div class="empty">조건에 맞는 요금이 없어요</div>`;
+ if(list.length>fmax)h+=`<button class="fl-more" data-fmore>더 보기 (${list.length-fmax}건)</button>`;
+ if(list.some(e=>!e.p))h+=`<p class="hint">'요금 미제공'은 직항편은 있지만 출처에 요금이 나오지 않는 경우예요(예: 이스타항공). 항공사·네이버 항공권에서 확인하세요.</p>`;
+ return h;
+}
+function openFlight(key){
+ const [c,k]=key.split("|").length>2?[key.split("|")[0],key.split("|").slice(1).join("|")]:key.split("|");
+ const ro=FLD.routes[c],e=ro&&ro.fares.find(x=>x.k===k);if(!e)return;
+ const opt=e.o.map(o=>`<div class="fl-opt"><b>${esc(o.al)} ${esc(o.fn)}</b> · ${flWon(o.p)}<br>${flDay(e.d)} ${esc(o.dt)} 김해(PUS) → ${o.ad&&o.ad!==e.d?flDay(o.ad)+" ":""}${esc(o.at)} ${esc(ro.city)}(${c})<br><span class="sub">${flDur(o.dur)} · 직항${o.pl?" · "+esc(o.pl):""}</span></div>`).join("");
+ document.querySelector("#sheet .sheet-body").innerHTML=`<h2>✈️ 부산 → ${esc(ro.city)}</h2><p class="sub">${flDay(e.d)} 출발 · ${flDay(e.r)} 귀국 · ${e.n}박 · 왕복 직항</p>
+ <div class="sh-sec"><div class="sh-t">💰 요금 (성인 1인 왕복)</div><p style="font-size:22px;font-weight:800;color:#e5484d;margin:2px 0">${flWon(e.p)}</p><p class="sub">세금·유류할증료 포함 총액(일반석). 운임·유류할증료·세금 세부 내역은 출처에서 제공되지 않아요.${ro.median?` 이 노선 중간값 ${flWon(ro.median)}`:""}</p></div>
+ <div class="sh-sec"><div class="sh-t">🛫 가는 편 (직항, 저렴한 순)</div>${opt}</div>
+ <div class="sh-sec"><div class="sh-t">🛬 오는 편</div><p>${flDay(e.r)} ${esc(ro.city)}(${c}) → 김해(PUS) 직항</p><p class="sub">오는 편 시간·편명은 예약 화면에서 선택해요(출처 첫 화면에 나오지 않음). 위 요금은 가장 싼 오는 편 기준 왕복 총액이에요.</p></div>
+ <div class="sh-sec"><div class="sh-t">🔗 예약·비교</div><div class="links"><a class="off" href="${flUrl(c,e.d,e.r)}" target="_blank" rel="noopener">구글 항공편에서 보기</a><a class="naver" href="${flNaver(c,e.d,e.r)}" target="_blank" rel="noopener">네이버 항공권</a></div><p class="sub">${esc(e.chk)} 확인 · 요금은 수시로 바뀌어요</p></div>`;
+ document.getElementById("sheet").classList.add("open");document.body.style.overflow="hidden";
+}
+document.addEventListener("click",ev=>{
+ const t=ev.target.closest("[data-fr],[data-fnn],[data-fo],[data-fmore]");if(!t)return;
+ if(t.dataset.fo!==undefined){openFlight(t.dataset.fo);return}
+ if(t.dataset.fr){fr=t.dataset.fr;fmax=30}else if(t.dataset.fnn){fn=t.dataset.fnn;fmax=30}else fmax+=30;
+ render();
+});
+loadFlights();
 </script>
 </body>
 </html>
