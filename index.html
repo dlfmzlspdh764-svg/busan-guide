@@ -630,36 +630,136 @@ if(j&&Array.isArray(j.food)&&j.food.length>100){FOOD=j.food;if(Array.isArray(j.s
 .fl-hot{font-size:10px;background:#ffe9e9;color:#e5484d;border-radius:6px;padding:1px 5px;margin-left:4px;font-weight:700}
 .fl-opt{border:1px solid var(--line);border-radius:12px;padding:10px;margin:6px 0;font-size:13px}.fl-opt b{font-size:14px}
 .fl-more{width:100%;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:13px;margin:4px 0 10px}
+.fl-cal .cal-cell{min-height:58px;padding:3px 1px 2px}
+.fl-cal .cal-n{font-size:11px}
+.fl-fare{font-size:10px;font-weight:800;line-height:1.15;margin-top:2px;letter-spacing:-.3px}
+.fl-fare.c{color:#0d7a4f}.fl-fare.m{color:#b86a00}.fl-fare.e{color:#8a93a3}
+.fl-cal .cal-cell.on-dep{border-color:#2a6af0;background:#e8f0fe;box-shadow:inset 0 0 0 1px #2a6af0}
+.fl-cal .cal-cell.on-ret{border-color:#e5484d;background:#ffe9e9;box-shadow:inset 0 0 0 1px #e5484d}
+.fl-cal .cal-cell.in-range{background:#f3f7ff}
+.fl-cal .cal-cell.no-fare{opacity:.45}
+.fl-sel{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;font-size:12px}
+.fl-sel span{background:#f0f3f8;border-radius:8px;padding:6px 10px}
+.fl-sel b{color:var(--ink)}
+.fl-promo{border:1px solid #e8dcc8;background:#fffaf3;border-radius:12px;padding:10px;margin:6px 0;font-size:13px}
+.fl-promo .fp-a{font-size:11px;font-weight:700;color:#8a5a2b}
+.fl-promo a{color:#2a6af0;text-decoration:none;font-weight:600}
+.fl-promo .fp-f{display:inline-block;font-size:10px;background:#f3e8d8;color:#6b4423;border-radius:6px;padding:1px 5px;margin-left:4px}
+.fl-hint-sel{font-size:12px;color:var(--sub);margin:6px 2px 0;line-height:1.4}
 </style>
 <script>
-/* ✈️ 항공편 탭: flights.json (매시간 자동 수집) */
-let FLD=null,fr=null,fn="전체",fmax=30;
+/* ✈️ 항공편 탭: flights.json + flight_promos.json */
+let FLD=null,FLP=null,fr=null,fn="전체",fmax=30,fview="cal",fcalYM=null,fDep=null,fRet=null;
 const FLWD="일월화수목금토";
 const flDay=d=>{const t=new Date(d+"T00:00:00");return (t.getMonth()+1)+"/"+t.getDate()+"("+FLWD[t.getDay()]+")"};
 const flWon=n=>n?n.toLocaleString("ko-KR")+"원":"요금 미제공";
+const flShort=n=>!n?"":(n>=1e4?Math.round(n/1e4)+"만":n.toLocaleString("ko-KR"));
 const flDur=m=>m?Math.floor(m/60)+"시간 "+(m%60?m%60+"분":""):"";
 function flUrl(c,d1,d2){const L=(d,a,b)=>"\x1a\x1c\x12\x0a"+d+"(\x00j\x05\x12\x03"+a+"r\x05\x12\x03"+b;return "https://www.google.com/travel/flights/search?tfs="+encodeURIComponent(btoa(L(d1,"PUS",c)+L(d2,c,"PUS")+"B\x01\x01H\x01\x98\x01\x01"))+"&hl=ko&curr=KRW"}
 const flNaver=(c,d1,d2)=>`https://flight.naver.com/flights/international/PUS-${c}-${d1.replace(/-/g,"")}/${c}-PUS-${d2.replace(/-/g,"")}?adult=1&isDirect=true&fareType=Y`;
-async function loadFlights(){try{const r=await fetch("flights.json?t="+Date.now(),{cache:"no-store"});if(r.ok){FLD=await r.json();if(tab==="flight")render()}}catch(_){if(tab==="flight")render()}}
+async function loadFlights(){
+ try{const r=await fetch("flights.json?t="+Date.now(),{cache:"no-store"});if(r.ok){FLD=await r.json();if(tab==="flight")render()}}catch(_){if(tab==="flight")render()}
+ try{const r=await fetch("flight_promos.json?t="+Date.now(),{cache:"no-store"});if(r.ok){FLP=await r.json();if(tab==="flight")render()}}catch(_){}
+}
+function flFilter(list){return (list||[]).filter(e=>fn==="전체"||e.n+"박"===fn).filter(e=>!query||e.o.some(o=>(o.al+o.fn).toLowerCase().includes(query)))}
+function flBand(p,med,prices){
+ if(!p)return "e";
+ if(med){if(p<=med*0.85)return "c";if(p>=med*1.15)return "e";return "m"}
+ if(!prices||!prices.length)return "m";
+ const s=[...prices].sort((a,b)=>a-b);const a=s[Math.floor(s.length/3)]||s[0],b=s[Math.floor(s.length*2/3)]||s[s.length-1];
+ return p<=a?"c":p>=b?"e":"m";
+}
+function flCard(c,e,ro){
+ const o=e.o[0]||{};const hot=e.p&&ro.median&&e.p<=ro.median*0.8;
+ return `<div class="card fl-row" data-fo="${c}|${e.k}"><div class="fl-l"><div class="fl-d">${flDay(e.d)} → ${flDay(e.r)} · ${e.n}박${hot?'<span class="fl-hot">🔥 특가</span>':""}</div><div class="fl-s">${esc(o.al||"")} ${esc(o.fn||"")} · ${esc(o.dt||"")} 출발${e.o.length>1?` · 직항 ${e.o.length}편+`:""}</div></div><div class="fl-p">${flWon(e.p)}<small>왕복 1인</small></div></div>`;
+}
+function flPromoBox(){
+ if(!FLP||!(FLP.items||[]).length)return "";
+ const items=FLP.items.slice(0,6);
+ let h=`<details class="rule"><summary>🏷 항공사 이벤트 ${FLP.items.length}건 <span style="font-weight:400;color:var(--sub)">(업데이트 ${esc(FLP.updated||"")})</span></summary>`;
+ h+=items.map(p=>{
+  const flags=(p.flags||[]).map(f=>`<span class="fp-f">${esc(f)}</span>`).join("");
+  return `<div class="fl-promo"><div class="fp-a">${esc(p.airline)}${flags}</div><div style="margin:3px 0 4px;font-weight:600">${esc(p.title)}</div><a href="${esc(p.url)}" target="_blank" rel="noopener">자세히 보기 ›</a><span class="sub" style="margin-left:8px">${esc(p.pub||"")} · ${esc(p.source||"")}</span></div>`;
+ }).join("");
+ h+=`<p class="hint">특가 이벤트가 새로 뜨면 텔레그램(#항공이벤트)으로 알려드려요.</p></details>`;
+ return h;
+}
+function flCal(c,ro){
+ const list=flFilter(ro.fares);
+ const byD={};list.forEach(e=>{if(!e.d)return;(byD[e.d]=byD[e.d]||[]).push(e)});
+ const days=Object.keys(byD).sort();
+ if(!days.length)return `<div class="empty">달력에 표시할 요금이 없어요</div>`;
+ const minYM=days[0].slice(0,7), maxYM=days[days.length-1].slice(0,7);
+ const today=(()=>{const n=new Date();const k=new Date(n.getTime()+9*3600e3);return k.toISOString().slice(0,10)})();
+ if(!fcalYM||fcalYM<minYM||fcalYM>maxYM)fcalYM=minYM<=today.slice(0,7)&&today.slice(0,7)<=maxYM?today.slice(0,7):minYM;
+ const [yy,mm]=fcalYM.split("-").map(Number);
+ const dim=new Date(yy,mm,0).getDate(), startDow=new Date(yy,mm-1,1).getDay();
+ const prices=list.map(e=>e.p).filter(Boolean);
+ const dayMin={};days.forEach(d=>{const ps=byD[d].map(e=>e.p).filter(Boolean);if(ps.length)dayMin[d]=Math.min(...ps)});
+ const canPrev=fcalYM>minYM, canNext=fcalYM<maxYM;
+ let h=`<div class="cal fl-cal"><div class="cal-hd"><button class="cal-nav" data-fcal="prev" ${canPrev?"":"disabled"} aria-label="이전 달">‹</button><b>${yy}년 ${mm}월</b><button class="cal-nav" data-fcal="next" ${canNext?"":"disabled"} aria-label="다음 달">›</button></div>`;
+ h+=`<div class="cal-dow">${[...FLWD].map(d=>`<span>${d}</span>`).join("")}</div><div class="cal-grid">`;
+ for(let i=0;i<startDow;i++) h+=`<div class="cal-cell out"></div>`;
+ for(let day=1;day<=dim;day++){
+  const ds=fcalYM+"-"+String(day).padStart(2,"0");
+  const mn=dayMin[ds];
+  const has=!!byD[ds];
+  const band=mn?flBand(mn,ro.median,prices):"";
+  const cls=["cal-cell", new Date(ds+"T00:00:00").getDay()===0?"sun":"", ds===today?"today":"", !has?"no-fare":"", fDep===ds?"on-dep":"", fRet===ds?"on-ret":"", fDep&&fRet&&ds>fDep&&ds<fRet?"in-range":""].filter(Boolean).join(" ");
+  const fare=mn?`<span class="fl-fare ${band}">${flShort(mn)}</span>`:(has?`<span class="fl-fare e">-</span>`:`<div class="cal-dots"></div>`);
+  h+=has?`<button type="button" class="${cls}" data-fday="${ds}"><span class="cal-n">${day}</span>${fare}</button>`:`<div class="${cls}"><span class="cal-n">${day}</span>${fare}</div>`;
+ }
+ h+=`</div><div class="cal-leg"><span><span class="fl-fare c">■</span> 저렴</span><span><span class="fl-fare m">■</span> 보통</span><span><span class="fl-fare e">■</span> 비쌈</span><span style="margin-left:4px">칸 숫자=그 날 출발 최저(왕복)</span></div>`;
+ h+=`<p class="fl-hint-sel">${!fDep?"① 출국일을 누르세요.": !fRet?`① 출국 <b>${flDay(fDep)}</b> · ② 귀국일을 누르세요.`: `출국 <b>${flDay(fDep)}</b> → 귀국 <b>${flDay(fRet)}</b> · 날짜를 다시 누르면 다시 선택해요.`}</p>`;
+ h+=`<div class="fl-sel">${fDep?`<span>🛫 출국 <b>${flDay(fDep)}</b></span>`:""}${fRet?`<span>🛬 귀국 <b>${flDay(fRet)}</b></span>`:""}${fDep||fRet?`<button class="chip sm" data-fclr>선택 초기화</button>`:""}</div></div>`;
+
+ // results under calendar
+ if(fDep&&fRet){
+  const exact=list.filter(e=>e.d===fDep&&e.r===fRet).sort((a,b)=>(a.p||1e12)-(b.p||1e12));
+  if(exact.length){
+   h+=`<div class="sec-title">선택한 일정 요금 <span style="color:var(--sub);font-weight:400;font-size:13px">${exact.length}건</span></div>`;
+   h+=exact.map(e=>flCard(c,e,ro)).join("");
+  }else{
+   const near=list.filter(e=>e.d===fDep).map(e=>({e,dist:Math.abs((+new Date(e.r))- (+new Date(fRet)))/864e5})).sort((a,b)=>a.dist-b.dist||(a.e.p||1e12)-(b.e.p||1e12));
+   const near2=list.filter(e=>e.d!==fDep).map(e=>({e,dist:Math.abs((+new Date(e.d))-(+new Date(fDep)))/864e5 + Math.abs((+new Date(e.r))-(+new Date(fRet)))/864e5})).sort((a,b)=>a.dist-b.dist||(a.e.p||1e12)-(b.e.p||1e12));
+   h+=`<div class="sec-title">정확히 같은 일정 없음 · 가까운 조합</div><p class="hint">${flDay(fDep)}→${flDay(fRet)} 조합은 아직 수집되지 않았어요. 같은 출국일·가까운 귀국일 또는 비슷한 일정을 최저가순으로 보여드려요.</p>`;
+   const show=[...near.slice(0,5),...near2.slice(0,5)].slice(0,8);
+   const seen=new Set();
+   h+=show.filter(x=>{if(seen.has(x.e.k))return false;seen.add(x.e.k);return true}).map(x=>flCard(c,x.e,ro)).join("")||`<div class="empty">가까운 요금이 없어요</div>`;
+  }
+ }
+ if(fDep){
+  const depList=list.filter(e=>e.d===fDep).sort((a,b)=>(a.p||1e12)-(b.p||1e12)||a.n-b.n);
+  h+=`<div class="sec-title">${flDay(fDep)} 출발 최저가순 <span style="color:var(--sub);font-weight:400;font-size:13px">${depList.length}건</span></div>`;
+  h+=depList.length?depList.map(e=>flCard(c,e,ro)).join(""):`<div class="empty">이 출국일 요금이 없어요</div>`;
+ }
+ return h;
+}
 function flight(){
  if(!FLD)return `<div class="empty">항공 요금 불러오는 중…</div>`;
  const R=FLD.routes||{},codes=Object.keys(R).filter(c=>(R[c].fares||[]).length);
  if(!fr||!R[fr])fr=codes[0];
  const flag=c=>R[c].country==="태국"?"🇹🇭":"🇻🇳";
  let h=`<div class="sec-title">✈️ 부산(김해) 출발 직항 왕복 최저가</div><p class="hint">${esc(FLD.basis)} · ${esc(FLD.window)}<br>업데이트 ${esc(FLD.updated)} (KST, 매시간 자동) · 출처: ${esc(FLD.source)}</p>`;
+ h+=flPromoBox();
  h+=`<div class="catchips">${codes.map(c=>`<button class="chip sm ${c===fr?"on":""}" data-fr="${c}">${flag(c)} ${esc(R[c].city.replace(/\(.*\)/,""))} ${R[c].min?Math.round(R[c].min/1e4)+"만~":""}</button>`).join("")}</div>`;
  const ro=R[fr];if(!ro)return h+`<div class="empty">현재 수집된 직항 요금이 없어요</div>`;
+ h+=`<div class="seg"><button class="chip ${fview==="cal"?"on":""}" data-fview="cal">📅 달력</button><button class="chip ${fview==="list"?"on":""}" data-fview="list">📋 목록</button></div>`;
  h+=`<div class="catchips">${["전체","3박","4박","5박"].map(n=>`<button class="chip sm ${n===fn?"on":""}" data-fnn="${n}">${n}</button>`).join("")}</div>`;
- const list=(ro.fares||[]).filter(e=>fn==="전체"||e.n+"박"===fn).filter(e=>!query||e.o.some(o=>(o.al+o.fn).toLowerCase().includes(query)));
- h+=`<p class="hint">${flag(fr)} 부산 → ${esc(ro.city)} (${fr}) · 운항: ${esc((ro.airlines||[]).join(", "))}${ro.median?` · 중간값 ${flWon(ro.median)}`:""} · 최저가순</p>`;
- h+=list.slice(0,fmax).map(e=>{const o=e.o[0]||{};const hot=e.p&&ro.median&&e.p<=ro.median*0.8;
-  return `<div class="card fl-row" data-fo="${fr}|${e.k}"><div class="fl-l"><div class="fl-d">${flDay(e.d)} → ${flDay(e.r)} · ${e.n}박${hot?'<span class="fl-hot">🔥 특가</span>':""}</div><div class="fl-s">${esc(o.al||"")} ${esc(o.fn||"")} · ${esc(o.dt||"")} 출발${e.o.length>1?` · 직항 ${e.o.length}편+`:""}</div></div><div class="fl-p">${flWon(e.p)}<small>왕복 1인</small></div></div>`}).join("")||`<div class="empty">조건에 맞는 요금이 없어요</div>`;
- if(list.length>fmax)h+=`<button class="fl-more" data-fmore>더 보기 (${list.length-fmax}건)</button>`;
- if(list.some(e=>!e.p))h+=`<p class="hint">'요금 미제공'은 직항편은 있지만 출처에 요금이 나오지 않는 경우예요(예: 이스타항공). 항공사·네이버 항공권에서 확인하세요.</p>`;
+ h+=`<p class="hint">${flag(fr)} 부산 → ${esc(ro.city)} (${fr}) · 운항: ${esc((ro.airlines||[]).join(", "))}${ro.median?` · 중간값 ${flWon(ro.median)}`:""}</p>`;
+ if(fview==="cal"){
+  h+=flCal(fr,ro);
+ }else{
+  const list=flFilter(ro.fares).slice().sort((a,b)=>(a.p||1e12)-(b.p||1e12)||a.d.localeCompare(b.d));
+  h+=`<p class="hint">최저가순</p>`;
+  h+=list.slice(0,fmax).map(e=>flCard(fr,e,ro)).join("")||`<div class="empty">조건에 맞는 요금이 없어요</div>`;
+  if(list.length>fmax)h+=`<button class="fl-more" data-fmore>더 보기 (${list.length-fmax}건)</button>`;
+  if(list.some(e=>!e.p))h+=`<p class="hint">'요금 미제공'은 직항편은 있지만 출처에 요금이 나오지 않는 경우예요(예: 이스타항공). 항공사·네이버 항공권에서 확인하세요.</p>`;
+ }
  return h;
 }
 function openFlight(key){
- const [c,k]=key.split("|").length>2?[key.split("|")[0],key.split("|").slice(1).join("|")]:key.split("|");
+ const parts=key.split("|");const c=parts[0],k=parts.slice(1).join("|");
  const ro=FLD.routes[c],e=ro&&ro.fares.find(x=>x.k===k);if(!e)return;
  const opt=e.o.map(o=>`<div class="fl-opt"><b>${esc(o.al)} ${esc(o.fn)}</b> · ${flWon(o.p)}<br>${flDay(e.d)} ${esc(o.dt)} 김해(PUS) → ${o.ad&&o.ad!==e.d?flDay(o.ad)+" ":""}${esc(o.at)} ${esc(ro.city)}(${c})<br><span class="sub">${flDur(o.dur)} · 직항${o.pl?" · "+esc(o.pl):""}</span></div>`).join("");
  document.querySelector("#sheet .sheet-body").innerHTML=`<h2>✈️ 부산 → ${esc(ro.city)}</h2><p class="sub">${flDay(e.d)} 출발 · ${flDay(e.r)} 귀국 · ${e.n}박 · 왕복 직항</p>
@@ -670,9 +770,27 @@ function openFlight(key){
  document.getElementById("sheet").classList.add("open");document.body.style.overflow="hidden";
 }
 document.addEventListener("click",ev=>{
- const t=ev.target.closest("[data-fr],[data-fnn],[data-fo],[data-fmore]");if(!t)return;
+ const t=ev.target.closest("[data-fr],[data-fnn],[data-fo],[data-fmore],[data-fview],[data-fcal],[data-fday],[data-fclr]");if(!t)return;
  if(t.dataset.fo!==undefined){openFlight(t.dataset.fo);return}
- if(t.dataset.fr){fr=t.dataset.fr;fmax=30}else if(t.dataset.fnn){fn=t.dataset.fnn;fmax=30}else fmax+=30;
+ if(t.dataset.fday){
+  const d=t.dataset.fday;
+  if(!fDep||(fDep&&fRet)){fDep=d;fRet=null}
+  else if(d<fDep){fDep=d;fRet=null}
+  else if(d===fDep){fDep=null;fRet=null}
+  else fRet=d;
+  render();return;
+ }
+ if(t.dataset.fcal){
+  const [y,m]=fcalYM.split("-").map(Number);
+  const dt=new Date(y,m-1,1);dt.setMonth(dt.getMonth()+(t.dataset.fcal==="next"?1:-1));
+  fcalYM=dt.getFullYear()+"-"+String(dt.getMonth()+1).padStart(2,"0");
+  render();return;
+ }
+ if(t.dataset.fclr!==undefined){fDep=null;fRet=null;render();return}
+ if(t.dataset.fview){fview=t.dataset.fview;fmax=30;render();return}
+ if(t.dataset.fr){fr=t.dataset.fr;fmax=30;fDep=null;fRet=null;fcalYM=null}
+ else if(t.dataset.fnn){fn=t.dataset.fnn;fmax=30}
+ else fmax+=30;
  render();
 });
 loadFlights();
