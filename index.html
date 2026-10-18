@@ -665,10 +665,24 @@ if(j&&Array.isArray(j.food)&&j.food.length>100){FOOD=j.food;if(Array.isArray(j.s
 .fl-promo a{color:#2a6af0;text-decoration:none;font-weight:600}
 .fl-promo .fp-f{display:inline-block;font-size:10px;background:#f3e8d8;color:#6b4423;border-radius:6px;padding:1px 5px;margin-left:4px}
 .fl-hint-sel{font-size:12px;color:var(--sub);margin:6px 2px 0;line-height:1.4}
+
+.ht-box{margin:12px 0 8px;padding:10px;border:1px solid var(--line,#e5e5ea);border-radius:12px;background:#fff8f0}
+.ht-box .sec-title{margin:0 0 4px}
+.ht-card{display:flex;gap:10px;padding:10px 8px;border-bottom:1px solid #f0e6d8;cursor:pointer}
+.ht-card:last-child{border-bottom:0}
+.ht-rank{width:28px;height:28px;border-radius:8px;background:#e5484d;color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ht-main{flex:1;min-width:0}
+.ht-name{font-weight:700;font-size:15px}
+.ht-meta{font-size:12px;color:var(--sub);margin-top:2px;line-height:1.45}
+.ht-price{font-weight:800;color:#e5484d;font-size:16px;white-space:nowrap;text-align:right}
+.ht-price small{display:block;font-weight:500;font-size:11px;color:var(--sub)}
+.ht-subs{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.ht-subs span{font-size:11px;background:#f3e8d8;color:#6b4423;border-radius:6px;padding:1px 6px}
+.ht-note{font-size:12px;color:var(--sub);margin:4px 2px 8px;line-height:1.4}
 </style>
 <script>
 /* ✈️ 항공편 탭: flights.json + flight_promos.json */
-let FLD=null,FLP=null,fr=null,fn="전체",fmax=30,fview="cal",fcalYM=null,fDep=null,fRet=null;
+let FLD=null,FLP=null,FLH=null,fr=null,fn="전체",fmax=30,fview="cal",fcalYM=null,fDep=null,fRet=null;
 const FLWD="일월화수목금토";
 const flDay=d=>{const t=new Date(d+"T00:00:00");return (t.getMonth()+1)+"/"+t.getDate()+"("+FLWD[t.getDay()]+")"};
 const flWon=n=>n?n.toLocaleString("ko-KR")+"원":"요금 미제공";
@@ -679,6 +693,7 @@ const flNaver=(c,d1,d2)=>`https://flight.naver.com/flights/international/PUS-${c
 async function loadFlights(){
  try{const r=await fetch("flights.json?t="+Date.now(),{cache:"no-store"});if(r.ok){FLD=await r.json();if(tab==="flight")render()}}catch(_){if(tab==="flight")render()}
  try{const r=await fetch("flight_promos.json?t="+Date.now(),{cache:"no-store"});if(r.ok){FLP=await r.json();if(tab==="flight")render()}}catch(_){}
+ try{const r=await fetch("hotels_pattaya.json?t="+Date.now(),{cache:"no-store"});if(r.ok){FLH=await r.json();if(tab==="flight")render()}}catch(_){}
 }
 function flFilter(list){return (list||[]).filter(e=>fn==="전체"||e.n+"박"===fn).filter(e=>!query||e.o.some(o=>(o.al+o.fn).toLowerCase().includes(query)))}
 function flBand(p,med,prices){
@@ -754,6 +769,42 @@ function flCal(c,ro){
  }
  return h;
 }
+
+function flWonH(n){return n?n.toLocaleString("ko-KR")+"원":"요금 미제공"}
+function flHotelBox(){
+ if(!FLH||!(FLH.hotels||[]).length)return "";
+ const show=(fr==="BKK"||fr==="DMK"||!fr);
+ if(!show)return "";
+ let h=`<div class="ht-box"><div class="sec-title">🏨 파타야 호텔 TOP 10 <span style="font-weight:400;color:var(--sub);font-size:12px">4성급 · 북파타야·나클루아 / 세컨드·써드로드</span></div>`;
+ h+=`<p class="ht-note">${esc(FLH.note||"")} · ${esc(FLH.scope||"")}<br>업데이트 ${esc(FLH.updated||"")} · 출처: ${esc(FLH.source||"")}</p>`;
+ h+=FLH.hotels.map(x=>{
+  const subs=Object.entries(x.subs||{}).map(([k,v])=>`<span>${esc(k)} ${esc(String(v))}</span>`).join("");
+  const bg=x.bigc?`${esc(x.bigc.name)} 도보 ${x.bigc.walk_min}분`:"";
+  const ml=x.mall?`${esc(x.mall.name)} 도보 ${x.mall.walk_min}분`:"";
+  return `<div class="ht-card" data-ht="${esc(x.name_en)}"><div class="ht-rank">${x.rank||""}</div><div class="ht-main"><div class="ht-name">${esc(x.name)} <span class="sub" style="font-weight:500">★${x.score} · 리뷰 ${(x.reviews||0).toLocaleString("ko-KR")}</span></div><div class="ht-meta">${esc(x.area||"")} · 4성급${x.breakfast?` · ${esc(x.breakfast)}`:""}<br>🛒 ${bg}${ml?` · 🏬 ${ml}`:""}<br>🚐 ${esc(x.transport||"")}</div><div class="ht-subs">${subs}</div></div><div class="ht-price">${flWonH(x.price_krw)}<small>1박·1실</small></div></div>`;
+ }).join("");
+ h+=`<p class="ht-note">좀티언 제외. 청결/조식/위치 세부 점수는 출처에 없으면 '정보 없음'. 요금은 Google 호텔 표시 USD를 KRW로 환산한 값이며 수시로 바뀌어요.</p></div>`;
+ return h;
+}
+function openHotel(en){
+ const x=(FLH&&FLH.hotels||[]).find(h=>h.name_en===en);if(!x)return;
+ const L=x.links||{};
+ document.querySelector("#sheet .sheet-body").innerHTML=`<h2>🏨 ${esc(x.name)}</h2><p class="sub">${esc(x.name_en)} · 4성급 · ${esc(x.area||"")}</p>
+ <div class="sh-sec"><div class="sh-t">⭐ 평점</div><p style="font-size:20px;font-weight:800;margin:2px 0">${x.score} <span class="sub" style="font-size:13px">/ 5 · 리뷰 ${(x.reviews||0).toLocaleString("ko-KR")}</span></p>
+ <p class="sub">청결: ${esc(String((x.subs||{}).청결||"정보 없음"))} · 조식: ${esc(String((x.subs||{}).조식||"정보 없음"))} · 위치: ${esc(String((x.subs||{}).위치||"정보 없음"))}</p>
+ <p class="sub">조식: ${esc(x.breakfast||"정보 없음")}</p></div>
+ <div class="sh-sec"><div class="sh-t">💰 1박 요금</div><p style="font-size:22px;font-weight:800;color:#e5484d;margin:2px 0">${flWonH(x.price_krw)}</p><p class="sub">${esc(x.price_basis||"")}</p></div>
+ <div class="sh-sec"><div class="sh-t">📍 위치·교통</div><p>${esc(x.transport||"")}</p>
+ <p class="sub">🛒 ${esc((x.bigc||{}).name||"Big C")} ${((x.bigc||{}).m||0).toLocaleString("ko-KR")}m (도보 ${(x.bigc||{}).walk_min||"?"}분)
+ · 🏬 ${esc((x.mall||{}).name||"")} ${((x.mall||{}).m||0).toLocaleString("ko-KR")}m (도보 ${(x.mall||{}).walk_min||"?"}분)</p></div>
+ <div class="sh-sec"><div class="sh-t">🔗 예약·비교</div><div class="links">
+ <a class="off" href="${esc(L.google||"#")}" target="_blank" rel="noopener">구글 호텔</a>
+ <a class="naver" href="${esc(L.agoda||"#")}" target="_blank" rel="noopener">Agoda</a>
+ <a class="off" href="${esc(L.booking||"#")}" target="_blank" rel="noopener">Booking</a>
+ </div></div>`;
+ document.getElementById("sheet").classList.add("open");document.body.style.overflow="hidden";
+}
+
 function flight(){
  if(!FLD)return `<div class="empty">항공 요금 불러오는 중…</div>`;
  const R=FLD.routes||{},codes=Object.keys(R).filter(c=>(R[c].fares||[]).length);
@@ -764,8 +815,9 @@ function flight(){
  h+=`<div class="catchips">${codes.map(c=>`<button class="chip sm ${c===fr?"on":""}" data-fr="${c}">${flag(c)} ${esc(R[c].city.replace(/\(.*\)/,""))} ${R[c].min?Math.round(R[c].min/1e4)+"만~":""}</button>`).join("")}</div>`;
  const ro=R[fr];if(!ro)return h+`<div class="empty">현재 수집된 직항 요금이 없어요</div>`;
  h+=`<div class="seg"><button class="chip ${fview==="cal"?"on":""}" data-fview="cal">📅 달력</button><button class="chip ${fview==="list"?"on":""}" data-fview="list">📋 목록</button></div>`;
- h+=`<div class="catchips">${["전체","3박","4박","5박"].map(n=>`<button class="chip sm ${n===fn?"on":""}" data-fnn="${n}">${n}</button>`).join("")}</div>`;
+ h+=`<div class="catchips">${["전체","4박","5박"].map(n=>`<button class="chip sm ${n===fn?"on":""}" data-fnn="${n}">${n}</button>`).join("")}</div>`;
  h+=`<p class="hint">${flag(fr)} 부산 → ${esc(ro.city)} (${fr}) · 운항: ${esc((ro.airlines||[]).join(", "))}${ro.median?` · 중간값 ${flWon(ro.median)}`:""}</p>`;
+ if(fr==="BKK"||fr==="DMK")h+=flHotelBox();
  if(fview==="cal"){
   h+=flCal(fr,ro);
  }else{
@@ -789,7 +841,8 @@ function openFlight(key){
  document.getElementById("sheet").classList.add("open");document.body.style.overflow="hidden";
 }
 document.addEventListener("click",ev=>{
- const t=ev.target.closest("[data-fr],[data-fnn],[data-fo],[data-fmore],[data-fview],[data-fcal],[data-fday],[data-fclr]");if(!t)return;
+ const t=ev.target.closest("[data-fr],[data-fnn],[data-fo],[data-fmore],[data-fview],[data-fcal],[data-fday],[data-fclr],[data-ht]");if(!t)return;
+ if(t.dataset.ht){openHotel(t.dataset.ht);return}
  if(t.dataset.fo!==undefined){openFlight(t.dataset.fo);return}
  if(t.dataset.fday){
   const d=t.dataset.fday;

@@ -1,0 +1,383 @@
+{
+ "updated": "2026-10-18 15:08",
+ "source": "Google 호텔(Google Hotels) 공개 검색 결과 + OpenStreetMap Nominatim 좌표",
+ "fx": {
+  "USD_KRW": 1334.772994,
+  "as_of": "2026-10-18",
+  "provider": "open.er-api.com"
+ },
+ "scope": "파타야 4성급 · 북파타야/나클루아 · 세컨드·써드로드(중앙) · 좀티언 제외 · 리뷰≥500 · 평점순 TOP10",
+ "note": "방콕(수완나품/돈므앙) 도착 후 파타야까지 차량·버스 약 2시간. 항공은 부산→방콕 직항 참고.",
+ "hotels": [
+  {
+   "name": "저니허브 파타야 센트럴",
+   "name_en": "Journeyhub Pattaya Central",
+   "stars": 4,
+   "score": 4.6,
+   "reviews": 1800,
+   "subs": {
+    "청결": "정보 없음",
+    "조식": "정보 없음",
+    "위치": "정보 없음"
+   },
+   "breakfast": "유료 조식",
+   "area": "세컨드·써드로드",
+   "lat": 12.928231,
+   "lon": 100.882066,
+   "price_krw": 41378,
+   "price_usd": 31,
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 31) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "bigc": {
+    "name": "Big C South",
+    "m": 588,
+    "walk_min": 7
+   },
+   "mall": {
+    "name": "Terminal 21",
+    "m": 533,
+    "walk_min": 7
+   },
+   "transport": "Big C South 도보 약 7분 · Terminal 21 도보 약 7분 · 비치로드/세컨드로드 쏭테우(บาท버스) 이용",
+   "links": {
+    "google": "https://www.google.com/travel/search?q=Journeyhub%20Pattaya%20Central&hl=ko&gl=kr&curr=KRW",
+    "agoda": "https://www.agoda.com/search?city=16901&searchText=Journeyhub%20Pattaya%20Central&currencyCode=KRW",
+    "booking": "https://www.booking.com/searchresults.ko.html?ss=Journeyhub%20Pattaya%20Central&selected_currency=KRW"
+   },
+   "photo": null,
+   "rank": 1
+  },
+  {
+   "name": "호텔 비스타 파타야",
+   "name_en": "Hotel Vista Pattaya",
+   "stars": 4,
+   "score": 4.4,
+   "reviews": 2500,
+   "subs": {
+    "청결": "정보 없음",
+    "조식": "정보 없음",
+    "위치": "정보 없음"
+   },
+   "breakfast": "정보 없음",
+   "area": "북파타야·나클루아",
+   "lat": 12.944358,
+   "lon": 100.887049,
+   "price_krw": 58730,
+   "price_usd": 44,
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 44) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "bigc": {
+    "name": "Big C Extra",
+    "m": 1039,
+    "walk_min": 13
+   },
+   "mall": {
+    "name": "Central Festival",
+    "m": 1152,
+    "walk_min": 14
+   },
+   "transport": "Big C Extra 도보 약 13분 · Central Festival 도보 약 14분 · 비치로드/세컨드로드 쏭테우(บาท버스) 이용",
+   "links": {
+    "google": "https://www.google.com/travel/search?q=Hotel%20Vista%20Pattaya&hl=ko&gl=kr&curr=KRW",
+    "agoda": "https://www.agoda.com/search?city=16901&searchText=Hotel%20Vista%20Pattaya&currencyCode=KRW",
+    "booking": "https://www.booking.com/searchresults.ko.html?ss=Hotel%20Vista%20Pattaya&selected_currency=KRW"
+   },
+   "photo": null,
+   "rank": 2
+  },
+  {
+   "name": "더 베이뷰 호텔 파타야",
+   "name_en": "The Bayview Hotel Pattaya",
+   "stars": 4,
+   "score": 4.4,
+   "reviews": 2300,
+   "subs": {
+    "청결": "정보 없음",
+    "조식": "정보 없음",
+    "위치": "정보 없음"
+   },
+   "breakfast": "조식(별도/포함 확인)",
+   "area": "세컨드·써드로드",
+   "lat": 12.932875,
+   "lon": 100.882859,
+   "price_krw": 64069,
+   "price_usd": 48,
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 48) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "bigc": {
+    "name": "Big C Extra",
+    "m": 327,
+    "walk_min": 4
+   },
+   "mall": {
+    "name": "Central Festival",
+    "m": 225,
+    "walk_min": 3
+   },
+   "transport": "Big C Extra 도보 약 4분 · Central Festival 도보 약 3분 · 비치로드/세컨드로드 쏭테우(บาท버스) 이용",
+   "links": {
+    "google": "https://www.google.com/travel/search?q=The%20Bayview%20Hotel%20Pattaya&hl=ko&gl=kr&curr=KRW",
+    "agoda": "https://www.agoda.com/search?city=16901&searchText=The%20Bayview%20Hotel%20Pattaya&currencyCode=KRW",
+    "booking": "https://www.booking.com/searchresults.ko.html?ss=The%20Bayview%20Hotel%20Pattaya&selected_currency=KRW"
+   },
+   "photo": null,
+   "rank": 3
+  },
+  {
+   "name": "썬빔 호텔 파타야",
+   "name_en": "Sunbeam Hotel Pattaya",
+   "stars": 4,
+   "score": 4.2,
+   "reviews": 2700,
+   "subs": {
+    "청결": "정보 없음",
+    "조식": "정보 없음",
+    "위치": "정보 없음"
+   },
+   "breakfast": "조식(별도/포함 확인)",
+   "area": "세컨드·써드로드",
+   "lat": 12.935519,
+   "lon": 100.885196,
+   "price_krw": 42713,
+   "price_usd": 32,
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 32) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "bigc": {
+    "name": "Big C Extra",
+    "m": 218,
+    "walk_min": 3
+   },
+   "mall": {
+    "name": "Central Festival",
+    "m": 279,
+    "walk_min": 3
+   },
+   "transport": "Big C Extra 도보 약 3분 · Central Festival 도보 약 3분 · 비치로드/세컨드로드 쏭테우(บาท버스) 이용",
+   "links": {
+    "google": "https://www.google.com/travel/search?q=Sunbeam%20Hotel%20Pattaya&hl=ko&gl=kr&curr=KRW",
+    "agoda": "https://www.agoda.com/search?city=16901&searchText=Sunbeam%20Hotel%20Pattaya&currencyCode=KRW",
+    "booking": "https://www.booking.com/searchresults.ko.html?ss=Sunbeam%20Hotel%20Pattaya&selected_currency=KRW"
+   },
+   "photo": null,
+   "rank": 4
+  },
+  {
+   "name": "LK 더 임프레스 파타야",
+   "name_en": "LK The Empress Pattaya",
+   "stars": 4,
+   "score": 4.2,
+   "reviews": 1800,
+   "subs": {
+    "청결": "정보 없음",
+    "조식": "정보 없음",
+    "위치": "정보 없음"
+   },
+   "breakfast": "조식 포함(표시)",
+   "area": "세컨드·써드로드",
+   "lat": 12.931591,
+   "lon": 100.880166,
+   "price_krw": 72078,
+   "price_usd": 54,
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 54) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "bigc": {
+    "name": "Big C Extra",
+    "m": 572,
+    "walk_min": 7
+   },
+   "mall": {
+    "name": "Central Festival",
+    "m": 459,
+    "walk_min": 6
+   },
+   "transport": "Big C Extra 도보 약 7분 · Central Festival 도보 약 6분 · 비치로드/세컨드로드 쏭테우(บาท버스) 이용",
+   "links": {
+    "google": "https://www.google.com/travel/search?q=LK%20The%20Empress%20Pattaya&hl=ko&gl=kr&curr=KRW",
+    "agoda": "https://www.agoda.com/search?city=16901&searchText=LK%20The%20Empress%20Pattaya&currencyCode=KRW",
+    "booking": "https://www.booking.com/searchresults.ko.html?ss=LK%20The%20Empress%20Pattaya&selected_currency=KRW"
+   },
+   "photo": null,
+   "rank": 5
+  },
+  {
+   "name": "인티메트 호텔 바이 팀 부티크",
+   "name_en": "Intimate Hotel by Team Boutique",
+   "stars": 4,
+   "score": 4.2,
+   "reviews": 785,
+   "subs": {
+    "청결": "정보 없음",
+    "조식": "정보 없음",
+    "위치": "정보 없음"
+   },
+   "breakfast": "조식(별도/포함 확인)",
+   "area": "세컨드·써드로드",
+   "lat": 12.930252,
+   "lon": 100.881895,
+   "price_krw": 72078,
+   "price_usd": 54,
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 54) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "bigc": {
+    "name": "Big C Extra",
+    "m": 632,
+    "walk_min": 8
+   },
+   "mall": {
+    "name": "Central Festival",
+    "m": 524,
+    "walk_min": 7
+   },
+   "transport": "Big C Extra 도보 약 8분 · Central Festival 도보 약 7분 · 비치로드/세컨드로드 쏭테우(บาท버스) 이용",
+   "links": {
+    "google": "https://www.google.com/travel/search?q=Intimate%20Hotel%20by%20Team%20Boutique&hl=ko&gl=kr&curr=KRW",
+    "agoda": "https://www.agoda.com/search?city=16901&searchText=Intimate%20Hotel%20by%20Team%20Boutique&currencyCode=KRW",
+    "booking": "https://www.booking.com/searchresults.ko.html?ss=Intimate%20Hotel%20by%20Team%20Boutique&selected_currency=KRW"
+   },
+   "photo": null,
+   "rank": 6
+  },
+  {
+   "name": "더 스테이 호텔 파타야",
+   "name_en": "The Stay Hotel Pattaya",
+   "stars": 4,
+   "score": 4.2,
+   "reviews": 516,
+   "subs": {
+    "청결": "정보 없음",
+    "조식": "정보 없음",
+    "위치": "정보 없음"
+   },
+   "breakfast": "조식(별도/포함 확인)",
+   "area": "세컨드·써드로드",
+   "lat": 12.932609,
+   "lon": 100.88202,
+   "price_krw": 52056,
+   "price_usd": 39,
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 39) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "bigc": {
+    "name": "Big C Extra",
+    "m": 377,
+    "walk_min": 5
+   },
+   "mall": {
+    "name": "Central Festival",
+    "m": 265,
+    "walk_min": 3
+   },
+   "transport": "Big C Extra 도보 약 5분 · Central Festival 도보 약 3분 · 비치로드/세컨드로드 쏭테우(บาท버스) 이용",
+   "links": {
+    "google": "https://www.google.com/travel/search?q=The%20Stay%20Hotel%20Pattaya&hl=ko&gl=kr&curr=KRW",
+    "agoda": "https://www.agoda.com/search?city=16901&searchText=The%20Stay%20Hotel%20Pattaya&currencyCode=KRW",
+    "booking": "https://www.booking.com/searchresults.ko.html?ss=The%20Stay%20Hotel%20Pattaya&selected_currency=KRW"
+   },
+   "photo": null,
+   "rank": 7
+  },
+  {
+   "name": "LK 메트로폴 파타야",
+   "name_en": "LK Metropole Pattaya",
+   "stars": 4,
+   "score": 4.1,
+   "reviews": 803,
+   "subs": {
+    "청결": "정보 없음",
+    "조식": "정보 없음",
+    "위치": "정보 없음"
+   },
+   "breakfast": "조식(별도/포함 확인)",
+   "area": "세컨드·써드로드",
+   "lat": 12.929702,
+   "lon": 100.884585,
+   "price_krw": 41378,
+   "price_usd": 31,
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 31) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "bigc": {
+    "name": "Big C Extra",
+    "m": 694,
+    "walk_min": 9
+   },
+   "mall": {
+    "name": "Central Festival",
+    "m": 613,
+    "walk_min": 8
+   },
+   "transport": "Big C Extra 도보 약 9분 · Central Festival 도보 약 8분 · 비치로드/세컨드로드 쏭테우(บาท버스) 이용",
+   "links": {
+    "google": "https://www.google.com/travel/search?q=LK%20Metropole%20Pattaya&hl=ko&gl=kr&curr=KRW",
+    "agoda": "https://www.agoda.com/search?city=16901&searchText=LK%20Metropole%20Pattaya&currencyCode=KRW",
+    "booking": "https://www.booking.com/searchresults.ko.html?ss=LK%20Metropole%20Pattaya&selected_currency=KRW"
+   },
+   "photo": null,
+   "rank": 8
+  },
+  {
+   "name": "골든 비치 호텔 파타야",
+   "name_en": "Golden Beach Hotel Pattaya",
+   "stars": 4,
+   "score": 3.9,
+   "reviews": 4400,
+   "subs": {
+    "청결": "정보 없음",
+    "조식": "정보 없음",
+    "위치": "정보 없음"
+   },
+   "breakfast": "조식 포함(표시)",
+   "area": "세컨드·써드로드",
+   "lat": 12.93306,
+   "lon": 100.885136,
+   "price_krw": 33369,
+   "price_usd": 25,
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 25) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "bigc": {
+    "name": "Big C Extra",
+    "m": 369,
+    "walk_min": 5
+   },
+   "mall": {
+    "name": "Central Festival",
+    "m": 333,
+    "walk_min": 4
+   },
+   "transport": "Big C Extra 도보 약 5분 · Central Festival 도보 약 4분 · 비치로드/세컨드로드 쏭테우(บาท버스) 이용",
+   "links": {
+    "google": "https://www.google.com/travel/search?q=Golden%20Beach%20Hotel%20Pattaya&hl=ko&gl=kr&curr=KRW",
+    "agoda": "https://www.agoda.com/search?city=16901&searchText=Golden%20Beach%20Hotel%20Pattaya&currencyCode=KRW",
+    "booking": "https://www.booking.com/searchresults.ko.html?ss=Golden%20Beach%20Hotel%20Pattaya&selected_currency=KRW"
+   },
+   "photo": null,
+   "rank": 9
+  },
+  {
+   "name": "선샤인 호텔 앤드 레지던스",
+   "name_en": "Sunshine Hotel and Residences",
+   "stars": 4,
+   "score": 3.9,
+   "reviews": 2100,
+   "subs": {
+    "청결": "정보 없음",
+    "조식": "정보 없음",
+    "위치": "정보 없음"
+   },
+   "breakfast": "조식(별도/포함 확인)",
+   "area": "세컨드·써드로드",
+   "lat": 12.935413,
+   "lon": 100.884126,
+   "price_krw": 42713,
+   "price_usd": 32,
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 32) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "bigc": {
+    "name": "Big C Extra",
+    "m": 109,
+    "walk_min": 1
+   },
+   "mall": {
+    "name": "Central Festival",
+    "m": 164,
+    "walk_min": 2
+   },
+   "transport": "Big C Extra 도보 약 1분 · Central Festival 도보 약 2분 · 비치로드/세컨드로드 쏭테우(บาท버스) 이용",
+   "links": {
+    "google": "https://www.google.com/travel/search?q=Sunshine%20Hotel%20and%20Residences&hl=ko&gl=kr&curr=KRW",
+    "agoda": "https://www.agoda.com/search?city=16901&searchText=Sunshine%20Hotel%20and%20Residences&currencyCode=KRW",
+    "booking": "https://www.booking.com/searchresults.ko.html?ss=Sunshine%20Hotel%20and%20Residences&selected_currency=KRW"
+   },
+   "photo": null,
+   "rank": 10
+  }
+ ]
+}

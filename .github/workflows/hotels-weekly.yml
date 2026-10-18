@@ -1,0 +1,41 @@
+name: hotels-weekly
+
+on:
+  schedule:
+    - cron: "40 20 * * 0"   # 매주 월요일 05:40 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hotels-weekly
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Refresh Pattaya hotel KRW prices (FX)
+        env:
+          TZ: Asia/Seoul
+        run: python3 -u scripts/update_hotels.py
+      - name: Validate
+        run: python3 -c "import json;d=json.load(open('hotels_pattaya.json'));assert len(d['hotels'])>=8;print('hotels',len(d['hotels']),d['updated'],d.get('fx'))"
+      - name: Commit if changed
+        run: |
+          git config user.name "busan-guide-bot"
+          git config user.email "dlfmzlspdh764-svg@users.noreply.github.com"
+          git add hotels_pattaya.json
+          if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
+          git commit -q -m "파타야 호텔 주간 업데이트 $(TZ=Asia/Seoul date '+%Y-%m-%d') KST"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs origin main && git push origin main && exit 0
+            sleep $((i*5))
+          done
+          exit 1

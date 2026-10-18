@@ -11,7 +11,7 @@ from tg_style import send as _tg_send, frame, join_items, esc  # noqa: E402
 KST = timezone(timedelta(hours=9))
 NOW = datetime.now(KST)
 TODAY = NOW.date()
-NIGHTS = [3, 4, 5]
+NIGHTS = [4, 5]
 DAYS = range(3, 91)          # 출발일: D+3 ~ D+90
 SLOTS = 4
 CITY = {"BKK": ("태국", "방콕 수완나품"), "DMK": ("태국", "방콕 돈므앙"), "CNX": ("태국", "치앙마이"),
@@ -118,7 +118,7 @@ def main():
     jobs = []
     for c in routes:
         for i in DAYS:
-            if not first_run and i % SLOTS != slot and (TODAY + timedelta(days=i)).isoformat() + "|3" in data[c]:
+            if not first_run and i % SLOTS != slot and (TODAY + timedelta(days=i)).isoformat() + "|4" in data[c]:
                 continue
             for n in NIGHTS:
                 d1 = TODAY + timedelta(days=i)
@@ -139,7 +139,7 @@ def main():
         raise SystemExit("too many failures: %d/%d" % (ok, len(jobs)))
     # --- 결과 정리 ---
     out = {"updated": NOW.strftime("%Y-%m-%d %H:%M"), "source": "Google 항공편(Google Flights) 공개 검색 결과",
-           "basis": "왕복·성인 1인·일반석·직항, 세금·유류할증료 포함 총액(KRW)", "window": "출발 D+3~D+90, 3·4·5박", "routes": {}}
+           "basis": "왕복·성인 1인·일반석·직항, 세금·유류할증료 포함 총액(KRW)", "window": "출발 D+3~D+90, 4·5박", "routes": {}}
     alerted = load(ALERT_F, {})
     deals = []
     for c in routes:
