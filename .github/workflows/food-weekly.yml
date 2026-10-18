@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "23 20 * * 0"   # 매주 월요일 05:23 KST (일요일 20:23 UTC)
   workflow_dispatch:
+    inputs:
+      photos_only:
+        description: "사진만 갱신 (FOOD_PHOTOS_ONLY)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -28,9 +33,10 @@ jobs:
           TZ: Asia/Seoul
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          FOOD_PHOTOS_ONLY: ${{ github.event.inputs.photos_only == 'true' && '1' || '' }}
         run: python3 -u scripts/update_food.py
       - name: Validate
-        run: python3 -c "import json;d=json.load(open('food.json'));assert len(d['food'])>300 and len(d['sushi'])>=8;c=d.get('chinese') or [];assert len(c)>=8;print('food',len(d['food']),'sushi',len(d['sushi']),'chinese',len(c),d['updated'])"
+        run: python3 -c "import json;d=json.load(open('food.json'));assert len(d['food'])>300 and len(d['sushi'])>=8;c=d.get('chinese') or [];assert len(c)>=8;print('food',len(d['food']),'sushi',len(d['sushi']),'chinese',len(c),'ims≥2',sum(1 for p in d['food']+d['sushi']+c if len(p.get('ims') or [])>=2),d['updated'])"
       - name: Commit if changed
         run: |
           if [ -z "$(git status --porcelain food.json index.html)" ]; then echo "변경 없음"; exit 0; fi

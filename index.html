@@ -31,6 +31,22 @@ main{padding:4px 16px 16px}
 .card{background:var(--card);border-radius:16px;padding:14px;margin-bottom:10px;box-shadow:0 1px 3px rgba(20,40,80,.06);position:relative}
 .card h3{margin:0 34px 4px 0;font-size:16px}
 .frow{display:flex;gap:10px;align-items:flex-start}.fbody{flex:1;min-width:0}.fth{width:68px;height:68px;flex:0 0 68px;border-radius:12px;object-fit:cover;background:#f1f3f5;display:flex;align-items:center;justify-content:center;font-size:30px}.shimg{width:100%;max-height:240px;object-fit:cover;border-radius:14px;margin:4px 0 2px;display:block}.credit{font-size:10px;color:var(--sub);text-align:right;margin:0 0 6px}
+.pcar{position:relative;margin:4px 0 2px;border-radius:14px;overflow:hidden;background:#f1f3f5}
+.pcar-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.pcar-track::-webkit-scrollbar{display:none}
+.pcar-track img{flex:0 0 100%;width:100%;max-height:240px;object-fit:cover;scroll-snap-align:start;cursor:zoom-in;background:#eee}
+.pcar-dots{display:flex;justify-content:center;gap:5px;padding:6px 0 2px}
+.pcar-dots i{width:6px;height:6px;border-radius:50%;background:#c5ccd6}
+.pcar-dots i.on{background:#007aff;width:14px;border-radius:4px}
+.pcar-n{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;padding:2px 7px;border-radius:10px}
+#pview{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;flex-direction:column}
+#pview.open{display:flex}
+#pview img{max-width:96vw;max-height:82vh;object-fit:contain;border-radius:8px}
+#pview .pv-nav{position:absolute;top:50%;transform:translateY(-50%);border:0;background:rgba(255,255,255,.15);color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px}
+#pview .pv-prev{left:10px}#pview .pv-next{right:10px}
+#pview .pv-x{position:absolute;top:14px;right:14px;border:0;background:rgba(255,255,255,.2);color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px}
+#pview .pv-cap{color:#bbb;font-size:12px;margin-top:10px}
+
 .meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
 .tag{font-size:11px;padding:3px 8px;border-radius:6px;background:#eef4fb;color:var(--blue);font-weight:600}
 .tag.cat{background:#fff4e6;color:#c76a00}
@@ -283,7 +299,14 @@ const ftot=p=>(p.rc||0)+(p.nv||0)+(p.gc||0);
 const priceTxt=p=>p.pr?(p.pr[0]===p.pr[1]?won(p.pr[0]):`${Number(p.pr[0]).toLocaleString()}~${won(p.pr[1])}`):"";
 const CEMO={"한식":"🍚","중식":"🥟","일식":"🍣","서양식":"🍝","밀면":"🍜","태국":"🍛","베트남":"🍲","스시뷔페":"🍣","활어시장":"🐟","돼지국밥":"🍲","카페":"☕","기타":"🍴"};
 const kth=(u,s)=>"https://img1.kakaocdn.net/cthumb/local/"+s+"/?fname="+u;
-function fthumb(p){const e=CEMO[p.c]||"🍴";return p.im?`<img class="fth" loading="lazy" referrerpolicy="no-referrer" alt="" src="${kth(p.im,"R144x0")}" onerror="this.outerHTML='<div class=fth>${e}</div>'">`:`<div class="fth">${e}</div>`}
+const fpics=p=>{const a=Array.isArray(p.ims)&&p.ims.length?p.ims:(p.im?[p.im]:[]);return a.filter(Boolean).slice(0,5)};
+function fthumb(p){const e=CEMO[p.c]||"🍴";const u=fpics(p)[0];return u?`<img class="fth" loading="lazy" referrerpolicy="no-referrer" alt="" src="${kth(u,"R144x0")}" onerror="this.outerHTML='<div class=fth>${e}</div>'">`:`<div class="fth">${e}</div>`}
+function fcar(p){const pics=fpics(p);if(!pics.length)return"";if(pics.length===1)return`<img class="shimg" loading="lazy" referrerpolicy="no-referrer" alt="" src="${kth(pics[0],"R640x0")}" data-pview="${esc(pics[0])}" onerror="this.remove()"><p class="credit">사진: 카카오맵</p>`;
+ return `<div class="pcar" data-pics="${esc(JSON.stringify(pics))}"><div class="pcar-track">${pics.map((u,i)=>`<img loading="lazy" referrerpolicy="no-referrer" alt="" src="${kth(u,"R640x0")}" data-pview="${esc(u)}" data-pi="${i}" onerror="this.style.display='none'">`).join("")}</div><span class="pcar-n">1/${pics.length}</span><div class="pcar-dots">${pics.map((_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</div></div><p class="credit">사진: 카카오맵</p>`}
+let _pv=[],_pvi=0;
+function openPview(urls,i){_pv=urls||[];_pvi=i||0;const el=document.getElementById("pview");if(!el||!_pv.length)return;el.querySelector("img").src=_pv[_pvi];el.querySelector(".pv-cap").textContent=`사진: 카카오맵 · ${_pvi+1}/${_pv.length}`;el.classList.add("open")}
+function closePview(){const el=document.getElementById("pview");if(el)el.classList.remove("open")}
+function stepPview(d){if(!_pv.length)return;_pvi=(_pvi+d+_pv.length)%_pv.length;openPview(_pv,_pvi)}
 let FUPD="2026-10-18";
 const isNewF=p=>p.fs&&p.fs!=="seed"&&(Date.now()-Date.parse(p.fs+"T00:00:00+09:00"))<14*864e5;
 const ALLF=()=>FOOD.concat(SUSHI,CHINESE);
@@ -332,7 +355,7 @@ function openSheet(id){
  const kplace="https://place.map.kakao.com/"+p.id;
  const sheet=document.getElementById("sheet");
  sheet.querySelector(".sheet-body").innerHTML=`
- <div class="sh-head">${p.im?`<img class="shimg" referrerpolicy="no-referrer" alt="" src="${kth(p.im,"R640x0")}" onerror="this.nextElementSibling.remove();this.remove()"><p class="credit">사진: 카카오맵</p>`:""}${heart("f:"+p.id)}<h2>${esc(p.n)}</h2><div class="meta"><span class="tag">${esc(p.gu||p.a)}</span><span class="tag cat">${p.c}</span><span class="tag gray">${esc(p.kc||"")}</span></div></div>
+ <div class="sh-head">${fcar(p)}${heart("f:"+p.id)}<h2>${esc(p.n)}</h2><div class="meta"><span class="tag">${esc(p.gu||p.a)}</span><span class="tag cat">${p.c}</span><span class="tag gray">${esc(p.kc||"")}</span></div></div>
  <div class="sh-sec"><div class="sh-t">📊 출처별 평점·리뷰 ${p.ar?`<span class="pop2">평균 ★${p.ar}</span>`:""}</div><table class="hrs src-t"><tr><th></th><th>평점</th><th>리뷰</th></tr>
  <tr><td>카카오맵</td><td>${p.sc?"★ "+p.sc:""}</td><td>방문자 ${fmtn(p.rc)}<br><span class="sub">블로그 ${fmtn(p.bl)}</span></td></tr>
  <tr><td>네이버</td><td>${p.ns?"★ "+p.ns:""}</td><td>${p.nv?"방문자 "+fmtn(p.nv):""}${p.nb?`<br><span class="sub">블로그·카페 ${fmtn(p.nb)}</span>`:""}${!p.nid?'<span class="sub">매칭 못 함</span>':""}</td></tr>
@@ -341,13 +364,26 @@ function openSheet(id){
  ${p.st.length?`<p class="sub">카카오 방문자가 꼽은 강점: ${p.st.map(s=>esc(s[0])+" "+s[1]).join(" · ")}</p>`:""}${p.vi?`<p class="sub">👣 카카오맵 방문자 추이 지수 ${fmtn(p.vi)}${p.vupd?" ("+p.vupd+" 기준)":""}${p.vbusy?" · 가장 붐비는 요일 "+p.vbusy:""}${p.dps!=null?" · "+(p.gu||"")+" 종합 "+p.dps+"점":""}</p>`:""}<p class="sub">출처: 카카오맵·네이버 검색·구글맵 공개 정보, ${p.ck||CHECKED} 확인 · 빈칸은 찾지 못한 값</p>
  <div class="links"><a class="goog" href="${gmap(p)}" target="_blank" rel="noopener">구글맵</a><a class="insta" href="${igtag(p)}" target="_blank" rel="noopener">#${esc(htag(p))}</a>${p.nid?`<a class="naver" href="https://map.naver.com/p/entry/place/${p.nid}" target="_blank" rel="noopener">네이버 플레이스</a>`:""}</div></div>
  <div class="sh-sec"><div class="sh-t">💬 리뷰 요약</div><ul class="rv">${p.sm.map(t=>`<li>${esc(t)}</li>`).join("")}</ul><p class="sub">최근 카카오맵 리뷰를 직접 요약한 내용이에요(원문 인용 아님). 네이버·구글 리뷰 원문은 위 버튼에서 확인하세요.</p></div>
- <div class="sh-sec"><div class="sh-t">📷 내부 사진</div><p class="sub">${p.ip?`카카오맵에 내부 사진 ${p.ip}장 이상 등록`:"사진은 지도 앱에서 확인"} · 저작권 보호를 위해 앱에 직접 넣지 않고 링크로 연결해요.</p><div class="links"><a class="kakao" href="${kplace}#photoview" target="_blank" rel="noopener">내부 사진 보기 (카카오맵)</a><a class="naver" href="${p.nid?"https://m.place.naver.com/restaurant/"+p.nid+"/photo":nmap(p.n)}" target="_blank" rel="noopener">네이버 사진</a></div></div>
+ <div class="sh-sec"><div class="sh-t">📷 내부 사진</div><p class="sub">${fpics(p).length?`위에 카카오맵 사진 ${fpics(p).length}장(최대 5·최신순) · `:""}${p.ip?`카카오맵 등록 ${p.ip}장 이상 · `:""}출처 표기: 카카오맵. 더 많은 사진은 아래 링크에서 확인해요.</p><div class="links"><a class="kakao" href="${kplace}#photoview" target="_blank" rel="noopener">카카오맵에서 더 보기</a><a class="naver" href="${p.nid?"https://m.place.naver.com/restaurant/"+p.nid+"/photo":nmap(p.n)}" target="_blank" rel="noopener">네이버 사진</a></div></div>
  <div class="sh-sec"><div class="sh-t">📍 위치</div><p>${esc(p.addr||"정보 없음")}</p>${p.tel?`<p class="sub">☎ <a href="tel:${p.tel}">${p.tel}</a></p>`:""}<div class="links">${mapLinks(p.n)}<a class="off" href="${kplace}" target="_blank" rel="noopener">카카오 장소 페이지</a></div></div>
  <div class="sh-sec"><div class="sh-t">🕒 영업시간</div>${p.h.length?`<table class="hrs">${p.h.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join("")}</table><p class="sub">${p.ck||CHECKED} 기준 앞으로 7일 (카카오맵). 공휴일·임시휴무는 변동 가능</p>`:"<p>정보 없음</p>"}</div>
  <div class="sh-sec"><div class="sh-t">🍽️ 대표 메뉴·가격</div>${p.m.length?`<table class="hrs">${p.m.map(r=>`<tr><td>${esc(r[0])}</td><td>${won(r[1])}</td></tr>`).join("")}</table><p class="sub">카카오맵 등록 메뉴${p.mu?" (갱신 "+p.mu+")":""} · 실제 가격과 다를 수 있어요</p>`:"<p>정보 없음</p>"}</div>`;
  sheet.classList.add("open");document.body.style.overflow="hidden";
 }
 function closeSheet(){document.getElementById("sheet").classList.remove("open");document.body.style.overflow=""}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-pview]");if(!t)return;e.preventDefault();e.stopPropagation();
+ const car=t.closest(".pcar");let urls=[];
+ if(car&&car.dataset.pics){try{urls=JSON.parse(car.dataset.pics)}catch(_){}}
+ if(!urls.length)urls=[t.getAttribute("data-pview")];
+ openPview(urls, Number(t.dataset.pi||0));
+});
+document.addEventListener("scroll",e=>{const tr=e.target;if(!tr||!tr.classList||!tr.classList.contains("pcar-track"))return;
+ const car=tr.closest(".pcar");if(!car)return;const n=tr.children.length||1;const i=Math.round(tr.scrollLeft/Math.max(tr.clientWidth,1));
+ const dots=car.querySelectorAll(".pcar-dots i");dots.forEach((d,j)=>d.classList.toggle("on",j===i));
+ const badge=car.querySelector(".pcar-n");if(badge)badge.textContent=(i+1)+"/"+n;
+},true);
+document.addEventListener("keydown",e=>{if(!document.getElementById("pview")?.classList.contains("open"))return;
+ if(e.key==="Escape")closePview();if(e.key==="ArrowLeft")stepPview(-1);if(e.key==="ArrowRight")stepPview(1)});
 function courseList(){
  const list=COURSES.filter(c=>(cgu==="전체"||(GU2A[cgu]||[]).includes(c.a))&&(!favOnly||favs.includes("c:"+c.title))&&match(c.title,c.a,c.stops.flat().join(" ")));
  return `<p class="hint">순서대로 이동하는 동선이에요. 각 장소는 지도에서 바로 열 수 있어요.</p>`+
@@ -973,5 +1009,6 @@ document.addEventListener("click",ev=>{
 });
 loadFlights();
 </script>
+<div id="pview" onclick="if(event.target.id==='pview')closePview()"><button class="pv-x" type="button" onclick="closePview()">✕</button><button class="pv-prev pv-nav" type="button" onclick="event.stopPropagation();stepPview(-1)">‹</button><img referrerpolicy="no-referrer" alt="" onclick="event.stopPropagation()"><button class="pv-next pv-nav" type="button" onclick="event.stopPropagation();stepPview(1)">›</button><div class="pv-cap">사진: 카카오맵</div></div>
 </body>
 </html>

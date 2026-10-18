@@ -80,6 +80,43 @@ SEED = DB.get("first_seen") is None
 FS = DB.get("first_seen") or {}
 OLDMAP = {p["id"]: p for p in OLD}
 
+# ---------- 1b) 사진만 갱신 (FOOD_PHOTOS_ONLY=1) ----------
+if os.environ.get("FOOD_PHOTOS_ONLY") == "1":
+    ids = list(dict.fromkeys([p["id"] for p in OLD] + [p["id"] for p in OLDS] + [p["id"] for p in (DB.get("chinese") or [])]))
+    DET = {}
+    with ThreadPoolExecutor(4) as ex:
+        for i, d in ex.map(detail, ids):
+            if d: DET[i] = d
+    print("사진 전용 상세", len(DET), "/", len(ids))
+    if len(DET) < 0.5 * len(ids):
+        print("상세 실패가 많아 사진 갱신 중단"); sys.exit(0)
+    def apply_photos(lst):
+        out = []
+        n2 = 0
+        for p in lst:
+            r = dict(p)
+            d = DET.get(r["id"])
+            if d:
+                photos = imgs(d, r.get("id"))
+                if photos:
+                    r["ims"] = photos; r["im"] = photos[0]
+                    if len(photos) >= 2: n2 += 1
+                ip = ((d.get("photos") or {}).get("counts") or {}).get("total")
+                if ip: r["ip"] = ip
+                r["ck"] = TODAY
+            elif r.get("im") and not r.get("ims"):
+                r["ims"] = [r["im"]]
+            out.append(r)
+        return out, n2
+    food2, n_food = apply_photos(OLD)
+    sushi2, n_su = apply_photos(OLDS)
+    chin2, n_ch = apply_photos(DB.get("chinese") or [])
+    newdb = {"updated": TODAY, "food": food2, "sushi": sushi2, "chinese": chin2 or DB.get("chinese") or [],
+             "first_seen": FS, "fishmarkets": DB.get("fishmarkets") or []}
+    json.dump(newdb, open(FJ, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+    print("사진 저장", "food≥2:", n_food, "sushi≥2:", n_su, "chinese≥2:", n_ch, "updated", TODAY)
+    sys.exit(0)
+
 # ---------- 2) 후보 재검색 ----------
 def cands(gu):
     out = {}
@@ -132,12 +169,54 @@ if len(DET) < 0.7 * len(ids):
 def closed(sm):
     return sm.get("status") not in ("Y", None) or re.search("폐업|휴업", sm.get("name") or "")
 
-def img(d):
+def _ts(x):
+    for k in ("created_at", "datetime", "registered_at", "updated_at", "date"):
+        v = x.get(k) if isinstance(x, dict) else None
+        if not v: continue
+        s = str(v).replace("-", "").replace(":", "").replace("T", "").replace(" ", "")
+        digits = "".join(c for c in s if c.isdigit())
+        if len(digits) >= 8:
+            try: return int(digits[:14].ljust(14, "0"))
+            except Exception: pass
+    pid = (x.get("id") or x.get("photo_id") or 0) if isinstance(x, dict) else 0
+    try: return int(pid)
+    except Exception: return 0
+
+def imgs(d, place_id=None):
+    """카카오 장소 사진 최대 5장 (최신순). panel3 + photolist."""
+    scored, seen = [], set()
+    def add(url, ts=0):
+        if not url or "kakaocdn" not in url: return
+        u = url.replace("http:", "https:")
+        key = u.split("?")[0]
+        if key in seen: return
+        seen.add(key); scored.append((ts, u))
     for x in ((d.get("menu") or {}).get("menus") or {}).get("items", []):
-        if x.get("photo_url") and "kakaocdn" in x["photo_url"]: return x["photo_url"].replace("http:", "https:")
+        if x.get("photo_url"): add(x["photo_url"], _ts(x))
     for x in ((d.get("photos") or {}).get("photos") or []):
-        if "kakaocdn" in x.get("url", "") and x.get("media_type", "PHOTO") == "PHOTO": return x["url"].replace("http:", "https:")
-    return None
+        if x.get("media_type", "PHOTO") != "PHOTO": continue
+        add(x.get("url"), _ts(x))
+    if place_id and len(scored) < 2:  # panel에 1장 이하일 때만 photolist 추가 호출
+        for url in (
+            "https://place-api.map.kakao.com/places/%s/photos?page=1&size=20" % place_id,
+            "https://place-api.map.kakao.com/places/%s/photos?photoCategory=&page=1&size=20" % place_id,
+        ):
+            pl = jget(url, HP)
+            if not pl: continue
+            items = pl if isinstance(pl, list) else (pl.get("photos") or pl.get("list") or pl.get("items") or [])
+            if isinstance(items, dict): items = items.get("photos") or items.get("list") or []
+            for x in items or []:
+                if not isinstance(x, dict): continue
+                if x.get("media_type") and x.get("media_type") != "PHOTO": continue
+                add(x.get("url") or x.get("photo_url") or x.get("img_url"), _ts(x))
+            if len(scored) >= 5: break
+            time.sleep(0.15)
+    scored.sort(key=lambda t: -t[0])
+    return [u for _, u in scored[:5]]
+
+def img(d):
+    u = imgs(d)
+    return u[0] if u else None
 
 def hours(d):
     h = []
@@ -167,8 +246,12 @@ def refresh(r, d, new=False):
     r["sc"] = ss.get("average_score") or r.get("sc") or None
     if sum(w): r["vi"] = sum(w); r["vupd"] = (v.get("updated_at") or "")[:10] or r.get("vupd")
     if any(days.values()): r["vbusy"] = DAY[max(days, key=days.get)]
-    u = img(d)
-    if u: r["im"] = u
+    photos = imgs(d, r.get("id"))
+    if photos:
+        r["ims"] = photos
+        r["im"] = photos[0]
+    elif r.get("im") and not r.get("ims"):
+        r["ims"] = [r["im"]]
     h = hours(d)
     if h: r["h"] = h
     if items:
@@ -321,7 +404,7 @@ for p in out + S + CHIN:
     if p["id"] in FS: p["fs"] = FS[p["id"]]
     else: p.pop("fs", None)
 
-newdb = {"updated": DB.get("updated"), "food": out, "sushi": S, "chinese": CHIN, "first_seen": FS}
+newdb = {"updated": DB.get("updated"), "food": out, "sushi": S, "chinese": CHIN, "first_seen": FS, "fishmarkets": DB.get("fishmarkets") or []}
 def body(x): return json.dumps({k: v for k, v in x.items() if k != "updated"}, ensure_ascii=False, sort_keys=True)
 changed = (not os.path.exists(FJ)) or body(newdb) != body(DB)
 if changed:
