@@ -632,6 +632,10 @@ document.addEventListener("toggle",e=>{
  if(e.target&&e.target.classList&&e.target.classList.contains("cal-long")){
   try{localStorage.setItem("busan_long_open",e.target.open?"1":"0")}catch(_){}
  }
+ if(e.target&&e.target.classList&&e.target.classList.contains("ht-tog")){
+  try{localStorage.setItem("busan_ht_open",e.target.open?"1":"0")}catch(_){}
+  const ar=e.target.querySelector(".ht-arrow");if(ar)ar.textContent=e.target.open?"▲":"▼";
+ }
 });
 loadNews();
 loadEvents();
@@ -684,6 +688,11 @@ if(j&&Array.isArray(j.food)&&j.food.length>100){FOOD=j.food;if(Array.isArray(j.s
 
 .ht-box{margin:12px 0 8px;padding:10px;border:1px solid var(--line,#e5e5ea);border-radius:12px;background:#fff8f0}
 .ht-box .sec-title{margin:0 0 4px}
+.ht-tog>summary{list-style:none;cursor:pointer;font-weight:700;font-size:16px;margin:0;padding:4px 2px;display:flex;align-items:center;justify-content:space-between;gap:8px;user-select:none}
+.ht-tog>summary::-webkit-details-marker{display:none}
+.ht-tog>summary .ht-arrow{font-weight:400;color:var(--sub);font-size:13px}
+.ht-tog[open]>summary .ht-arrow{transform:none}
+.fl-sites-h{scroll-margin-top:calc(var(--hh,118px) + 56px)}
 .ht-card{display:flex;gap:10px;padding:10px 8px;border-bottom:1px solid #f0e6d8;cursor:pointer}
 .ht-card:last-child{border-bottom:0}
 .ht-rank{width:28px;height:28px;border-radius:8px;background:#e5484d;color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -754,7 +763,7 @@ function flSites(c,d1,d2,ro,e){
  const link={"구글 항공편":flUrl(c,d1,d2),"제주항공 공식":flAirUrl("제주항공",c,d1,d2)};
  const rest=[["네이버 항공권",flNaver(c,d1,d2)],["스카이스캐너",`https://www.skyscanner.co.kr/transport/flights/pus/${c.toLowerCase()}/${yy(d1)}/${yy(d2)}/?adultsv2=1&preferdirects=true`],["카약",`https://www.kayak.co.kr/flights/PUS-${c}/${d1}/${d2}?fs=stops=0`],["트립닷컴",`https://kr.trip.com/flights/showfarefirst?dcity=pus&acity=${c.toLowerCase()}&ddate=${d1}&rdate=${d2}&triptype=rt&class=y&quantity=1&nonstoponly=on`],["인터파크(NOL)",`https://travel.interpark.com/air/search/a:PUS-a:${c}-${flYmd(d1)}/a:${c}-a:PUS-${flYmd(d2)}?cabin=ECONOMY&infant=0&child=0&adult=1`]];
  src.sort((a,b)=>a.p-b.p);
- let h=`<div class="sec-title">💸 사이트별 최저가</div><div class="card">`;
+ let h=`<div class="sec-title fl-sites-h" id="fl-sites">💸 사이트별 최저가</div><div class="card">`;
  h+=src.map((x,i)=>`<a class="fl-site${i===0?" best":""}" href="${esc(link[x.s]||flUrl(c,d1,d2))}" target="_blank" rel="noopener"><span>${i===0?"🏆 ":""}${esc(x.s)}</span><b>${flWon(x.p)}</b></a>`).join("");
  h+=rest.map(([n,u])=>`<a class="fl-site" href="${esc(u)}" target="_blank" rel="noopener"><span>${esc(n)}</span><span class="sub">실시간 요금 확인 ›</span></a>`).join("");
  return h+`<p class="hint">금액은 왕복 1인·직항·세금·유류할증료 포함. 제주항공은 공식 최저가 캘린더(가는 편+오는 편 합계). 자동 수집이 막힌 사이트는 링크로 바로 확인하세요.</p></div>`;
@@ -841,7 +850,9 @@ function flHotelBox(){
  if(!FLH||!(FLH.hotels||[]).length)return "";
  const show=(fr==="BKK"||fr==="DMK"||!fr);
  if(!show)return "";
- let h=`<div class="ht-box"><div class="sec-title">🏨 파타야 호텔 TOP 10 <span style="font-weight:400;color:var(--sub);font-size:12px">4성급 · 북파타야·나클루아 / 세컨드·써드로드</span></div>`;
+ const open=(()=>{try{return localStorage.getItem("busan_ht_open")==="1"}catch(_){return false}})();
+ let h=`<details class="ht-box ht-tog"${open?" open":""}><summary>🏨 파타야 4성급 호텔 TOP 10 <span class="ht-arrow">${open?"▲":"▼"}</span></summary>`;
+ h+=`<p class="ht-note" style="font-weight:400;color:var(--sub);font-size:12px;margin:6px 2px 4px">북파타야·나클루아 / 세컨드·써드로드</p>`;
  h+=`<p class="ht-note">${esc(FLH.note||"")} · ${esc(FLH.scope||"")}<br>업데이트 ${esc(FLH.updated||"")} · 출처: ${esc(FLH.source||"")}</p>`;
  h+=FLH.hotels.map(x=>{
   const subs=Object.entries(x.subs||{}).map(([k,v])=>`<span>${esc(k)} ${esc(String(v))}</span>`).join("");
@@ -849,7 +860,7 @@ function flHotelBox(){
   const ml=x.mall?`${esc(x.mall.name)} 도보 ${x.mall.walk_min}분`:"";
   return `<div class="ht-card" data-ht="${esc(x.name_en)}"><div class="ht-rank">${x.rank||""}</div><div class="ht-main"><div class="ht-name">${esc(x.name)} <span class="sub" style="font-weight:500">★${x.score} · 리뷰 ${(x.reviews||0).toLocaleString("ko-KR")}</span></div><div class="ht-meta">${esc(x.area||"")} · 4성급${x.breakfast?` · ${esc(x.breakfast)}`:""}<br>🛒 ${bg}${ml?` · 🏬 ${ml}`:""}<br>🚐 ${esc(x.transport||"")}</div><div class="ht-subs">${subs}</div></div><div class="ht-price">${flWonH(x.price_krw)}<small>1박·1실</small></div></div>`;
  }).join("");
- h+=`<p class="ht-note">좀티언 제외. 청결/조식/위치 세부 점수는 출처에 없으면 '정보 없음'. 요금은 Google 호텔 표시 USD를 KRW로 환산한 값이며 수시로 바뀌어요.</p></div>`;
+ h+=`<p class="ht-note">좀티언 제외. 청결/조식/위치 세부 점수는 출처에 없으면 '정보 없음'. 요금은 Google 호텔 표시 USD를 KRW로 환산한 값이며 수시로 바뀌어요.</p></details>`;
  return h;
 }
 function openHotel(en){
