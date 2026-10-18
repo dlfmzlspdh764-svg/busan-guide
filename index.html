@@ -634,7 +634,6 @@ document.addEventListener("toggle",e=>{
  }
  if(e.target&&e.target.classList&&e.target.classList.contains("ht-tog")){
   try{localStorage.setItem("busan_ht_open",e.target.open?"1":"0")}catch(_){}
-  const ar=e.target.querySelector(".ht-arrow");if(ar)ar.textContent=e.target.open?"▲":"▼";
  }
 });
 loadNews();
@@ -690,8 +689,8 @@ if(j&&Array.isArray(j.food)&&j.food.length>100){FOOD=j.food;if(Array.isArray(j.s
 .ht-box .sec-title{margin:0 0 4px}
 .ht-tog>summary{list-style:none;cursor:pointer;font-weight:700;font-size:16px;margin:0;padding:4px 2px;display:flex;align-items:center;justify-content:space-between;gap:8px;user-select:none}
 .ht-tog>summary::-webkit-details-marker{display:none}
-.ht-tog>summary .ht-arrow{font-weight:400;color:var(--sub);font-size:13px}
-.ht-tog[open]>summary .ht-arrow{transform:none}
+.ht-tog>summary::after{content:"▼";font-weight:400;color:var(--sub);font-size:13px}
+.ht-tog[open]>summary::after{content:"▲"}
 .fl-sites-h{scroll-margin-top:calc(var(--hh,118px) + 56px)}
 .ht-card{display:flex;gap:10px;padding:10px 8px;border-bottom:1px solid #f0e6d8;cursor:pointer}
 .ht-card:last-child{border-bottom:0}
@@ -851,7 +850,7 @@ function flHotelBox(){
  const show=(fr==="BKK"||fr==="DMK"||!fr);
  if(!show)return "";
  const open=(()=>{try{return localStorage.getItem("busan_ht_open")==="1"}catch(_){return false}})();
- let h=`<details class="ht-box ht-tog"${open?" open":""}><summary>🏨 파타야 4성급 호텔 TOP 10 <span class="ht-arrow">${open?"▲":"▼"}</span></summary>`;
+ let h=`<details class="ht-box ht-tog"${open?" open":""}><summary>🏨 파타야 4성급 호텔 TOP 10</summary>`;
  h+=`<p class="ht-note" style="font-weight:400;color:var(--sub);font-size:12px;margin:6px 2px 4px">북파타야·나클루아 / 세컨드·써드로드</p>`;
  h+=`<p class="ht-note">${esc(FLH.note||"")} · ${esc(FLH.scope||"")}<br>업데이트 ${esc(FLH.updated||"")} · 출처: ${esc(FLH.source||"")}</p>`;
  h+=FLH.hotels.map(x=>{
