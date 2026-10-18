@@ -700,6 +700,9 @@ document.addEventListener("toggle",e=>{
  if(e.target&&e.target.classList&&e.target.classList.contains("ht-tog")){
   try{localStorage.setItem("busan_ht_open",e.target.open?"1":"0")}catch(_){}
  }
+ if(e.target&&e.target.classList&&e.target.classList.contains("bkk-tog")){
+  try{localStorage.setItem("busan_bkk_open",e.target.open?"1":"0")}catch(_){}
+ }
 });
 loadNews();
 loadEvents();
@@ -768,6 +771,28 @@ if(j&&Array.isArray(j.food)&&j.food.length>100){FOOD=j.food;if(Array.isArray(j.s
 .ht-subs{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
 .ht-subs span{font-size:11px;background:#f3e8d8;color:#6b4423;border-radius:6px;padding:1px 6px}
 .ht-note{font-size:12px;color:var(--sub);margin:4px 2px 8px;line-height:1.4}
+
+.bkk-box{margin:12px 0 8px;padding:10px;border:1px solid var(--line,#e5e5ea);border-radius:12px;background:#f0f7ff}
+.bkk-box.ht-tog>summary{font-size:15px}
+.bkk-city{margin:8px 0 4px;padding:8px;border-radius:10px;background:#fff;border:1px solid #e0eaf5}
+.bkk-city>summary{list-style:none;cursor:pointer;font-weight:700;font-size:14px;padding:2px 0;display:flex;justify-content:space-between;align-items:center}
+.bkk-city>summary::-webkit-details-marker{display:none}
+.bkk-city>summary::after{content:"▼";font-size:12px;color:var(--sub);font-weight:400}
+.bkk-city[open]>summary::after{content:"▲"}
+.bkk-line{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid #eef3f8}
+.bkk-line:last-child{border-bottom:0}
+.bkk-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.bkk-ln{font-weight:700;font-size:13px}
+.bkk-lm{font-size:12px;color:var(--sub);line-height:1.45;margin-top:2px}
+.bkk-st{margin:4px 0 0;padding:6px 8px;background:#f6f9fc;border-radius:8px;font-size:12px;line-height:1.55;color:#333}
+.bkk-st details>summary{cursor:pointer;font-weight:600;list-style:none}
+.bkk-st details>summary::-webkit-details-marker{display:none}
+.bkk-chip{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;background:#e8f0fe;color:#1a56a8;margin:2px 3px 0 0}
+.bkk-tbl{width:100%;border-collapse:collapse;font-size:12px;margin:6px 0}
+.bkk-tbl th,.bkk-tbl td{border-bottom:1px solid #eef3f8;padding:5px 4px;text-align:left;vertical-align:top}
+.bkk-tbl th{color:var(--sub);font-weight:600}
+.bkk-link{display:inline-block;margin:8px 0 4px;padding:8px 12px;background:#1a56a8;color:#fff!important;border-radius:10px;font-weight:700;font-size:13px;text-decoration:none}
+.bkk-warn{font-size:11px;color:var(--sub);line-height:1.4;margin:6px 2px 0}
 </style>
 <script>
 /* ✈️ 항공편 탭: flights.json + flight_promos.json */
@@ -910,6 +935,95 @@ function flCal(c,ro){
  return h;
 }
 function flWonH(n){return n?n.toLocaleString("ko-KR")+"원":"요금 미제공"}
+
+function flThaiTransit(){
+ const show=(fr==="BKK"||fr==="DMK"||fr==="CNX"||!fr);
+ if(!show)return "";
+ const open=(()=>{try{return localStorage.getItem("busan_bkk_open")==="1"}catch(_){return false}})();
+ const st=(title,rows)=>`<details class="bkk-st"><summary>${title}</summary><div style="margin-top:4px">${rows.map(s=>`<div>· ${s}</div>`).join("")}</div></details>`;
+ const line=(color,name,meta,stations)=>`<div class="bkk-line"><span class="bkk-dot" style="background:${color}"></span><div><div class="bkk-ln">${name}</div><div class="bkk-lm">${meta}</div>${stations?st("역 목록 (한·영)",stations):""}</div></div>`;
+ let h=`<details class="bkk-box ht-tog bkk-tog"${open?" open":""}><summary>🚇 태국 교통 (방콕·파타야·치앙마이)</summary>`;
+ h+=`<p class="bkk-warn">지도·노선도 원본은 복사하지 않았어요. 우리 한국어 요약 + <a href="https://www.bangkoktransitmap.com/" target="_blank" rel="noopener">bangkoktransitmap.com에서 지도 보기</a>. 요금은 변동될 수 있어요.</p>`;
+
+ /* —— 방콕 —— */
+ h+=`<details class="bkk-city" open><summary>🇹🇭 방콕 (Bangkok)</summary>`;
+ h+=`<p class="bkk-lm" style="margin:4px 0 6px">BTS·MRT·ARL·SRT 요약. 환승역은 칩으로 표시.</p>`;
+ h+=`<div class="bkk-lm" style="margin-bottom:6px"><span class="bkk-chip">시암(Siam) BTS교차</span><span class="bkk-chip">아속(Asok)↔숙쿰빗(Sukhumvit) MRT</span><span class="bkk-chip">살라댕(Sala Daeng)↔실롬(Silom) MRT</span><span class="bkk-chip">파야타이 ARL↔BTS</span><span class="bkk-chip">막까싼(Makkasan) ARL↔펫차부리 MRT</span><span class="bkk-chip">방와(Bang Wa) BTS↔MRT</span><span class="bkk-chip">타오푼(Tao Poon) MRT블루↔퍼플</span></div>`;
+ h+=line("#78b928","BTS 수쿤빗선 (Sukhumvit / Green)","고가 스카이트레인 · 케하~쿠콧 · 요금 약 ฿16–62 · 보통 06:00–24:00 전후 (bts.co.th)",
+  ["케하 Kheha","베어링 Bearing","삼롱 Samrong","온눗 On Nut","엑까마이 Ekkamai","통로 Thong Lo","프롬퐁 Phrom Phong","아속 Asok ★MRT환승","나나 Nana","쁠런칫 Ploen Chit","칫롬 Chit Lom","시암 Siam ★실롬선 환승","랏차테위 Ratchathewi","파야타이 Phaya Thai ★ARL환승","빅토리 모뉴먼트 Victory Monument","모칫 Mo Chit","팟혼요틴24 Phahon Yothin 24","카셋사트대 Kasetsart University","쿠콧 Khu Khot"]);
+ h+=line("#78b928","BTS 실롬선 (Silom / Green)","시암~방와 · 사판탁신에서 차오프라야 배 환승",
+  ["국립경기장 National Stadium","시암 Siam ★","랏차담리 Ratchadamri","살라댕 Sala Daeng ★MRT환승","총논시 Chong Nonsi","수라삭 Surasak","사판탁신 Saphan Taksin ★배","끄룽톤부리 Krung Thon Buri ★골드선","웡위안야이 Wongwian Yai","방와 Bang Wa ★MRT환승"]);
+ h+=line("#1e4d9c","MRT 블루선 (Blue)","지하철 · 타프라~락송 / 타오프라~타프라 고리 · 요금 약 ฿16–42 · metro.bemplc.co.th",
+  ["타프라 Tha Phra","후아람퐁 Hua Lamphong","실롬 Silom ★BTS","룸피니 Lumphini","숙쿰빗 Sukhumvit ★BTS아속","펫차부리 Phetchaburi ★ARL막까싼","팟혼요틴 Phahon Yothin","찻우착 Chatuchak Park ★BTS모칫","방수 Bang Sue / 끄룽텝아피왓","타오푼 Tao Poon ★퍼플","방카피 Bang Kapi","락송 Lak Song"]);
+ h+=line("#6b3fa0","MRT 퍼플선 (Purple)","타오푼~클롱방파이 · 요금 약 ฿14–42",
+  ["타오푼 Tao Poon ★블루","방손 Bang Son","웡사왕 Wong Sawang","야엑티완논 Yaek Tiwanon","논타부리센터 Nonthaburi Center","클롱방파이 Khlong Bang Phai"]);
+ h+=line("#f0c400","MRT 옐로선 (Yellow)","라프라오~삼롱 · 모노레일",
+  ["라프라오 Lat Phrao ★블루","후아막 Hua Mak ★ARL","시린타린 Srinagarindra","삼롱 Samrong ★BTS"]);
+ h+=line("#e91e8c","MRT 핑크선 (Pink)","논타부리~미나부리 · 모노레일",
+  ["논타부리센터 Nonthaburi Center ★퍼플","왓프라스리마하탓 Wat Phra Sri Mahathat ★BTS","라프라오 Lat Phrao ★블루","미나부리 Min Buri"]);
+ h+=line("#8b1e3f","공항철도 ARL (Airport Rail Link)","수완나품↔파야타이 · City Line · 06:00–24:00 · 10–15분 간격 · 요금 ฿15–45 (공항→파야타이 ฿45, →막까싼 ฿35) · srtet.co.th",
+  ["수완나품 Suvarnabhumi","랏끄라방 Lat Krabang","반탑창 Ban Thap Chang","후아막 Hua Mak","람캄행 Ramkhamhaeng","막까싼 Makkasan ★MRT","랏차쁘라롭 Ratchaprarop","파야타이 Phaya Thai ★BTS"]);
+ h+=line("#c62828","SRT 다크레드 (Dark Red)","방수(끄룽텝아피왓)~랑싯 · 돈무앙 공항 접근 · 요금 구간제",
+  ["방수 Bang Sue / Krung Thep Aphiwat","돈무앙 Don Mueang ★공항","랑싯 Rangsit"]);
+ h+=line("#ef9a9a","SRT 라이트레드 (Light Red)","방수~탈링찬 · 통근",
+  ["방수 Bang Sue","탈링찬 Taling Chan"]);
+
+ h+=`<p class="bkk-ln" style="margin:10px 0 4px">✈️ 공항 → 시내</p>`;
+ h+=`<table class="bkk-tbl"><tr><th>구간</th><th>방법</th><th>요금·시간</th></tr>`;
+ h+=`<tr><td>수완나품(BKK)→시내</td><td>ARL City Line → 파야타이(BTS) 또는 막까싼(MRT)</td><td>฿15–45 · 약 30분 · 환승 티켓 별도</td></tr>`;
+ h+=`<tr><td>수완나품→시내</td><td>공식 택시 키오스크(미터+공항할증 ฿50+통행료)</td><td>씨롬·수쿤빗 약 ฿200대 · 카오산 약 ฿250대 (태국정부관광청 안내 수준)</td></tr>`;
+ h+=`<tr><td>돈무앙(DMK)→시내</td><td>SRT 다크레드(돈무앙역)→방수→BTS/MRT 환승 · 또는 Grab/택시</td><td>열차는 저렴·환승 필요 · Grab은 앱 표시가</td></tr>`;
+ h+=`</table>`;
+ h+=`<p class="bkk-lm">출처: bangkoktransitmap.com(노선 구성), bts.co.th / metro.bemplc.co.th / srtet.co.th, bangkokairportonline.com(ARL 요금·시간), visitthailand.or.kr(공항→시내)</p>`;
+ h+=`</details>`;
+
+ /* —— 파타야 —— */
+ h+=`<details class="bkk-city"><summary>🏖️ 파타야 (Pattaya)</summary>`;
+ h+=`<p class="bkk-ln" style="margin:6px 0 4px">🚐 쏘태우 / 바트버스 (Songthaew)</p>`;
+ h+=`<p class="bkk-lm">파란색 픽업 트럭. <b>비치로드는 남쪽</b>, <b>세컨드로드는 북쪽</b> 일방통행 루프. 가는 방향 차를 잡아타고, 내리기 전 벨→내려서 운전석 창으로 요금.</p>`;
+ h+=`<table class="bkk-tbl"><tr><th>노선</th><th>요금(2026.4.10~)</th><th>팁</th></tr>`;
+ h+=`<tr><td>비치로드↔세컨드로드 루프</td><td>약 10km 이내 ฿15 · 그 이상 ฿20</td><td>가격 먼저 물어보면 전세(฿100~)로 바뀌기 쉬움</td></tr>`;
+ h+=`<tr><td>나클루아(북파타야)</td><td>฿15 전후(10km 이내)</td><td>돌핀 로터리에서 나클루아행 확인</td></tr>`;
+ h+=`<tr><td>좀티엔</td><td>฿15(시내~좀티엔 약 6.5km)</td><td>사우스파타야·탑프라야 방면</td></tr>`;
+ h+=`<tr><td>쑤이부아카오 / 수쿰윗</td><td>구간·협의</td><td>수쿰윗 장거리는 타기 전 확인</td></tr>`;
+ h+=`</table>`;
+ h+=`<p class="bkk-lm">써드로드는 쏘태우 메인 루프가 약해요. 짧은 거리는 걷기, 문앞 이동은 Grab/Bolt가 편해요.</p>`;
+ h+=`<p class="bkk-ln" style="margin:10px 0 4px">📱 Grab · Bolt · 오토바이택시</p>`;
+ h+=`<p class="bkk-lm">문앞·짐·비·심야는 앱 호출. 요금은 앱에 미리 표시. 오토바이택시는 역·터미널 주변 짧은 구간에 많고, 요금 먼저 합의.</p>`;
+ h+=`<p class="bkk-ln" style="margin:10px 0 4px">🚌 방콕·공항 ↔ 파타야</p>`;
+ h+=`<table class="bkk-tbl"><tr><th>출발</th><th>요금·시간</th><th>비고</th></tr>`;
+ h+=`<tr><td>수완나품 → 북파타야 터미널</td><td>약 ฿135 · 약 2시간 · 07:30~18:30 하루 7회</td><td>1층 Gate 8 근처 Roong Reuang · 옛 389 계열 공항버스</td></tr>`;
+ h+=`<tr><td>수완나품 → 좀티엔</td><td>약 ฿158 · 매시 06:00–22:00</td><td>같은 회사 다른 노선</td></tr>`;
+ h+=`<tr><td>에카마이(BTS Ekkamai) 버스</td><td>창구 약 ฿144 · 2–2.5시간</td><td>05:00·06:00 후 09:00–22:00 매시 · 북파타야 도착</td></tr>`;
+ h+=`<tr><td>돈무앙 → 파타야</td><td>약 ฿164–179 · 약 3.5시간</td><td>Transport Co 등 · 하루 수회</td></tr>`;
+ h+=`<tr><td>Grab/택시·밴</td><td>세단 약 ฿1,200–1,500+통행료</td><td>문앞 도착 · 3–4명이면 버스보다 나을 수 있음</td></tr>`;
+ h+=`<tr><td>유타파오(UTP) 공항</td><td>택시·Grab · 시내까지 약 45분–1시간대</td><td>시내 직행 대중교통은 적음 · 앱·공항 택시 확인</td></tr>`;
+ h+=`</table>`;
+ h+=`<p class="bkk-lm">북파타야 버스 터미널은 파타야 느아 로드(수쿰윗 근처). 호텔까지 쏘태우 ฿15–20 또는 Grab.</p>`;
+ h+=`<p class="bkk-lm">출처: Pattaya Mail(2026-04 요금), pattaya-insider.com / pattayapointer.com(루프·이용법), fateatlas.com·bangkokpattayabus.com·AOT 수완나품(공항버스), visitthailandtoday.com</p>`;
+ h+=`</details>`;
+
+ /* —— 치앙마이 —— */
+ h+=`<details class="bkk-city"><summary>🌿 치앙마이 (Chiang Mai)</summary>`;
+ h+=`<p class="bkk-ln" style="margin:6px 0 4px">✈️ CNX 공항 → 올드시티</p>`;
+ h+=`<table class="bkk-tbl"><tr><th>방법</th><th>요금</th><th>시간·팁</th></tr>`;
+ h+=`<tr><td>RTC 시티버스 R3</td><td>정액 ฿30</td><td>약 20–40분 · 타패문·나이트바자·님만 경유 · 공항 터미널 밖 정류장 (운행 여부는 현장 확인)</td></tr>`;
+ h+=`<tr><td>공항 셔틀 A1/A2</td><td>฿40</td><td>A1 님만·후아이깨우·성곽 · A2 나이트바자·창클란 · A3 ฿60(경기장)</td></tr>`;
+ h+=`<tr><td>빨간 쏘태우(롱디엉)</td><td>합승 약 ฿30–50 · 전세 약 ฿200</td><td>요금 타기 전 합의 · 짐 많으면 비추천</td></tr>`;
+ h+=`<tr><td>Grab / Bolt</td><td>약 ฿110–170(비피크)</td><td>앱 고정가 · 픽업존 안내판 따라</td></tr>`;
+ h+=`<tr><td>공항 공식 택시</td><td>세단 약 ฿150 / 대형 약 ฿200대</td><td>도착홀 카운터 정액 · 미터·정액 확인</td></tr>`;
+ h+=`<tr><td>툭툭</td><td>공항→올드시티 약 ฿100–150</td><td>짧은 시내 구간은 약 ฿80–150 · 타기 전 합의</td></tr>`;
+ h+=`</table>`;
+ h+=`<p class="bkk-ln" style="margin:10px 0 4px">도시를 돌아다니기</p>`;
+ h+=`<p class="bkk-lm">올드시티(성곽 안)는 걷기로 충분. 님만·나이트바자·대학 쪽은 빨간 쏘태우 합승(목적지 말하고 합승 요금인지 확인) 또는 Grab. RTC 스마트버스가 돌고 있으면 ฿20–30로 저렴. 심야·비 올 때는 Grab이 제일 편해요.</p>`;
+ h+=`<p class="bkk-lm">출처: chiangmai.airportthai.co.th(RTC·공항셔틀 요금), passportandstamps.com·byklo.rent(2026 시세 가이드)</p>`;
+ h+=`</details>`;
+
+ h+=`<a class="bkk-link" href="https://www.bangkoktransitmap.com/" target="_blank" rel="noopener">🗺️ bangkoktransitmap.com에서 방콕 지도 보기</a>`;
+ h+=`<p class="bkk-warn">요약 작성: 2026-10-18(KST). 공식 요금·배차는 출발 전 다시 확인하세요. 지도 이미지·사이트 코드는 사용하지 않았어요.</p></details>`;
+ return h;
+}
+
 function flHotelBox(){
  if(!FLH||!(FLH.hotels||[]).length)return "";
  const show=(fr==="BKK"||fr==="DMK"||!fr);
@@ -959,6 +1073,7 @@ function flight(){
  h+=`<div class="catchips">${["전체","3박","4박","5박","6박","7박"].map(n=>`<button class="chip sm ${n===fn?"on":""}" data-fnn="${n}">${n}</button>`).join("")}</div>`;
  h+=`<p class="hint">${flag(fr)} 부산 → ${esc(ro.city)} (${fr}) · 운항: ${esc((ro.airlines||[]).join(", "))}${ro.median?` · 중간값 ${flWon(ro.median)}`:""}</p>`;
  if(fr==="BKK"||fr==="DMK")h+=flHotelBox();
+ if(fr==="BKK"||fr==="DMK"||fr==="CNX")h+=flThaiTransit();
  if(fview==="cal"){
   h+=flCal(fr,ro);
  }else{
