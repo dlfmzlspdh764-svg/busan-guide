@@ -93,6 +93,24 @@ def won(n):
     return "{:,}원".format(n)
 
 
+def jeju_cal(a, b):
+    """제주항공 공식 최저가 캘린더 (편도, 세금·유류할증료 포함). 실패 시 {}"""
+    body = json.dumps({"tripRoute": [{"searchStartDate": (TODAY + timedelta(days=1)).isoformat(), "searchEndDate": (TODAY + timedelta(days=100)).isoformat(),
+                       "originAirport": a, "destinationAirport": b}], "passengers": [{"type": "ADT", "count": "1"}]}).encode()
+    try:
+        rq = urllib.request.Request("https://sec.jejuair.net/ko/ibe/booking/searchlowestFareCalendarInPeriod.json", data=body, headers={
+            "Content-Type": "application/json", "Channel-Code": "WPC", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/128 Safari/537.36"})
+        j = json.load(urllib.request.urlopen(rq, timeout=20))
+        out = {}
+        for m in j["data"]["lowfares"]["lowFareDateMarkets"]:
+            f = m.get("lowestFareAmount") or {}
+            if not m.get("noFlights") and f.get("fareAmount"):
+                out[m["departureDate"][:10]] = int(f["fareAmount"] + (f.get("taxesAndFeesAmount") or 0))
+        return out
+    except Exception as ex:
+        print("jeju fail", a, b, ex); return {}
+
+
 def main():
     known = load(ROUTES_F, {"routes": [], "checked": None})
     prev = load(OUT, {"routes": {}})
@@ -137,8 +155,26 @@ def main():
         data[c][k] = {"k": k, "d": d1, "r": d2, "n": n, "p": r[0]["p"], "o": r[:8], "chk": NOW.strftime("%m-%d %H:%M")}
     if jobs and ok < len(jobs) * 0.3:
         raise SystemExit("too many failures: %d/%d" % (ok, len(jobs)))
+    # --- 다른 사이트: 제주항공 공식 최저가 캘린더 ---
+    jeju = {}
+    with ThreadPoolExecutor(6) as ex:
+        jr = list(ex.map(lambda c: (c, jeju_cal("PUS", c), jeju_cal(c, "PUS")), routes))
+    for c, o, i in jr:
+        if o and i:
+            jeju[c] = {"o": o, "i": i}
+    for c in routes:
+        for e in data[c].values():
+            g = e.get("g", e["p"]) if "src" in e else e["p"]
+            e["g"] = g
+            src = [{"s": "구글 항공편", "p": g}] if g else []
+            jj = jeju.get(c)
+            if jj and e["d"] in jj["o"] and e["r"] in jj["i"]:
+                src.append({"s": "제주항공 공식", "p": jj["o"][e["d"]] + jj["i"][e["r"]]})
+            src.sort(key=lambda x: x["p"])
+            e["src"] = src
+            e["p"] = src[0]["p"] if src else None
     # --- 결과 정리 ---
-    out = {"updated": NOW.strftime("%Y-%m-%d %H:%M"), "source": "Google 항공편(Google Flights) 공개 검색 결과",
+    out = {"updated": NOW.strftime("%Y-%m-%d %H:%M"), "source": "Google 항공편 + 제주항공 공식 최저가 캘린더 (사이트별 최저가 비교)",
            "basis": "왕복·성인 1인·일반석·직항, 세금·유류할증료 포함 총액(KRW)", "window": "출발 D+3~D+90, 3~7박", "routes": {}}
     alerted = load(ALERT_F, {})
     deals = []
@@ -149,7 +185,7 @@ def main():
         pr = prev.get("routes", {}).get(c, {})
         low_hist = min([x for x in (pr.get("low_hist"), prices[0] if prices else None) if x] or [0]) or None
         out["routes"][c] = {"country": CITY[c][0], "city": CITY[c][1], "fares": fares, "median": med, "min": prices[0] if prices else None,
-                            "low_hist": low_hist, "airlines": sorted({o["al"] for e in fares for o in e["o"]})}
+                            "low_hist": low_hist, "jeju": jeju.get(c), "airlines": sorted({o["al"] for e in fares for o in e["o"]})}
         if first_run or not med:
             continue
         for e in fares[:5]:
@@ -178,7 +214,7 @@ def main():
                 "✈️ <b>부산→%s (%s)</b>\n%s ~ %s (%d박) · %s %s %s\n💰 <b>%s</b> (%s, 중간값 %s)\n<a href=\"%s\">요금 보기</a>" % (
                     esc(CITY[c][1]), esc(c), esc(e["d"]), esc(e["r"]), e["n"],
                     esc(o["al"]), esc(o["fn"]), esc(o["dt"]),
-                    esc(won(e["p"])), esc(tag), esc(won(med)), esc(url)))
+                    esc(won(e["p"])), esc(tag + (" · " + e["src"][0]["s"] if e.get("src") else "")), esc(won(med)), esc(url)))
         tg(frame("flight_deal", join_items(items),
                  subtitle="직항·왕복 1인 · 세금·유류할증료 포함",
                  footer_extra=f'<a href="{esc(app)}">앱에서 보기</a>'))

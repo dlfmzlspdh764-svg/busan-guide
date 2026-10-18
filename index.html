@@ -129,6 +129,7 @@ footer{font-size:11px;color:var(--sub);text-align:center;padding:10px 16px 20px;
 .cal-und{font-size:11px;color:var(--sub);margin:8px 2px 0;line-height:1.4}
 .cal-long{margin:10px 0}.cal-long summary{font-size:14px}
 
+.fl-site{display:flex;justify-content:space-between;align-items:center;padding:9px 4px;border-bottom:1px solid #eee;color:inherit;text-decoration:none}.fl-site.best{background:#fff6d6;border-radius:8px;font-weight:700}.fl-site b{color:#d33}
 </style>
 </head>
 <body>
@@ -745,6 +746,19 @@ function flCard(c,e,ro){
  const o=e.o[0]||{};const hot=e.p&&ro.median&&e.p<=ro.median*0.8;
  return `<div class="card fl-row" data-fo="${c}|${e.k}"><div class="fl-l"><div class="fl-d">${flDayL(e.d)} → ${flDayL(e.r)} · ${e.n}박${hot?'<span class="fl-hot">🔥 특가</span>':""}</div><div class="fl-s">${esc(o.al||"")} ${esc(o.fn||"")} · ${esc(o.dt||"")} 출발${e.o.length>1?` · 직항 ${e.o.length}편`:""}</div>${flBookBtns(c,e.d,e.r,o.al,true)}</div><div class="fl-p">${flWon(e.p)}<small>왕복 1인</small></div></div>`;
 }
+function flSites(c,d1,d2,ro,e){
+ const yy=d=>flYmd(d).slice(2);
+ let src=(e&&e.src)?e.src.slice():[];
+ if(!src.some(x=>x.s==="제주항공 공식")&&ro&&ro.jeju&&ro.jeju.o[d1]&&ro.jeju.i[d2])src.push({s:"제주항공 공식",p:ro.jeju.o[d1]+ro.jeju.i[d2]});
+ if(!src.length&&e&&e.p)src.push({s:"구글 항공편",p:e.p});
+ const link={"구글 항공편":flUrl(c,d1,d2),"제주항공 공식":flAirUrl("제주항공",c,d1,d2)};
+ const rest=[["네이버 항공권",flNaver(c,d1,d2)],["스카이스캐너",`https://www.skyscanner.co.kr/transport/flights/pus/${c.toLowerCase()}/${yy(d1)}/${yy(d2)}/?adultsv2=1&preferdirects=true`],["카약",`https://www.kayak.co.kr/flights/PUS-${c}/${d1}/${d2}?fs=stops=0`],["트립닷컴",`https://kr.trip.com/flights/showfarefirst?dcity=pus&acity=${c.toLowerCase()}&ddate=${d1}&rdate=${d2}&triptype=rt&class=y&quantity=1&nonstoponly=on`],["인터파크(NOL)",`https://travel.interpark.com/air/search/a:PUS-a:${c}-${flYmd(d1)}/a:${c}-a:PUS-${flYmd(d2)}?cabin=ECONOMY&infant=0&child=0&adult=1`]];
+ src.sort((a,b)=>a.p-b.p);
+ let h=`<div class="sec-title">💸 사이트별 최저가</div><div class="card">`;
+ h+=src.map((x,i)=>`<a class="fl-site${i===0?" best":""}" href="${esc(link[x.s]||flUrl(c,d1,d2))}" target="_blank" rel="noopener"><span>${i===0?"🏆 ":""}${esc(x.s)}</span><b>${flWon(x.p)}</b></a>`).join("");
+ h+=rest.map(([n,u])=>`<a class="fl-site" href="${esc(u)}" target="_blank" rel="noopener"><span>${esc(n)}</span><span class="sub">실시간 요금 확인 ›</span></a>`).join("");
+ return h+`<p class="hint">금액은 왕복 1인·직항·세금·유류할증료 포함. 제주항공은 공식 최저가 캘린더(가는 편+오는 편 합계). 자동 수집이 막힌 사이트는 링크로 바로 확인하세요.</p></div>`;
+}
 function flOptRows(c,e){
  return (e.o||[]).slice().sort((a,b)=>(a.p||1e12)-(b.p||1e12)).map(o=>`<div class="fl-opt-row"><div class="fl-or-l"><b>${esc(o.al)} ${esc(o.fn||"")}</b><br>${flDayL(e.d)} ${esc(o.dt||"")} 김해 → ${esc(o.at||"")} ${esc(c)} · ${flDur(o.dur)} 직항${o.pl?" · "+esc(o.pl):""}${flBookBtns(c,e.d,e.r,o.al,true)}</div><div class="fl-or-p">${flWon(o.p)}<small>왕복 1인</small></div></div>`).join("");
 }
@@ -800,12 +814,14 @@ function flCal(c,ro){
    const e=exact[0];
    h+=`<div class="sec-title">선택한 일정 · 직항 요금 최저가순</div>`;
    h+=`<p class="hint">${flDayL(fDep)} 출국 → ${flDayL(fRet)} 귀국 · ${nights}박 · 왕복 1인 · 세금·유류할증료 포함</p>`;
+   h+=flSites(c,fDep,fRet,ro,e);
    h+=flOptRows(c,e)||flCard(c,e,ro);
    if((e.o||[]).length) h+=`<p class="hint">위 금액은 각 항공사 가는 편 + 가장 싼 오는 편 조합의 왕복 총액이에요. 예약·결제로 바로 결제 화면으로 이동해요.</p>`;
   }else{
    h+=`<div class="sec-title">선택한 일정 · 캐시 없음</div>`;
    h+=`<div class="fl-live"><b>${flDayL(fDep)} → ${flDayL(fRet)}</b> (${nights}박) 조합은 아직 앱 캐시에 없어요.<br>아래 링크로 실시간 직항 요금을 확인·예약하세요. 앱은 3~7박 일정을 매시간 순환 수집해요.</div>`;
    h+=flBookBtns(c,fDep,fRet,null,false);
+   h+=flSites(c,fDep,fRet,ro,null);
    const near=list.filter(e=>e.d===fDep).map(e=>({e,dist:Math.abs((+new Date(e.r))-(+new Date(fRet)))/864e5})).sort((a,b)=>a.dist-b.dist||(a.e.p||1e12)-(b.e.p||1e12));
    if(near.length){
     h+=`<div class="sec-title">같은 출국일 · 가까운 귀국일</div>`;
