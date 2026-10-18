@@ -38,6 +38,55 @@ def detail(i):
     time.sleep(0.25)
     return i, (d if d and d.get("summary") else None)
 
+def _ts(x):
+    for k in ("created_at", "datetime", "registered_at", "updated_at", "date"):
+        v = x.get(k) if isinstance(x, dict) else None
+        if not v: continue
+        s = str(v).replace("-", "").replace(":", "").replace("T", "").replace(" ", "")
+        digits = "".join(c for c in s if c.isdigit())
+        if len(digits) >= 8:
+            try: return int(digits[:14].ljust(14, "0"))
+            except Exception: pass
+    pid = (x.get("id") or x.get("photo_id") or 0) if isinstance(x, dict) else 0
+    try: return int(pid)
+    except Exception: return 0
+
+def imgs(d, place_id=None):
+    """카카오 장소 사진 최대 5장 (최신순). panel3 + photolist."""
+    scored, seen = [], set()
+    def add(url, ts=0):
+        if not url or "kakaocdn" not in url: return
+        u = url.replace("http:", "https:")
+        key = u.split("?")[0]
+        if key in seen: return
+        seen.add(key); scored.append((ts, u))
+    for x in ((d.get("menu") or {}).get("menus") or {}).get("items", []):
+        if x.get("photo_url"): add(x["photo_url"], _ts(x))
+    for x in ((d.get("photos") or {}).get("photos") or []):
+        if x.get("media_type", "PHOTO") != "PHOTO": continue
+        add(x.get("url"), _ts(x))
+    if place_id and len(scored) < 2:  # panel에 1장 이하일 때만 photolist 추가 호출
+        for url in (
+            "https://place-api.map.kakao.com/places/%s/photos?page=1&size=20" % place_id,
+            "https://place-api.map.kakao.com/places/%s/photos?photoCategory=&page=1&size=20" % place_id,
+        ):
+            pl = jget(url, HP)
+            if not pl: continue
+            items = pl if isinstance(pl, list) else (pl.get("photos") or pl.get("list") or pl.get("items") or [])
+            if isinstance(items, dict): items = items.get("photos") or items.get("list") or []
+            for x in items or []:
+                if not isinstance(x, dict): continue
+                if x.get("media_type") and x.get("media_type") != "PHOTO": continue
+                add(x.get("url") or x.get("photo_url") or x.get("img_url"), _ts(x))
+            if len(scored) >= 5: break
+            time.sleep(0.15)
+    scored.sort(key=lambda t: -t[0])
+    return [u for _, u in scored[:5]]
+
+def img(d):
+    u = imgs(d)
+    return u[0] if u else None
+
 # ---------- 1) 데이터 로드 / 최초 이전 ----------
 def inline(s, name):
     m = re.search(r'^(?:const|let|var) %s=(\[.*?\]);$' % name, s, re.M)
@@ -169,54 +218,6 @@ if len(DET) < 0.7 * len(ids):
 def closed(sm):
     return sm.get("status") not in ("Y", None) or re.search("폐업|휴업", sm.get("name") or "")
 
-def _ts(x):
-    for k in ("created_at", "datetime", "registered_at", "updated_at", "date"):
-        v = x.get(k) if isinstance(x, dict) else None
-        if not v: continue
-        s = str(v).replace("-", "").replace(":", "").replace("T", "").replace(" ", "")
-        digits = "".join(c for c in s if c.isdigit())
-        if len(digits) >= 8:
-            try: return int(digits[:14].ljust(14, "0"))
-            except Exception: pass
-    pid = (x.get("id") or x.get("photo_id") or 0) if isinstance(x, dict) else 0
-    try: return int(pid)
-    except Exception: return 0
-
-def imgs(d, place_id=None):
-    """카카오 장소 사진 최대 5장 (최신순). panel3 + photolist."""
-    scored, seen = [], set()
-    def add(url, ts=0):
-        if not url or "kakaocdn" not in url: return
-        u = url.replace("http:", "https:")
-        key = u.split("?")[0]
-        if key in seen: return
-        seen.add(key); scored.append((ts, u))
-    for x in ((d.get("menu") or {}).get("menus") or {}).get("items", []):
-        if x.get("photo_url"): add(x["photo_url"], _ts(x))
-    for x in ((d.get("photos") or {}).get("photos") or []):
-        if x.get("media_type", "PHOTO") != "PHOTO": continue
-        add(x.get("url"), _ts(x))
-    if place_id and len(scored) < 2:  # panel에 1장 이하일 때만 photolist 추가 호출
-        for url in (
-            "https://place-api.map.kakao.com/places/%s/photos?page=1&size=20" % place_id,
-            "https://place-api.map.kakao.com/places/%s/photos?photoCategory=&page=1&size=20" % place_id,
-        ):
-            pl = jget(url, HP)
-            if not pl: continue
-            items = pl if isinstance(pl, list) else (pl.get("photos") or pl.get("list") or pl.get("items") or [])
-            if isinstance(items, dict): items = items.get("photos") or items.get("list") or []
-            for x in items or []:
-                if not isinstance(x, dict): continue
-                if x.get("media_type") and x.get("media_type") != "PHOTO": continue
-                add(x.get("url") or x.get("photo_url") or x.get("img_url"), _ts(x))
-            if len(scored) >= 5: break
-            time.sleep(0.15)
-    scored.sort(key=lambda t: -t[0])
-    return [u for _, u in scored[:5]]
-
-def img(d):
-    u = imgs(d)
-    return u[0] if u else None
 
 def hours(d):
     h = []
