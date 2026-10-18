@@ -1,5 +1,5 @@
 """부산(PUS) 출발 태국·베트남 직항 왕복 최저가 수집 (Google Flights 공개 검색 결과).
-매시간 실행, 날짜를 4개 슬롯으로 나눠 순환 조회 → 약 4시간마다 전 구간 갱신."""
+매시간 실행, 날짜를 8개 슬롯으로 나눠 순환 조회 → 약 8시간마다 전 구간 갱신(3~7박)."""
 import json, os, statistics, time, urllib.request, urllib.parse, sys
 from datetime import datetime, timedelta, timezone
 from concurrent.futures import ThreadPoolExecutor
@@ -11,9 +11,9 @@ from tg_style import send as _tg_send, frame, join_items, esc  # noqa: E402
 KST = timezone(timedelta(hours=9))
 NOW = datetime.now(KST)
 TODAY = NOW.date()
-NIGHTS = [4, 5]
+NIGHTS = [3, 4, 5, 6, 7]
 DAYS = range(3, 91)          # 출발일: D+3 ~ D+90
-SLOTS = 4
+SLOTS = 8
 CITY = {"BKK": ("태국", "방콕 수완나품"), "DMK": ("태국", "방콕 돈므앙"), "CNX": ("태국", "치앙마이"),
         "HKT": ("태국", "푸껫"), "USM": ("태국", "코사무이"), "KBV": ("태국", "끄라비"), "HDY": ("태국", "핫야이"), "UTP": ("태국", "파타야(우타파오)"),
         "DAD": ("베트남", "다낭"), "CXR": ("베트남", "나트랑(깜라인)"), "PQC": ("베트남", "푸꾸옥"), "HAN": ("베트남", "하노이"),
@@ -118,7 +118,7 @@ def main():
     jobs = []
     for c in routes:
         for i in DAYS:
-            if not first_run and i % SLOTS != slot and (TODAY + timedelta(days=i)).isoformat() + "|4" in data[c]:
+            if not first_run and i % SLOTS != slot and any((TODAY + timedelta(days=i)).isoformat() + "|%d" % n in data[c] for n in NIGHTS):
                 continue
             for n in NIGHTS:
                 d1 = TODAY + timedelta(days=i)
@@ -134,12 +134,12 @@ def main():
         k = "%s|%d" % (d1, n)
         if not r:
             data[c].pop(k, None); continue
-        data[c][k] = {"k": k, "d": d1, "r": d2, "n": n, "p": r[0]["p"], "o": r[:3], "chk": NOW.strftime("%m-%d %H:%M")}
+        data[c][k] = {"k": k, "d": d1, "r": d2, "n": n, "p": r[0]["p"], "o": r[:8], "chk": NOW.strftime("%m-%d %H:%M")}
     if jobs and ok < len(jobs) * 0.3:
         raise SystemExit("too many failures: %d/%d" % (ok, len(jobs)))
     # --- 결과 정리 ---
     out = {"updated": NOW.strftime("%Y-%m-%d %H:%M"), "source": "Google 항공편(Google Flights) 공개 검색 결과",
-           "basis": "왕복·성인 1인·일반석·직항, 세금·유류할증료 포함 총액(KRW)", "window": "출발 D+3~D+90, 4·5박", "routes": {}}
+           "basis": "왕복·성인 1인·일반석·직항, 세금·유류할증료 포함 총액(KRW)", "window": "출발 D+3~D+90, 3~7박", "routes": {}}
     alerted = load(ALERT_F, {})
     deals = []
     for c in routes:
