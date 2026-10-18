@@ -9,7 +9,9 @@
 환경변수: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID (토큰은 절대 출력하지 않음)
 사용: python3 scripts/notify_telegram.py [--mode auto|digest|new|weekly] [--force] [--dry-run]
 """
-import json, os, sys, html, datetime, urllib.request, urllib.parse, urllib.error, argparse
+import json, os, sys, datetime, urllib.parse, argparse
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from tg_style import esc, send, chunks  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EVENTS = os.path.join(ROOT, "events.json")
@@ -19,7 +21,6 @@ KST = datetime.timezone(datetime.timedelta(hours=9))
 NOW = datetime.datetime.now(KST)
 TODAY = NOW.date()
 DOW = "월화수목금토일"
-LIMIT = 3900  # 텔레그램 4096자 제한 여유
 
 
 def d(x):
@@ -40,10 +41,6 @@ def when(e):
     return dl(s) if not en or en == s else f"{dl(s)}~{dl(en)}"
 
 
-def esc(x):
-    return html.escape(str(x or ""), quote=False)
-
-
 def item(e, new=False):
     lines = [("🆕 " if new else "• ") + f"<b>{esc(e['n'])}</b>"]
     meta = [when(e), e.get("gu", "")]
@@ -54,46 +51,11 @@ def item(e, new=False):
     if lu:
         names = " · ".join(x["name"] for x in lu[:3]) + (f" 외 {len(lu) - 3}" if len(lu) > 3 else "")
         lines.append("   🎤 " + esc(names))
-    links = [f'<a href="{html.escape(APP + "#event-" + urllib.parse.quote(e["id"]))}">앱에서 보기</a>']
+    links = [f'<a href="{esc(APP + "#event-" + urllib.parse.quote(e["id"]))}">앱에서 보기</a>']
     if e.get("url"):
-        links.append(f'<a href="{html.escape(e["url"])}">공식</a>')
+        links.append(f'<a href="{esc(e["url"])}">공식</a>')
     lines.append("   " + " · ".join(links))
     return "\n".join(lines)
-
-
-def chunks(header, items, footer=""):
-    out, cur = [], header
-    for it in items:
-        if len(cur) + len(it) + 2 > LIMIT:
-            out.append(cur)
-            cur = header.split("\n")[0] + " (계속)"
-        cur += "\n\n" + it
-    if footer:
-        if len(cur) + len(footer) + 2 > LIMIT:
-            out.append(cur); cur = footer
-        else:
-            cur += "\n\n" + footer
-    out.append(cur)
-    return out
-
-
-def send(text, token, chat, dry):
-    if dry:
-        print("----- (dry-run) -----\n" + text)
-        return True
-    data = urllib.parse.urlencode({"chat_id": chat, "text": text, "parse_mode": "HTML",
-                                   "disable_web_page_preview": "true"}).encode()
-    req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data)
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            j = json.loads(r.read().decode())
-    except urllib.error.HTTPError as ex:  # 토큰이 들어간 URL은 출력하지 않음
-        j = {"ok": False, "error_code": ex.code, "description": ex.read().decode(errors="replace")[:200]}
-    except Exception as ex:  # noqa
-        j = {"ok": False, "description": type(ex).__name__}
-    print("telegram:", "ok" if j.get("ok") else f"실패 {j.get('error_code')} {j.get('description')}",
-          ("message_id=" + str(j["result"]["message_id"])) if j.get("ok") else "")
-    return bool(j.get("ok"))
 
 
 def usable(e):
@@ -128,9 +90,10 @@ def main():
         new = [e for e in events if e["id"] not in known and kkey(e) not in known_keys and (d(e.get("e")) or d(e.get("s"))) >= TODAY]
         new.sort(key=lambda e: e.get("s") or "")
         if new:
-            hdr = f"🆕 <b>부산 새 행사 {len(new)}건</b> (자동 업데이트 {esc(data.get('updated', ''))} KST)"
-            for msg in chunks(hdr, [item(e, True) for e in new[:40]],
-                              f"…외 {len(new) - 40}건은 앱에서 확인하세요: {APP}#event" if len(new) > 40 else ""):
+            sub = f"자동 업데이트 {data.get('updated', '')} KST · {len(new)}건"
+            foot = f"…외 {len(new) - 40}건은 앱에서: {APP}#event" if len(new) > 40 else f"전체 일정: {APP}#event"
+            for msg in chunks("", [item(e, True) for e in new[:40]], style_key="new_event",
+                              subtitle=sub, footer_extra=foot):
                 ok_all &= send(msg, token, chat, a.dry_run); sent_any = True
 
     # 2) 아침 다이제스트 (하루 한 번), 월요일은 주간 요약
@@ -145,7 +108,7 @@ def main():
         newids = {e["id"] for e in new}
         if up:
             if weekly:
-                hdr = f"📅 <b>이번 주 부산 행사 요약</b> {dl(TODAY)}~{dl(end)} · {len(up)}건"
+                sub = f"{dl(TODAY)}~{dl(end)} · {len(up)}건"
                 items, cur = [], None
                 for e in up:
                     day = d(e["s"])
@@ -155,12 +118,13 @@ def main():
                 gus = {}
                 for e in up:
                     gus[e.get("gu", "")] = gus.get(e.get("gu", ""), 0) + 1
-                foot = "구·군별: " + esc(", ".join(f"{k} {v}" for k, v in sorted(gus.items(), key=lambda x: -x[1]))) + f"\n전체 일정: {APP}#event"
+                foot_extra = "구·군별: " + esc(", ".join(f"{k} {v}" for k, v in sorted(gus.items(), key=lambda x: -x[1]))) + f"\n전체 일정: {APP}#event"
+                style, foot = "weekly", foot_extra
             else:
-                hdr = f"☀️ <b>부산 다가오는 행사</b> (오늘~{dl(end)}) · {len(up)}건"
+                sub = f"오늘~{dl(end)} · {len(up)}건"
                 items = [item(e, e["id"] in newids) for e in up]
-                foot = f"전체 일정: {APP}#event"
-            for msg in chunks(hdr, items, foot):
+                style, foot = "digest", f"전체 일정: {APP}#event"
+            for msg in chunks("", items, style_key=style, subtitle=sub, footer_extra=foot):
                 ok_all &= send(msg, token, chat, a.dry_run); sent_any = True
         else:
             print("7일 안에 시작하는 행사 없음 → 다이제스트 건너뜀")

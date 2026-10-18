@@ -11,8 +11,9 @@ events.json에 없던 행사성 글을 바로 추가(기존 데이터는 유지)
 import html, json, os, sys, time, argparse, urllib.parse
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import update_events as U  # noqa: E402
-from notify_telegram import send, when, APP  # noqa: E402
+from notify_telegram import when, APP  # noqa: E402
 from breaking import fmt_event  # noqa: E402
+from tg_style import send, frame, esc  # noqa: E402
 
 STATE = os.path.join(U.ROOT, "data", "gu_watch.json")
 NOTIFIED = os.path.join(U.ROOT, "data", "notified.json")
@@ -33,19 +34,18 @@ def load(p, d):
 def fmt_date_confirmed(e, old_s):
     link = f'{APP}#event-{urllib.parse.quote(e["id"])}'
     lines = [
-        "📅 <b>날짜 확정</b>",
-        f"<b>{html.escape(e.get('n') or '')}</b>",
-        f"이전: {html.escape(old_s)}월 중 → 확정: {html.escape(when(e))}",
+        f"<b>{esc(e.get('n') or '')}</b>",
+        f"이전: {esc(old_s)}월 중 → 확정: {esc(when(e))}",
     ]
     if e.get("gu"):
-        lines.append(html.escape(e["gu"]) + (f" · {html.escape(e['p'][:40])}" if e.get("p") else ""))
+        lines.append(esc(e["gu"]) + (f" · {esc(e['p'][:40])}" if e.get("p") else ""))
     lu = e.get("lineup") or []
     if lu:
-        lines.append("🎤 " + html.escape(" · ".join(x["name"] for x in lu[:4])))
-    lines.append(f'<a href="{html.escape(link)}">앱에서 보기</a>')
+        lines.append("🎤 " + esc(" · ".join(x["name"] for x in lu[:4])))
+    lines.append(f'<a href="{esc(link)}">앱에서 보기</a>')
     if e.get("srcu") or e.get("url"):
-        lines.append(f'<a href="{html.escape(e.get("url") or e.get("srcu"))}">출처</a>')
-    return "\n".join(lines)
+        lines.append(f'<a href="{esc(e.get("url") or e.get("srcu"))}">출처</a>')
+    return frame("date_confirm", "\n".join(lines))
 
 
 def upgrade_date(e, s, en, confirmed_list):
@@ -146,7 +146,7 @@ def main():
         for e in [x for x in added if x["id"] not in seen][:MAX_SEND]:
             if not a.dry_run and not (token and chat):
                 print("텔레그램 설정 없음 → 전송 생략"); break
-            if send(fmt_event(e).replace("[속보] 새 행사 등록", "[속보] 구·군청 새 행사"), token, chat, a.dry_run):
+            if send(fmt_event(e, style_key="gu_new", title="🏛 구청 새 행사"), token, chat, a.dry_run):
                 sent.append(e["id"])
             time.sleep(1)
     # 날짜 확정 알림

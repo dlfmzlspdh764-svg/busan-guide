@@ -6,6 +6,8 @@
 - 실패하면 기존 데이터를 그대로 둠 (절대 비우지 않음)"""
 import json, os, re, sys, time, urllib.request, urllib.parse, datetime
 from concurrent.futures import ThreadPoolExecutor
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from tg_style import send, frame, join_items, esc  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HTML, FJ = os.path.join(ROOT, "index.html"), os.path.join(ROOT, "food.json")
@@ -330,12 +332,10 @@ print("저장" if changed else "변경 없음", "food", len(out), "sushi", len(S
 # ---------- 7) 텔레그램 ----------
 tok, chat = os.environ.get("TELEGRAM_BOT_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID")
 if fresh and tok and chat:
-    lines = [f"🍽️ 이번 주 새로 랭킹에 든 부산 맛집 ({len(fresh)}곳)", ""]
+    items = []
     for p in fresh[:25]:
-        lines.append(f"🆕 {p['n']} · {p.get('gu','')} · {p.get('c','')}" + (f" · ★{p['sc']}" if p.get("sc") else "") + f"\n{APP}#place-{p['id']}")
-    lines += ["", f"📱 앱에서 보기: {APP}#food"]
-    data = urllib.parse.urlencode({"chat_id": chat, "text": "\n".join(lines), "disable_web_page_preview": "true"}).encode()
-    try:
-        print("telegram", urllib.request.urlopen(f"https://api.telegram.org/bot{tok}/sendMessage", data, timeout=20).status)
-    except Exception as e:
-        print("telegram 실패", e)
+        meta = " · ".join(x for x in [p.get("gu", ""), p.get("c", ""), (f"★{p['sc']}" if p.get("sc") else "")] if x)
+        items.append(f"🆕 <b>{esc(p['n'])}</b>\n{esc(meta)}\n<a href=\"{esc(APP + '#place-' + str(p['id']))}\">앱에서 보기</a>")
+    msg = frame("food", join_items(items), subtitle=f"이번 주 랭킹 신규 {len(fresh)}곳",
+                footer_extra=f'📱 <a href="{esc(APP + "#food")}">맛집 탭 열기</a>')
+    print("telegram", "ok" if send(msg, tok, chat, False) else "fail")

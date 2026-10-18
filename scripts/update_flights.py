@@ -1,10 +1,12 @@
 """부산(PUS) 출발 태국·베트남 직항 왕복 최저가 수집 (Google Flights 공개 검색 결과).
 매시간 실행, 날짜를 4개 슬롯으로 나눠 순환 조회 → 약 4시간마다 전 구간 갱신."""
-import json, os, statistics, time, urllib.request, urllib.parse
+import json, os, statistics, time, urllib.request, urllib.parse, sys
 from datetime import datetime, timedelta, timezone
 from concurrent.futures import ThreadPoolExecutor
 from selectolax.lexbor import LexborHTMLParser
 from fast_flights import create_query, FlightQuery, Passengers, fetch_flights_html
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from tg_style import send as _tg_send, frame, join_items, esc  # noqa: E402
 
 KST = timezone(timedelta(hours=9))
 NOW = datetime.now(KST)
@@ -84,11 +86,7 @@ def tg(text):
     tok, chat = os.environ.get("TELEGRAM_BOT_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID")
     if not tok or not chat:
         print("telegram skip"); return
-    data = urllib.parse.urlencode({"chat_id": chat, "text": text, "disable_web_page_preview": "true"}).encode()
-    try:
-        urllib.request.urlopen("https://api.telegram.org/bot%s/sendMessage" % tok, data, timeout=20).read()
-    except Exception as e:
-        print("telegram error", type(e).__name__)
+    _tg_send(text, tok, chat, False)
 
 
 def won(n):
@@ -171,18 +169,26 @@ def main():
     app = "https://dlfmzlspdh764-svg.github.io/busan-guide/#flight"
     if deals:
         deals.sort(key=lambda x: x[1]["p"] / x[2])
-        lines = ["🔥 항공 특가 (부산 출발 직항·왕복 1인, 세금·유류할증료 포함)"]
+        items = []
         for c, e, med, lh in deals[:6]:
             o = e["o"][0]
             tag = "역대 최저" if lh and e["p"] < lh else "평균 대비 %d%%↓" % round((1 - e["p"] / med) * 100)
-            lines.append("\n✈️ 부산→%s %s\n%s ~ %s (%d박) · %s %s %s\n💰 %s (%s, 중간값 %s)\n%s" % (
-                CITY[c][1], c, e["d"], e["r"], e["n"], o["al"], o["fn"], o["dt"], won(e["p"]), tag, won(med), query(c, e["d"], e["r"]).url()))
-        lines.append("\n앱: " + app)
-        tg("\n".join(lines))
+            url = query(c, e["d"], e["r"]).url()
+            items.append(
+                "✈️ <b>부산→%s (%s)</b>\n%s ~ %s (%d박) · %s %s %s\n💰 <b>%s</b> (%s, 중간값 %s)\n<a href=\"%s\">요금 보기</a>" % (
+                    esc(CITY[c][1]), esc(c), esc(e["d"]), esc(e["r"]), e["n"],
+                    esc(o["al"]), esc(o["fn"]), esc(o["dt"]),
+                    esc(won(e["p"])), esc(tag), esc(won(med)), esc(url)))
+        tg(frame("flight_deal", join_items(items),
+                 subtitle="직항·왕복 1인 · 세금·유류할증료 포함",
+                 footer_extra=f'<a href="{esc(app)}">앱에서 보기</a>'))
     for c in new_routes:
         f = out["routes"].get(c, {})
-        tg("🆕 부산발 신규 직항\n✈️ 김해(PUS) → %s(%s) · %s\n항공사: %s\n최저 왕복: %s\n앱: %s" % (
-            CITY[c][1], c, CITY[c][0], ", ".join(f.get("airlines") or []) or "확인 중", won(f["min"]) if f.get("min") else "요금 미공개", app))
+        body = "✈️ 김해(PUS) → <b>%s</b> (%s) · %s\n항공사: %s\n최저 왕복: <b>%s</b>\n<a href=\"%s\">앱에서 보기</a>" % (
+            esc(CITY[c][1]), esc(c), esc(CITY[c][0]),
+            esc(", ".join(f.get("airlines") or []) or "확인 중"),
+            esc(won(f["min"]) if f.get("min") else "요금 미공개"), esc(app))
+        tg(frame("flight_new", body))
 
 
 if __name__ == "__main__":

@@ -12,7 +12,8 @@ import json, os, re, sys, html, time, datetime, argparse, hashlib, urllib.parse
 import email.utils
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import update_events as U  # noqa: E402
-from notify_telegram import send, esc, when, APP  # noqa: E402
+from notify_telegram import when, APP  # noqa: E402
+from tg_style import send, esc, frame  # noqa: E402
 
 ROOT = U.ROOT
 STATE = os.path.join(ROOT, "data", "breaking_sent.json")
@@ -102,8 +103,8 @@ def detect_events(state, known_all, seed):
     return found, ids
 
 
-def fmt_event(e):
-    L = ["🚨 <b>[속보] 새 행사 등록</b>", "", f"<b>{esc(e['n'])}</b>"]
+def fmt_event(e, style_key="breaking", title=None):
+    L = [f"<b>{esc(e['n'])}</b>"]
     meta = " · ".join(x for x in [when(e), e.get("gu", ""), (e.get("p") or "")[:40]] if x)
     if meta:
         L.append("📅 " + esc(meta))
@@ -114,10 +115,10 @@ def fmt_event(e):
         L.append("💰 " + esc(e["fee"][:60]))
     links = []
     if e.get("url"):
-        links.append(f'<a href="{html.escape(e["url"])}">출처</a>')
-    links.append(f'<a href="{html.escape(APP)}">앱에서 보기</a>')
-    L += ["", " · ".join(links)]
-    return "\n".join(L)
+        links.append(f'<a href="{esc(e["url"])}">출처</a>')
+    links.append(f'<a href="{esc(APP)}">앱에서 보기</a>')
+    L.append(" · ".join(links))
+    return frame(style_key, "\n".join(L), title=title or "🚨 속보 · 새 행사 등록")
 
 
 # ── (b) 뉴스 ──
@@ -162,25 +163,24 @@ def news(lineup_names):
 
 
 def fmt_news(n):
-    L = ["🚨 <b>[속보] 부산 공연·버스킹 소식</b>", "", f"<b>{esc(n['head'])}</b>"]
+    L = [f"<b>{esc(n['head'])}</b>"]
     if n["names"]:
         L.append("🎤 " + esc(" · ".join(n["names"])) + " (기사 제목 기준)")
     L.append("📰 " + esc(n["src"] or "뉴스") + " · " + n["dt"].strftime("%m.%d %H:%M") + " KST")
-    L += ["", f'<a href="{html.escape(n["link"])}">기사 보기</a> · <a href="{html.escape(APP)}">앱에서 보기</a>']
-    return "\n".join(L)
+    L.append(f'<a href="{esc(n["link"])}">기사 보기</a> · <a href="{esc(APP)}">앱에서 보기</a>')
+    return frame("breaking", "\n".join(L), title="🚨 속보 · 공연·버스킹")
 
 
 # ── (c) 출연진 추가 ──
 def fmt_lineup(e, added):
-    L = ["🚨 <b>[속보] 출연진 추가 공개</b>", "", f"<b>{esc(e['n'])}</b>",
-         "🎤 " + esc(" · ".join(added))]
+    L = [f"<b>{esc(e['n'])}</b>", "🎤 " + esc(" · ".join(added))]
     meta = " · ".join(x for x in [when(e), e.get("gu", ""), (e.get("p") or "")[:40]] if x)
     if meta:
         L.append("📅 " + esc(meta))
     src = (e.get("lineup") or [{}])[0].get("srcu") or e.get("url") or ""
-    links = ([f'<a href="{html.escape(src)}">출처</a>'] if src else []) + [f'<a href="{html.escape(APP + "#event-" + urllib.parse.quote(e["id"]))}">앱에서 보기</a>']
-    L += ["", " · ".join(links)]
-    return "\n".join(L)
+    links = ([f'<a href="{esc(src)}">출처</a>'] if src else []) + [f'<a href="{esc(APP + "#event-" + urllib.parse.quote(e["id"]))}">앱에서 보기</a>']
+    L.append(" · ".join(links))
+    return frame("breaking", "\n".join(L), title="🚨 속보 · 출연진 추가")
 
 
 def main():
