@@ -264,22 +264,26 @@
   {
    "id": "m-songjeong-sci",
    "n": "송정 별, 바다 과학축제",
-   "s": "2026-10",
-   "e": "2026-10",
+   "s": "2026-10-23",
+   "e": "2026-10-24",
    "gu": "해운대구",
    "type": "체험·프로그램",
-   "p": "송정해수욕장",
+   "p": "송정 죽도문화광장",
    "addr": "부산 해운대구 송정해변로",
-   "hours": "",
+   "hours": "17:00~21:30",
    "fee": "",
    "org": "해운대구 관광시설관리사업소",
-   "u": "https://www.haeundae.go.kr/index.do?menuCd=DOM_000000104002004000",
-   "src": "해운대구청 2026 행사 캘린더",
-   "srcu": "https://www.haeundae.go.kr/index.do?menuCd=DOM_000000104002004000",
-   "chk": "2026-10-03",
-   "st": "check",
+   "u": "https://busanzine.com/8030",
+   "src": "부산진(버스안진)",
+   "srcu": "https://busanzine.com/8030",
+   "chk": "2026-10-18",
+   "st": "confirmed",
    "origin": "manual",
-   "x": "구청 캘린더에 '10월 중'으로만 표기 (정확한 날짜 미발표)"
+   "x": "구청 캘린더에 '10월 중'으로만 표기 (정확한 날짜 미발표)",
+   "url": "https://busanzine.com/8030",
+   "lineup": [],
+   "lineup_status": "미공개",
+   "srcs": []
   },
   {
    "id": "m-bell",
@@ -496,13 +500,22 @@
    "fee": "무료",
    "org": "덕천동 젊음의거리 상인회 (후원·협력 북구청)",
    "tel": "",
-   "u": "https://www.busan.com/view/section/view.php?code=2026101516032147492",
+   "u": "https://www.busan.com/view/busan/view.php?code=2026101516032147492",
    "src": "부산일보",
-   "srcu": "https://www.busan.com/view/section/view.php?code=2026101516032147492",
+   "srcu": "https://www.busan.com/view/busan/view.php?code=2026101516032147492",
    "chk": "2026-10-18",
    "st": "confirmed",
    "origin": "manual",
-   "x": "주제: 가을밤, 덕천에서 다시 만나는 공유 야장 · 버스킹·DJ·야장·플리마켓 · 일부 구간 차량 통제"
+   "x": "주제: 가을밤, 덕천에서 다시 만나는 공유 야장 · 버스킹·DJ·야장·플리마켓 · 일부 구간 차량 통제",
+   "srcs": [
+    {
+     "src": "전국뉴스",
+     "u": "https://news.google.com/rss/articles/CBMicEFVX3lxTE00Mk9aTEozYmFmd0I4c3VCZlhacldTWm5wMl9EaE8xcTh0MmJaZFhFOHd1WlhLRXlkTVFWQU4wLTA0WVZ4WjJZZ3d4MXVUVV9wNWhQY3dkSm5hTTlKZ0szeGtab3dTbEZhLV9fYzgzc2Y?oc=5"
+    }
+   ],
+   "url": "https://www.busan.com/view/busan/view.php?code=2026101516032147492",
+   "lineup": [],
+   "lineup_status": "미공개"
   },
   {
    "id": "m-eobanggol-2026",
@@ -545,6 +558,70 @@
    "st": "confirmed",
    "origin": "manual",
    "x": "70여 체험·전시 부스 · 18개 동 경연 · 어린이마켓·무대공연"
+  },
+  {
+   "id": "ex2026-부산차이나타운문화축제",
+   "n": "제23회 부산차이나타운 문화축제",
+   "s": "2026-10-16",
+   "e": "2026-10-18",
+   "gu": "동구",
+   "type": "축제",
+   "p": "부산역 광장·초량 차이나타운 일원",
+   "addr": "부산 동구 중앙대로 206 (부산역) 일원",
+   "hours": "16일 17:30 퍼레이드·18:00 개막 · 18일 16:30 차이나는 노래자랑",
+   "fee": "무료",
+   "org": "부산동구 / 차이나타운축제위원회",
+   "u": "https://www.bsdonggu.go.kr/board/view.donggu?boardId=BBS_0000032&dataSid=5095719&menuCd=DOM_000000103005004000",
+   "src": "부산 동구청 행정정보공표",
+   "srcu": "https://www.bsdonggu.go.kr/board/view.donggu?boardId=BBS_0000032&dataSid=5095719&menuCd=DOM_000000103005004000",
+   "chk": "2026-10-18",
+   "st": "confirmed",
+   "x": "주제 동구개화 · 홍등거리·거리퍼레이드·한중공연·짬짜대전 · 출처 https://mobile.busan.com/view/busan/view.php?code=2026101414121728961",
+   "lineup": [
+    {
+     "name": "신승태",
+     "role": "특별공연",
+     "when": "10/18 폐막",
+     "src": "부산일보"
+    }
+   ],
+   "lineup_status": "공개",
+   "origin": "manual"
+  },
+  {
+   "id": "ex2026-기장붕장어축제in칠암",
+   "n": "기장붕장어축제in칠암",
+   "s": "2026-10-16",
+   "e": "2026-10-18",
+   "gu": "기장군",
+   "type": "축제",
+   "p": "일광읍 칠암항 일원",
+   "addr": "부산광역시 기장군 일광읍 칠암리",
+   "hours": null,
+   "fee": "(지난 회차 기준) 무료(일부 체험프로그램 유료 3,000~10,000)",
+   "org": "기장붕장어축제추진위원회",
+   "u": "https://www.gijang.go.kr/tour/index.gijang?menuCd=DOM_000000307001003000",
+   "src": "기장군 문화관광",
+   "srcu": "https://www.gijang.go.kr/tour/index.gijang?menuCd=DOM_000000307001003000",
+   "chk": "2026-10-18",
+   "st": "confirmed",
+   "x": "제20회 · 개막식 10/16 18:00 · 맨손붕장어잡기·불꽃쇼",
+   "lineup": [
+    {
+     "name": "나상도",
+     "role": "축하공연",
+     "when": "10/16",
+     "src": "아시아경제"
+    },
+    {
+     "name": "황인아",
+     "role": "축하공연",
+     "when": "10/16",
+     "src": "아시아경제"
+    }
+   ],
+   "lineup_status": "공개",
+   "origin": "manual"
   }
  ],
  "series": [

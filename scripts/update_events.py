@@ -662,6 +662,7 @@ GU_SOURCES = [
     ("dongnae", "동래구", "동래구청 문화행사", "https://www.dongnae.go.kr/board/list.dongnae?boardId=BBS_0000023&menuCd=DOM_000000103003000000&startPage=1", "dongnae"),
     ("namgu", "남구", "남구청 행사/교육", "https://www.bsnamgu.go.kr/board/list.namgu?boardId=BBS_0000002&menuCd=DOM_000000105001003000&contentsSid=138", "board"),
     ("bukgu", "북구", "북구청 새소식", "https://www.bsbukgu.go.kr/board/list.bsbukgu?boardId=BBS_0000023&menuCd=DOM_000000105001001000&contentsSid=368", "board"),
+    ("bukgu_notice", "북구", "북구청 공지사항", "https://www.bsbukgu.go.kr/board/list.bsbukgu?boardId=BBS_0000001&menuCd=DOM_000000105001002000&contentsSid=369", "board"),
     ("haeundae", "해운대구", "해운대구 연간행사안내", "https://www.haeundae.go.kr/index.do?menuCd=DOM_000000104002004000", "hd_calendar"),
     ("haeundae_art", "해운대구", "해운대문화회관 공지", "https://www.haeundae.go.kr/board/list.do?boardId=BBS_0000110&menuCd=DOM_000000904004000000&paging=ok&startPage=1", "board"),
     ("haeundae_tour", "해운대구", "해운대구 해운대소식", "https://www.haeundae.go.kr/tour/index.do?menuCd=DOM_000000307001000000", "board"),
@@ -763,9 +764,12 @@ def parse_range(text, year_hint):
     """'2026. 10. 17.(토) ~ 10. 18.(일)', '10월 13일(화)', '26.7.31.~8.2.' → (s, e) ISO 또는 None"""
     if not text:
         return None
+    # include fullwidth tilde ～ (U+FF5E) used by many 구청 pages
+    SEP = r"[~∼～〜\-–]"
     full = r"(20\d\d|'?[’‘']?\d\d)\s*[.\-/년]\s*(\d{1,2})\s*[.\-/월]\s*(\d{1,2})\s*일?\.?" + _DOW
     md = r"(\d{1,2})\s*[.\-/월]\s*(\d{1,2})\s*일?\.?" + _DOW
-    tm = r"(?:\s*(?:\d{1,2}:\d\d|\d{1,2}시(?:\s*\d{1,2}분)?|오[전후]\s*\d{1,2}시(?:\s*\d{1,2}분)?)(?:\s*[~\-]\s*(?:\d{1,2}:\d\d|\d{1,2}시))?)?"
+    day_only = r"(\d{1,2})(?![\d:])\s*일?" + _DOW
+    tm = r"(?:\s*(?:\d{1,2}:\d\d|\d{1,2}시(?:\s*\d{1,2}분)?|오[전후]\s*\d{1,2}시(?:\s*\d{1,2}분)?)(?:\s*" + SEP + r"\s*(?:\d{1,2}:\d\d|\d{1,2}시))?)?"
 
     def y4(y):
         y = re.sub(r"\D", "", y)
@@ -777,7 +781,7 @@ def parse_range(text, year_hint):
         except ValueError:
             return None
 
-    m = re.search(full + tm + r"\s*[~∼\-–]\s*(?:" + full + r"|" + md + r"|(\d{1,2})(?![\d:])\s*일?(?!\s*[:\d])" + r")", text)
+    m = re.search(full + tm + r"\s*" + SEP + r"\s*(?:" + full + r"|" + md + r"|" + day_only + r")", text)
     if m:
         y = y4(m.group(1)); s = ok(y, int(m.group(2)), int(m.group(3)))
         if m.group(4):
@@ -790,12 +794,25 @@ def parse_range(text, year_hint):
             e = ok(y + 1, int(m.group(7)), int(m.group(8)))
         if s and e and s <= e and (e - s).days < 400:
             return s.isoformat(), e.isoformat()
+    # 10월 16일(금)~18일(일) / 10월 23일부터 25일까지
+    m = re.search(
+        r"(?<![\d.])(\d{1,2})\s*월\s*(\d{1,2})\s*일?" + _DOW + tm
+        + r"(?:\s*(?:부터|" + SEP + r")\s*(\d{1,2})\s*일?" + _DOW + r"(?:\s*까지)?)",
+        text,
+    )
+    if m:
+        s = ok(year_hint, int(m.group(1)), int(m.group(2)))
+        e = ok(year_hint, int(m.group(1)), int(m.group(3))) if m.group(3) else s
+        if s and e:
+            if e < s:
+                e = ok(year_hint + 1, e.month, e.day)
+            return s.isoformat(), e.isoformat()
     m = re.search(full, text)
     if m:
         s = ok(y4(m.group(1)), int(m.group(2)), int(m.group(3)))
         if s:
             return s.isoformat(), s.isoformat()
-    m = re.search(r"(?<![\d.])" + md + tm + r"(?:\s*[~∼\-–]\s*" + md + r")?", text)
+    m = re.search(r"(?<![\d.])" + md + tm + r"(?:\s*" + SEP + r"\s*" + md + r")?", text)
     if m and ("월" in m.group(0) or re.search(r"\d{1,2}\.\s*\d{1,2}\.", m.group(0))):
         s = ok(year_hint, int(m.group(1)), int(m.group(2)))
         e = ok(year_hint, int(m.group(3)), int(m.group(4))) if m.group(3) else s

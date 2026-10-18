@@ -12,6 +12,18 @@ import update_events as U  # noqa: E402
 from notify_telegram import when, APP  # noqa: E402
 from tg_style import send, frame, esc  # noqa: E402
 
+
+NAME_ALIASES = {
+    "부산차이나타운 문화축제": ["제23회 부산차이나타운 문화축제", "차이나타운 문화축제", "부산 차이나타운 특구 문화축제"],
+    "제23회 부산차이나타운 문화축제": ["부산차이나타운 문화축제", "차이나타운 문화축제"],
+    "옥토버페스타 인 광안리": ["FALL IN GWANGALLI", "폴 인 광안리", "옥토버페스타 광안리"],
+    "서면 빛 축제": ["서면빛축제", "2026 서면 빛 축제"],
+    "기장붕장어축제in칠암": ["기장붕장어축제", "제20회 기장붕장어축제"],
+    "송정 별, 바다 과학축제": ["송정 별바다 과학축제", "송정 밤바다 별빛과학", "별바다 과학축제"],
+    "UN평화축제": ["제28회 UN평화축제", "UN 평화축제"],
+}
+
+
 NOTIFIED = os.path.join(U.ROOT, "data", "notified.json")
 TBD_ALERT_MAX = 8
 SLEEP = 0.25
@@ -54,10 +66,17 @@ def upgrade(e, s, en, hits, via):
     return True
 
 
-def news_snippets(name, month_hint):
+def news_snippets(name, month_hint, aliases=None):
     """Google News RSS + Naver news HTML에서 제목·요약을 모음."""
     out = []
-    q = f"{name} {month_hint} 개최 OR 일정 OR 날짜"
+    names = [name] + list(aliases or [])
+    # try primary then first alias
+    qname = names[0]
+    for alt in names[1:3]:
+        if alt and alt not in qname:
+            qname = f"({qname}) OR ({alt})"
+            break
+    q = f"{qname} {month_hint} 개최 OR 일정 OR 날짜"
     gurl = "https://news.google.com/rss/search?" + urllib.parse.urlencode(
         {"q": q + " when:60d", "hl": "ko", "gl": "KR", "ceid": "KR:ko"}
     )
@@ -95,15 +114,15 @@ def resolve_via_news(e):
         return None
     year_hint = int(s0[:4])
     month_hint = f"{int(s0[5:7])}월"
-    texts = news_snippets(name, month_hint)
+    aliases = NAME_ALIASES.get(name, [])
+    texts = news_snippets(name, month_hint, aliases)
     time.sleep(SLEEP)
-    # prefer snippets that contain a short form of the name
-    key = U.norm(name)[:6]
+    keys = [U.norm(name)[:6]] + [U.norm(a)[:6] for a in aliases]
+    keys += [name[:4], name[:6]] + [a[:4] for a in aliases if len(a) >= 4]
     for text in texts:
-        if key and key not in U.norm(text):
-            # still allow if original chars overlap
-            if name[:4] not in text and name[:6] not in text:
-                continue
+        nt = U.norm(text)
+        if keys and not any((k and (k in nt or k in text)) for k in keys):
+            continue
         rng = U.parse_range(text, year_hint)
         if not rng:
             continue
@@ -149,11 +168,25 @@ def main():
         url = (e.get("srcu") or e.get("url") or "").lower()
         detail = 0 if ("view" in url or "detail" in url or "fstvl" in url) else 1
         pri = 0 if st == "check" else (1 if st != "expected" else 2)
-        return (pri, detail, e.get("s") or "", e.get("n") or "")
+        s0 = e.get("s") or "9999-99"
+        # nearer months first (current month=0, next=1, ...)
+        try:
+            y, m = int(s0[:4]), int(s0[5:7])
+            near = (y - U.NOW.year) * 12 + (m - U.NOW.month)
+            if near < 0:
+                near = 50 + abs(near)
+        except Exception:
+            near = 99
+        return (near, pri, detail, s0, e.get("n") or "")
     tbds.sort(key=rank)
     hits = []
     checked = 0
+    # time box: prefer finishing near-term rather than all 80+ TBD
+    deadline = t0 + 12 * 60
     for e in tbds:
+        if time.time() > deadline and checked >= 12:
+            print(f"시간 제한 → 나머지 TBD {len(tbds)-checked}건 다음 회차로")
+            break
         checked += 1
         got = resolve_one(e)
         if got:
