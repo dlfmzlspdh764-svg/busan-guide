@@ -93,22 +93,44 @@ def won(n):
     return "{:,}원".format(n)
 
 
+_FX = {}
+def fx(cur):
+    """1 cur = ? KRW (open.er-api.com 무료 공개 환율)"""
+    if cur == "KRW":
+        return 1.0
+    if not _FX:
+        try:
+            _FX.update(json.load(urllib.request.urlopen("https://open.er-api.com/v6/latest/KRW", timeout=15))["rates"])
+        except Exception as ex:
+            print("fx fail", ex); _FX["_"] = 0
+    r = _FX.get(cur)
+    return 1 / r if r else None
+
+
 def jeju_cal(a, b):
-    """제주항공 공식 최저가 캘린더 (편도, 세금·유류할증료 포함). 실패 시 {}"""
-    body = json.dumps({"tripRoute": [{"searchStartDate": (TODAY + timedelta(days=1)).isoformat(), "searchEndDate": (TODAY + timedelta(days=100)).isoformat(),
-                       "originAirport": a, "destinationAirport": b}], "passengers": [{"type": "ADT", "count": "1"}]}).encode()
-    try:
-        rq = urllib.request.Request("https://sec.jejuair.net/ko/ibe/booking/searchlowestFareCalendarInPeriod.json", data=body, headers={
-            "Content-Type": "application/json", "Channel-Code": "WPC", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/128 Safari/537.36"})
-        j = json.load(urllib.request.urlopen(rq, timeout=20))
-        out = {}
-        for m in j["data"]["lowfares"]["lowFareDateMarkets"]:
-            f = m.get("lowestFareAmount") or {}
-            if not m.get("noFlights") and f.get("fareAmount"):
-                out[m["departureDate"][:10]] = int(f["fareAmount"] + (f.get("taxesAndFeesAmount") or 0))
-        return out
-    except Exception as ex:
-        print("jeju fail", a, b, ex); return {}
+    """제주항공 공식 최저가 캘린더 (편도, 세금·유류할증료 포함). 1회 최대 3개월 → 2구간 조회. 실패 시 {}"""
+    s1 = TODAY + timedelta(days=1)
+    m3 = s1.replace(year=s1.year + (s1.month + 2) // 12, month=(s1.month + 2) % 12 + 1, day=1)  # 3개월 뒤 1일
+    out = {}
+    for st, en in ((s1, m3 - timedelta(days=1)), (m3, TODAY + timedelta(days=92))):
+        if st > en:
+            continue
+        body = json.dumps({"tripRoute": [{"searchStartDate": st.isoformat(), "searchEndDate": en.isoformat(),
+                           "originAirport": a, "destinationAirport": b}], "passengers": [{"type": "ADT", "count": "1"}]}).encode()
+        try:
+            rq = urllib.request.Request("https://sec.jejuair.net/ko/ibe/booking/searchlowestFareCalendarInPeriod.json", data=body, headers={
+                "Content-Type": "application/json", "Channel-Code": "WPC", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/128 Safari/537.36"})
+            j = json.load(urllib.request.urlopen(rq, timeout=20))
+            rate = fx(j["data"]["lowfares"].get("currencyCode") or "KRW")
+            if not rate:
+                continue
+            for m in j["data"]["lowfares"]["lowFareDateMarkets"]:
+                f = m.get("lowestFareAmount") or {}
+                if not m.get("noFlights") and f.get("fareAmount"):
+                    out[m["departureDate"][:10]] = int(round((f["fareAmount"] + (f.get("taxesAndFeesAmount") or 0)) * rate, -2))
+        except Exception as ex:
+            print("jeju fail", a, b, st, type(ex).__name__)
+    return out
 
 
 def main():
