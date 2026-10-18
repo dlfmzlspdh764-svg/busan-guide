@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-18 15:08",
+ "updated": "2026-10-19 07:34",
  "source": "Google 호텔(Google Hotels) 공개 검색 결과 + OpenStreetMap Nominatim 좌표",
  "fx": {
   "USD_KRW": 1334.772994,
-  "as_of": "2026-10-18",
+  "as_of": "2026-10-19",
   "provider": "open.er-api.com"
  },
  "scope": "파타야 4성급 · 북파타야/나클루아 · 세컨드·써드로드(중앙) · 좀티언 제외 · 리뷰≥500 · 평점순 TOP10",
@@ -26,7 +26,7 @@
    "lon": 100.882066,
    "price_krw": 41378,
    "price_usd": 31,
-   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 31) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 31) → KRW 환산(환율 1334.77, 2026-10-19, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
    "bigc": {
     "name": "Big C South",
     "m": 588,
@@ -63,7 +63,7 @@
    "lon": 100.887049,
    "price_krw": 58730,
    "price_usd": 44,
-   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 44) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 44) → KRW 환산(환율 1334.77, 2026-10-19, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
    "bigc": {
     "name": "Big C Extra",
     "m": 1039,
@@ -100,7 +100,7 @@
    "lon": 100.882859,
    "price_krw": 64069,
    "price_usd": 48,
-   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 48) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 48) → KRW 환산(환율 1334.77, 2026-10-19, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
    "bigc": {
     "name": "Big C Extra",
     "m": 327,
@@ -137,7 +137,7 @@
    "lon": 100.885196,
    "price_krw": 42713,
    "price_usd": 32,
-   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 32) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 32) → KRW 환산(환율 1334.77, 2026-10-19, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
    "bigc": {
     "name": "Big C Extra",
     "m": 218,
@@ -174,7 +174,7 @@
    "lon": 100.880166,
    "price_krw": 72078,
    "price_usd": 54,
-   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 54) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 54) → KRW 환산(환율 1334.77, 2026-10-19, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
    "bigc": {
     "name": "Big C Extra",
     "m": 572,
@@ -211,7 +211,7 @@
    "lon": 100.881895,
    "price_krw": 72078,
    "price_usd": 54,
-   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 54) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 54) → KRW 환산(환율 1334.77, 2026-10-19, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
    "bigc": {
     "name": "Big C Extra",
     "m": 632,
@@ -248,7 +248,7 @@
    "lon": 100.88202,
    "price_krw": 52056,
    "price_usd": 39,
-   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 39) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 39) → KRW 환산(환율 1334.77, 2026-10-19, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
    "bigc": {
     "name": "Big C Extra",
     "m": 377,
@@ -285,7 +285,7 @@
    "lon": 100.884585,
    "price_krw": 41378,
    "price_usd": 31,
-   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 31) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 31) → KRW 환산(환율 1334.77, 2026-10-19, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
    "bigc": {
     "name": "Big C Extra",
     "m": 694,
@@ -322,7 +322,7 @@
    "lon": 100.885136,
    "price_krw": 33369,
    "price_usd": 25,
-   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 25) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 25) → KRW 환산(환율 1334.77, 2026-10-19, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
    "bigc": {
     "name": "Big C Extra",
     "m": 369,
@@ -359,7 +359,7 @@
    "lon": 100.884126,
    "price_krw": 42713,
    "price_usd": 32,
-   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 32) → KRW 환산(환율 1334.77, 2026-10-18, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
+   "price_basis": "1박·객실1실 Google 호텔 표시가(USD 32) → KRW 환산(환율 1334.77, 2026-10-19, open.er-api.com). 세금/봉사료·조식 포함 여부는 예약 화면에서 최종 확인.",
    "bigc": {
     "name": "Big C Extra",
     "m": 109,
