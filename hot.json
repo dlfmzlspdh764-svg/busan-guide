@@ -1,10 +1,10 @@
 {
-  "updated": "2026-10-19 12:58",
+  "updated": "2026-10-19 13:01",
   "basis": "뉴스·블로그·유튜브 최근 7일에서 상호 발견 → 카카오 부산 장소 검증 (틱톡 제외)",
   "sources": {
-    "news": 114,
+    "news": 113,
     "blog": 307,
-    "youtube": 372
+    "youtube": 197
   },
   "places": [
     {
@@ -86,21 +86,15 @@
       "tel": ""
     },
     {
-      "id": "613961215",
-      "n": "제14회 부산국제코미디페스티벌",
-      "gu": "해운대구",
-      "c": "페스티벌",
-      "addr": "부산 해운대구 APEC로 55 벡스코 오디토리움 외 부산 전역",
+      "id": "1704184952",
+      "n": "요크앤토크",
+      "gu": "남구",
+      "c": "양식",
+      "addr": "부산 남구 분포로 145 W스퀘어 B동 1층1059~1060호",
       "sc": 5.0,
       "rc": 1,
-      "im": "https://t1.kakaocdn.net/place/cp-images/179/KrV5T3AQqDfpY31unNi51w9dPKdxjGIsg0fsmNYqD2E",
-      "ims": [
-        "https://t1.kakaocdn.net/place/cp-images/179/KrV5T3AQqDfpY31unNi51w9dPKdxjGIsg0fsmNYqD2E",
-        "https://t1.kakaocdn.net/place/cp-images/179/XzqjpMV10Flre1GKzMXfZcQ6R4Fk6d3d1hzvYhXEUTA",
-        "https://t1.kakaocdn.net/place/cp-images/179/r7I7t1wtpYr8Fz7rs9Qyoti7yocbndzjQL7Sl7aS3lE",
-        "https://t1.kakaocdn.net/place/cp-images/179/col1J7IARQ47KxZmpc_nrieTkDf9wcGU60dnu2S-AEg",
-        "https://t1.kakaocdn.net/place/cp-images/179/T0EaB7-AnmpM2ISqptTZaLmwp5ZqJHtIg23ivCfZBaE"
-      ],
+      "im": null,
+      "ims": [],
       "mentions": 5,
       "by": {
         "news": 0,
@@ -111,15 +105,15 @@
         "그들의 이별 사유 남자의 허리 이슈 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구 #지방공연",
         "제일 소름 돋는 여자친구 유형 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
       ],
-      "map": "https://map.kakao.com/?q=%EC%A0%9C14%ED%9A%8C%20%EB%B6%80%EC%82%B0%EA%B5%AD%EC%A0%9C%EC%BD%94%EB%AF%B8%EB%94%94%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C",
+      "map": "https://map.kakao.com/?q=%EC%9A%94%ED%81%AC%EC%95%A4%ED%86%A0%ED%81%AC",
       "tel": ""
     },
     {
-      "id": "16605074",
-      "n": "김승진세무회계사무소",
-      "gu": "남구",
-      "c": "세무사사무소",
-      "addr": "부산 남구 자성로 152",
+      "id": "484529733",
+      "n": "코메디7080클럽",
+      "gu": "부산진구",
+      "c": "유흥시설",
+      "addr": "부산 부산진구 연수로 25-1",
       "sc": null,
       "rc": 0,
       "im": null,
@@ -134,48 +128,19 @@
         "그들의 이별 사유 남자의 허리 이슈 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구 #지방공연",
         "제일 소름 돋는 여자친구 유형 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
       ],
-      "map": "https://map.kakao.com/?q=%EA%B9%80%EC%8A%B9%EC%A7%84%EC%84%B8%EB%AC%B4%ED%9A%8C%EA%B3%84%EC%82%AC%EB%AC%B4%EC%86%8C",
+      "map": "https://map.kakao.com/?q=%EC%BD%94%EB%A9%94%EB%94%947080%ED%81%B4%EB%9F%BD",
       "tel": ""
     },
     {
-      "id": "24449780",
-      "n": "헤어토크",
+      "id": "939133384",
+      "n": "타네무라 아리나 30주년 X 애니메이트 카페 @부산",
       "gu": "부산진구",
-      "c": "미용실",
-      "addr": "부산 부산진구 엄광로 180-1",
+      "c": "팝업스토어",
+      "addr": "부산 부산진구 중앙대로 672 삼정타워 11층 1102호 애니메이트 카페 부산점",
       "sc": null,
       "rc": 0,
       "im": null,
       "ims": [],
-      "mentions": 5,
-      "by": {
-        "news": 0,
-        "blog": 0,
-        "youtube": 5
-      },
-      "sample": [
-        "그들의 이별 사유 남자의 허리 이슈 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구 #지방공연",
-        "제일 소름 돋는 여자친구 유형 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
-      ],
-      "map": "https://map.kakao.com/?q=%ED%97%A4%EC%96%B4%ED%86%A0%ED%81%AC",
-      "tel": ""
-    },
-    {
-      "id": "1375394572",
-      "n": "2026 달밤에체조 부산 챌린지",
-      "gu": "부산진구",
-      "c": "라이프스타일 팝업",
-      "addr": "부산 부산진구 시민공원로 73 부산시민공원 북항친수공원 화명생태공원",
-      "sc": null,
-      "rc": 0,
-      "im": "https://t1.kakaocdn.net/place/cp-images/179/DDh2QQvQT56LkhEJxBrNua9HX1SWGzTT4wvA4ZuaTE4",
-      "ims": [
-        "https://t1.kakaocdn.net/place/cp-images/179/DDh2QQvQT56LkhEJxBrNua9HX1SWGzTT4wvA4ZuaTE4",
-        "https://t1.kakaocdn.net/place/cp-images/179/zlJv23LAYSQQzgXYMTrVagalpFEJWA0gFaBHdWEjS_g",
-        "https://t1.kakaocdn.net/place/cp-images/179/VOXN46mq-1gibGpLDnMkrPdnffM_ugG0hXDndor7iRg",
-        "https://t1.kakaocdn.net/place/cp-images/179/M9nzLnGk7HUCo3h8gYbQO2_i1FcCMcNyTDaGqgXHNgQ",
-        "https://t1.kakaocdn.net/place/cp-images/179/iC2obOlvwVHnjIwXr81BPBKe5fvAoe6tlfK2t4VVcCo"
-      ],
       "mentions": 4,
       "by": {
         "news": 3,
@@ -186,30 +151,7 @@
         "데카트론, 부산 팝업스토어 오픈…한정판 굿즈 공개",
         "데이비드골프, 신세계 센텀시티점서 골프·파크골프 통합 팝업스토어 오픈"
       ],
-      "map": "https://map.kakao.com/?q=2026%20%EB%8B%AC%EB%B0%A4%EC%97%90%EC%B2%B4%EC%A1%B0%20%EB%B6%80%EC%82%B0%20%EC%B1%8C%EB%A6%B0%EC%A7%80",
-      "tel": ""
-    },
-    {
-      "id": "1200859631",
-      "n": "마이너짐",
-      "gu": "금정구",
-      "c": "헬스클럽",
-      "addr": "부산 금정구 금샘로 419 2층",
-      "sc": null,
-      "rc": 0,
-      "im": null,
-      "ims": [],
-      "mentions": 4,
-      "by": {
-        "news": 0,
-        "blog": 4,
-        "youtube": 0
-      },
-      "sample": [
-        "병력 숨기고 거액 보험금 타 낸 60대 실형…\"선량한 가입자 피해\" - 잡담 마이너 갤러리",
-        "부산 재범달려 - 엄태웅(유튜버) 마이너 갤러리"
-      ],
-      "map": "https://map.kakao.com/?q=%EB%A7%88%EC%9D%B4%EB%84%88%EC%A7%90",
+      "map": "https://map.kakao.com/?q=%ED%83%80%EB%84%A4%EB%AC%B4%EB%9D%BC%20%EC%95%84%EB%A6%AC%EB%82%98%2030%EC%A3%BC%EB%85%84%20X%20%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%ED%8A%B8%20%EC%B9%B4%ED%8E%98%20%40%EB%B6%80%EC%82%B0",
       "tel": ""
     },
     {
@@ -261,68 +203,113 @@
       ],
       "map": "https://map.kakao.com/?q=%EA%B7%B8%EB%9E%9C%EB%93%9C%EC%A1%B0%EC%84%A0%20%EB%B6%80%EC%82%B0",
       "tel": ""
+    },
+    {
+      "id": "16696065",
+      "n": "이탈리아피자",
+      "gu": "부산진구",
+      "c": "맛집",
+      "addr": "부산 부산진구 부암동 477-2 1층",
+      "sc": 4.1,
+      "rc": 54,
+      "im": null,
+      "ims": [],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 3,
+        "youtube": 0
+      },
+      "sample": [
+        "드디어 그랜드오픈 ! 서면 이탈리아피자 방문후기 자연치즈 부산 피자 맛집"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%9D%B4%ED%83%88%EB%A6%AC%EC%95%84%ED%94%BC%EC%9E%90",
+      "tel": ""
+    },
+    {
+      "id": "992075969",
+      "n": "감성양고기",
+      "gu": "수영구",
+      "c": "육류,고기",
+      "addr": "부산 수영구 황령대로481번길 10-9 1층",
+      "sc": 4.8,
+      "rc": 5,
+      "im": null,
+      "ims": [],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 1,
+        "youtube": 2
+      },
+      "sample": [
+        "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
+        "전포동에서 찾은 뉴욕 감성 맛집 #전포동맛집 #전포맛집 #부산맛집"
+      ],
+      "map": "https://map.kakao.com/?q=%EA%B0%90%EC%84%B1%EC%96%91%EA%B3%A0%EA%B8%B0",
+      "tel": ""
     }
   ],
   "keywords": [
     {
       "k": "부캉이",
-      "n": 6,
-      "ch": 6,
+      "n": 7,
+      "ch": 1,
       "arrow": "▲"
     },
     {
       "k": "Y-3",
-      "n": 5,
-      "ch": 5,
+      "n": 6,
+      "ch": 1,
       "arrow": "▲"
     },
     {
       "k": "지상렬",
       "n": 5,
-      "ch": 5,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "김승진",
       "n": 5,
-      "ch": 5,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "코미디",
       "n": 5,
-      "ch": 5,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "공연",
       "n": 5,
-      "ch": 5,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "개그",
       "n": 5,
-      "ch": 5,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "토크",
       "n": 5,
-      "ch": 5,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "지상렬의아가미",
       "n": 5,
-      "ch": 5,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "스탠드업코미디",
       "n": 5,
-      "ch": 5,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     }
   ]
 }
