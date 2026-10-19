@@ -57,7 +57,7 @@ ALLOW_CATE = re.compile(
 DENY_CATE = re.compile(
     r"세무|회계|법무|병원|의원|약국|학원|학교|은행|보험|부동산|미용실|헤어|네일|헬스|피트니스|"
     r"골프|세탁|수리|기업|협회|시청|구청|경찰|소방|우체국|주차장|주유소|아파트|오피스텔|"
-    r"페스티벌$|축제$|챌린지$|행사$"
+    r"페스티벌$|축제$|챌린지$|행사$|유흥|단란|노래방|나이트|클럽$|회계|사무소"
 )
 CHAIN = re.compile(
     r"스타벅스|투썸|이디야|메가커피|컴포즈|빽다방|맥도날드|버거킹|롯데리아|CU|GS25|세븐일레븐|"
@@ -427,6 +427,11 @@ def main():
                     break
             continue
         seen_ids.add(pid)
+        # youtube-only weak hits: need reviews or food/cafe/popup cate
+        if m["news"] + m["blog"] == 0 and m["youtube"] > 0:
+            cate = place.get("cate") or ""
+            if (place.get("rc") or 0) < 5 and not re.search(r"카페|음식|팝업|관광|명소|베이커리|디저트", cate):
+                continue
         validated.append({
             "id": pid,
             "n": place["n"],
