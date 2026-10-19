@@ -2,7 +2,8 @@ name: food-weekly
 
 on:
   schedule:
-    - cron: "23 20 * * 0"   # 매주 월요일 05:23 KST (일요일 20:23 UTC)
+    - cron: "23 20 * * 0"
+    - cron: "53 2 * * 1"   # 백업: 월 11:53 KST (같은 날 이미 돌면 결과 동일)   # 매주 월요일 05:23 KST (일요일 20:23 UTC)
   workflow_dispatch:
     inputs:
       photos_only:

@@ -102,7 +102,30 @@ def news_snippets(name, month_hint, aliases=None):
             out.append(re.sub(r"<[^>]+>", "", html.unescape(dsc)))
     except Exception as ex:
         U.log("tbd news naver fail", name[:20], ex)
+    yr = str(U.NOW.year)
+    try:
+        g2 = "https://news.google.com/rss/search?" + urllib.parse.urlencode(
+            {"q": f"\"{name}\" {yr} 일정 OR 개최", "hl": "ko", "gl": "KR", "ceid": "KR:ko"})
+        s2 = U.fetch(g2, tries=1, timeout=12, verify=True)
+        for it in re.findall(r"<item>(.*?)</item>", s2 or "", re.S)[:8]:
+            t2 = re.search(r"<title>(.*?)</title>", it, re.S)
+            d2 = re.search(r"<description>(.*?)</description>", it, re.S)
+            out.append(re.sub(r"<[^>]+>", " ", html.unescape((t2.group(1) if t2 else "") + "\n" + html.unescape(d2.group(1) if d2 else ""))))
+    except Exception as ex:
+        U.log("tbd google2 fail", name[:20], ex)
+    for where in ("blog", "news"):
+        try:
+            u = "https://search.naver.com/search.naver?" + urllib.parse.urlencode(
+                {"where": where, "query": f"{name} {yr} 일정 개최", "sort": "1"})
+            pg = U.fetch(u, tries=1, timeout=12, verify=True) or ""
+            for blk in re.findall(r'class="[^"]*(?:title_link|api_txt_lines|dsc_txt|news_tit)[^"]*"[^>]*>(.*?)</(?:a|div)>', pg, re.S)[:10]:
+                out.append(re.sub(r"<[^>]+>", "", html.unescape(blk)))
+        except Exception as ex:
+            U.log("tbd naver2 fail", where, name[:20], ex)
     return out
+
+
+OFFICIAL = re.compile(r"구청|군청|시청|부산시|부산광역시|관광공사|문화재단|주최")
 
 
 def resolve_via_news(e):
@@ -119,7 +142,8 @@ def resolve_via_news(e):
     time.sleep(SLEEP)
     keys = [U.norm(name)[:6]] + [U.norm(a)[:6] for a in aliases]
     keys += [name[:4], name[:6]] + [a[:4] for a in aliases if len(a) >= 4]
-    for text in texts:
+    votes, official = {}, set()
+    for text in dict.fromkeys(texts):
         nt = U.norm(text)
         if keys and not any((k and (k in nt or k in text)) for k in keys):
             continue
@@ -137,7 +161,14 @@ def resolve_via_news(e):
             continue
         if s > en:
             s, en = en, s
-        return s, en
+        k = (s, en)
+        votes[k] = votes.get(k, 0) + 1
+        if OFFICIAL.search(text): official.add(k)
+    # 2개 이상 출처 일치 또는 공식 기관 1건이면 확정
+    best = sorted(votes.items(), key=lambda kv: (-kv[1], kv[0]))
+    for k, c in best:
+        if c >= 2 or k in official:
+            return k
     return None
 
 

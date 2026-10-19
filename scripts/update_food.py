@@ -162,7 +162,7 @@ if os.environ.get("FOOD_PHOTOS_ONLY") == "1":
     chin2, n_ch = apply_photos(DB.get("chinese") or [])
     newdb = {"updated": TODAY, "food": food2, "sushi": sushi2, "chinese": chin2 or DB.get("chinese") or [],
              "first_seen": FS, "fishmarkets": DB.get("fishmarkets") or [],
-             "family": DB.get("family") or [], "family_updated": DB.get("family_updated")}
+             "family": DB.get("family") or [], "family_updated": DB.get("family_updated"), "ranks": RKS, "ranks_prev": RKP, "rank_date": RKD, "rank_prev_date": RKPD}
     json.dump(newdb, open(FJ, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
     print("사진 저장", "food≥2:", n_food, "sushi≥2:", n_su, "chinese≥2:", n_ch, "updated", TODAY)
     sys.exit(0)
@@ -405,6 +405,30 @@ for p in ranked:
 for p in out + S + CHIN:
     if p["id"] in FS: p["fs"] = FS[p["id"]]
     else: p.pop("fs", None)
+
+# ---------- 6b) 주간 순위 변동 (지난주 대비) ----------
+def _rk_map():
+    R = {}
+    for p in out:
+        if p.get("gr10", 99) <= 10: R.setdefault("g:" + (p.get("gu") or ""), {})[str(p["id"])] = p["gr10"]
+    R["sushi"] = {str(p["id"]): p.get("sb") or k + 1 for k, p in enumerate(S[:10])}
+    R["chinese"] = {str(p["id"]): p.get("cb") or k + 1 for k, p in enumerate(CHIN)}
+    return R
+RK = _rk_map(); RKS = DB.get("ranks") or {}; RKP = DB.get("ranks_prev") or {}; RKD = DB.get("rank_date"); RKPD = DB.get("rank_prev_date")
+if RK != RKS:
+    if RKS and (not RKD or RKD != TODAY): RKP, RKPD = RKS, RKD
+    RKS, RKD = RK, TODAY
+def _mark(p, key):
+    cur = (RKS.get(key) or {}).get(str(p["id"]))
+    if cur is None: return
+    p["rk"] = cur
+    if RKP:
+        pv = (RKP.get(key) or {}).get(str(p["id"]))
+        if pv is None: p["rnew"] = 1; p.pop("pr", None)
+        else: p["pr"] = pv; p.pop("rnew", None)
+for p in out: _mark(p, "g:" + (p.get("gu") or ""))
+for p in S: _mark(p, "sushi")
+for p in CHIN: _mark(p, "chinese")
 
 newdb = {"updated": DB.get("updated"), "food": out, "sushi": S, "chinese": CHIN, "first_seen": FS, "fishmarkets": DB.get("fishmarkets") or [], "family": DB.get("family") or [], "family_updated": DB.get("family_updated")}
 def body(x): return json.dumps({k: v for k, v in x.items() if k != "updated"}, ensure_ascii=False, sort_keys=True)

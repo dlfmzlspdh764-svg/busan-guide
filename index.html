@@ -168,11 +168,15 @@ footer{font-size:11px;color:var(--sub);text-align:center;padding:10px 16px 20px;
 .htag{font-size:12px;padding:4px 8px;border-radius:999px;background:rgba(255,59,48,.12);color:#ff3b30}
 .htag b{font-weight:700;margin-left:2px}
 
-</style>
+#hdr{position:relative}#hdr h1{padding-right:78px}</style>
 </head>
 <body>
 <div class="app">
 <header id="hdr">
+  <div id="kclk" style="position:absolute;top:8px;right:10px;text-align:right;font-size:12px;line-height:1.25;color:#fff;opacity:.95;font-variant-numeric:tabular-nums"><b id="kclkT">🕒 --:--:--</b><br><span id="kclkU" style="font-size:10.5px;opacity:.85"></span></div>
+<script>(()=>{const T=document.getElementById("kclkT"),U=document.getElementById("kclkU");const f=new Intl.DateTimeFormat("ko-KR",{timeZone:"Asia/Seoul",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false});setInterval(()=>T.textContent="🕒 "+f.format(new Date()),1000);T.textContent="🕒 "+f.format(new Date());
+const pt=s=>{if(!s)return 0;s=String(s);if(/T.*[+Z]/.test(s))return Date.parse(s);const m=s.match(/(\d{4}-\d\d-\d\d)(?:[ T](\d\d:\d\d))?/);return m?Date.parse(m[1]+"T"+(m[2]||"00:00")+":00+09:00"):0};
+Promise.all(["events","food","news","flights"].map(n=>fetch(n+".json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(j=>pt(j.updated)).catch(()=>0))).then(a=>{const m=Math.max(...a);if(m)U.textContent="업데이트 "+new Intl.DateTimeFormat("ko-KR",{timeZone:"Asia/Seoul",month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(m))})})()</script>
   <h1>🌊 부산저기여기</h1>
   <p>매주 부산 가는 사람을 위한 맛집·행사·항공편 가이드</p>
   <a id="apkdl" href="https://github.com/dlfmzlspdh764-svg/busan-guide/releases/latest/download/busan-guide.apk" style="display:inline-block;margin:6px 0;padding:6px 12px;border-radius:16px;background:#fff;color:#0a5;font-weight:700;text-decoration:none;font-size:14px">📲 안드로이드 앱 다운로드</a>
@@ -314,7 +318,8 @@ function openPview(urls,i){_pv=urls||[];_pvi=i||0;const el=document.getElementBy
 function closePview(){const el=document.getElementById("pview");if(el)el.classList.remove("open")}
 function stepPview(d){if(!_pv.length)return;_pvi=(_pvi+d+_pv.length)%_pv.length;openPview(_pv,_pvi)}
 let FUPD="2026-10-18";
-const isNewF=p=>p.fs&&p.fs!=="seed"&&(Date.now()-Date.parse(p.fs+"T00:00:00+09:00"))<14*864e5;
+const rkF=p=>p.rnew?` <span class="tag" style="background:#ff3b30;color:#fff">🆕 NEW</span>`:(p.pr&&p.rk&&p.pr!==p.rk)?` <span class="tag" style="background:${p.pr>p.rk?"#34c759":"#8e8e93"};color:#fff">${p.pr>p.rk?"▲"+(p.pr-p.rk):"▼"+(p.rk-p.pr)}</span>`:(p.pr&&p.pr===p.rk?` <span class="tag">–</span>`:"");
+var FRKD="",FRKPD="";const isNewF=p=>!p.rnew&&p.fs&&p.fs!=="seed"&&(Date.now()-Date.parse(p.fs+"T00:00:00+09:00"))<14*864e5;
 var HOT={places:[],keywords:[],updated:"",basis:""};var FAMILY=[];var FUPD_FAM="";
 const ALLF=()=>FOOD.concat(SUSHI,CHINESE);
 function food(){
@@ -361,9 +366,9 @@ function food(){
  const vd=FOOD.map(p=>p.vupd).filter(Boolean).sort().pop()||"";
  const title=isChin?(isGu?`${area} 중식`:"🥟 대표 중식 TOP 10"):isSushi?(isGu?`${area} 무한리필 스시뷔페`:"🍣 무한리필 스시뷔페 TOP 10"):isGu?(isCafe?`${area} 카페`:`${area} 맛집 RANKING 10`):(isCafe?"카페":"맛집 전체");
  const chinChips=(()=>{if(!isChin)return"";const all=(!isGu?CHINESE:CHINESE.filter(p=>p.gu===area));const sc={};all.forEach(p=>{if(p.sp)sc[p.sp]=(sc[p.sp]||0)+1});const order=["볶음밥","짬뽕","짜장면","탕수육","만두","마라","북경오리"];const keys=order.filter(k=>sc[k]).concat(Object.keys(sc).filter(k=>!order.includes(k)));return `<div class="catchips"><button class="chip sm ${!csp?"on":""}" data-csp="">특화 전체</button>`+keys.map(k=>{const emo=all.find(p=>p.sp===k)?.spe||"";return `<button class="chip sm ${csp===k?"on":""}" data-csp="${k}">${emo} ${k} ${sc[k]}</button>`}).join("")+`</div>`})();
- return `<div class="sec-title">${title} <span style="color:var(--sub);font-weight:400;font-size:13px">${list.length}곳 · ${isChin?"종합(방문·리뷰·평점·블로그)":FSORTS[fsort]}</span></div><div class="src" style="margin:-4px 0 6px">🔄 맛집 업데이트: ${FUPD} (매주 월요일 자동)</div>`+sorts+cats+chinChips+
+ return `<div class="sec-title">${title} <span style="color:var(--sub);font-weight:400;font-size:13px">${list.length}곳 · ${isChin?"종합(방문·리뷰·평점·블로그)":FSORTS[fsort]}</span></div><div class="src" style="margin:-4px 0 6px">🔄 맛집 업데이트: ${FUPD} (매주 월요일 자동) · 📅 순위 기준일 ${FRKD||FUPD}${FRKPD?` (▲▼·🆕는 ${FRKPD} 대비)`:""}</div>`+sorts+cats+chinChips+
  `<details class="rule"><summary>ⓘ 순위 기준</summary><p>${isChin?`<b>대표 중식 TOP 10</b> = 카카오맵 방문자 추이 지수 40% + 리뷰 수 25% + 평점 20% + 블로그 언급 수 15%(백분위). 실시간 방문자·SNS 조회수는 공개되지 않아 쓰지 않아요. <b>특화 배지</b>는 카카오 메뉴·가게명에서 자주 보이는 요리(볶음밥·짬뽕 등)를 표시해요.`:`<b>종합</b> = 카카오맵 방문자 추이 지수(최근 1주 시간대별 평균 방문 추정치 합, ${vd} 기준) 백분위 50% + 리뷰 수(카카오·네이버·구글 중 찾은 것) 백분위 평균 50%. <b>방문자순</b> = 방문자 추이 지수. <b>평점순</b> = 출처 가중 평균(리뷰 합 30개 이상).`}</p></details>`+
- (list.length?(isSushi?`<p class="hint">카카오맵 평점순(리뷰 20개 이상, 영업 중, 체인 포함). 가격은 성인 평일 점심~주말 기준 범위</p>`:isChin?`<p class="hint">부산 전체 중식 종합 TOP 10 · 특화 배지는 메뉴·가게명 기준 · 가격은 카카오맵 등록 메뉴</p>`:"")+list.map((p,i)=>`<div class="card tap" data-open="${p.id}">${heart("f:"+p.id)}<div class="frow">${fthumb(p)}<div class="fbody"><h3><span class="rank">${i+1}</span>${esc(p.n)}${isNewF(p)?` <span class="tag" style="background:#ff3b30;color:#fff">🆕 NEW</span>`:""}${p.sp?` <span class="tag" style="background:#ff9500;color:#fff">${p.spe||""} ${esc(p.sp)} 맛집</span>`:""}</h3><div class="meta"><span class="tag">${esc(p.gu||p.a)}</span><span class="tag cat">${p.c}</span>${p.sc?`<span class="tag star">★ ${p.sc}</span>`:""}${p.cs!=null?`<span class="tag pop">종합 ${p.cs}</span>`:p.dps!=null?`<span class="tag pop">종합 ${p.dps}</span>`:""}</div><div class="src">리뷰 카카오 ${fmtn(p.rc)}${p.bl?` · 블로그 ${fmtn(p.bl)}`:""}${p.nv?` · 네이버 ${fmtn(p.nv)}${p.ns?` (★${p.ns})`:""}`:""}${p.gc?` · 구글 ${fmtn(p.gc)}${p.gr?` (★${p.gr})`:""}`:""}</div><div class="src">${p.vi?`👣 방문자 지수 ${fmtn(p.vi)}${p.vupd?` (${p.vupd})`:""}`:"👣 방문자 지수 정보 없음"}${p.pr?` · 💰 ${priceTxt(p)}`:""}</div>${p.m[0]&&p.m[0][1]?`<div class="src">대표: ${esc(p.m[0][0])} ${won(p.m[0][1])}</div>`:""}<p class="note">${esc(p.sm[0]||"")}</p><div class="more">자세히 보기 ›</div></div></div></div>`).join(""):`<div class="empty">조건에 맞는 곳이 없어요.</div>`);
+ (list.length?(isSushi?`<p class="hint">카카오맵 평점순(리뷰 20개 이상, 영업 중, 체인 포함). 가격은 성인 평일 점심~주말 기준 범위</p>`:isChin?`<p class="hint">부산 전체 중식 종합 TOP 10 · 특화 배지는 메뉴·가게명 기준 · 가격은 카카오맵 등록 메뉴</p>`:"")+list.map((p,i)=>`<div class="card tap" data-open="${p.id}">${heart("f:"+p.id)}<div class="frow">${fthumb(p)}<div class="fbody"><h3><span class="rank">${i+1}</span>${esc(p.n)}${rkF(p)}${isNewF(p)?` <span class="tag" style="background:#ff3b30;color:#fff">🆕 NEW</span>`:""}${p.sp?` <span class="tag" style="background:#ff9500;color:#fff">${p.spe||""} ${esc(p.sp)} 맛집</span>`:""}</h3><div class="meta"><span class="tag">${esc(p.gu||p.a)}</span><span class="tag cat">${p.c}</span>${p.sc?`<span class="tag star">★ ${p.sc}</span>`:""}${p.cs!=null?`<span class="tag pop">종합 ${p.cs}</span>`:p.dps!=null?`<span class="tag pop">종합 ${p.dps}</span>`:""}</div><div class="src">리뷰 카카오 ${fmtn(p.rc)}${p.bl?` · 블로그 ${fmtn(p.bl)}`:""}${p.nv?` · 네이버 ${fmtn(p.nv)}${p.ns?` (★${p.ns})`:""}`:""}${p.gc?` · 구글 ${fmtn(p.gc)}${p.gr?` (★${p.gr})`:""}`:""}</div><div class="src">${p.vi?`👣 방문자 지수 ${fmtn(p.vi)}${p.vupd?` (${p.vupd})`:""}`:"👣 방문자 지수 정보 없음"}${p.pr?` · 💰 ${priceTxt(p)}`:""}</div>${p.m[0]&&p.m[0][1]?`<div class="src">대표: ${esc(p.m[0][0])} ${won(p.m[0][1])}</div>`:""}<p class="note">${esc(p.sm[0]||"")}</p><div class="more">자세히 보기 ›</div></div></div></div>`).join(""):`<div class="empty">조건에 맞는 곳이 없어요.</div>`);
 }
 
 const gmap=p=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(p.n+" "+(p.addr||"").split(" (")[0]);
@@ -738,7 +743,7 @@ const _g=null&&location.hash.match(/^#course-(.+)$/);if(_g){tab="course";cgu=dec
 <script>
 /* food.json 주간 자동 업데이트 로더 (실패하면 위 내장 데이터 사용) */
 (async()=>{try{const r=await fetch("food.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)return;const j=await r.json();
-if(j&&Array.isArray(j.food)&&j.food.length>100){FOOD=j.food;if(Array.isArray(j.sushi)&&j.sushi.length)SUSHI=j.sushi;if(Array.isArray(j.chinese)&&j.chinese.length)CHINESE=j.chinese;if(Array.isArray(j.fishmarkets)&&j.fishmarkets.length)FISHMARKETS=j.fishmarkets;if(Array.isArray(j.family)&&j.family.length){FAMILY=j.family;FUPD_FAM=j.family_updated||FUPD}FUPD=j.updated||FUPD;if(typeof tab!=="undefined"&&tab==="food")render()}}catch(_){}
+if(j&&Array.isArray(j.food)&&j.food.length>100){FOOD=j.food;if(Array.isArray(j.sushi)&&j.sushi.length)SUSHI=j.sushi;if(Array.isArray(j.chinese)&&j.chinese.length)CHINESE=j.chinese;if(Array.isArray(j.fishmarkets)&&j.fishmarkets.length)FISHMARKETS=j.fishmarkets;if(Array.isArray(j.family)&&j.family.length){FAMILY=j.family;FUPD_FAM=j.family_updated||FUPD}FUPD=j.updated||FUPD;FRKD=j.rank_date||"";FRKPD=j.rank_prev_date||"";if(typeof tab!=="undefined"&&tab==="food")render()}}catch(_){}
 try{const r2=await fetch("hot.json?t="+Date.now(),{cache:"no-store"});if(!r2.ok)return;const h=await r2.json();if(h&&Array.isArray(h.places)){HOT=h;if(typeof tab!=="undefined"&&tab==="food")render()}}catch(_){}})();
 </script>
 <style>
