@@ -318,7 +318,7 @@ function openPview(urls,i){_pv=urls||[];_pvi=i||0;const el=document.getElementBy
 function closePview(){const el=document.getElementById("pview");if(el)el.classList.remove("open")}
 function stepPview(d){if(!_pv.length)return;_pvi=(_pvi+d+_pv.length)%_pv.length;openPview(_pv,_pvi)}
 let FUPD="2026-10-18";
-const rkF=p=>p.rnew?` <span class="tag" style="background:#ff3b30;color:#fff">🆕 NEW</span>`:(p.pr&&p.rk&&p.pr!==p.rk)?` <span class="tag" style="background:${p.pr>p.rk?"#34c759":"#8e8e93"};color:#fff">${p.pr>p.rk?"▲"+(p.pr-p.rk):"▼"+(p.rk-p.pr)}</span>`:(p.pr&&p.pr===p.rk?` <span class="tag">–</span>`:"");
+const rkF=p=>p.rnew?` <span class="tag" style="background:#ff3b30;color:#fff">🆕 NEW</span>`:(p.prk&&p.rk&&p.prk!==p.rk)?` <span class="tag" style="background:${p.prk>p.rk?"#34c759":"#8e8e93"};color:#fff">${p.prk>p.rk?"▲"+(p.prk-p.rk):"▼"+(p.rk-p.prk)}</span>`:(p.prk&&p.prk===p.rk?` <span class="tag">–</span>`:"");
 var FRKD="",FRKPD="";const isNewF=p=>!p.rnew&&p.fs&&p.fs!=="seed"&&(Date.now()-Date.parse(p.fs+"T00:00:00+09:00"))<14*864e5;
 var HOT={places:[],keywords:[],updated:"",basis:""};var FAMILY=[];var FUPD_FAM="";
 const ALLF=()=>FOOD.concat(SUSHI,CHINESE);

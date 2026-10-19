@@ -424,8 +424,8 @@ def _mark(p, key):
     p["rk"] = cur
     if RKP:
         pv = (RKP.get(key) or {}).get(str(p["id"]))
-        if pv is None: p["rnew"] = 1; p.pop("pr", None)
-        else: p["pr"] = pv; p.pop("rnew", None)
+        if pv is None: p["rnew"] = 1; p.pop("prk", None)
+        else: p["prk"] = pv; p.pop("rnew", None)
 for p in out: _mark(p, "g:" + (p.get("gu") or ""))
 for p in S: _mark(p, "sushi")
 for p in CHIN: _mark(p, "chinese")
