@@ -331,7 +331,7 @@ function food(){
   const strip=kw?`<div class="hstrip"><span class="hstrip-l">실시간 화제어</span>${kw}</div>`:`<div class="src">화제어 수집 중…</div>`;
   const list=HOT.places||[];
   const cards=list.map((p,i)=>`<div class="card tap" data-open="${p.id}">${heart("f:"+p.id)}<div class="frow">${fthumb(p)}<div class="fbody"><h3><span class="rank">${i+1}</span>${esc(p.n)}</h3><div class="meta"><span class="tag">${esc(p.gu||"")}</span>${p.c?`<span class="tag cat">${esc(p.c)}</span>`:""}${p.sc?`<span class="tag star">★ ${p.sc}</span>`:""}<span class="tag pop">언급 ${p.mentions||0}</span></div><div class="src">리뷰 카카오 ${fmtn(p.rc||0)}${p.by?` · 뉴스 ${p.by.news||0} · 블로그 ${p.by.blog||0} · 유튜브 ${p.by.youtube||0}`:""}${p.delta?` · 변동 ${p.delta>0?"▲":"▼"}${Math.abs(p.delta)}`:""}</div>${(p.sample&&p.sample[0])?`<p class="note">${esc(p.sample[0])}</p>`:""}<div class="more">자세히 보기 ›</div></div></div></div>`).join("");
-  return `<div class="sec-title">🔥 요즘 핫플 TOP 10 <span style="color:var(--sub);font-weight:400;font-size:13px">${list.length}곳</span></div><div class="src" style="margin:-4px 0 6px">🔄 ${esc(HOT.updated||"–")} · ${esc(HOT.basis||"뉴스·블로그·유튜브 언급 기준")} (틱톡 제외 · 3시간마다)</div>`+cats+strip+`<details class="rule"><summary>ⓘ 순위 기준</summary><p>최근 7일 <b>구글 뉴스 RSS · 네이버 블로그 · 유튜브</b> 제목에서 부산 맛집 이름이 몇 번 나왔는지로 순위를 매겨요. 틱톡은 로그인이 필요해서 쓰지 않아요. 화제어 ▲▼는 직전 수집과 비교한 변화예요.</p></details>`+(cards||`<div class="empty">핫플 데이터 준비 중이에요.</div>`);
+  return `<div class="sec-title">🔥 요즘 핫플 TOP 10 <span style="color:var(--sub);font-weight:400;font-size:13px">${list.length}곳</span></div><div class="src" style="margin:-4px 0 6px">🔄 ${esc(HOT.updated||"–")} · ${esc(HOT.basis||"발견→카카오 검증")} (3시간마다)</div>`+cats+strip+`<details class="rule"><summary>ⓘ 순위 기준</summary><p>최근 7일 <b>뉴스·블로그·유튜브</b>에서 핫플·신상 카페·팝업 상호를 찾아, <b>카카오맵에서 부산 장소인지 확인</b>한 뒤 언급 수로 순위를 매겨요. food.json에 없어도 나와요. 틱톡은 제외. 화제어 ▲▼는 직전 대비예요.</p></details>`+(cards||`<div class="empty">핫플 데이터 준비 중이에요.</div>`);
  }
  if(isFam){
   const list=(FAMILY||[]).slice(0,10);
@@ -372,7 +372,7 @@ const igtag=p=>"https://www.instagram.com/explore/tags/"+encodeURIComponent(htag
 const fmtn=v=>v?Number(v).toLocaleString():"";
 function won(v){return v?Number(v).toLocaleString()+"원":"가격 정보 없음"}
 function openSheet(id){
- const p=ALLF().find(x=>x.id===id);if(!p)return;
+ const p=ALLF().find(x=>x.id===id)||(HOT.places||[]).find(x=>x.id===id)||(FAMILY||[]).find(x=>x.id===id);if(!p)return;p.m=p.m||[];p.sm=p.sm||[];p.h=p.h||[];p.st=p.st||[];
  const kplace="https://place.map.kakao.com/"+p.id;
  const sheet=document.getElementById("sheet");
  sheet.querySelector(".sheet-body").innerHTML=`
