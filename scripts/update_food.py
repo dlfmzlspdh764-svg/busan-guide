@@ -161,7 +161,8 @@ if os.environ.get("FOOD_PHOTOS_ONLY") == "1":
     sushi2, n_su = apply_photos(OLDS)
     chin2, n_ch = apply_photos(DB.get("chinese") or [])
     newdb = {"updated": TODAY, "food": food2, "sushi": sushi2, "chinese": chin2 or DB.get("chinese") or [],
-             "first_seen": FS, "fishmarkets": DB.get("fishmarkets") or []}
+             "first_seen": FS, "fishmarkets": DB.get("fishmarkets") or [],
+             "family": DB.get("family") or [], "family_updated": DB.get("family_updated")}
     json.dump(newdb, open(FJ, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
     print("사진 저장", "food≥2:", n_food, "sushi≥2:", n_su, "chinese≥2:", n_ch, "updated", TODAY)
     sys.exit(0)
@@ -405,7 +406,7 @@ for p in out + S + CHIN:
     if p["id"] in FS: p["fs"] = FS[p["id"]]
     else: p.pop("fs", None)
 
-newdb = {"updated": DB.get("updated"), "food": out, "sushi": S, "chinese": CHIN, "first_seen": FS, "fishmarkets": DB.get("fishmarkets") or []}
+newdb = {"updated": DB.get("updated"), "food": out, "sushi": S, "chinese": CHIN, "first_seen": FS, "fishmarkets": DB.get("fishmarkets") or [], "family": DB.get("family") or [], "family_updated": DB.get("family_updated")}
 def body(x): return json.dumps({k: v for k, v in x.items() if k != "updated"}, ensure_ascii=False, sort_keys=True)
 changed = (not os.path.exists(FJ)) or body(newdb) != body(DB)
 if changed:

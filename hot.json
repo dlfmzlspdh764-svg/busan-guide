@@ -1,0 +1,271 @@
+{
+  "updated": "2026-10-19 12:48",
+  "basis": "뉴스·블로그·유튜브 최근 7일 언급 수 (틱톡은 로그인 필요로 제외)",
+  "sources": {
+    "news": 211,
+    "blog": 200,
+    "youtube": 279
+  },
+  "places": [
+    {
+      "id": "14635779",
+      "n": "수변최고돼지국밥 민락본점",
+      "gu": "수영구",
+      "c": "돼지국밥",
+      "addr": "부산 수영구 광안해변로370번길 9-32 1층 (민락동)",
+      "sc": 4.2,
+      "rc": 1038,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/cedb762142e91e1e638b1268f48cfda3cc8f77ea?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/cedb762142e91e1e638b1268f48cfda3cc8f77ea?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/a6aaa1005626a2292d88a3583a0d29e96e71fc08?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/34788e2c26ef3f2931112a8dd5e680125ef26c5a?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/cc4f3e99e828cb1b8d8cad5e8e8b6d72e118113e?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/e7dc0ec23a9561236c03a823bf42baf673bcd847?original"
+      ],
+      "mentions": 10,
+      "by": {
+        "news": 7,
+        "blog": 3,
+        "youtube": 0
+      },
+      "delta": 0,
+      "sample": [
+        "부산시가 만든 ‘돼지국밥 미슐랭 가이드’···‘수변최고’ ‘영진’ ‘합천’ 탑 3 올랐다",
+        "부산 돼지국밥 톱3 ‘민락동 수변최고·신평동 영진·용호동 합천’…미식 열기 펄펄"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%88%98%EB%B3%80%EC%B5%9C%EA%B3%A0%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5%20%EB%AF%BC%EB%9D%BD%EB%B3%B8%EC%A0%90"
+    },
+    {
+      "id": "16460394",
+      "n": "우리돼지국밥",
+      "gu": "동구",
+      "c": "돼지국밥",
+      "addr": "부산 동구 초량로 27-1 1층 (초량동 277-2)",
+      "sc": 3.8,
+      "rc": 111,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f7160fbb99d8fc73feb34ce1f3c43fd044f45532?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f7160fbb99d8fc73feb34ce1f3c43fd044f45532?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/be2ace6fde59afa0bd8b037d11c9150518264b58?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/94c4daf323919c5e3209a1f5566794c20f86c81d?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f036eba0f32a962b6218b2f617679d037343a5fe?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b4979c3c19b5e44469dfa1cf4aa3461489833edc?original"
+      ],
+      "mentions": 3,
+      "by": {
+        "news": 3,
+        "blog": 0,
+        "youtube": 0
+      },
+      "delta": 0,
+      "sample": [
+        "부산 동구 우리돼지국밥, ‘동구 끼리라면’에 후원금 50만 원 기부",
+        "부산 동구 우리돼지국밥, ‘동구 끼리라면’에 후원금 50만 원 기부"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%9A%B0%EB%A6%AC%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5"
+    },
+    {
+      "id": "10928210",
+      "n": "합천일류돼지국밥 사상점",
+      "gu": "사상구",
+      "c": "돼지국밥",
+      "addr": "부산 사상구 광장로 34 1층 (괘법동 565-6)",
+      "sc": 3.4,
+      "rc": 778,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/28f7fa4fdab096bf01a7fbdc10d1f12dc91c2783?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/28f7fa4fdab096bf01a7fbdc10d1f12dc91c2783?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/a618725fcd9e10acd7f4568a8f36f424998e54d0?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/850b1982481184b70e8bd7b6d01931bb40123d07?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/e34ad9518d5d434954b15097b6947c4124d08e6e?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f13dde2f73b78aa088cdc0d36c509a08610e7234?original"
+      ],
+      "mentions": 1,
+      "by": {
+        "news": 0,
+        "blog": 1,
+        "youtube": 0
+      },
+      "delta": 0,
+      "sample": [
+        "부산 맛집 사상구 돼지국밥 맛집 합천일류 돼지국밥 후기"
+      ],
+      "map": "https://map.kakao.com/?q=%ED%95%A9%EC%B2%9C%EC%9D%BC%EB%A5%98%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5%20%EC%82%AC%EC%83%81%EC%A0%90"
+    },
+    {
+      "id": "27400942",
+      "n": "브라운핸즈 백제점",
+      "gu": "동구",
+      "c": "카페",
+      "addr": "부산 동구 중앙대로209번길 16 1층 (초량동)",
+      "sc": 3.2,
+      "rc": 140,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/a173659ead59452ea44bee4ff73586eb8182c2e4?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/a173659ead59452ea44bee4ff73586eb8182c2e4?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/dfc4ae1e47c5a222aaa0e1ba2dc583284035b3de?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/c19ae4b5f21549c56d92399f60ff62a03e887529?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/a53630ddf277eb52ab19c281489ab31aee2dcc5a?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/67443dfb6d33ad0da9051c563e58339beb588c16?original"
+      ],
+      "mentions": 1,
+      "by": {
+        "news": 0,
+        "blog": 0,
+        "youtube": 1
+      },
+      "delta": 0,
+      "sample": [
+        "부산역 100년 넘은 병원이 카페로 변신 브라운핸즈백제 #부산카페 #부산역맛집 #빈티지카페 #케이크 #라떼"
+      ],
+      "map": "https://map.kakao.com/?q=%EB%B8%8C%EB%9D%BC%EC%9A%B4%ED%95%B8%EC%A6%88%20%EB%B0%B1%EC%A0%9C%EC%A0%90"
+    },
+    {
+      "id": "16636351",
+      "n": "화목정따로국밥",
+      "gu": "영도구",
+      "c": "한식",
+      "addr": "부산 영도구 태종로73번길 22 1층 (봉래동1가 48-3)",
+      "sc": 4.4,
+      "rc": 72,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/c2796c06522cffe73798a95c8394d4ae6e035f97?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/c2796c06522cffe73798a95c8394d4ae6e035f97?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/c6cf49fbfbbb37374a6ad9d9183baef958e919bc?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/a26387238e8b12b25e3eda7010102c0d3afef2a3?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/19661ba71236940ed1a866939a707566920ec0ab?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/4ead7b69d4825dca39887596408b6a61e3141c4f?original"
+      ],
+      "mentions": 1,
+      "by": {
+        "news": 0,
+        "blog": 1,
+        "youtube": 0
+      },
+      "delta": 0,
+      "sample": [
+        "부산 돼지국밥 맛집 화목정따로 국밥 수육백반 추천후기"
+      ],
+      "map": "https://map.kakao.com/?q=%ED%99%94%EB%AA%A9%EC%A0%95%EB%94%B0%EB%A1%9C%EA%B5%AD%EB%B0%A5"
+    },
+    {
+      "id": "1978151361",
+      "n": "참못골돼지국밥",
+      "gu": "남구",
+      "c": "돼지국밥",
+      "addr": "부산 남구 못골로12번길 4 1층 (대연동 1767-13)",
+      "sc": 4.5,
+      "rc": 66,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/c387de58470116a5c2192d2518633eb2e2e6e460?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/c387de58470116a5c2192d2518633eb2e2e6e460?original",
+        "https://t1.kakaocdn.net/mystore/F31A7E15F00F4B788CA61109C4D7A522",
+        "https://t1.kakaocdn.net/mystore/63570B1DE64B411FB390DC9B26F91705",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/e8465dad5c3730247f8bb92fc65c1a4244e0cf6c?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/8fae3027b997dcfc0eb5c97a3302f133092266af?original"
+      ],
+      "mentions": 1,
+      "by": {
+        "news": 0,
+        "blog": 1,
+        "youtube": 0
+      },
+      "delta": 0,
+      "sample": [
+        "부산 돼지국밥 참못골돼지국밥 대연동 맛집"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%B0%B8%EB%AA%BB%EA%B3%A8%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5"
+    },
+    {
+      "id": "18617892",
+      "n": "사랑방 태종대점",
+      "gu": "영도구",
+      "c": "한식",
+      "addr": "부산 영도구 태종로 816 2층 (동삼동 983-9)",
+      "sc": 4.1,
+      "rc": 52,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/e952a1ad6ff2ef1f4d87803a5658d890b7b0dc4dbb5a4b1a4a4a98fefc7125f6",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/e952a1ad6ff2ef1f4d87803a5658d890b7b0dc4dbb5a4b1a4a4a98fefc7125f6",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/9258880a730f5d899d6b8b536fef220389ca7e3e?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/1b78826a90a836af954947fa6d60c5941bc5b434?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/3ecc96883da37f658d064d34d2355412580d802c?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/fb06599a4162c2a9e889737991ff497b8b2664f38b9d00ffa6db68f08c025d21"
+      ],
+      "mentions": 1,
+      "by": {
+        "news": 1,
+        "blog": 0,
+        "youtube": 0
+      },
+      "delta": 0,
+      "sample": [
+        "커피향 가득한 미래 작가들 ‘사랑방’"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%82%AC%EB%9E%91%EB%B0%A9%20%ED%83%9C%EC%A2%85%EB%8C%80%EC%A0%90"
+    }
+  ],
+  "keywords": [
+    {
+      "k": "만서리이가네막국수",
+      "n": 12,
+      "ch": 0,
+      "arrow": "–"
+    },
+    {
+      "k": "수변최고돼지국밥",
+      "n": 10,
+      "ch": 0,
+      "arrow": "–"
+    },
+    {
+      "k": "우리돼지국밥",
+      "n": 9,
+      "ch": 0,
+      "arrow": "–"
+    },
+    {
+      "k": "돼지국밥",
+      "n": 8,
+      "ch": 0,
+      "arrow": "–"
+    },
+    {
+      "k": "기장",
+      "n": 4,
+      "ch": 0,
+      "arrow": "–"
+    },
+    {
+      "k": "참못골돼지국밥",
+      "n": 4,
+      "ch": 0,
+      "arrow": "–"
+    },
+    {
+      "k": "전포",
+      "n": 3,
+      "ch": 0,
+      "arrow": "–"
+    },
+    {
+      "k": "대연동",
+      "n": 3,
+      "ch": 3,
+      "arrow": "▲"
+    },
+    {
+      "k": "껍데기",
+      "n": 3,
+      "ch": 3,
+      "arrow": "▲"
+    },
+    {
+      "k": "떡볶이",
+      "n": 2,
+      "ch": 2,
+      "arrow": "▲"
+    }
+  ]
+}
