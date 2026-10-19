@@ -660,6 +660,7 @@ function render(){
  document.documentElement.style.setProperty("--hh",document.getElementById("hdr").offsetHeight+"px");
 }
 document.addEventListener("click",e=>{
+ {const nc=e.target.closest("[data-ncat]");if(nc){newsCat=nc.dataset.ncat;renderNews();return}}
  if(e.target.closest("#newsTog")){newsOpen=!newsOpen;renderNews();return}
  if(e.target.closest("[data-close]")){closeSheet();return}
  const t=e.target.closest("[data-tab],[data-cgu],[data-area],[data-fsort],[data-cat],[data-csp],[data-ccat],[data-fav],#favOnly,#luOnly,[data-open],[data-spot],[data-egu],[data-etype],[data-eper],[data-ev],[data-edur],[data-ecal],[data-eday]");if(!t)return;
@@ -689,14 +690,15 @@ const _m=location.hash.match(/^#place-(\d+)/);if(_m)openSheet(_m[1]);
 const _e=location.hash.match(/^#event-(.+)$/);if(_e){tab="event";render();openEvent(decodeURIComponent(_e[1]));}
 
 let NEWS={items:[],updated:null};let newsOpen=false;
-const TOPIC_LABEL={여행:"여행",맛집:"맛집",명소:"명소",외국인:"해외관광객",교통:"교통"};
+const TOPIC_LABEL={관광:"관광",항공:"항공",해양:"해양",신규오픈:"신규오픈",교통:"교통",정책:"정책",노동:"노동",경제:"경제"};
+const TOPIC_COL={관광:"#e8f5e9;color:#2e7d32",항공:"#e3f2fd;color:#1565c0",해양:"#e0f7fa;color:#00838f",신규오픈:"#fff3e0;color:#e65100",교통:"#f3e5f5;color:#6a1b9a",정책:"#eceff1;color:#37474f",노동:"#fce4ec;color:#ad1457",경제:"#fffde7;color:#8d6e00"};let newsCat="";
 function relTime(iso){
  try{const t=new Date(iso).getTime();if(!t)return"";const m=Math.max(0,Math.floor((Date.now()-t)/60000));
   if(m<1)return"방금";if(m<60)return m+"분 전";const h=Math.floor(m/60);if(h<24)return h+"시간 전";const d=Math.floor(h/24);return d+"일 전"}catch(_){return""}
 }
 function newsItemHtml(it,primary){
  const topic=TOPIC_LABEL[it.topic]||it.topic||"";
- return `<a class="nb-item${primary?" primary":""}" href="${esc(it.link)}" target="_blank" rel="noopener"><p class="nb-title">${esc(it.title)}</p><div class="nb-meta">${topic?`<span class="nb-topic">${esc(topic)}</span>`:""}<span>${esc(it.source||"")}</span><span>${relTime(it.published)}</span></div></a>`;
+ return `<a class="nb-item${primary?" primary":""}" href="${esc(it.link)}" target="_blank" rel="noopener"><p class="nb-title">${esc(it.title)}</p><div class="nb-meta">${topic?`<span class="nb-topic" style="background:${TOPIC_COL[it.topic]||"#eef4fb"}">${esc(topic)}</span>`:""}<span>${esc(it.source||"")}</span><span>${relTime(it.published)}</span></div></a>`;
 }
 function renderNews(){
  const box=document.getElementById("newsbox");const body=document.getElementById("newsBody");const tog=document.getElementById("newsTog");
@@ -706,8 +708,11 @@ function renderNews(){
  const items=NEWS.items||[];
  if(!items.length){body.innerHTML=`<div class="nb-empty">표시할 뉴스가 없어요</div>`;return}
  const first=items[0];
- const rest=items.slice(1,20);
- body.innerHTML=newsItemHtml(first,true)+(rest.length?`<div class="nb-more">${rest.map(it=>newsItemHtml(it,false)).join("")}</div>`:"");
+ const pool=newsCat?items.filter(it=>it.topic===newsCat):items.slice(1);
+ const rest=pool.slice(0,25);
+ const cats=Object.keys(TOPIC_LABEL).filter(c=>items.some(it=>it.topic===c));
+ const chips=`<div style="display:flex;flex-wrap:wrap;gap:5px;padding:8px 12px">${["",...cats].map(c=>`<button type="button" data-ncat="${c}" style="border:0;font-size:11px;font-weight:700;padding:4px 8px;border-radius:999px;background:${newsCat===c?"#1565c0;color:#fff":"#eef4fb;color:#1565c0"}">${c||"전체"}</button>`).join("")}</div>`;
+ body.innerHTML=newsItemHtml(first,true)+`<div class="nb-more">${chips}${rest.map(it=>newsItemHtml(it,false)).join("")||'<div class="nb-empty">해당 분야 뉴스가 없어요</div>'}</div>`;
 }
 async function loadNews(){
  try{const r=await fetch("news.json?t="+Date.now(),{cache:"no-store"});if(r.ok){const j=await r.json();if(j&&Array.isArray(j.items)&&j.items.length){NEWS=j;renderNews()}}else{document.getElementById("newsBody").innerHTML=`<div class="nb-empty">뉴스를 불러오지 못했어요</div>`}}
