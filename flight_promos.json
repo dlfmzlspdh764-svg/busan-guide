@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-19 10:22",
+ "updated": "2026-10-19 16:50",
  "source": "Google News RSS + 항공사 이벤트 페이지(가능한 경우)",
  "items": [
   {
@@ -16,19 +16,6 @@
    "snippet": "에어부산, 연말 여행객 일본·중국·동남아 노선 특가 행사 &nbsp;&nbsp; 연합뉴스"
   },
   {
-   "id": "4e5907e1457a9c16",
-   "airline": "에어부산",
-   "title": "에어부산, 연말 일본·중국·동남아 노선 특가 행사",
-   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9yR3c4OXJuazRuclNKaFJrWEdPV0kxREc5RG9KRGVGZWx5cTJZbXVRUnlabGVsREwtVThMa2hqMTJTQkt6eWJuZ2p3cXdEeFZOZmZjbWxWVWVvUQ?oc=5",
-   "source": "Google News",
-   "pub": "2026-10-13",
-   "flags": [
-    "부산",
-    "태국·베트남"
-   ],
-   "snippet": "에어부산, 연말 일본·중국·동남아 노선 특가 행사 &nbsp;&nbsp; 파이낸셜뉴스"
-  },
-  {
    "id": "41436d2e7ffc66eb",
    "airline": "에어부산",
    "title": "에어부산, ‘항공여행마켓’서 日마쓰야마 무료 항공권부터 굿즈",
@@ -39,6 +26,18 @@
     "부산"
    ],
    "snippet": "에어부산, ‘항공여행마켓’서 日마쓰야마 무료 항공권부터 굿즈 &nbsp;&nbsp; 싱글리스트"
+  },
+  {
+   "id": "e3fd6adc98226849",
+   "airline": "에어부산",
+   "title": "김해공항 출발 '10+α%' 할인…'2026 항공여행마켓 in 부산' 개최",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1PbGxaVW94VGZETk16YXNuNkxsb1dNSEM0ektxeFlxRFBxamtwUTlMMzZUN0FjUFZ0TjlnMUZpVkFkalh2cnlQU0sxZ2RFV1pqcW45eWk3VndRaGVCY2tv?oc=5",
+   "source": "Google News",
+   "pub": "2026-10-15",
+   "flags": [
+    "부산"
+   ],
+   "snippet": "김해공항 출발 '10+α%' 할인…'2026 항공여행마켓 in 부산' 개최 &nbsp;&nbsp; 뉴스1"
   },
   {
    "id": "f63745024d03f978",
@@ -77,6 +76,18 @@
    "snippet": "에어부산, 국제선 특가 프로모션 진행… 일정·가격은? &nbsp;&nbsp; 금강일보"
   },
   {
+   "id": "ff887f12244f276f",
+   "airline": "에어부산",
+   "title": "연말 해외여행 부담 낮춘다… 에어부산 국제선 할인 프로모션",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBpNmxtM1B6X3haS2hxa2JKUVIwd3ozZlRvQ0xRQkR6TVRFdnB6TGpLRzVsbGdleE1tcFU0Qk15UjFLMmZlcm11WnhVVDl1dnJXX1AwcVQ4MFl4ZTNqTlVWeQ?oc=5",
+   "source": "Google News",
+   "pub": "2026-10-13",
+   "flags": [
+    "부산"
+   ],
+   "snippet": "연말 해외여행 부담 낮춘다… 에어부산 국제선 할인 프로모션 &nbsp;&nbsp; 아시아경제"
+  },
+  {
    "id": "61131d840dd811b5",
    "airline": "에어부산",
    "title": "에어부산, 연말 국제선 특가 프로모션… 편도 7만5900원부터",
@@ -99,18 +110,6 @@
     "부산"
    ],
    "snippet": "에어부산, 국제선 특가…日노선 7만5900원부터 판매 &nbsp;&nbsp; 뉴시스"
-  },
-  {
-   "id": "ff887f12244f276f",
-   "airline": "에어부산",
-   "title": "연말 해외여행 부담 낮춘다… 에어부산 국제선 할인 프로모션",
-   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBpNmxtM1B6X3haS2hxa2JKUVIwd3ozZlRvQ0xRQkR6TVRFdnB6TGpLRzVsbGdleE1tcFU0Qk15UjFLMmZlcm11WnhVVDl1dnJXX1AwcVQ4MFl4ZTNqTlVWeQ?oc=5",
-   "source": "Google News",
-   "pub": "2026-10-13",
-   "flags": [
-    "부산"
-   ],
-   "snippet": "연말 해외여행 부담 낮춘다… 에어부산 국제선 할인 프로모션 &nbsp;&nbsp; 아시아경제"
   },
   {
    "id": "4f00eb76dc581b34",
@@ -170,7 +169,7 @@
    "flags": [
     "부산"
    ],
-   "snippet": "에어부산 '나의 여행보고서' 특가 프로모션 &nbsp;&nbsp; BBS불교방송"
+   "snippet": "에어부산 '나의 여행보고서' 특가 프로모션 &nbsp;&nbsp; BBS"
   },
   {
    "id": "1d7eb986ce2923ce",
