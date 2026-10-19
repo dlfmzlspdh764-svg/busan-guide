@@ -49,6 +49,16 @@ RE_NAMED = re.compile(
     r"(?:\s*(?:카페|맛집|핫플|베이커리|빵집|바|펍|갤러리|전시|팝업|스토어|식당|레스토랑|브런치))"
 )
 RE_HASH = re.compile(r"#([가-힣A-Za-z0-9]{2,16})")
+ALLOW_CATE = re.compile(
+    r"음식점|카페|디저트|베이커리|술집|바$|클럽|갤러리|전시|박물관|관광|명소|문화|테마파크|"
+    r"쇼핑|시장|공원|해변|산책|복합문화|공방|서점|팝업|라이프스타일|숙박|호텔|베이커리|빵|"
+    r"육류|한식|중식|일식|양식|아시아|패스트푸드|분식|치킨|피자|뷔페|횟집|해물"
+)
+DENY_CATE = re.compile(
+    r"세무|회계|법무|병원|의원|약국|학원|학교|은행|보험|부동산|미용실|헤어|네일|헬스|피트니스|"
+    r"골프|세탁|수리|기업|협회|시청|구청|경찰|소방|우체국|주차장|주유소|아파트|오피스텔|"
+    r"페스티벌$|축제$|챌린지$|행사$"
+)
 CHAIN = re.compile(
     r"스타벅스|투썸|이디야|메가커피|컴포즈|빽다방|맥도날드|버거킹|롯데리아|CU|GS25|세븐일레븐|"
     r"다이소|무신사|올리브영|다이킹|배스킨|설빙|공차|엽기떡볶이|신전떡볶이"
@@ -99,6 +109,10 @@ def clean_cand(n):
     if n in STOP or n.isdigit() or CHAIN.search(n):
         return ""
     if re.fullmatch(r"[0-9A-Za-z\s]+", n) and len(n) < 4:
+        return ""
+    if re.search(r"제\d+회|챌린지|페스티벌|축제|대회|워크숍|설명회", n):
+        return ""
+    if len(n) > 16 and ("부산" in n or "국제" in n):
         return ""
     return n
 
@@ -212,6 +226,8 @@ def parse_youtube(q):
         title = title.replace("\\u0026", "&").replace('\\"', '"').strip()
         if len(title) < 6 or title in seen or title in ("YouTube", "Home"):
             continue
+        if not re.search(r"부산|서면|전포|광안리|해리단길|영도|해운대|기장|남포", title):
+            continue
         seen.add(title)
         items.append({"title": title, "src": "youtube"})
     return items[:35]
@@ -248,6 +264,13 @@ def kakao_search_place(name):
             if not pid:
                 continue
             cate = " ".join(x.get(k) or "" for k in ("cate_name_depth1", "cate_name_depth2", "cate_name_depth3", "cate_name_depth4"))
+            if DENY_CATE.search(cate) or DENY_CATE.search(pname):
+                continue
+            if not ALLOW_CATE.search(cate) and not ALLOW_CATE.search(pname):
+                # allow depth1 여행/문화시설/가정,생활 broadly if touristy words
+                d1 = x.get("cate_name_depth1") or ""
+                if d1 not in ("여행", "문화시설", "가정,생활", "서비스,산업"):
+                    continue
             return {
                 "id": pid,
                 "n": pname,
@@ -357,10 +380,18 @@ def main():
 
     # rank candidates by raw mention before kakao
     ranked_c = sorted(cands.items(), key=lambda x: -(x[1]["news"] + x[1]["blog"] + x[1]["youtube"]))
+    # prefer multi-source / multi-mention first
+    ranked_c = sorted(
+        ranked_c,
+        key=lambda x: (
+            -((x[1]["news"] > 0) + (x[1]["blog"] > 0) + (x[1]["youtube"] > 0)),
+            -(x[1]["news"] + x[1]["blog"] + x[1]["youtube"]),
+        ),
+    )
     log("raw candidates", len(ranked_c), "titles", len(all_titles), "srcs", src_ok)
 
     # Kakao validate top N candidates
-    TOP_TRY = 40
+    TOP_TRY = 55
     validated = []  # list of place dicts with mentions
     seen_ids = set()
     food_by_id, food_by_name = food_lookup()
