@@ -1087,7 +1087,7 @@ function flight(){
  const R=FLD.routes||{},codes=Object.keys(R).filter(c=>(R[c].fares||[]).length);
  if(!fr||!R[fr])fr=codes[0];
  const flag=c=>R[c].country==="태국"?"🇹🇭":"🇻🇳";
- let h=`<div class="sec-title">✈️ 부산(김해) 출발 직항 왕복 최저가</div><p class="hint">${esc(FLD.basis)} · ${esc(FLD.window)}<br>업데이트 ${esc(FLD.updated)} (KST, 매시간 자동) · 출처: ${esc(FLD.source)}</p>`;
+ let h=`<div class="sec-title">✈️ 부산(김해) 출발 직항 왕복 최저가</div><p class="hint">${esc(FLD.basis)} · ${esc(FLD.window)}<br>업데이트 ${esc(FLD.updated)} (KST, 매시간 자동) · 출처: ${esc(FLD.source)}</p><p class="hint">🔔 텔레그램: 화·수·목·금 출발 · 4~7박 직항 왕복이 노선·박수별 역대 최저를 갱신하면 즉시 알림 (1인 왕복·유류할증료 포함)</p>`;
  h+=flPromoBox();
  h+=`<div class="catchips">${codes.map(c=>`<button class="chip sm ${c===fr?"on":""}" data-fr="${c}">${flag(c)} ${esc(R[c].city.replace(/\(.*\)/,""))} ${R[c].min?Math.round(R[c].min/1e4)+"만~":""}</button>`).join("")}</div>`;
  const ro=R[fr];if(!ro)return h+`<div class="empty">현재 수집된 직항 요금이 없어요</div>`;

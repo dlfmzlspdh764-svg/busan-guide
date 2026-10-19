@@ -22,6 +22,10 @@ CITY = {"BKK": ("태국", "방콕 수완나품"), "DMK": ("태국", "방콕 돈�
         "VDO": ("베트남", "하롱(번돈)"), "VCL": ("베트남", "쭈라이"), "THD": ("베트남", "타인호아"), "VCS": ("베트남", "꼰다오")}
 BASE = ["BKK", "CNX", "DAD", "CXR", "PQC", "HAN", "SGN"]
 ROUTES_F = "data/flight_routes.json"; ALERT_F = "data/flight_alerted.json"; OUT = "flights.json"
+WD_LOW_F = "data/flight_wd_low.json"  # 화~금 출발·4~7박 노선별 역대 최저
+WD_NIGHTS = (4, 5, 6, 7)
+WD_DEP = {1, 2, 3, 4}  # Tue..Fri (Mon=0)
+WD_KO = "월화수목금토일"
 
 
 def load(p, d):
@@ -91,6 +95,17 @@ def tg(text):
 
 def won(n):
     return "{:,}원".format(n)
+
+def day_l(iso):
+    d = datetime.strptime(iso[:10], "%Y-%m-%d").date()
+    return "%d월 %d일 (%s)" % (d.month, d.day, WD_KO[d.weekday()])
+
+
+def naver_url(c, d1, d2):
+    return "https://flight.naver.com/flights/international/PUS-%s-%s/%s-PUS-%s?adult=1&isDirect=true&fareType=Y" % (
+        c, d1.replace("-", ""), c, d2.replace("-", ""))
+
+
 
 
 _FX = {}
@@ -223,6 +238,38 @@ def main():
     json.dump(alerted, open(ALERT_F, "w", encoding="utf-8"), ensure_ascii=False)
     json.dump(out, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
     print("routes", {c: (len(v["fares"]), v["min"]) for c, v in out["routes"].items()})
+    # --- 화~금 출발 · 4~7박 노선별 최저가 갱신 ---
+    wd_low = load(WD_LOW_F, {})
+    wd_first = not bool(wd_low)
+    wd_alerts = []
+    for c in routes:
+        for n in WD_NIGHTS:
+            cands = [e for e in data[c].values()
+                     if e.get("p") and e.get("n") == n
+                     and datetime.strptime(e["d"][:10], "%Y-%m-%d").weekday() in WD_DEP]
+            if not cands:
+                continue
+            best = min(cands, key=lambda e: (e["p"], e["d"]))
+            key = "%s|%d" % (c, n)
+            prev_rec = wd_low.get(key) or {}
+            prev_p = prev_rec.get("p")
+            if prev_p is None:
+                wd_low[key] = {"p": best["p"], "d": best["d"], "r": best["r"],
+                               "al": (best.get("o") or [{}])[0].get("al", ""),
+                               "fn": (best.get("o") or [{}])[0].get("fn", ""),
+                               "src": (best.get("src") or [{}])[0].get("s", ""),
+                               "chk": NOW.strftime("%Y-%m-%d %H:%M")}
+                continue
+            if best["p"] < prev_p:
+                if not wd_first:
+                    wd_alerts.append((c, best, prev_p, n))
+                o0 = (best.get("o") or [{}])[0]
+                wd_low[key] = {"p": best["p"], "d": best["d"], "r": best["r"],
+                               "al": o0.get("al", ""), "fn": o0.get("fn", ""),
+                               "src": (best.get("src") or [{}])[0].get("s", ""),
+                               "chk": NOW.strftime("%Y-%m-%d %H:%M")}
+    json.dump(wd_low, open(WD_LOW_F, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print("wd_low", {k: v["p"] for k, v in sorted(wd_low.items())}, "alerts", len(wd_alerts), "baseline" if wd_first else "live")
     # --- 텔레그램 ---
     app = "https://dlfmzlspdh764-svg.github.io/busan-guide/#flight"
     if deals:
@@ -238,6 +285,24 @@ def main():
                     esc(o["al"]), esc(o["fn"]), esc(o["dt"]),
                     esc(won(e["p"])), esc(tag + (" · " + e["src"][0]["s"] if e.get("src") else "")), esc(won(med)), esc(url)))
         tg(frame("flight_deal", join_items(items),
+                 subtitle="직항·왕복 1인 · 세금·유류할증료 포함",
+                 footer_extra=f'<a href="{esc(app)}">앱에서 보기</a>'))
+    if wd_alerts:
+        wd_alerts.sort(key=lambda x: x[1]["p"])
+        items = []
+        for c, e, prev_p, n in wd_alerts[:12]:
+            o = (e.get("o") or [{}])[0]
+            src = (e.get("src") or [{}])[0].get("s") or "구글 항공편"
+            nv = naver_url(c, e["d"], e["r"])
+            items.append(
+                "✈️ <b>부산→%s (%s)</b> · %d박\n%s → %s\n💰 <b>%s</b> (이전 최저 %s)\n%s %s · %s\n<a href=\"%s\">네이버 예약</a>" % (
+                    esc(CITY[c][1]), esc(c), n,
+                    esc(day_l(e["d"])), esc(day_l(e["r"])),
+                    esc(won(e["p"])), esc(won(prev_p)),
+                    esc(o.get("al") or ""), esc(o.get("fn") or ""), esc(src),
+                    esc(nv)))
+        tg(frame("flight_deal", join_items(items),
+                 title="💰 최저가 갱신 (화~금 출발 4~7박)",
                  subtitle="직항·왕복 1인 · 세금·유류할증료 포함",
                  footer_extra=f'<a href="{esc(app)}">앱에서 보기</a>'))
     for c in new_routes:

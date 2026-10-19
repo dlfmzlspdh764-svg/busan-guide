@@ -34,7 +34,7 @@ jobs:
         run: |
           git config user.name "busan-guide-bot"
           git config user.email "dlfmzlspdh764-svg@users.noreply.github.com"
-          git add flights.json data/flight_routes.json data/flight_alerted.json
+          git add flights.json data/flight_routes.json data/flight_alerted.json data/flight_wd_low.json
           if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
           git commit -q -m "항공 요금 자동 업데이트 $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
           for i in 1 2 3 4 5; do
