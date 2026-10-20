@@ -1,58 +1,12 @@
 {
-  "updated": "2026-10-20 05:29",
+  "updated": "2026-10-20 09:11",
   "basis": "뉴스·블로그·유튜브 최근 7일에서 상호 발견 → 카카오 부산 장소 검증 (틱톡 제외)",
   "sources": {
     "news": 111,
-    "blog": 300,
-    "youtube": 197
+    "blog": 304,
+    "youtube": 196
   },
   "places": [
-    {
-      "id": "992075969",
-      "n": "감성양고기",
-      "gu": "수영구",
-      "c": "육류,고기",
-      "addr": "부산 수영구 황령대로481번길 10-9 1층",
-      "sc": 4.8,
-      "rc": 5,
-      "im": null,
-      "ims": [],
-      "mentions": 6,
-      "by": {
-        "news": 0,
-        "blog": 4,
-        "youtube": 2
-      },
-      "sample": [
-        "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
-        "전포동에서 찾은 뉴욕 감성 맛집 #전포동맛집 #전포맛집 #부산맛집"
-      ],
-      "map": "https://map.kakao.com/?q=%EA%B0%90%EC%84%B1%EC%96%91%EA%B3%A0%EA%B8%B0",
-      "tel": ""
-    },
-    {
-      "id": "7908580",
-      "n": "부산문화회관",
-      "gu": "남구",
-      "c": "문화,예술 문화시설 공연장,연극극장",
-      "addr": "부산 남구 대연동 848-4",
-      "sc": 2.7,
-      "rc": 31,
-      "im": null,
-      "ims": [],
-      "mentions": 5,
-      "by": {
-        "news": 0,
-        "blog": 0,
-        "youtube": 5
-      },
-      "sample": [
-        "그들의 이별 사유 남자의 허리 이슈 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구 #지방공연",
-        "제일 소름 돋는 여자친구 유형 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
-      ],
-      "map": "https://map.kakao.com/?q=%EB%B6%80%EC%82%B0%EB%AC%B8%ED%99%94%ED%9A%8C%EA%B4%80",
-      "tel": ""
-    },
     {
       "id": "25661344",
       "n": "전포카페거리",
@@ -68,17 +22,46 @@
         "https://t1.kakaocdn.net/local/kakaomapPhoto/review/030265b409b5a312e675e4abb92db794a0932760?original",
         "https://t1.kakaocdn.net/local/kakaomapPhoto/review/7887f9012978f2c73c0351056d43d3fdf4e5d566?original"
       ],
+      "mentions": 9,
+      "by": {
+        "news": 0,
+        "blog": 7,
+        "youtube": 2
+      },
+      "sample": [
+        "나만 몰랐던 전포동 2층에 숨은 ㄹㅈㄷ 핫플🔥 혼술 손님 90%인 혼술은 없는 혼술바 추천 #부산혼술바 #전포혼술바 #전포동핫플 #서면핫플 #shorts #seomyeon",
+        "전포동에서 찾은 뉴욕 감성 맛집 #전포동맛집 #전포맛집 #부산맛집"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%A0%84%ED%8F%AC%EC%B9%B4%ED%8E%98%EA%B1%B0%EB%A6%AC",
+      "tel": ""
+    },
+    {
+      "id": "1309756273",
+      "n": "부산콘서트홀",
+      "gu": "부산진구",
+      "c": "공연장,연극극장",
+      "addr": "부산 부산진구 동평로 250",
+      "sc": 3.8,
+      "rc": 30,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b354b6f6839317c1962e076d5898cd5540575060?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b354b6f6839317c1962e076d5898cd5540575060?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/1aee06cd04baedfac017be62d99f2cf431698d59?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/105d75effe9819ad9a38a63302c747c9a6bf9841?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/6bfafe0ef06dd21f2a462e5c8900e39f16dec168?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/9cc1202af193f5efdbd0d510e03c292565ffaf44?original"
+      ],
       "mentions": 5,
       "by": {
         "news": 0,
-        "blog": 2,
-        "youtube": 3
+        "blog": 0,
+        "youtube": 5
       },
       "sample": [
-        "잔 고르는 재미에 분위기 취저 (중간에 🐈🐱🐈🐱) #전포술집 #전포맛집 #전포핫플 #전포데이트 #전포동맛집",
-        "나만 몰랐던 전포동 2층에 숨은 ㄹㅈㄷ 핫플🔥 혼술 손님 90%인 혼술은 없는 혼술바 추천 #부산혼술바 #전포혼술바 #전포동핫플 #서면핫플 #shorts #seomyeon"
+        "그들의 이별 사유 남자의 허리 이슈 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구 #지방공연",
+        "제일 소름 돋는 여자친구 유형 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
       ],
-      "map": "https://map.kakao.com/?q=%EC%A0%84%ED%8F%AC%EC%B9%B4%ED%8E%98%EA%B1%B0%EB%A6%AC",
+      "map": "https://map.kakao.com/?q=%EB%B6%80%EC%82%B0%EC%BD%98%EC%84%9C%ED%8A%B8%ED%99%80",
       "tel": ""
     },
     {
@@ -155,21 +138,15 @@
       "tel": ""
     },
     {
-      "id": "327520717",
-      "n": "시그니엘 부산",
-      "gu": "해운대구",
-      "c": "호텔",
-      "addr": "부산 해운대구 달맞이길 30",
-      "sc": 3.8,
-      "rc": 218,
-      "im": "https://t1.kakaocdn.net/one/store/20261013091135-a782aa2a-cf33-4e20-93cb-664f46d118d1.jpg",
-      "ims": [
-        "https://t1.kakaocdn.net/one/store/20261013091135-a782aa2a-cf33-4e20-93cb-664f46d118d1.jpg",
-        "https://t1.kakaocdn.net/one/store/20261001110603-5f1af823-5ec1-4273-a3a2-dcaf6a673dc7.png",
-        "https://t1.kakaocdn.net/one/store/20260709170801-b82a5c54-17bb-4691-ba5d-73f081e5433d.png",
-        "https://t1.kakaocdn.net/one/store/20261001110603-e6d44d7c-8851-4ff7-88a5-644f0d664c8b.png",
-        "https://t1.kakaocdn.net/one/store/20260709170801-66b8075a-f049-49c1-a854-9baa603e374d.png"
-      ],
+      "id": "992075969",
+      "n": "감성양고기",
+      "gu": "수영구",
+      "c": "육류,고기",
+      "addr": "부산 수영구 황령대로481번길 10-9 1층",
+      "sc": 4.8,
+      "rc": 5,
+      "im": null,
+      "ims": [],
       "mentions": 4,
       "by": {
         "news": 0,
@@ -178,9 +155,9 @@
       },
       "sample": [
         "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
-        "아산 곡교천뷰 힐링 대형카페 루티니아 #아산카페 #곡교천 #루프탑카페 #테라스카페 #베이커리카페 #연못"
+        "전포동에서 찾은 뉴욕 감성 맛집 #전포동맛집 #전포맛집 #부산맛집"
       ],
-      "map": "https://map.kakao.com/?q=%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%97%98%20%EB%B6%80%EC%82%B0",
+      "map": "https://map.kakao.com/?q=%EA%B0%90%EC%84%B1%EC%96%91%EA%B3%A0%EA%B8%B0",
       "tel": ""
     },
     {
@@ -207,6 +184,58 @@
       "tel": ""
     },
     {
+      "id": "327520717",
+      "n": "시그니엘 부산",
+      "gu": "해운대구",
+      "c": "호텔",
+      "addr": "부산 해운대구 달맞이길 30",
+      "sc": 3.8,
+      "rc": 218,
+      "im": "https://t1.kakaocdn.net/one/store/20261013091135-a782aa2a-cf33-4e20-93cb-664f46d118d1.jpg",
+      "ims": [
+        "https://t1.kakaocdn.net/one/store/20261013091135-a782aa2a-cf33-4e20-93cb-664f46d118d1.jpg",
+        "https://t1.kakaocdn.net/one/store/20261001110603-5f1af823-5ec1-4273-a3a2-dcaf6a673dc7.png",
+        "https://t1.kakaocdn.net/one/store/20260709170801-b82a5c54-17bb-4691-ba5d-73f081e5433d.png",
+        "https://t1.kakaocdn.net/one/store/20261001110603-e6d44d7c-8851-4ff7-88a5-644f0d664c8b.png",
+        "https://t1.kakaocdn.net/one/store/20260709170801-66b8075a-f049-49c1-a854-9baa603e374d.png"
+      ],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 1,
+        "youtube": 2
+      },
+      "sample": [
+        "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
+        "아산 곡교천뷰 힐링 대형카페 루티니아 #아산카페 #곡교천 #루프탑카페 #테라스카페 #베이커리카페 #연못"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%97%98%20%EB%B6%80%EC%82%B0",
+      "tel": ""
+    },
+    {
+      "id": "2129883393",
+      "n": "샤브애진심",
+      "gu": "남구",
+      "c": "맛집",
+      "addr": "부산 남구 용호동 5-20 3층",
+      "sc": 4.3,
+      "rc": 33,
+      "im": null,
+      "ims": [],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 3,
+        "youtube": 0
+      },
+      "sample": [
+        "서면 전포동 내돈내산 맛집 추천, 밥집 겸 술집 찾는다면? 여기로(그집 곱도리탕 서면점)",
+        "서면 전포동 내돈내산 맛집 추천, 밥집 겸 술집 찾는다면? 여기로(그집 곱도리탕 서면 점)"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%83%A4%EB%B8%8C%EC%95%A0%EC%A7%84%EC%8B%AC",
+      "tel": ""
+    },
+    {
       "id": "27602084",
       "n": "인사이드부산",
       "gu": "동구",
@@ -227,60 +256,38 @@
       ],
       "map": "https://map.kakao.com/?q=%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C%EB%B6%80%EC%82%B0",
       "tel": ""
-    },
-    {
-      "id": "513180549",
-      "n": "이곳",
-      "gu": "사하구",
-      "c": "카페",
-      "addr": "부산 사하구 장평로299번길 22 1층",
-      "sc": null,
-      "rc": 0,
-      "im": null,
-      "ims": [],
-      "mentions": 3,
-      "by": {
-        "news": 2,
-        "blog": 1,
-        "youtube": 0
-      },
-      "sample": [
-        "뮤비 속 도넛 가게가 현실로…'이곳' 연남동 핫플"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%9D%B4%EA%B3%B3",
-      "tel": ""
     }
   ],
   "keywords": [
     {
       "k": "Y-3",
-      "n": 10,
-      "ch": 1,
+      "n": 9,
+      "ch": -1,
+      "arrow": "▼"
+    },
+    {
+      "k": "전포동",
+      "n": 9,
+      "ch": 9,
+      "arrow": "▲"
+    },
+    {
+      "k": "전포카페거리",
+      "n": 9,
+      "ch": 9,
       "arrow": "▲"
     },
     {
       "k": "데카트론",
       "n": 6,
-      "ch": -1,
-      "arrow": "▼"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "부캉이",
       "n": 6,
-      "ch": -1,
-      "arrow": "▼"
-    },
-    {
-      "k": "감성",
-      "n": 6,
-      "ch": 6,
-      "arrow": "▲"
-    },
-    {
-      "k": "감성양고기",
-      "n": 6,
-      "ch": 6,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "앵콜",
