@@ -1,10 +1,10 @@
 {
-  "updated": "2026-10-21 04:05",
+  "updated": "2026-10-21 08:43",
   "basis": "뉴스·블로그·유튜브 최근 7일에서 상호 발견 → 카카오 부산 장소 검증 (틱톡 제외)",
   "sources": {
-    "news": 110,
-    "blog": 315,
-    "youtube": 192
+    "news": 116,
+    "blog": 311,
+    "youtube": 194
   },
   "places": [
     {
@@ -34,8 +34,8 @@
       "id": "12478775",
       "n": "본전돼지국밥",
       "gu": "동구",
-      "c": "국밥",
-      "addr": "부산 동구 중앙대로214번길 3-8 1층",
+      "c": "맛집",
+      "addr": "부산 동구 초량동 1200-6 1층",
       "sc": 3.5,
       "rc": 581,
       "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/07771151ce1209e10e0ac9caa1bfbcd7246456b5?original",
@@ -56,6 +56,35 @@
         "부산 서면 맛집 추천! 산반들 돼지국밥에서 즐긴 든든한 혼밥 한 끼"
       ],
       "map": "https://map.kakao.com/?q=%EB%B3%B8%EC%A0%84%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5",
+      "tel": ""
+    },
+    {
+      "id": "8149130",
+      "n": "해운대암소갈비집",
+      "gu": "해운대구",
+      "c": "맛집",
+      "addr": "부산 해운대구 중동 1225-1 1층",
+      "sc": 3.4,
+      "rc": 497,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/16b05b653e5e1cd11b210685e3d1679f6fd43d7d?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/16b05b653e5e1cd11b210685e3d1679f6fd43d7d?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d88ca4b533746f0c5566b9908bdab14364d695db?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/1b9fe63200e434b37754c49736dae12ad8e0e474?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/a66476ddae6e02c8b5894da6d8eb2cd5892d23e5?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b232044ac536f4095a7154f60d0281df1164a573?original"
+      ],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 3,
+        "youtube": 0
+      },
+      "sample": [
+        "전포동 고기집 맛집 가성비와 맛 다 잡은 뒷돈상회 전포점",
+        "전포동 고기집 맛집 가성비와 맛 다 잡은 뒷돈상회 전포 점"
+      ],
+      "map": "https://map.kakao.com/?q=%ED%95%B4%EC%9A%B4%EB%8C%80%EC%95%94%EC%86%8C%EA%B0%88%EB%B9%84%EC%A7%91",
       "tel": ""
     },
     {
@@ -117,6 +146,29 @@
       "tel": ""
     },
     {
+      "id": "1330633449",
+      "n": "보드게임카페 레드버튼 서면점",
+      "gu": "부산진구",
+      "c": "카페",
+      "addr": "부산 부산진구 동천로 63 4층",
+      "sc": 4.0,
+      "rc": 20,
+      "im": null,
+      "ims": [],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 3,
+        "youtube": 0
+      },
+      "sample": [
+        "광안리 보드게임 카페 정글비 후기",
+        "[부산 서면] 홈즈앤루팡 서면점, 서면 보드게임카페 실내데이트 추천! 프라이빗 룸과 맛있는 스낵"
+      ],
+      "map": "https://map.kakao.com/?q=%EB%B3%B4%EB%93%9C%EA%B2%8C%EC%9E%84%EC%B9%B4%ED%8E%98%20%EB%A0%88%EB%93%9C%EB%B2%84%ED%8A%BC%20%EC%84%9C%EB%A9%B4%EC%A0%90",
+      "tel": ""
+    },
+    {
       "id": "702562122",
       "n": "아산이자카야",
       "gu": "수영구",
@@ -171,6 +223,29 @@
       "tel": ""
     },
     {
+      "id": "992075969",
+      "n": "감성양고기",
+      "gu": "수영구",
+      "c": "육류,고기",
+      "addr": "부산 수영구 황령대로481번길 10-9 1층",
+      "sc": 4.8,
+      "rc": 5,
+      "im": null,
+      "ims": [],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 1,
+        "youtube": 2
+      },
+      "sample": [
+        "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
+        "전포동에서 찾은 뉴욕 감성 맛집 #전포동맛집 #전포맛집 #부산맛집"
+      ],
+      "map": "https://map.kakao.com/?q=%EA%B0%90%EC%84%B1%EC%96%91%EA%B3%A0%EA%B8%B0",
+      "tel": ""
+    },
+    {
       "id": "17405448",
       "n": "앵콜반점",
       "gu": "부산진구",
@@ -196,97 +271,24 @@
       ],
       "map": "https://map.kakao.com/?q=%EC%95%B5%EC%BD%9C%EB%B0%98%EC%A0%90",
       "tel": ""
-    },
-    {
-      "id": "27602084",
-      "n": "인사이드부산",
-      "gu": "동구",
-      "c": "게스트하우스",
-      "addr": "부산 동구 초량중로 13-6",
-      "sc": 4.3,
-      "rc": 4,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/ca0043eaa02a8cc2e493724438dccff71f5db909?original",
-      "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/ca0043eaa02a8cc2e493724438dccff71f5db909?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/8385a74411deea934c46b95e3295a562f7064564?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/61d3d78c49fa6bccadb3dbd01a928da6c89e1490?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/3ad7ca2290f765615648153e981a71bf1b99ca11?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d4a645b17490ae56079f8661d208623959e7808b?original"
-      ],
-      "mentions": 3,
-      "by": {
-        "news": 0,
-        "blog": 3,
-        "youtube": 0
-      },
-      "sample": [
-        "디시인사이드 갤러리"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C%EB%B6%80%EC%82%B0",
-      "tel": ""
-    },
-    {
-      "id": "513180549",
-      "n": "이곳",
-      "gu": "사하구",
-      "c": "카페",
-      "addr": "부산 사하구 장평로299번길 22 1층",
-      "sc": null,
-      "rc": 0,
-      "im": null,
-      "ims": [],
-      "mentions": 3,
-      "by": {
-        "news": 2,
-        "blog": 1,
-        "youtube": 0
-      },
-      "sample": [
-        "뮤비 속 도넛 가게가 현실로…'이곳' 연남동 핫플"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%9D%B4%EA%B3%B3",
-      "tel": ""
-    },
-    {
-      "id": "27224037",
-      "n": "아난티 앳 부산 코브",
-      "gu": "기장군",
-      "c": "여행 숙박 콘도,리조트 아난티",
-      "addr": "부산 기장군 기장읍 시랑리 704-1",
-      "sc": 4.1,
-      "rc": 232,
-      "im": null,
-      "ims": [],
-      "mentions": 2,
-      "by": {
-        "news": 2,
-        "blog": 0,
-        "youtube": 0
-      },
-      "sample": [
-        "대만 핑둥, 한국서 관광 홍보 행보 이어가…부산서 팝업 행사 진행",
-        "이랩X효시, 두 번째 오프라인 팝업→데카트론, 롯데百 부산서 팝업스토어"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%95%84%EB%82%9C%ED%8B%B0%20%EC%95%B3%20%EB%B6%80%EC%82%B0%20%EC%BD%94%EB%B8%8C",
-      "tel": ""
     }
   ],
   "keywords": [
     {
-      "k": "데카트론",
-      "n": 7,
-      "ch": 1,
-      "arrow": "▲"
-    },
-    {
       "k": "부캉이",
       "n": 7,
-      "ch": 2,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "Y-3",
       "n": 7,
+      "ch": 0,
+      "arrow": "–"
+    },
+    {
+      "k": "데카트론",
+      "n": 6,
       "ch": -1,
       "arrow": "▼"
     },
@@ -311,26 +313,26 @@
     {
       "k": "이곳",
       "n": 3,
-      "ch": 3,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "연남동",
       "n": 3,
-      "ch": 3,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "앵콜",
       "n": 3,
-      "ch": -2,
-      "arrow": "▼"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "소잉팩토리",
       "n": 3,
-      "ch": 3,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     }
   ]
 }
