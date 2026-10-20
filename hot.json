@@ -1,10 +1,10 @@
 {
-  "updated": "2026-10-20 17:21",
+  "updated": "2026-10-20 23:13",
   "basis": "뉴스·블로그·유튜브 최근 7일에서 상호 발견 → 카카오 부산 장소 검증 (틱톡 제외)",
   "sources": {
-    "news": 109,
-    "blog": 313,
-    "youtube": 194
+    "news": 114,
+    "blog": 305,
+    "youtube": 192
   },
   "places": [
     {
@@ -23,43 +23,17 @@
         "https://t1.kakaocdn.net/local/kakaomapPhoto/review/6bfafe0ef06dd21f2a462e5c8900e39f16dec168?original",
         "https://t1.kakaocdn.net/local/kakaomapPhoto/review/9cc1202af193f5efdbd0d510e03c292565ffaf44?original"
       ],
-      "mentions": 5,
+      "mentions": 8,
       "by": {
         "news": 0,
-        "blog": 0,
-        "youtube": 5
+        "blog": 6,
+        "youtube": 2
       },
       "sample": [
-        "그들의 이별 사유 남자의 허리 이슈 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구 #지방공연",
-        "제일 소름 돋는 여자친구 유형 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
+        "지상렬 찐팬의 미친 홍보 텐션 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연",
+        "여자 분냄새가 좋다는 49살 남자의 능력 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
       ],
       "map": "https://map.kakao.com/?q=%EB%B6%80%EC%82%B0%EC%BD%98%EC%84%9C%ED%8A%B8%ED%99%80",
-      "tel": ""
-    },
-    {
-      "id": "274109740",
-      "n": "개금벚꽃길",
-      "gu": "부산진구",
-      "c": "관광,명소",
-      "addr": "부산 부산진구 개금동 765",
-      "sc": 3.9,
-      "rc": 11,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/8843c431892c487b0d176a590f97cd90049cace4?original",
-      "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/8843c431892c487b0d176a590f97cd90049cace4?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/017a39a2831590283a3285b4e6195889a2190299?original"
-      ],
-      "mentions": 5,
-      "by": {
-        "news": 0,
-        "blog": 0,
-        "youtube": 5
-      },
-      "sample": [
-        "그들의 이별 사유 남자의 허리 이슈 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구 #지방공연",
-        "제일 소름 돋는 여자친구 유형 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
-      ],
-      "map": "https://map.kakao.com/?q=%EA%B0%9C%EA%B8%88%EB%B2%9A%EA%BD%83%EA%B8%B8",
       "tel": ""
     },
     {
@@ -90,77 +64,6 @@
       "tel": ""
     },
     {
-      "id": "1704184952",
-      "n": "요크앤토크",
-      "gu": "남구",
-      "c": "맛집",
-      "addr": "부산 남구 용호동 954 W스퀘어 B동 1층1059~1060호",
-      "sc": 5.0,
-      "rc": 1,
-      "im": null,
-      "ims": [],
-      "mentions": 5,
-      "by": {
-        "news": 0,
-        "blog": 0,
-        "youtube": 5
-      },
-      "sample": [
-        "그들의 이별 사유 남자의 허리 이슈 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구 #지방공연",
-        "제일 소름 돋는 여자친구 유형 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%9A%94%ED%81%AC%EC%95%A4%ED%86%A0%ED%81%AC",
-      "tel": ""
-    },
-    {
-      "id": "856025914",
-      "n": "숨은",
-      "gu": "부산진구",
-      "c": "일본식주점",
-      "addr": "부산 부산진구 전포대로255번길 11 포도빌딩 1-2층",
-      "sc": 3.7,
-      "rc": 25,
-      "im": "https://t1.kakaocdn.net/fiy_reboot/place/713BABEECF464627B47B5DE19DD1FAF3",
-      "ims": [
-        "https://t1.kakaocdn.net/fiy_reboot/place/713BABEECF464627B47B5DE19DD1FAF3"
-      ],
-      "mentions": 4,
-      "by": {
-        "news": 0,
-        "blog": 3,
-        "youtube": 1
-      },
-      "sample": [
-        "잔잔한 부산 숨은 맛집 명소에서 인생 샌드위치 찾음 | 부캉이 만났다🦈",
-        "\"나만 알고 싶은 곳인데...\" 로컬들이 숨겨 찾는 진짜 부산 서면 숨은 맛집 베스트 3 총정리!"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%88%A8%EC%9D%80",
-      "tel": ""
-    },
-    {
-      "id": "629764977",
-      "n": "비트포비아 레드던전 서면점",
-      "gu": "부산진구",
-      "c": "카페",
-      "addr": "부산 부산진구 부전동 171 5층",
-      "sc": 3.6,
-      "rc": 16,
-      "im": null,
-      "ims": [],
-      "mentions": 4,
-      "by": {
-        "news": 0,
-        "blog": 4,
-        "youtube": 0
-      },
-      "sample": [
-        "광안리 방탈출 카페<브레이크아웃 광안> 뻔한데이트가 지겹다면, 광안리 데이트코스로 딱! 섹션13....",
-        "☀️ 260729-31 진격의거인 전시회보러 서울여행! / 방탈출카페 - 홍대던전 and I met E / 건대 유토피아...."
-      ],
-      "map": "https://map.kakao.com/?q=%EB%B9%84%ED%8A%B8%ED%8F%AC%EB%B9%84%EC%95%84%20%EB%A0%88%EB%93%9C%EB%8D%98%EC%A0%84%20%EC%84%9C%EB%A9%B4%EC%A0%90",
-      "tel": ""
-    },
-    {
       "id": "1817936420",
       "n": "베이프트렌드",
       "gu": "수영구",
@@ -184,20 +87,20 @@
       "tel": ""
     },
     {
-      "id": "10070964",
-      "n": "이재모피자 본점",
-      "gu": "중구",
-      "c": "맛집",
-      "addr": "부산 중구 신창동1가 2-1 중앙아파트 상가 2층",
-      "sc": 4.2,
-      "rc": 1229,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/08c46e847a85d2083783b6f39abbfda9c533cee7?original",
+      "id": "1878852238",
+      "n": "송도해상케이블카",
+      "gu": "서구",
+      "c": "케이블카",
+      "addr": "부산 서구 송도해변로 171 3층",
+      "sc": 4.0,
+      "rc": 299,
+      "im": "https://t1.kakaocdn.net/mystore/A6F0BC1CD059475B9E94291771D8D48A",
       "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/08c46e847a85d2083783b6f39abbfda9c533cee7?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/00f6d723968ed6e3a02febbe3fcd95df58c8f816?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/bbabe562b6fab5cbfe9d332bc14b26b11295a03c?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d1b7876926a7fa2b526464b855e0e6fb575fc6d3?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/de6a4aa4e983ac9ee0989b5d8b306dd4d9ce4b62?original"
+        "https://t1.kakaocdn.net/mystore/A6F0BC1CD059475B9E94291771D8D48A",
+        "https://t1.kakaocdn.net/mystore/B8571F71DFC7434895FA5C7FF389F94F",
+        "https://t1.kakaocdn.net/mystore/A5D08BA75DB0448980EA09CAB1591639",
+        "https://t1.kakaocdn.net/mystore/3794D326010845119E66B140A7CBD6F8",
+        "https://t1.kakaocdn.net/mystore/E2EDDA5B142246ED8F83287C40368382"
       ],
       "mentions": 3,
       "by": {
@@ -206,20 +109,49 @@
         "youtube": 0
       },
       "sample": [
-        "[임대][전포동] 전포사잇길 시설완비 권리급매 (주점, 카페, 밥집 등 요식업 추천)",
-        "[임대][ 전포동 ] 전포 사잇길 시설완비 권리급매 (주점, 카페, 밥집 등 요식업 추천)"
+        "아이들과 가기 좋은 부산 실내 놀거리 추천! 삼정타워 런닝맨 부산 점",
+        "해운대 놀거리 핫플 여행 가볼만한곳 부산 실내 데이트 코스"
       ],
-      "map": "https://map.kakao.com/?q=%EC%9D%B4%EC%9E%AC%EB%AA%A8%ED%94%BC%EC%9E%90%20%EB%B3%B8%EC%A0%90",
+      "map": "https://map.kakao.com/?q=%EC%86%A1%EB%8F%84%ED%95%B4%EC%83%81%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4",
       "tel": ""
     },
     {
-      "id": "25618927",
-      "n": "허심청 호텔농심",
-      "gu": "동래구",
-      "c": "여행 관광,명소 온천",
-      "addr": "부산 동래구 온천동 137 4-5층",
-      "sc": 4.2,
-      "rc": 256,
+      "id": "9650856",
+      "n": "BIFF광장",
+      "gu": "중구",
+      "c": "테마거리",
+      "addr": "부산 중구 남포동3가 15-1",
+      "sc": 3.6,
+      "rc": 67,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d3195848d7777a164e3647f1575bc43a24fb7c16?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d3195848d7777a164e3647f1575bc43a24fb7c16?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/405a986924818e19a16a9afcc8b426188a2d61bb?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/4eeca65d8dece243d3f26c91a6cbb52eedd81ffd?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/7565b544e68f7193c6156eaab5798f64e5a4f338?original",
+        "https://blog.kakaocdn.net/dn/bn6o3W/btsQK3eOJG2/FEkknFKuZlL2NCr32XJ2EK/img.png"
+      ],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 1,
+        "youtube": 2
+      },
+      "sample": [
+        "Busan Hidden Gem! Love & Communication Cafe in Nampo-dong ☕️📚 #Shorts#남포동카페#부산여행#남포동핫플#러브앤커뮤니케이션",
+        "부산 남포동 맛집 에이디와이 ADY 치킨 바질 페스토와 얼터커피 브런치 추천"
+      ],
+      "map": "https://map.kakao.com/?q=BIFF%EA%B4%91%EC%9E%A5",
+      "tel": ""
+    },
+    {
+      "id": "2129883393",
+      "n": "샤브애진심",
+      "gu": "남구",
+      "c": "맛집",
+      "addr": "부산 남구 용호동 5-20 3층",
+      "sc": 4.3,
+      "rc": 33,
       "im": null,
       "ims": [],
       "mentions": 3,
@@ -229,39 +161,114 @@
         "youtube": 0
       },
       "sample": [
-        "[ 부산 동래구 맛집] 명장동 맛집 일단마포 본점 솔직후기! 2대째 이어온 대패 가브리살 원조 노포",
-        "[동래구맛집] 부산 사직동맛집: 쌈마이 닭쌈밥 사직점 고바비 실패없는 전설의 가성비 메뉴"
+        "[ 부산 ] 헤어 어레인지샵 | 전포 신상 헤어샵 '아야업스타일', 베이직 업스타일 내돈내산 방문 후기 ....",
+        "[부산] 헤어 어레인지샵 | 전포 신상 헤어샵 '아야업스타일', 베이직 업스타일 내돈내산 방문 후기 ...."
       ],
-      "map": "https://map.kakao.com/?q=%ED%97%88%EC%8B%AC%EC%B2%AD%20%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC",
+      "map": "https://map.kakao.com/?q=%EC%83%A4%EB%B8%8C%EC%95%A0%EC%A7%84%EC%8B%AC",
       "tel": ""
     },
     {
-      "id": "8010849",
-      "n": "옵스 해운대점",
-      "gu": "해운대구",
-      "c": "제과,베이커리",
-      "addr": "부산 해운대구 중동1로 31",
-      "sc": 3.2,
-      "rc": 236,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/536ac68fa8837ab4cbc44ff6a01a640fabbb2e22?original",
+      "id": "1464004388",
+      "n": "모디포차 1호점 해물탕",
+      "gu": "영도구",
+      "c": "맛집",
+      "addr": "부산 영도구 봉래동3가 27 1층",
+      "sc": 4.8,
+      "rc": 24,
+      "im": null,
+      "ims": [],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 3,
+        "youtube": 0
+      },
+      "sample": [
+        "투썸플레이스, 美버지니아에 1호점 오픈"
+      ],
+      "map": "https://map.kakao.com/?q=%EB%AA%A8%EB%94%94%ED%8F%AC%EC%B0%A8%201%ED%98%B8%EC%A0%90%20%ED%95%B4%EB%AC%BC%ED%83%95",
+      "tel": ""
+    },
+    {
+      "id": "25661344",
+      "n": "전포카페거리",
+      "gu": "부산진구",
+      "c": "테마거리",
+      "addr": "부산 부산진구 전포대로209번길 26",
+      "sc": 3.7,
+      "rc": 19,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f281ac07c18d0f449002b027fa7e65028151891c?original",
       "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/536ac68fa8837ab4cbc44ff6a01a640fabbb2e22?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b83d2da5421bd82faff9c02e3c0c2dffbff6c927?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/dfd32a19b0a989ce8af4daf7c941d300cd025fc2?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/ca180a89cc6ea50bbf08f62682dfd960d8e0d838?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/683e03147e39bf3030e154bb8a8185f495eb8a21?original"
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f281ac07c18d0f449002b027fa7e65028151891c?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/e11009a665d9c12c62284e9884ee6770d73c9c2f?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/030265b409b5a312e675e4abb92db794a0932760?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/7887f9012978f2c73c0351056d43d3fdf4e5d566?original"
       ],
       "mentions": 3,
       "by": {
         "news": 0,
-        "blog": 1,
-        "youtube": 2
+        "blog": 2,
+        "youtube": 1
+      },
+      "sample": [
+        "전포동에서 찾은 뉴욕 감성 맛집 #전포동맛집 #전포맛집 #부산맛집",
+        "부산 전포동 브런치 비콩피"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%A0%84%ED%8F%AC%EC%B9%B4%ED%8E%98%EA%B1%B0%EB%A6%AC",
+      "tel": ""
+    },
+    {
+      "id": "702562122",
+      "n": "아산이자카야",
+      "gu": "수영구",
+      "c": "일본식주점",
+      "addr": "부산 수영구 감포로 96 2층",
+      "sc": 4.6,
+      "rc": 17,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/02824ecf43e3aa6a6f730a3ed78cdac8bda827e1?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/02824ecf43e3aa6a6f730a3ed78cdac8bda827e1?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/2baee803f501e6ae86b82db016ed1bbf2fa75d02?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/5e54749bad00478e59034f89d114529625bae398?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/7398a8c83663fd33a1b2fdafe53065ea037621a5?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/4cb5014778e8b8aad5974823d459837f1e26480d?original"
+      ],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 0,
+        "youtube": 3
       },
       "sample": [
         "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
         "아산 곡교천뷰 힐링 대형카페 루티니아 #아산카페 #곡교천 #루프탑카페 #테라스카페 #베이커리카페 #연못"
       ],
-      "map": "https://map.kakao.com/?q=%EC%98%B5%EC%8A%A4%20%ED%95%B4%EC%9A%B4%EB%8C%80%EC%A0%90",
+      "map": "https://map.kakao.com/?q=%EC%95%84%EC%82%B0%EC%9D%B4%EC%9E%90%EC%B9%B4%EC%95%BC",
+      "tel": ""
+    },
+    {
+      "id": "978777638",
+      "n": "소잉팩토리 부산서면점",
+      "gu": "부산진구",
+      "c": "미싱판매",
+      "addr": "부산 부산진구 중앙대로 799-1 부라더빌딩 2층",
+      "sc": 3.2,
+      "rc": 11,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/448ebffa4c885843f153da4f56761eee1ded8c96?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/448ebffa4c885843f153da4f56761eee1ded8c96?original"
+      ],
+      "mentions": 3,
+      "by": {
+        "news": 3,
+        "blog": 0,
+        "youtube": 0
+      },
+      "sample": [
+        "백화점으로 들어온 재봉틀… 롯데百 부산본점, '소잉팩토리' 재봉틀 팝업",
+        "롯데백화점 부산본점, ‘소잉팩토리’ 팝업스토어 운영"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%86%8C%EC%9E%89%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%B6%80%EC%82%B0%EC%84%9C%EB%A9%B4%EC%A0%90",
       "tel": ""
     }
   ],
@@ -269,23 +276,29 @@
     {
       "k": "Y-3",
       "n": 8,
-      "ch": -1,
-      "arrow": "▼"
+      "ch": 0,
+      "arrow": "–"
     },
     {
-      "k": "부캉이",
-      "n": 7,
-      "ch": 1,
-      "arrow": "▲"
-    },
-    {
-      "k": "황금예찬",
-      "n": 6,
-      "ch": 6,
+      "k": "부산콘서트홀",
+      "n": 8,
+      "ch": 8,
       "arrow": "▲"
     },
     {
       "k": "데카트론",
+      "n": 6,
+      "ch": 1,
+      "arrow": "▲"
+    },
+    {
+      "k": "부캉이",
+      "n": 5,
+      "ch": -2,
+      "arrow": "▼"
+    },
+    {
+      "k": "황금예찬",
       "n": 5,
       "ch": -1,
       "arrow": "▼"
@@ -297,33 +310,27 @@
       "arrow": "–"
     },
     {
-      "k": "지상렬",
-      "n": 5,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
-      "k": "김승진",
-      "n": 5,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
-      "k": "코미디",
-      "n": 5,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
       "k": "공연",
       "n": 5,
       "ch": 0,
       "arrow": "–"
     },
     {
-      "k": "개그",
+      "k": "",
       "n": 5,
       "ch": 5,
+      "arrow": "▲"
+    },
+    {
+      "k": "트렌드",
+      "n": 4,
+      "ch": 4,
+      "arrow": "▲"
+    },
+    {
+      "k": "베이프트렌드",
+      "n": 4,
+      "ch": 4,
       "arrow": "▲"
     }
   ]
