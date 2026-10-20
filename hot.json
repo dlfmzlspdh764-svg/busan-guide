@@ -1,40 +1,12 @@
 {
-  "updated": "2026-10-20 09:11",
+  "updated": "2026-10-20 17:21",
   "basis": "뉴스·블로그·유튜브 최근 7일에서 상호 발견 → 카카오 부산 장소 검증 (틱톡 제외)",
   "sources": {
-    "news": 111,
-    "blog": 304,
-    "youtube": 196
+    "news": 109,
+    "blog": 313,
+    "youtube": 194
   },
   "places": [
-    {
-      "id": "25661344",
-      "n": "전포카페거리",
-      "gu": "부산진구",
-      "c": "테마거리",
-      "addr": "부산 부산진구 전포대로209번길 26",
-      "sc": 3.7,
-      "rc": 19,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f281ac07c18d0f449002b027fa7e65028151891c?original",
-      "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f281ac07c18d0f449002b027fa7e65028151891c?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/e11009a665d9c12c62284e9884ee6770d73c9c2f?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/030265b409b5a312e675e4abb92db794a0932760?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/7887f9012978f2c73c0351056d43d3fdf4e5d566?original"
-      ],
-      "mentions": 9,
-      "by": {
-        "news": 0,
-        "blog": 7,
-        "youtube": 2
-      },
-      "sample": [
-        "나만 몰랐던 전포동 2층에 숨은 ㄹㅈㄷ 핫플🔥 혼술 손님 90%인 혼술은 없는 혼술바 추천 #부산혼술바 #전포혼술바 #전포동핫플 #서면핫플 #shorts #seomyeon",
-        "전포동에서 찾은 뉴욕 감성 맛집 #전포동맛집 #전포맛집 #부산맛집"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%A0%84%ED%8F%AC%EC%B9%B4%ED%8E%98%EA%B1%B0%EB%A6%AC",
-      "tel": ""
-    },
     {
       "id": "1309756273",
       "n": "부산콘서트홀",
@@ -68,12 +40,15 @@
       "id": "274109740",
       "n": "개금벚꽃길",
       "gu": "부산진구",
-      "c": "여행 관광,명소",
+      "c": "관광,명소",
       "addr": "부산 부산진구 개금동 765",
       "sc": 3.9,
       "rc": 11,
-      "im": null,
-      "ims": [],
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/8843c431892c487b0d176a590f97cd90049cace4?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/8843c431892c487b0d176a590f97cd90049cace4?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/017a39a2831590283a3285b4e6195889a2190299?original"
+      ],
       "mentions": 5,
       "by": {
         "news": 0,
@@ -138,26 +113,51 @@
       "tel": ""
     },
     {
-      "id": "992075969",
-      "n": "감성양고기",
-      "gu": "수영구",
-      "c": "육류,고기",
-      "addr": "부산 수영구 황령대로481번길 10-9 1층",
-      "sc": 4.8,
-      "rc": 5,
+      "id": "856025914",
+      "n": "숨은",
+      "gu": "부산진구",
+      "c": "일본식주점",
+      "addr": "부산 부산진구 전포대로255번길 11 포도빌딩 1-2층",
+      "sc": 3.7,
+      "rc": 25,
+      "im": "https://t1.kakaocdn.net/fiy_reboot/place/713BABEECF464627B47B5DE19DD1FAF3",
+      "ims": [
+        "https://t1.kakaocdn.net/fiy_reboot/place/713BABEECF464627B47B5DE19DD1FAF3"
+      ],
+      "mentions": 4,
+      "by": {
+        "news": 0,
+        "blog": 3,
+        "youtube": 1
+      },
+      "sample": [
+        "잔잔한 부산 숨은 맛집 명소에서 인생 샌드위치 찾음 | 부캉이 만났다🦈",
+        "\"나만 알고 싶은 곳인데...\" 로컬들이 숨겨 찾는 진짜 부산 서면 숨은 맛집 베스트 3 총정리!"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%88%A8%EC%9D%80",
+      "tel": ""
+    },
+    {
+      "id": "629764977",
+      "n": "비트포비아 레드던전 서면점",
+      "gu": "부산진구",
+      "c": "카페",
+      "addr": "부산 부산진구 부전동 171 5층",
+      "sc": 3.6,
+      "rc": 16,
       "im": null,
       "ims": [],
       "mentions": 4,
       "by": {
         "news": 0,
-        "blog": 2,
-        "youtube": 2
+        "blog": 4,
+        "youtube": 0
       },
       "sample": [
-        "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
-        "전포동에서 찾은 뉴욕 감성 맛집 #전포동맛집 #전포맛집 #부산맛집"
+        "광안리 방탈출 카페<브레이크아웃 광안> 뻔한데이트가 지겹다면, 광안리 데이트코스로 딱! 섹션13....",
+        "☀️ 260729-31 진격의거인 전시회보러 서울여행! / 방탈출카페 - 홍대던전 and I met E / 건대 유토피아...."
       ],
-      "map": "https://map.kakao.com/?q=%EA%B0%90%EC%84%B1%EC%96%91%EA%B3%A0%EA%B8%B0",
+      "map": "https://map.kakao.com/?q=%EB%B9%84%ED%8A%B8%ED%8F%AC%EB%B9%84%EC%95%84%20%EB%A0%88%EB%93%9C%EB%8D%98%EC%A0%84%20%EC%84%9C%EB%A9%B4%EC%A0%90",
       "tel": ""
     },
     {
@@ -184,20 +184,72 @@
       "tel": ""
     },
     {
-      "id": "327520717",
-      "n": "시그니엘 부산",
-      "gu": "해운대구",
-      "c": "호텔",
-      "addr": "부산 해운대구 달맞이길 30",
-      "sc": 3.8,
-      "rc": 218,
-      "im": "https://t1.kakaocdn.net/one/store/20261013091135-a782aa2a-cf33-4e20-93cb-664f46d118d1.jpg",
+      "id": "10070964",
+      "n": "이재모피자 본점",
+      "gu": "중구",
+      "c": "맛집",
+      "addr": "부산 중구 신창동1가 2-1 중앙아파트 상가 2층",
+      "sc": 4.2,
+      "rc": 1229,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/08c46e847a85d2083783b6f39abbfda9c533cee7?original",
       "ims": [
-        "https://t1.kakaocdn.net/one/store/20261013091135-a782aa2a-cf33-4e20-93cb-664f46d118d1.jpg",
-        "https://t1.kakaocdn.net/one/store/20261001110603-5f1af823-5ec1-4273-a3a2-dcaf6a673dc7.png",
-        "https://t1.kakaocdn.net/one/store/20260709170801-b82a5c54-17bb-4691-ba5d-73f081e5433d.png",
-        "https://t1.kakaocdn.net/one/store/20261001110603-e6d44d7c-8851-4ff7-88a5-644f0d664c8b.png",
-        "https://t1.kakaocdn.net/one/store/20260709170801-66b8075a-f049-49c1-a854-9baa603e374d.png"
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/08c46e847a85d2083783b6f39abbfda9c533cee7?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/00f6d723968ed6e3a02febbe3fcd95df58c8f816?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/bbabe562b6fab5cbfe9d332bc14b26b11295a03c?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d1b7876926a7fa2b526464b855e0e6fb575fc6d3?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/de6a4aa4e983ac9ee0989b5d8b306dd4d9ce4b62?original"
+      ],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 3,
+        "youtube": 0
+      },
+      "sample": [
+        "[임대][전포동] 전포사잇길 시설완비 권리급매 (주점, 카페, 밥집 등 요식업 추천)",
+        "[임대][ 전포동 ] 전포 사잇길 시설완비 권리급매 (주점, 카페, 밥집 등 요식업 추천)"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%9D%B4%EC%9E%AC%EB%AA%A8%ED%94%BC%EC%9E%90%20%EB%B3%B8%EC%A0%90",
+      "tel": ""
+    },
+    {
+      "id": "25618927",
+      "n": "허심청 호텔농심",
+      "gu": "동래구",
+      "c": "여행 관광,명소 온천",
+      "addr": "부산 동래구 온천동 137 4-5층",
+      "sc": 4.2,
+      "rc": 256,
+      "im": null,
+      "ims": [],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 3,
+        "youtube": 0
+      },
+      "sample": [
+        "[ 부산 동래구 맛집] 명장동 맛집 일단마포 본점 솔직후기! 2대째 이어온 대패 가브리살 원조 노포",
+        "[동래구맛집] 부산 사직동맛집: 쌈마이 닭쌈밥 사직점 고바비 실패없는 전설의 가성비 메뉴"
+      ],
+      "map": "https://map.kakao.com/?q=%ED%97%88%EC%8B%AC%EC%B2%AD%20%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC",
+      "tel": ""
+    },
+    {
+      "id": "8010849",
+      "n": "옵스 해운대점",
+      "gu": "해운대구",
+      "c": "제과,베이커리",
+      "addr": "부산 해운대구 중동1로 31",
+      "sc": 3.2,
+      "rc": 236,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/536ac68fa8837ab4cbc44ff6a01a640fabbb2e22?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/536ac68fa8837ab4cbc44ff6a01a640fabbb2e22?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b83d2da5421bd82faff9c02e3c0c2dffbff6c927?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/dfd32a19b0a989ce8af4daf7c941d300cd025fc2?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/ca180a89cc6ea50bbf08f62682dfd960d8e0d838?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/683e03147e39bf3030e154bb8a8185f495eb8a21?original"
       ],
       "mentions": 3,
       "by": {
@@ -209,85 +261,34 @@
         "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
         "아산 곡교천뷰 힐링 대형카페 루티니아 #아산카페 #곡교천 #루프탑카페 #테라스카페 #베이커리카페 #연못"
       ],
-      "map": "https://map.kakao.com/?q=%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%97%98%20%EB%B6%80%EC%82%B0",
-      "tel": ""
-    },
-    {
-      "id": "2129883393",
-      "n": "샤브애진심",
-      "gu": "남구",
-      "c": "맛집",
-      "addr": "부산 남구 용호동 5-20 3층",
-      "sc": 4.3,
-      "rc": 33,
-      "im": null,
-      "ims": [],
-      "mentions": 3,
-      "by": {
-        "news": 0,
-        "blog": 3,
-        "youtube": 0
-      },
-      "sample": [
-        "서면 전포동 내돈내산 맛집 추천, 밥집 겸 술집 찾는다면? 여기로(그집 곱도리탕 서면점)",
-        "서면 전포동 내돈내산 맛집 추천, 밥집 겸 술집 찾는다면? 여기로(그집 곱도리탕 서면 점)"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%83%A4%EB%B8%8C%EC%95%A0%EC%A7%84%EC%8B%AC",
-      "tel": ""
-    },
-    {
-      "id": "27602084",
-      "n": "인사이드부산",
-      "gu": "동구",
-      "c": "여행 숙박 게스트하우스",
-      "addr": "부산 동구 초량동 1057-74",
-      "sc": 4.3,
-      "rc": 4,
-      "im": null,
-      "ims": [],
-      "mentions": 3,
-      "by": {
-        "news": 0,
-        "blog": 3,
-        "youtube": 0
-      },
-      "sample": [
-        "디시인사이드 갤러리"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C%EB%B6%80%EC%82%B0",
+      "map": "https://map.kakao.com/?q=%EC%98%B5%EC%8A%A4%20%ED%95%B4%EC%9A%B4%EB%8C%80%EC%A0%90",
       "tel": ""
     }
   ],
   "keywords": [
     {
       "k": "Y-3",
-      "n": 9,
+      "n": 8,
       "ch": -1,
       "arrow": "▼"
     },
     {
-      "k": "전포동",
-      "n": 9,
-      "ch": 9,
+      "k": "부캉이",
+      "n": 7,
+      "ch": 1,
       "arrow": "▲"
     },
     {
-      "k": "전포카페거리",
-      "n": 9,
-      "ch": 9,
+      "k": "황금예찬",
+      "n": 6,
+      "ch": 6,
       "arrow": "▲"
     },
     {
       "k": "데카트론",
-      "n": 6,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
-      "k": "부캉이",
-      "n": 6,
-      "ch": 0,
-      "arrow": "–"
+      "n": 5,
+      "ch": -1,
+      "arrow": "▼"
     },
     {
       "k": "앵콜",
@@ -318,6 +319,12 @@
       "n": 5,
       "ch": 0,
       "arrow": "–"
+    },
+    {
+      "k": "개그",
+      "n": 5,
+      "ch": 5,
+      "arrow": "▲"
     }
   ]
 }
