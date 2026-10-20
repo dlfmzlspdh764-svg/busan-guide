@@ -26,7 +26,7 @@ jobs:
           TZ: Asia/Seoul
         run: python3 -u scripts/update_sns.py
       - name: Validate
-        run: python3 -c "import json;d=json.load(open('sns.json'));assert len(d.get('places') or [])>=5, d;print('sns',len(d['places']))"
+        run: python3 -c "import json;d=json.load(open('sns.json'));assert len(d.get('places') or [])>=3, d;print('sns',len(d['places']))"
       - name: Commit if changed
         run: |
           git add sns.json

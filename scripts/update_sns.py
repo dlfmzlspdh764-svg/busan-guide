@@ -9,7 +9,7 @@ OUT = os.path.join(ROOT, "sns.json")
 FOODCATE = re.compile(r"음식점|한식|중식|일식|양식|아시아|분식|치킨|피자|뷔페|횟집|해물|육류|고기|국밥|밀면|냉면|국수|술집|카페|디저트|베이커리|빵")
 Q = ["부산 맛집", "부산 현지인 맛집", "부산 노포", "서면 맛집", "해운대 맛집", "광안리 맛집", "남포동 맛집",
      "전포 맛집", "부산 국밥 맛집", "부산 밀면 맛집", "기장 맛집", "영도 맛집", "부산 줄서는 맛집", "동래 맛집"]
-GENERIC = re.compile(r"^(근처|숨은|청년|또간집|생선구이|큰집|미식|아침점심|감성|맛집|노포|현지인|부산|횟집|국밥|밀면|돼지|한식|백반|식당|유명|미친|찐|전국|동네)")
+GENERIC = re.compile(r"^(근처|숨은|청년|또간집|생선구이|큰집|미식|아침점심|감성|맛집|노포|현지인|부산|횟집|국밥|밀면|돼지|한식|백반|식당|찐|전국|동네)")
 NSO = "so%3Ar%2Cp%3Afrom20260101to20260930"
 
 def blog(q):
@@ -76,7 +76,7 @@ def main():
         p = H.kakao_search_place(name)
         if not p or p["id"] in excl_id or p["id"] in seen or not FOODCATE.search(p["cate"]) : continue
         cn = re.sub(r"\s+", "", name); pn = re.sub(r"\s+", "", p["n"])
-        if not (cn == pn or (pn.startswith(cn) and len(cn) >= 3)) or GENERIC.search(cn): continue
+        if GENERIC.search(cn) or GENERIC.search(pn): continue
         if re.sub(r"\s+", "", p["n"]) in excl_nm: continue
         seen.add(p["id"])
         d = H.kakao_detail(p["id"]) or {}
