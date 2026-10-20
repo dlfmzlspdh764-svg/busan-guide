@@ -75,9 +75,12 @@ def main():
         if re.sub(r"\s+", "", name) in excl_nm: continue
         p = H.kakao_search_place(name)
         if not p or p["id"] in excl_id or p["id"] in seen or not FOODCATE.search(p["cate"]) : continue
+        cn = re.sub(r"\s+", "", name); pn = re.sub(r"\s+", "", p["n"])
+        if not (cn == pn or (pn.startswith(cn) and len(cn) >= 3)) or GENERIC.search(cn): continue
         if re.sub(r"\s+", "", p["n"]) in excl_nm: continue
         seen.add(p["id"])
         d = H.kakao_detail(p["id"]) or {}
+        if (d.get("rc") or p["rc"] or 0) < 10: continue
         res.append({"id": p["id"], "n": p["n"], "gu": d.get("gu") or "", "c": (d.get("c") or p["cate"].split()[-1]),
                     "addr": d.get("addr") or p["addr"], "sc": d.get("sc") or p["sc"], "rc": d.get("rc") or p["rc"],
                     "im": d.get("im"), "ims": d.get("ims") or [],
