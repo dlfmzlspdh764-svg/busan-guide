@@ -1,8 +1,8 @@
 {
- "updated": "2026-10-21 07:15",
+ "updated": "2026-10-21 07:18",
  "basis": "기준: 2026.1~9 유튜브·블로그·뉴스·맛집사이트 언급 (2개 이상 출처, 카카오 검증, 기존 랭킹 제외)",
  "sources": {
-  "news": 594,
+  "news": 555,
   "youtube": 1397,
   "blog": 559,
   "site": 200
@@ -143,6 +143,36 @@
    "map": "https://place.map.kakao.com/856025914"
   },
   {
+   "id": "9474875",
+   "n": "큰집",
+   "gu": "중구",
+   "c": "한정식",
+   "addr": "부산 중구 중구로24번길 19 1-2층",
+   "sc": 4.0,
+   "rc": 54,
+   "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/2403b4e9652aa053a64371448bc22867ee01cd81?original",
+   "ims": [
+    "https://t1.kakaocdn.net/local/kakaomapPhoto/review/2403b4e9652aa053a64371448bc22867ee01cd81?original",
+    "https://t1.kakaocdn.net/local/kakaomapPhoto/review/ebfb033f9d51361b77ae446c94bc57f1763bc9cc?original",
+    "https://t1.kakaocdn.net/local/kakaomapPhoto/review/172507672355265344e1df20f7d09960cabdd77e?original",
+    "https://t1.kakaocdn.net/local/kakaomapPhoto/review/3e801de94b264a1c6f25775e4094301a9de0e726?original",
+    "https://t1.kakaocdn.net/local/kakaomapPhoto/review/6bfc4638f4c61dd39774c6eb212575174667955d?original"
+   ],
+   "by": {
+    "youtube": 1,
+    "blog": 4,
+    "news": 0,
+    "site": 1
+   },
+   "mentions": 6,
+   "srcn": 3,
+   "sample": [
+    "부산 가족외식 기장 한정식 맛집 장지녕간장게장 아난티 근처 가볼만한곳 새 창 열림",
+    "국제시장과 용두산공원, 남포역에서도 가깝고 남포동 한정식으로 유명하고 부산 현지인 맛집 으로 인정 받는 곳이예요. 친척집 큰집에 간 정겨운 기분이 드는 한정식 맛"
+   ],
+   "map": "https://place.map.kakao.com/9474875"
+  },
+  {
    "id": "21356275",
    "n": "냉수탕가든",
    "gu": "부산진구",
@@ -213,12 +243,12 @@
     "https://t1.kakaocdn.net/local/kakaomapPhoto/review/adc5788e47bbc29c4004733e7d9561a0ff9856bd?original"
    ],
    "by": {
-    "youtube": 15,
+    "youtube": 14,
     "blog": 0,
     "news": 4,
     "site": 0
    },
-   "mentions": 19,
+   "mentions": 18,
    "srcn": 2,
    "sample": [
     "‘전현무계획3’ 부산 맛집, 대연동 대구뽈찜 & 중앙동 곰탕 식당 위치는? “차원 다른 깊이”",
@@ -367,36 +397,6 @@
     "나혼자 경주 여행🌱재밌고 맛있고 다하는 대만족코스(현지인맛집.숙소추천.한우물회.쭈꾸미.간장비빔우동.감성카페.인생십원빵.최영화빵.황리단길.첨성대.대릉원.소품샵)경주"
    ],
    "map": "https://place.map.kakao.com/992075969"
-  },
-  {
-   "id": "9474875",
-   "n": "큰집",
-   "gu": "중구",
-   "c": "한정식",
-   "addr": "부산 중구 중구로24번길 19 1-2층",
-   "sc": 4.0,
-   "rc": 54,
-   "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/2403b4e9652aa053a64371448bc22867ee01cd81?original",
-   "ims": [
-    "https://t1.kakaocdn.net/local/kakaomapPhoto/review/2403b4e9652aa053a64371448bc22867ee01cd81?original",
-    "https://t1.kakaocdn.net/local/kakaomapPhoto/review/ebfb033f9d51361b77ae446c94bc57f1763bc9cc?original",
-    "https://t1.kakaocdn.net/local/kakaomapPhoto/review/172507672355265344e1df20f7d09960cabdd77e?original",
-    "https://t1.kakaocdn.net/local/kakaomapPhoto/review/3e801de94b264a1c6f25775e4094301a9de0e726?original",
-    "https://t1.kakaocdn.net/local/kakaomapPhoto/review/6bfc4638f4c61dd39774c6eb212575174667955d?original"
-   ],
-   "by": {
-    "youtube": 0,
-    "blog": 4,
-    "news": 0,
-    "site": 1
-   },
-   "mentions": 5,
-   "srcn": 2,
-   "sample": [
-    "부산 가족외식 기장 한정식 맛집 장지녕간장게장 아난티 근처 가볼만한곳 새 창 열림",
-    "국제시장과 용두산공원, 남포역에서도 가깝고 남포동 한정식으로 유명하고 부산 현지인 맛집 으로 인정 받는 곳이예요. 친척집 큰집에 간 정겨운 기분이 드는 한정식 맛"
-   ],
-   "map": "https://place.map.kakao.com/9474875"
   },
   {
    "id": "551990020",
