@@ -29,7 +29,8 @@ jobs:
         run: python3 -c "import json;d=json.load(open('sns.json'));assert len(d.get('places') or [])>=5, d;print('sns',len(d['places']))"
       - name: Commit if changed
         run: |
-          if git diff --quiet -- sns.json; then
+          git add sns.json
+          if git diff --cached --quiet; then
             echo "sns.json 변경 없음"
             exit 0
           fi
