@@ -1,0 +1,40 @@
+name: sns-food
+
+on:
+  schedule:
+    - cron: "50 20 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sns-food
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Update sns.json
+        env:
+          TZ: Asia/Seoul
+        run: python3 -u scripts/update_sns.py
+      - name: Validate
+        run: python3 -c "import json;d=json.load(open('sns.json'));assert len(d.get('places') or [])>=5, d;print('sns',len(d['places']))"
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- sns.json; then
+            echo "sns.json 변경 없음"
+            exit 0
+          fi
+          git config user.name "busan-guide-bot"
+          git config user.email "dlfmzlspdh764-svg@users.noreply.github.com"
+          git add sns.json
+          git commit -m "SNS 화제 맛집 업데이트 $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin main && break; sleep 5; done
