@@ -1,0 +1,9 @@
+name: probe-house
+on: workflow_dispatch
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env: {DATA_GO_KR_KEY: "${{ secrets.DATA_GO_KR_KEY }}"}
+        run: python3 scripts/probe_house.py
