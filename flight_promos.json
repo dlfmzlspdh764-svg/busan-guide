@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22 05:12",
+ "updated": "2026-10-22 08:23",
  "source": "Google News RSS + 항공사 이벤트 페이지(가능한 경우)",
  "items": [
   {
@@ -124,18 +124,6 @@
    "snippet": "에어부산 '나의 여행보고서' 특가 프로모션 &nbsp;&nbsp; BBS불교방송"
   },
   {
-   "id": "77eb899cce940ce2",
-   "airline": "에어부산",
-   "title": "에어부산, ‘나의 여행보고서’ 국제선 특가 프로모션 실시",
-   "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE9OTnFmRjNCQ1ROcEs0dGxpTm1qZ05oQjI2OXhaamVESkR0Uy1vMUxVZ2NGRVRWR3ljNERNQ2YzUHlqV0E?oc=5",
-   "source": "Google News",
-   "pub": "2026-10-13",
-   "flags": [
-    "부산"
-   ],
-   "snippet": "에어부산, ‘나의 여행보고서’ 국제선 특가 프로모션 실시 &nbsp;&nbsp; 인디포커스"
-  },
-  {
    "id": "4f00eb76dc581b34",
    "airline": "에어부산",
    "title": "에어부산, 연말 국제선 특가…신규 노선 포함",
@@ -228,6 +216,16 @@
    "pub": "2026-10-20",
    "flags": [],
    "snippet": "KB국민카드, 국제선 항공권 12% 할인…1인당 최대 2만5000원 &nbsp;&nbsp; 뉴스핌"
+  },
+  {
+   "id": "7e2ed19a50650425",
+   "airline": "제주항공",
+   "title": "KB페이로 국제선 사면 12% 할인…제주항공 등 5개 LCC 대상",
+   "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1KUzk0amxjZ3RxX09RRkJyOG8xaThNNnNhVjloOUZ5YkZoNjd1UkxkNTAzeGs5MTBVbHN6OUNJaG1DT01Pb0VYbHVLNWR2MndUUWNnVE5yeENCZ3ZiZ3VEVVMwRlhHZk5tOVNJczhqcw?oc=5",
+   "source": "Google News",
+   "pub": "2026-10-20",
+   "flags": [],
+   "snippet": "KB페이로 국제선 사면 12% 할인…제주항공 등 5개 LCC 대상 &nbsp;&nbsp; 뉴스퀘스트"
   },
   {
    "id": "206f1b23385f5512",
