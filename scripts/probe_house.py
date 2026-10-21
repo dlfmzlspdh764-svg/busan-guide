@@ -1,5 +1,5 @@
 import os,urllib.request,urllib.parse
-k=os.environ['DATA_GO_KR_KEY'];B='https://apis.data.go.kr/6260000/HouseTradePriceService'
+k=os.environ.get('BUSAN_HOUSE_KEY') or os.environ['DATA_GO_KR_KEY'];B='https://apis.data.go.kr/6260000/HouseTradePriceService'
 for op in ['','getHouseTradePriceInfo','getHouseTradePrice','getHouseTradePriceList','getHouseTradePriceInfoList','getHouseTradeInfo']:
   u=f"{B}/{op}?serviceKey={urllib.parse.quote(k)}&pageNo=1&numOfRows=3&resultType=json"
   try:
