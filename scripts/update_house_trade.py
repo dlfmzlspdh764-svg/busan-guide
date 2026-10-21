@@ -40,7 +40,7 @@ def main():
         gu=parts[1] if len(parts)>1 else "기타"; dong=" ".join(parts[2:])
         ym=r["ctrtYm"]
         g[gu].append({"t":r.get("hsTypeNm") or "","nm":r.get("bldgNm") or "","dong":dong,"road":r.get("roadNm") or "",
-            "amt":int(f(r.get("dlngAmt"))),"ar":f(r.get("tflar")),"land":f(r.get("siar")),"fl":r.get("flr") or "",
+            "amt":int(f(r.get("dlngAmt"))),"ar":f(r.get("xuar")) or f(r.get("tflar")),"ax":1 if f(r.get("xuar")) else 0,"land":f(r.get("siar")),"fl":r.get("flr") or "",
             "by":r.get("archYr") or "","d":f"{ym[:4]}-{ym[4:]}-{int(f(r.get('ctrtDay'))):02d}","se":r.get("dlngSeNm") or ""})
     gus=[];summ={}
     for gu in sorted(g):
