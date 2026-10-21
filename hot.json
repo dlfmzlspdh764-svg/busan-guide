@@ -1,12 +1,70 @@
 {
-  "updated": "2026-10-21 08:43",
+  "updated": "2026-10-21 13:10",
   "basis": "뉴스·블로그·유튜브 최근 7일에서 상호 발견 → 카카오 부산 장소 검증 (틱톡 제외)",
   "sources": {
-    "news": 116,
-    "blog": 311,
-    "youtube": 194
+    "news": 113,
+    "blog": 309,
+    "youtube": 193
   },
   "places": [
+    {
+      "id": "1638177614",
+      "n": "디저트시네마",
+      "gu": "연제구",
+      "c": "카페",
+      "addr": "부산 연제구 쌍미천로 32-1 1층",
+      "sc": 4.0,
+      "rc": 45,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/fbd4bd497c6ffcc9a7d51806bc6892d3b9aba082?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/fbd4bd497c6ffcc9a7d51806bc6892d3b9aba082?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b1a887ee8977c5dc5dcbcb6b42a42a7742ff3b13?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/9e59a67e25cba4a2caf32faa3ad12a3a3dceb05e?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/351f1e6bfbb0b2157675084d260c09d1dd1ff9d5?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/eed93bc4bbf082ba3b5ce5c6343e0b048a8c1a71?original"
+      ],
+      "mentions": 6,
+      "by": {
+        "news": 0,
+        "blog": 6,
+        "youtube": 0
+      },
+      "sample": [
+        "[10월 3주차] 더현대서울 B1층 디저트 팝업 - 시루나무, 오믈렛하우스, 릴리언, 달밤단밤",
+        "[부산 전포 카페] 감성 가득 빈티지 공간 '넉아웃' 디저트 맛집 (무화과 스페셜, 포토존 총정리)"
+      ],
+      "map": "https://map.kakao.com/?q=%EB%94%94%EC%A0%80%ED%8A%B8%EC%8B%9C%EB%84%A4%EB%A7%88",
+      "tel": ""
+    },
+    {
+      "id": "7897884",
+      "n": "웨스틴조선 부산",
+      "gu": "해운대구",
+      "c": "호텔",
+      "addr": "부산 해운대구 동백로 67",
+      "sc": 4.2,
+      "rc": 187,
+      "im": "https://t1.kakaocdn.net/one/store/20260402135737-369195c9-7e27-4cb7-8291-0bef74ec649d.jpg",
+      "ims": [
+        "https://t1.kakaocdn.net/one/store/20260402135737-369195c9-7e27-4cb7-8291-0bef74ec649d.jpg",
+        "https://t1.kakaocdn.net/one/store/20260402135737-4cf97670-5e3d-4c19-b834-e57d26dc1935.jpg",
+        "https://t1.kakaocdn.net/one/store/20260402135737-f1b085c7-9fc0-4d64-a2ba-adfffa4141ec.jpg",
+        "https://t1.kakaocdn.net/one/store/20260402135737-1fa8622e-e702-4700-834d-9411640ffd04.jpg",
+        "https://t1.kakaocdn.net/one/store/20260402135737-070b02b5-be1c-4fcb-ae36-03e51f2b9072.jpg"
+      ],
+      "mentions": 4,
+      "by": {
+        "news": 0,
+        "blog": 1,
+        "youtube": 3
+      },
+      "sample": [
+        "혼자 여름도쿄✈️ ep.2 | 미감코스! 피카소 전시부터 느좋 요요기 즐기기(요요기 호텔 추천! 가조엔도쿄, 에그타르트, 카멜백, 리틀냅, 400℃ 피자, 나폴리탄맛집)",
+        "스스키노 호텔 추천｜삿포로 스트림 호텔 (마트·편의점·다이소에 지하철까지 연결된 호텔)"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%9B%A8%EC%8A%A4%ED%8B%B4%EC%A1%B0%EC%84%A0%20%EB%B6%80%EC%82%B0",
+      "tel": ""
+    },
     {
       "id": "1817936420",
       "n": "베이프트렌드",
@@ -31,127 +89,99 @@
       "tel": ""
     },
     {
-      "id": "12478775",
-      "n": "본전돼지국밥",
-      "gu": "동구",
+      "id": "10070964",
+      "n": "이재모피자 본점",
+      "gu": "중구",
       "c": "맛집",
-      "addr": "부산 동구 초량동 1200-6 1층",
-      "sc": 3.5,
-      "rc": 581,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/07771151ce1209e10e0ac9caa1bfbcd7246456b5?original",
-      "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/07771151ce1209e10e0ac9caa1bfbcd7246456b5?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/70021d0f86d37b0dccd8d7077f56b9aacedafd7f?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/a642a02fd0215f37615994f70cbb525ada6eff5d?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/9a8173ecf0270f8aa184c6dc80ea05b2a2eb680e?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b2b570a116c1406830d60ed71f3c572d12de796a?original"
-      ],
-      "mentions": 3,
-      "by": {
-        "news": 0,
-        "blog": 3,
-        "youtube": 0
-      },
-      "sample": [
-        "부산 서면 맛집 추천! 산반들 돼지국밥에서 즐긴 든든한 혼밥 한 끼"
-      ],
-      "map": "https://map.kakao.com/?q=%EB%B3%B8%EC%A0%84%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5",
-      "tel": ""
-    },
-    {
-      "id": "8149130",
-      "n": "해운대암소갈비집",
-      "gu": "해운대구",
-      "c": "맛집",
-      "addr": "부산 해운대구 중동 1225-1 1층",
-      "sc": 3.4,
-      "rc": 497,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/16b05b653e5e1cd11b210685e3d1679f6fd43d7d?original",
-      "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/16b05b653e5e1cd11b210685e3d1679f6fd43d7d?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d88ca4b533746f0c5566b9908bdab14364d695db?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/1b9fe63200e434b37754c49736dae12ad8e0e474?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/a66476ddae6e02c8b5894da6d8eb2cd5892d23e5?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b232044ac536f4095a7154f60d0281df1164a573?original"
-      ],
-      "mentions": 3,
-      "by": {
-        "news": 0,
-        "blog": 3,
-        "youtube": 0
-      },
-      "sample": [
-        "전포동 고기집 맛집 가성비와 맛 다 잡은 뒷돈상회 전포점",
-        "전포동 고기집 맛집 가성비와 맛 다 잡은 뒷돈상회 전포 점"
-      ],
-      "map": "https://map.kakao.com/?q=%ED%95%B4%EC%9A%B4%EB%8C%80%EC%95%94%EC%86%8C%EA%B0%88%EB%B9%84%EC%A7%91",
-      "tel": ""
-    },
-    {
-      "id": "7897884",
-      "n": "웨스틴조선 부산",
-      "gu": "해운대구",
-      "c": "호텔",
-      "addr": "부산 해운대구 동백로 67",
+      "addr": "부산 중구 신창동1가 2-1 중앙아파트 상가 2층",
       "sc": 4.2,
-      "rc": 187,
-      "im": "https://t1.kakaocdn.net/one/store/20260402135737-369195c9-7e27-4cb7-8291-0bef74ec649d.jpg",
+      "rc": 1229,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/08c46e847a85d2083783b6f39abbfda9c533cee7?original",
       "ims": [
-        "https://t1.kakaocdn.net/one/store/20260402135737-369195c9-7e27-4cb7-8291-0bef74ec649d.jpg",
-        "https://t1.kakaocdn.net/one/store/20260402135737-4cf97670-5e3d-4c19-b834-e57d26dc1935.jpg",
-        "https://t1.kakaocdn.net/one/store/20260402135737-f1b085c7-9fc0-4d64-a2ba-adfffa4141ec.jpg",
-        "https://t1.kakaocdn.net/one/store/20260402135737-1fa8622e-e702-4700-834d-9411640ffd04.jpg",
-        "https://t1.kakaocdn.net/one/store/20260402135737-070b02b5-be1c-4fcb-ae36-03e51f2b9072.jpg"
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/08c46e847a85d2083783b6f39abbfda9c533cee7?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/00f6d723968ed6e3a02febbe3fcd95df58c8f816?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/bbabe562b6fab5cbfe9d332bc14b26b11295a03c?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d1b7876926a7fa2b526464b855e0e6fb575fc6d3?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/de6a4aa4e983ac9ee0989b5d8b306dd4d9ce4b62?original"
       ],
       "mentions": 3,
       "by": {
         "news": 0,
-        "blog": 0,
-        "youtube": 3
+        "blog": 3,
+        "youtube": 0
       },
       "sample": [
-        "혼자 여름도쿄✈️ ep.2 | 미감코스! 피카소 전시부터 느좋 요요기 즐기기(요요기 호텔 추천! 가조엔도쿄, 에그타르트, 카멜백, 리틀냅, 400℃ 피자, 나폴리탄맛집)",
-        "스스키노 호텔 추천｜삿포로 스트림 호텔 (마트·편의점·다이소에 지하철까지 연결된 호텔)"
+        "광안리 오션뷰 피자 맛집 원피스피자, 광안리 1열에서 즐기는 피맥",
+        "서면 피자 맛집 피자드시우 : 반반피자 2인 메뉴 추천"
       ],
-      "map": "https://map.kakao.com/?q=%EC%9B%A8%EC%8A%A4%ED%8B%B4%EC%A1%B0%EC%84%A0%20%EB%B6%80%EC%82%B0",
+      "map": "https://map.kakao.com/?q=%EC%9D%B4%EC%9E%AC%EB%AA%A8%ED%94%BC%EC%9E%90%20%EB%B3%B8%EC%A0%90",
       "tel": ""
     },
     {
-      "id": "1309756273",
-      "n": "부산콘서트홀",
-      "gu": "부산진구",
-      "c": "공연장,연극극장",
-      "addr": "부산 부산진구 동평로 250",
-      "sc": 3.8,
-      "rc": 30,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b354b6f6839317c1962e076d5898cd5540575060?original",
+      "id": "510385750",
+      "n": "브런치송도&디에이블",
+      "gu": "서구",
+      "c": "이탈리안",
+      "addr": "부산 서구 충무대로34번길 47 3층 301호",
+      "sc": 4.3,
+      "rc": 92,
+      "im": "https://t1.kakaocdn.net/mystore/B941B0EF6E4F4E979B8374FC898BDB40",
       "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b354b6f6839317c1962e076d5898cd5540575060?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/1aee06cd04baedfac017be62d99f2cf431698d59?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/105d75effe9819ad9a38a63302c747c9a6bf9841?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/6bfafe0ef06dd21f2a462e5c8900e39f16dec168?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/9cc1202af193f5efdbd0d510e03c292565ffaf44?original"
+        "https://t1.kakaocdn.net/mystore/B941B0EF6E4F4E979B8374FC898BDB40",
+        "https://t1.kakaocdn.net/mystore/DDA079BD301E45579A7B6D9B9DA1FB8E",
+        "https://t1.kakaocdn.net/mystore/FA7E4D168A88420393F9C6C0AB31AAA3",
+        "https://t1.kakaocdn.net/mystore/019D4342B1024F98AF841E4FBEC61BFC",
+        "https://t1.kakaocdn.net/mystore/39964AC41EB94EE6B2AFBC7004347565"
       ],
       "mentions": 3,
       "by": {
         "news": 0,
-        "blog": 1,
-        "youtube": 2
+        "blog": 2,
+        "youtube": 1
       },
       "sample": [
-        "지상렬 찐팬의 미친 홍보 텐션 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연",
-        "여자 분냄새가 좋다는 49살 남자의 능력 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
+        "eng) 친구랑 부캉이 보러 갔다가 놀면서도 식단 지키려 노력하는 30대 직장인 일상 vlog | 브런치 맛집, 테라스 좋은 카페, 동부산 롯데아울렛, 쌀국수 맛집",
+        "브런치카페 1인 소자본 창업 전문 페로어페로"
       ],
-      "map": "https://map.kakao.com/?q=%EB%B6%80%EC%82%B0%EC%BD%98%EC%84%9C%ED%8A%B8%ED%99%80",
+      "map": "https://map.kakao.com/?q=%EB%B8%8C%EB%9F%B0%EC%B9%98%EC%86%A1%EB%8F%84%26%EB%94%94%EC%97%90%EC%9D%B4%EB%B8%94",
       "tel": ""
     },
     {
-      "id": "1330633449",
-      "n": "보드게임카페 레드버튼 서면점",
+      "id": "721488679",
+      "n": "울릉도소주방",
       "gu": "부산진구",
-      "c": "카페",
-      "addr": "부산 부산진구 동천로 63 4층",
-      "sc": 4.0,
+      "c": "술집",
+      "addr": "부산 부산진구 동평로420번길 25 1층",
+      "sc": 4.1,
+      "rc": 29,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/78cad5931c979b6aaa7312ad23f871493b3c602c?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/78cad5931c979b6aaa7312ad23f871493b3c602c?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/67c4ce41b67ee6b6106570eb78fa8421137be927?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/4ea7a7536ea6c703ec5239d23148c43a07adee66?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b2637a07860ce1a15bade73a190da5db57df7b79?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f527bba46fc677c95ca48edc4b79a82052add4b0?original"
+      ],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 3,
+        "youtube": 0
+      },
+      "sample": [
+        "양산 증산택지 2차 술집 추천 | 안주가 맛있는 백호로골목집",
+        "서면 핫플 술집 맛집 전포카페거리 밥집 추천"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%9A%B8%EB%A6%89%EB%8F%84%EC%86%8C%EC%A3%BC%EB%B0%A9",
+      "tel": ""
+    },
+    {
+      "id": "904186512",
+      "n": "규스지 커리바",
+      "gu": "부산진구",
+      "c": "퓨전일식",
+      "addr": "부산 부산진구 동성로71번길 23 지하1층",
+      "sc": 4.1,
       "rc": 20,
       "im": null,
       "ims": [],
@@ -162,10 +192,9 @@
         "youtube": 0
       },
       "sample": [
-        "광안리 보드게임 카페 정글비 후기",
-        "[부산 서면] 홈즈앤루팡 서면점, 서면 보드게임카페 실내데이트 추천! 프라이빗 룸과 맛있는 스낵"
+        "전포 핫플 '규스지 커리바' 지로라멘, 시루나시 지로라멘 내돈내산 솔직후기!ㅣ웨이팅, 주차"
       ],
-      "map": "https://map.kakao.com/?q=%EB%B3%B4%EB%93%9C%EA%B2%8C%EC%9E%84%EC%B9%B4%ED%8E%98%20%EB%A0%88%EB%93%9C%EB%B2%84%ED%8A%BC%20%EC%84%9C%EB%A9%B4%EC%A0%90",
+      "map": "https://map.kakao.com/?q=%EA%B7%9C%EC%8A%A4%EC%A7%80%20%EC%BB%A4%EB%A6%AC%EB%B0%94",
       "tel": ""
     },
     {
@@ -223,53 +252,25 @@
       "tel": ""
     },
     {
-      "id": "992075969",
-      "n": "감성양고기",
-      "gu": "수영구",
-      "c": "육류,고기",
-      "addr": "부산 수영구 황령대로481번길 10-9 1층",
-      "sc": 4.8,
-      "rc": 5,
+      "id": "1532650033",
+      "n": "커리플라",
+      "gu": "연제구",
+      "c": "맛집",
+      "addr": "부산 연제구 연산동 862 연제힐스테이트 상가1동 102호",
+      "sc": 4.7,
+      "rc": 6,
       "im": null,
       "ims": [],
       "mentions": 3,
       "by": {
         "news": 0,
-        "blog": 1,
-        "youtube": 2
-      },
-      "sample": [
-        "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
-        "전포동에서 찾은 뉴욕 감성 맛집 #전포동맛집 #전포맛집 #부산맛집"
-      ],
-      "map": "https://map.kakao.com/?q=%EA%B0%90%EC%84%B1%EC%96%91%EA%B3%A0%EA%B8%B0",
-      "tel": ""
-    },
-    {
-      "id": "17405448",
-      "n": "앵콜반점",
-      "gu": "부산진구",
-      "c": "중국요리",
-      "addr": "부산 부산진구 복지로 29 1층",
-      "sc": 4.8,
-      "rc": 5,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/9f8cf458166433a5f7b5b5e5b5fd4f851b2699d4?original",
-      "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/9f8cf458166433a5f7b5b5e5b5fd4f851b2699d4?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/dce3b9f4270731aa5aca575c2653262db21d0df2?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/109e9e5f58d059b92721ecb653a1a303c64cbdca?original"
-      ],
-      "mentions": 3,
-      "by": {
-        "news": 3,
-        "blog": 0,
+        "blog": 3,
         "youtube": 0
       },
       "sample": [
-        "\"부산서 다시 만나는 Y-3\" 무신사, 센텀시티에 앵콜 팝업",
-        "무신사, ‘Y-3’ 부산 신세계百 센텀시티점 앵콜 팝업 개최"
+        "전포 핫플 '규스지 커리바' 지로라멘, 시루나시 지로라멘 내돈내산 솔직후기!ㅣ웨이팅, 주차"
       ],
-      "map": "https://map.kakao.com/?q=%EC%95%B5%EC%BD%9C%EB%B0%98%EC%A0%90",
+      "map": "https://map.kakao.com/?q=%EC%BB%A4%EB%A6%AC%ED%94%8C%EB%9D%BC",
       "tel": ""
     }
   ],
@@ -289,8 +290,20 @@
     {
       "k": "데카트론",
       "n": 6,
-      "ch": -1,
-      "arrow": "▼"
+      "ch": 0,
+      "arrow": "–"
+    },
+    {
+      "k": "디저트",
+      "n": 6,
+      "ch": 6,
+      "arrow": "▲"
+    },
+    {
+      "k": "디저트시네마",
+      "n": 6,
+      "ch": 6,
+      "arrow": "▲"
     },
     {
       "k": "황금예찬",
@@ -305,32 +318,20 @@
       "arrow": "–"
     },
     {
+      "k": "호텔",
+      "n": 4,
+      "ch": 4,
+      "arrow": "▲"
+    },
+    {
+      "k": "웨스틴조선 부산",
+      "n": 4,
+      "ch": 4,
+      "arrow": "▲"
+    },
+    {
       "k": "베이프트렌드",
       "n": 4,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
-      "k": "이곳",
-      "n": 3,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
-      "k": "연남동",
-      "n": 3,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
-      "k": "앵콜",
-      "n": 3,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
-      "k": "소잉팩토리",
-      "n": 3,
       "ch": 0,
       "arrow": "–"
     }
