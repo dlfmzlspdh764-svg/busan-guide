@@ -20,11 +20,17 @@ jobs:
         env:
           DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
         run: python3 -u scripts/update_realestate.py
+      - name: Update realestate_trade.json (매매)
+        continue-on-error: true
+        env:
+          BUSAN_HOUSE_KEY: ${{ secrets.BUSAN_HOUSE_KEY }}
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+        run: python3 -u scripts/update_house_trade.py
       - name: Validate
         run: python3 -c "import json;d=json.load(open('realestate.json'));n=sum(s['n'] for s in d['summary'].values());assert n>=50,n;print(n)"
       - name: Commit if changed
         run: |
-          git add realestate.json
+          git add realestate.json realestate_trade.json 2>/dev/null || git add realestate.json
           if git diff --cached --quiet; then echo "no change"; exit 0; fi
           git config user.name "busan-guide-bot"
           git config user.email "dlfmzlspdh764-svg@users.noreply.github.com"
