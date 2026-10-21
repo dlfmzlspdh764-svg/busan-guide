@@ -182,7 +182,7 @@ Promise.all(["events","food","news","flights"].map(n=>fetch(n+".json?t="+Date.no
   <a id="apkdl" href="https://github.com/dlfmzlspdh764-svg/busan-guide/releases/latest/download/busan-guide.apk" style="display:inline-block;margin:6px 0;padding:6px 12px;border-radius:16px;background:#fff;color:#0a5;font-weight:700;text-decoration:none;font-size:14px">📲 안드로이드 앱 다운로드</a>
   <script>if(/BusanGuideApp|iPhone|iPad/.test(navigator.userAgent))document.getElementById("apkdl").style.display="none"</script>
   <div class="search">
-    <input id="q" type="search" placeholder="가게·장소·메뉴 검색 (예: 국밥, 카페)" autocomplete="off">
+    <form id="qf" style="display:flex;gap:6px;flex:1;min-width:0;margin:0"><input id="q" type="search" enterkeyhint="search" placeholder="가게·장소·메뉴 검색 (예: 국밥, 카페)" autocomplete="off" style="flex:1;min-width:0"><button type="button" id="qx" aria-label="지우기" style="padding:0 10px;border-radius:10px;border:0;background:#fff;font-size:15px">✕</button><button type="submit" aria-label="검색" style="padding:0 12px;border-radius:10px;border:0;background:#fff;font-size:17px">🔍</button></form>
     <button class="favbtn" id="favOnly" aria-pressed="false">♥ 찜</button>
   </div>
 </header>
@@ -675,6 +675,7 @@ function stay(){
 var RT=null,RTL=false,RE=null,REL=false,reType="전체",reQ="",reOpen={};
 const reWon=v=>{v=+v||0;if(v>=10000){const e=Math.floor(v/10000),r=v%10000;return e+"억"+(r?" "+r.toLocaleString()+"만":"")}return v.toLocaleString()+"만"};
 function reSet(k,v){if(k==="t")reType=v;else if(k==="g")reOpen[v]=!reOpen[v];render()}
+function reQEl(){return document.getElementById("reQ")}
 function reSearch(v){reQ=v;const y=window.scrollY;document.getElementById("reList").innerHTML=reList();window.scrollTo(0,y)}
 function rtList(){
  const q=reQ.trim();let h="";
@@ -705,7 +706,7 @@ function estate(){
  const ms=RE.months.map(m=>m.slice(0,4)+"."+m.slice(4)).reverse().join(", ");
  return `<div class="sec-title">🏠 부산 아파트 전월세 실거래가</div><div style="font-size:12px;opacity:.8;margin:0 2px 8px">${ms} 신고분 · 총 ${tot.toLocaleString()}건 · 업데이트 ${RE.upd} KST<br>출처: ${RE.src}. 신고 기한(30일) 때문에 최근 달은 건수가 적어요.</div>
  <div style="display:flex;gap:6px;margin-bottom:8px">${["전체","전세","월세","매매"].map(t=>`<button class="chip ${t===reType?"on":""}" onclick="reSet('t','${t}')">${t}</button>`).join("")}</div>
- <input id="reQ" type="search" placeholder="아파트명 또는 동 검색 (예: 우동, 래미안)" value="${reQ.replace(/"/g,"&quot;")}" oninput="reSearch(this.value)" style="width:100%;box-sizing:border-box;padding:10px;border-radius:10px;border:1px solid #8885;font-size:14px;margin-bottom:4px">
+ <form onsubmit="event.preventDefault();reSearch(reQEl().value);reQEl().blur()" style="display:flex;gap:6px;margin-bottom:4px"><input id="reQ" type="search" enterkeyhint="search" placeholder="아파트명 또는 동 검색 (예: 우동, 래미안)" value="${reQ.replace(/"/g,"&quot;")}" oninput="reSearch(this.value)" style="flex:1;min-width:0;box-sizing:border-box;padding:10px;border-radius:10px;border:1px solid #8885;font-size:14px"><button type="button" aria-label="지우기" onclick="reQEl().value='';reSearch('')" style="padding:0 12px;border-radius:10px;border:1px solid #8885;background:#fff;font-size:16px">✕</button><button type="submit" aria-label="검색" style="padding:0 14px;border-radius:10px;border:0;background:#0a5;color:#fff;font-size:18px">🔍</button></form>
  ${reType==="매매"&&RT?`<div style="font-size:12px;opacity:.8;margin:4px 2px">매매: ${RT.months.map(m=>m.slice(0,4)+"."+m.slice(4)).join(", ")} 계약분 · ${Object.values(RT.summary).reduce((a,s)=>a+s.n,0).toLocaleString()}건 · 출처: ${RT.src}</div>`:""}<div id="reList">${reList()}</div>`}
 function render(){
  renderChips();
@@ -740,6 +741,8 @@ document.addEventListener("click",e=>{
  render();
 });
 document.getElementById("q").addEventListener("input",e=>{query=e.target.value.trim().toLowerCase();render()});
+document.getElementById("qf").addEventListener("submit",e=>{e.preventDefault();const i=document.getElementById("q");query=i.value.trim().toLowerCase();render();i.blur()});
+document.getElementById("qx").addEventListener("click",()=>{const i=document.getElementById("q");i.value="";query="";render()});
 render();
 const _m=location.hash.match(/^#place-(\d+)/);if(_m)openSheet(_m[1]);
 const _e=location.hash.match(/^#event-(.+)$/);if(_e){tab="event";render();openEvent(decodeURIComponent(_e[1]));}
