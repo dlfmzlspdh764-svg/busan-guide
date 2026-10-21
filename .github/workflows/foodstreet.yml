@@ -1,0 +1,32 @@
+name: foodstreet
+on:
+  schedule:
+    - cron: "30 19 * * 0"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: foodstreet
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Update foodstreet.json
+        env:
+          BUSAN_FOOD_API_KEY: ${{ secrets.BUSAN_FOOD_API_KEY }}
+        run: python3 -u scripts/update_foodstreet.py
+      - name: Validate
+        run: python3 -c "import json;d=json.load(open('foodstreet.json'));n=sum(len(s['places']) for s in d['streets']);assert n>=100,n;print(n)"
+      - name: Commit if changed
+        run: |
+          git add foodstreet.json
+          if git diff --cached --quiet; then echo "no change"; exit 0; fi
+          git config user.name "busan-guide-bot"
+          git config user.email "dlfmzlspdh764-svg@users.noreply.github.com"
+          git commit -m "음식테마거리 업데이트 $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin main && break; sleep 5; done
