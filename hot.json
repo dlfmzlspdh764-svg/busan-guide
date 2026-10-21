@@ -1,10 +1,10 @@
 {
-  "updated": "2026-10-22 01:58",
+  "updated": "2026-10-22 06:28",
   "basis": "뉴스·블로그·유튜브 최근 7일에서 상호 발견 → 카카오 부산 장소 검증 (틱톡 제외)",
   "sources": {
-    "news": 113,
+    "news": 118,
     "blog": 0,
-    "youtube": 193
+    "youtube": 194
   },
   "places": [
     {
@@ -85,6 +85,34 @@
       "tel": ""
     },
     {
+      "id": "596401302",
+      "n": "요코",
+      "gu": "동래구",
+      "c": "맛집",
+      "addr": "부산 동래구 명륜동 558-10 1층",
+      "sc": 4.7,
+      "rc": 497,
+      "im": "https://t1.kakaocdn.net/mystore/13AAF1C21BFA4B749D7E7FA645DDC0A9",
+      "ims": [
+        "https://t1.kakaocdn.net/mystore/13AAF1C21BFA4B749D7E7FA645DDC0A9",
+        "https://t1.kakaocdn.net/mystore/F88701453699409BA864615D8BEB62DA",
+        "https://t1.kakaocdn.net/mystore/331C0E666AC944DF8FBCDA8EA8A5FE6D",
+        "https://t1.kakaocdn.net/mystore/BBC694151B4E4040A444FE2962583EBF",
+        "https://t1.kakaocdn.net/mystore/16942FC491CB4E11AE17524906AD434A"
+      ],
+      "mentions": 2,
+      "by": {
+        "news": 0,
+        "blog": 0,
+        "youtube": 2
+      },
+      "sample": [
+        "혼자 여름도쿄✈️ ep.2 | 미감코스! 피카소 전시부터 느좋 요요기 즐기기(요요기 호텔 추천! 가조엔도쿄, 에그타르트, 카멜백, 리틀냅, 400℃ 피자, 나폴리탄맛집)"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%9A%94%EC%BD%94",
+      "tel": ""
+    },
+    {
       "id": "20548602",
       "n": "신세계사이먼 부산프리미엄아울렛",
       "gu": "기장군",
@@ -143,38 +171,21 @@
       "tel": ""
     },
     {
-      "id": "27470238",
-      "n": "신세계 센텀시티몰",
-      "gu": "해운대구",
-      "c": "백화점",
-      "addr": "부산 해운대구 센텀4로 15",
-      "sc": 3.4,
-      "rc": 31,
-      "im": null,
-      "ims": [],
-      "mentions": 2,
-      "by": {
-        "news": 2,
-        "blog": 0,
-        "youtube": 0
-      },
-      "sample": [
-        "벤틀리부산, 신세계 센텀시티서 팝업스토어 개최…'토르칼' 특별 전시",
-        "벤틀리부산, 신세계 센텀시티서 팝업스토어 개최…'토르칼' 특별 전시 · 주요 내용은?"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%8B%A0%EC%84%B8%EA%B3%84%20%EC%84%BC%ED%85%80%EC%8B%9C%ED%8B%B0%EB%AA%B0",
-      "tel": ""
-    },
-    {
       "id": "1309756273",
       "n": "부산콘서트홀",
       "gu": "부산진구",
-      "c": "문화,예술 문화시설 공연장,연극극장",
-      "addr": "부산 부산진구 연지동 60",
+      "c": "공연장,연극극장",
+      "addr": "부산 부산진구 동평로 250",
       "sc": 3.8,
       "rc": 30,
-      "im": null,
-      "ims": [],
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b354b6f6839317c1962e076d5898cd5540575060?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b354b6f6839317c1962e076d5898cd5540575060?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/1aee06cd04baedfac017be62d99f2cf431698d59?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/105d75effe9819ad9a38a63302c747c9a6bf9841?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/6bfafe0ef06dd21f2a462e5c8900e39f16dec168?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/9cc1202af193f5efdbd0d510e03c292565ffaf44?original"
+      ],
       "mentions": 2,
       "by": {
         "news": 0,
@@ -192,8 +203,8 @@
       "id": "2116074814",
       "n": "CGV 부산명지",
       "gu": "서구",
-      "c": "문화,예술 영화,영상 영화관 CGV",
-      "addr": "부산 강서구 명지동 3586-4 명지플러스시네마 9층",
+      "c": "영화관",
+      "addr": "부산 강서구 명지국제8로10번길 38 명지플러스시네마 9층",
       "sc": 4.1,
       "rc": 23,
       "im": null,
@@ -209,6 +220,28 @@
         "해운대 청사포 몽돌해변 🐾 Cheongsapo Mongdol Beach 📸🇰🇷 #busan #cheongsapo #해운대 #몽돌해변 #강아지산책"
       ],
       "map": "https://map.kakao.com/?q=CGV%20%EB%B6%80%EC%82%B0%EB%AA%85%EC%A7%80",
+      "tel": ""
+    },
+    {
+      "id": "12244873",
+      "n": "피카소모텔",
+      "gu": "해운대구",
+      "c": "여행 숙박 여관,모텔",
+      "addr": "부산 해운대구 우동 644-5",
+      "sc": 3.5,
+      "rc": 12,
+      "im": null,
+      "ims": [],
+      "mentions": 2,
+      "by": {
+        "news": 0,
+        "blog": 0,
+        "youtube": 2
+      },
+      "sample": [
+        "혼자 여름도쿄✈️ ep.2 | 미감코스! 피카소 전시부터 느좋 요요기 즐기기(요요기 호텔 추천! 가조엔도쿄, 에그타르트, 카멜백, 리틀냅, 400℃ 피자, 나폴리탄맛집)"
+      ],
+      "map": "https://map.kakao.com/?q=%ED%94%BC%EC%B9%B4%EC%86%8C%EB%AA%A8%ED%85%94",
       "tel": ""
     },
     {
@@ -239,40 +272,23 @@
       ],
       "map": "https://map.kakao.com/?q=%EB%AF%B8%EC%8B%9D%EC%9D%BC%EC%83%81",
       "tel": ""
-    },
-    {
-      "id": "274109740",
-      "n": "개금벚꽃길",
-      "gu": "부산진구",
-      "c": "여행 관광,명소",
-      "addr": "부산 부산진구 개금동 765",
-      "sc": 3.9,
-      "rc": 11,
-      "im": null,
-      "ims": [],
-      "mentions": 2,
-      "by": {
-        "news": 0,
-        "blog": 0,
-        "youtube": 2
-      },
-      "sample": [
-        "지상렬 찐팬의 미친 홍보 텐션 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연",
-        "여자 분냄새가 좋다는 49살 남자의 능력 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
-      ],
-      "map": "https://map.kakao.com/?q=%EA%B0%9C%EA%B8%88%EB%B2%9A%EA%BD%83%EA%B8%B8",
-      "tel": ""
     }
   ],
   "keywords": [
     {
       "k": "부캉이",
-      "n": 9,
+      "n": 7,
       "ch": -2,
       "arrow": "▼"
     },
     {
       "k": "데카트론",
+      "n": 6,
+      "ch": 0,
+      "arrow": "–"
+    },
+    {
+      "k": "Y-3",
       "n": 6,
       "ch": 1,
       "arrow": "▲"
@@ -280,29 +296,35 @@
     {
       "k": "황금예찬",
       "n": 6,
-      "ch": 1,
-      "arrow": "▲"
-    },
-    {
-      "k": "Y-3",
-      "n": 5,
-      "ch": -2,
-      "arrow": "▼"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "소잉팩토리",
       "n": 4,
-      "ch": 4,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "트렌드",
       "n": 3,
-      "ch": -1,
-      "arrow": "▼"
+      "ch": 0,
+      "arrow": "–"
     },
     {
       "k": "엉망",
+      "n": 3,
+      "ch": 0,
+      "arrow": "–"
+    },
+    {
+      "k": "외국인",
+      "n": 3,
+      "ch": 3,
+      "arrow": "▲"
+    },
+    {
+      "k": "ebike",
       "n": 3,
       "ch": 3,
       "arrow": "▲"
@@ -310,20 +332,8 @@
     {
       "k": "아산",
       "n": 3,
-      "ch": 3,
-      "arrow": "▲"
-    },
-    {
-      "k": "아산이자카야",
-      "n": 3,
-      "ch": 3,
-      "arrow": "▲"
-    },
-    {
-      "k": "베이프트렌드",
-      "n": 3,
-      "ch": -1,
-      "arrow": "▼"
+      "ch": 0,
+      "arrow": "–"
     }
   ]
 }
