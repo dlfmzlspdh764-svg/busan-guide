@@ -1,137 +1,35 @@
 {
-  "updated": "2026-10-21 20:31",
+  "updated": "2026-10-22 01:58",
   "basis": "뉴스·블로그·유튜브 최근 7일에서 상호 발견 → 카카오 부산 장소 검증 (틱톡 제외)",
   "sources": {
-    "news": 117,
-    "blog": 307,
+    "news": 113,
+    "blog": 0,
     "youtube": 193
   },
   "places": [
     {
-      "id": "992075969",
-      "n": "감성양고기",
-      "gu": "수영구",
-      "c": "육류,고기",
-      "addr": "부산 수영구 황령대로481번길 10-9 1층",
-      "sc": 4.8,
-      "rc": 5,
-      "im": null,
-      "ims": [],
-      "mentions": 5,
-      "by": {
-        "news": 0,
-        "blog": 3,
-        "youtube": 2
-      },
-      "sample": [
-        "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
-        "전포동에서 찾은 뉴욕 감성 맛집 #전포동맛집 #전포맛집 #부산맛집"
-      ],
-      "map": "https://map.kakao.com/?q=%EA%B0%90%EC%84%B1%EC%96%91%EA%B3%A0%EA%B8%B0",
-      "tel": ""
-    },
-    {
-      "id": "7897884",
-      "n": "웨스틴조선 부산",
-      "gu": "해운대구",
-      "c": "호텔",
-      "addr": "부산 해운대구 동백로 67",
-      "sc": 4.2,
-      "rc": 187,
-      "im": "https://t1.kakaocdn.net/one/store/20260402135737-369195c9-7e27-4cb7-8291-0bef74ec649d.jpg",
-      "ims": [
-        "https://t1.kakaocdn.net/one/store/20260402135737-369195c9-7e27-4cb7-8291-0bef74ec649d.jpg",
-        "https://t1.kakaocdn.net/one/store/20260402135737-4cf97670-5e3d-4c19-b834-e57d26dc1935.jpg",
-        "https://t1.kakaocdn.net/one/store/20260402135737-f1b085c7-9fc0-4d64-a2ba-adfffa4141ec.jpg",
-        "https://t1.kakaocdn.net/one/store/20260402135737-1fa8622e-e702-4700-834d-9411640ffd04.jpg",
-        "https://t1.kakaocdn.net/one/store/20260402135737-070b02b5-be1c-4fcb-ae36-03e51f2b9072.jpg"
-      ],
-      "mentions": 4,
-      "by": {
-        "news": 0,
-        "blog": 2,
-        "youtube": 2
-      },
-      "sample": [
-        "혼자 여름도쿄✈️ ep.2 | 미감코스! 피카소 전시부터 느좋 요요기 즐기기(요요기 호텔 추천! 가조엔도쿄, 에그타르트, 카멜백, 리틀냅, 400℃ 피자, 나폴리탄맛집)",
-        "제주 쉐라톤호텔 돌아기 제주도 숙소 호텔 추천"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%9B%A8%EC%8A%A4%ED%8B%B4%EC%A1%B0%EC%84%A0%20%EB%B6%80%EC%82%B0",
-      "tel": ""
-    },
-    {
-      "id": "1817936420",
-      "n": "베이프트렌드",
-      "gu": "수영구",
-      "c": "전자담배",
-      "addr": "부산 수영구 광안로 56 2층",
-      "sc": null,
-      "rc": 0,
-      "im": null,
-      "ims": [],
-      "mentions": 4,
-      "by": {
-        "news": 3,
-        "blog": 1,
-        "youtube": 0
-      },
-      "sample": [
-        "네이버 파파고앱 '트렌드' 외국인 인기상품과 핫플 소개",
-        "“구글 번역엔 없는 ‘한국 꿀팁’ 총망라”… 네이버 파파고, ‘트렌드’로 ‘핫플’ 이끈다"
-      ],
-      "map": "https://map.kakao.com/?q=%EB%B2%A0%EC%9D%B4%ED%94%84%ED%8A%B8%EB%A0%8C%EB%93%9C",
-      "tel": ""
-    },
-    {
-      "id": "8010849",
-      "n": "옵스 해운대점",
-      "gu": "해운대구",
-      "c": "제과,베이커리",
-      "addr": "부산 해운대구 중동1로 31",
-      "sc": 3.2,
-      "rc": 236,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/536ac68fa8837ab4cbc44ff6a01a640fabbb2e22?original",
-      "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/536ac68fa8837ab4cbc44ff6a01a640fabbb2e22?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b83d2da5421bd82faff9c02e3c0c2dffbff6c927?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/dfd32a19b0a989ce8af4daf7c941d300cd025fc2?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/ca180a89cc6ea50bbf08f62682dfd960d8e0d838?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/683e03147e39bf3030e154bb8a8185f495eb8a21?original"
-      ],
-      "mentions": 3,
-      "by": {
-        "news": 0,
-        "blog": 1,
-        "youtube": 2
-      },
-      "sample": [
-        "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
-        "아산 곡교천뷰 힐링 대형카페 루티니아 #아산카페 #곡교천 #루프탑카페 #테라스카페 #베이커리카페 #연못"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%98%B5%EC%8A%A4%20%ED%95%B4%EC%9A%B4%EB%8C%80%EC%A0%90",
-      "tel": ""
-    },
-    {
-      "id": "721488679",
-      "n": "울릉도소주방",
+      "id": "978777638",
+      "n": "소잉팩토리 부산서면점",
       "gu": "부산진구",
-      "c": "맛집",
-      "addr": "부산 부산진구 양정동 393-10 1층",
-      "sc": 4.1,
-      "rc": 29,
-      "im": null,
-      "ims": [],
-      "mentions": 3,
+      "c": "미싱판매",
+      "addr": "부산 부산진구 중앙대로 799-1 부라더빌딩 2층",
+      "sc": 3.2,
+      "rc": 11,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/448ebffa4c885843f153da4f56761eee1ded8c96?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/448ebffa4c885843f153da4f56761eee1ded8c96?original"
+      ],
+      "mentions": 4,
       "by": {
-        "news": 0,
-        "blog": 3,
+        "news": 4,
+        "blog": 0,
         "youtube": 0
       },
       "sample": [
-        "서면 술집 추천 유망주 서면 점 단체 회식 모임 하기좋은 안주 맛집",
-        "서면 핫플 술집 맛집 전포카페거리 밥집 추천"
+        "백화점으로 들어온 재봉틀… 롯데百 부산본점, '소잉팩토리' 재봉틀 팝업",
+        "롯데백화점 부산본점, ‘소잉팩토리’ 팝업…미싱·자수 체험 한자리"
       ],
-      "map": "https://map.kakao.com/?q=%EC%9A%B8%EB%A6%89%EB%8F%84%EC%86%8C%EC%A3%BC%EB%B0%A9",
+      "map": "https://map.kakao.com/?q=%EC%86%8C%EC%9E%89%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%B6%80%EC%82%B0%EC%84%9C%EB%A9%B4%EC%A0%90",
       "tel": ""
     },
     {
@@ -164,17 +62,15 @@
       "tel": ""
     },
     {
-      "id": "978777638",
-      "n": "소잉팩토리 부산서면점",
-      "gu": "부산진구",
-      "c": "미싱판매",
-      "addr": "부산 부산진구 중앙대로 799-1 부라더빌딩 2층",
-      "sc": 3.2,
-      "rc": 11,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/448ebffa4c885843f153da4f56761eee1ded8c96?original",
-      "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/448ebffa4c885843f153da4f56761eee1ded8c96?original"
-      ],
+      "id": "1817936420",
+      "n": "베이프트렌드",
+      "gu": "수영구",
+      "c": "전자담배",
+      "addr": "부산 수영구 광안로 56 2층",
+      "sc": null,
+      "rc": 0,
+      "im": null,
+      "ims": [],
       "mentions": 3,
       "by": {
         "news": 3,
@@ -182,145 +78,252 @@
         "youtube": 0
       },
       "sample": [
-        "백화점으로 들어온 재봉틀… 롯데百 부산본점, '소잉팩토리' 재봉틀 팝업",
-        "롯데백화점 부산본점, ‘소잉팩토리’ 팝업스토어 운영"
+        "네이버 파파고앱 '트렌드' 외국인 인기상품과 핫플 소개",
+        "“구글 번역엔 없는 ‘한국 꿀팁’ 총망라”… 네이버 파파고, ‘트렌드’로 ‘핫플’ 이끈다"
       ],
-      "map": "https://map.kakao.com/?q=%EC%86%8C%EC%9E%89%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%B6%80%EC%82%B0%EC%84%9C%EB%A9%B4%EC%A0%90",
+      "map": "https://map.kakao.com/?q=%EB%B2%A0%EC%9D%B4%ED%94%84%ED%8A%B8%EB%A0%8C%EB%93%9C",
       "tel": ""
     },
     {
-      "id": "17405448",
-      "n": "앵콜반점",
-      "gu": "부산진구",
-      "c": "중국요리",
-      "addr": "부산 부산진구 복지로 29 1층",
-      "sc": 4.8,
-      "rc": 5,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/9f8cf458166433a5f7b5b5e5b5fd4f851b2699d4?original",
+      "id": "20548602",
+      "n": "신세계사이먼 부산프리미엄아울렛",
+      "gu": "기장군",
+      "c": "상설할인매장",
+      "addr": "부산 기장군 장안읍 정관로 1133 1층",
+      "sc": 4.1,
+      "rc": 158,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/187ec8cdb92560b357394b116627629c70bd7aa3?original",
       "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/9f8cf458166433a5f7b5b5e5b5fd4f851b2699d4?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/dce3b9f4270731aa5aca575c2653262db21d0df2?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/109e9e5f58d059b92721ecb653a1a303c64cbdca?original"
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/187ec8cdb92560b357394b116627629c70bd7aa3?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/108d5ea79ca7332b7700c967bbdd27dd03ad360a?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/ce7a72026adeb2b84998016894acecb65816095e?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/bd62e5bae3406a32b78b2d688036822042b23052?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f625c60826e72dc32ad5e96efbd2b4913cfc859a?original"
       ],
-      "mentions": 3,
+      "mentions": 2,
       "by": {
-        "news": 3,
+        "news": 2,
         "blog": 0,
         "youtube": 0
       },
       "sample": [
-        "\"부산서 다시 만나는 Y-3\" 무신사, 센텀시티에 앵콜 팝업",
-        "무신사, ‘Y-3’ 부산 신세계百 센텀시티점 앵콜 팝업 개최"
+        "씰리침대, 부산 프리미엄 아울렛 팝업 운영…동남권 고객 접점 확대",
+        "씰리침대, 부산 프리미엄 아울렛 팝업 오픈... 대표 매트리스 체험 강화"
       ],
-      "map": "https://map.kakao.com/?q=%EC%95%B5%EC%BD%9C%EB%B0%98%EC%A0%90",
+      "map": "https://map.kakao.com/?q=%EC%8B%A0%EC%84%B8%EA%B3%84%EC%82%AC%EC%9D%B4%EB%A8%BC%20%EB%B6%80%EC%82%B0%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%95%84%EC%9A%B8%EB%A0%9B",
       "tel": ""
     },
     {
-      "id": "27602084",
-      "n": "인사이드부산",
+      "id": "84882413",
+      "n": "라마다 앙코르 부산역 호텔",
       "gu": "동구",
-      "c": "여행 숙박 게스트하우스",
-      "addr": "부산 동구 초량동 1057-74",
-      "sc": 4.3,
-      "rc": 4,
-      "im": null,
-      "ims": [],
-      "mentions": 3,
+      "c": "호텔",
+      "addr": "부산 동구 중앙대로196번길 10",
+      "sc": 3.7,
+      "rc": 82,
+      "im": "https://t1.kakaocdn.net/mystore/3FAC2AF42A1D4CC99961A2C317B9C34E",
+      "ims": [
+        "https://t1.kakaocdn.net/mystore/3FAC2AF42A1D4CC99961A2C317B9C34E",
+        "https://t1.kakaocdn.net/mystore/789BD436615B4E96BF6F3631ADF11E8C",
+        "https://t1.kakaocdn.net/mystore/BB8D6852F9A14FBAB6CDF5F12888859F",
+        "https://t1.kakaocdn.net/mystore/DAB6FDFC84214E78AA40F43A81971346",
+        "https://t1.kakaocdn.net/mystore/842F7912037042E6BD05B5B30E1714C7"
+      ],
+      "mentions": 2,
       "by": {
-        "news": 0,
-        "blog": 3,
+        "news": 2,
+        "blog": 0,
         "youtube": 0
       },
       "sample": [
-        "디시인사이드 갤러리"
+        "무신사, 부산 신세계 센텀시티점서 Y-3 앙코르 팝업",
+        "무신사, Y-3 부산 앙코르 팝업…글로벌 브랜드 유통 강화"
       ],
-      "map": "https://map.kakao.com/?q=%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C%EB%B6%80%EC%82%B0",
+      "map": "https://map.kakao.com/?q=%EB%9D%BC%EB%A7%88%EB%8B%A4%20%EC%95%99%EC%BD%94%EB%A5%B4%20%EB%B6%80%EC%82%B0%EC%97%AD%20%ED%98%B8%ED%85%94",
       "tel": ""
     },
     {
-      "id": "19722320",
-      "n": "좋은장례식장",
-      "gu": "북구",
-      "c": "장례식장",
-      "addr": "부산 북구 금곡대로 586",
-      "sc": 1.0,
-      "rc": 1,
+      "id": "27470238",
+      "n": "신세계 센텀시티몰",
+      "gu": "해운대구",
+      "c": "백화점",
+      "addr": "부산 해운대구 센텀4로 15",
+      "sc": 3.4,
+      "rc": 31,
       "im": null,
       "ims": [],
-      "mentions": 3,
+      "mentions": 2,
       "by": {
-        "news": 0,
-        "blog": 2,
-        "youtube": 1
+        "news": 2,
+        "blog": 0,
+        "youtube": 0
       },
       "sample": [
-        "eng) 친구랑 부캉이 보러 갔다가 놀면서도 식단 지키려 노력하는 30대 직장인 일상 vlog | 브런치 맛집, 테라스 좋은 카페, 동부산 롯데아울렛, 쌀국수 맛집",
-        "전포 분위기 좋은 핫플 술집 고리 솔직후기"
+        "벤틀리부산, 신세계 센텀시티서 팝업스토어 개최…'토르칼' 특별 전시",
+        "벤틀리부산, 신세계 센텀시티서 팝업스토어 개최…'토르칼' 특별 전시 · 주요 내용은?"
       ],
-      "map": "https://map.kakao.com/?q=%EC%A2%8B%EC%9D%80%EC%9E%A5%EB%A1%80%EC%8B%9D%EC%9E%A5",
+      "map": "https://map.kakao.com/?q=%EC%8B%A0%EC%84%B8%EA%B3%84%20%EC%84%BC%ED%85%80%EC%8B%9C%ED%8B%B0%EB%AA%B0",
+      "tel": ""
+    },
+    {
+      "id": "1309756273",
+      "n": "부산콘서트홀",
+      "gu": "부산진구",
+      "c": "문화,예술 문화시설 공연장,연극극장",
+      "addr": "부산 부산진구 연지동 60",
+      "sc": 3.8,
+      "rc": 30,
+      "im": null,
+      "ims": [],
+      "mentions": 2,
+      "by": {
+        "news": 0,
+        "blog": 0,
+        "youtube": 2
+      },
+      "sample": [
+        "지상렬 찐팬의 미친 홍보 텐션 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연",
+        "여자 분냄새가 좋다는 49살 남자의 능력 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
+      ],
+      "map": "https://map.kakao.com/?q=%EB%B6%80%EC%82%B0%EC%BD%98%EC%84%9C%ED%8A%B8%ED%99%80",
+      "tel": ""
+    },
+    {
+      "id": "2116074814",
+      "n": "CGV 부산명지",
+      "gu": "서구",
+      "c": "문화,예술 영화,영상 영화관 CGV",
+      "addr": "부산 강서구 명지동 3586-4 명지플러스시네마 9층",
+      "sc": 4.1,
+      "rc": 23,
+      "im": null,
+      "ims": [],
+      "mentions": 2,
+      "by": {
+        "news": 0,
+        "blog": 0,
+        "youtube": 2
+      },
+      "sample": [
+        "부산 북항에 나타난 3m 상어 ‘부캉이’｜도대체 왜 아직도 여기에 있을까? #shorts #busan #bukangi",
+        "해운대 청사포 몽돌해변 🐾 Cheongsapo Mongdol Beach 📸🇰🇷 #busan #cheongsapo #해운대 #몽돌해변 #강아지산책"
+      ],
+      "map": "https://map.kakao.com/?q=CGV%20%EB%B6%80%EC%82%B0%EB%AA%85%EC%A7%80",
+      "tel": ""
+    },
+    {
+      "id": "1201690415",
+      "n": "미식일상",
+      "gu": "기장군",
+      "c": "푸드코트",
+      "addr": "부산 기장군 기장읍 동부산관광로 34 2층",
+      "sc": 4.5,
+      "rc": 11,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/2e05efc05ed5836593544d3a93ba70fd289060e7?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/2e05efc05ed5836593544d3a93ba70fd289060e7?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/40a3a6699bd7d9e230b0bef3f2078befa47860b5?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/36df063a93fb4720ff7c09683c45409b5dd94796?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d209a02fb18ba99e3ddc786f3851f4d90f67d734?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/e8fe166793b9c801439f6e8fe3bcaee62029503d?original"
+      ],
+      "mentions": 2,
+      "by": {
+        "news": 2,
+        "blog": 0,
+        "youtube": 0
+      },
+      "sample": [
+        "부산 지역 특화쌀 활용 미식 팝업스토어 ‘황금예찬 정미소’ 오픈",
+        "부산시, 지역특화쌀 '황금예찬' 미식 팝업스토어 운영"
+      ],
+      "map": "https://map.kakao.com/?q=%EB%AF%B8%EC%8B%9D%EC%9D%BC%EC%83%81",
+      "tel": ""
+    },
+    {
+      "id": "274109740",
+      "n": "개금벚꽃길",
+      "gu": "부산진구",
+      "c": "여행 관광,명소",
+      "addr": "부산 부산진구 개금동 765",
+      "sc": 3.9,
+      "rc": 11,
+      "im": null,
+      "ims": [],
+      "mentions": 2,
+      "by": {
+        "news": 0,
+        "blog": 0,
+        "youtube": 2
+      },
+      "sample": [
+        "지상렬 찐팬의 미친 홍보 텐션 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연",
+        "여자 분냄새가 좋다는 49살 남자의 능력 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구 #지방공연"
+      ],
+      "map": "https://map.kakao.com/?q=%EA%B0%9C%EA%B8%88%EB%B2%9A%EA%BD%83%EA%B8%B8",
       "tel": ""
     }
   ],
   "keywords": [
     {
       "k": "부캉이",
-      "n": 11,
-      "ch": 4,
+      "n": 9,
+      "ch": -2,
+      "arrow": "▼"
+    },
+    {
+      "k": "데카트론",
+      "n": 6,
+      "ch": 1,
+      "arrow": "▲"
+    },
+    {
+      "k": "황금예찬",
+      "n": 6,
+      "ch": 1,
       "arrow": "▲"
     },
     {
       "k": "Y-3",
-      "n": 7,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
-      "k": "데카트론",
       "n": 5,
-      "ch": -1,
+      "ch": -2,
       "arrow": "▼"
     },
     {
-      "k": "황금예찬",
-      "n": 5,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
-      "k": "감성",
-      "n": 5,
-      "ch": 5,
-      "arrow": "▲"
-    },
-    {
-      "k": "감성양고기",
-      "n": 5,
-      "ch": 5,
+      "k": "소잉팩토리",
+      "n": 4,
+      "ch": 4,
       "arrow": "▲"
     },
     {
       "k": "트렌드",
-      "n": 4,
-      "ch": 0,
-      "arrow": "–"
+      "n": 3,
+      "ch": -1,
+      "arrow": "▼"
     },
     {
-      "k": "호텔",
-      "n": 4,
-      "ch": 0,
-      "arrow": "–"
+      "k": "엉망",
+      "n": 3,
+      "ch": 3,
+      "arrow": "▲"
     },
     {
-      "k": "웨스틴조선 부산",
-      "n": 4,
-      "ch": 0,
-      "arrow": "–"
+      "k": "아산",
+      "n": 3,
+      "ch": 3,
+      "arrow": "▲"
+    },
+    {
+      "k": "아산이자카야",
+      "n": 3,
+      "ch": 3,
+      "arrow": "▲"
     },
     {
       "k": "베이프트렌드",
-      "n": 4,
-      "ch": 0,
-      "arrow": "–"
+      "n": 3,
+      "ch": -1,
+      "arrow": "▼"
     }
   ]
 }
