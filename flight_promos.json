@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21 19:13",
+ "updated": "2026-10-22 00:19",
  "source": "Google News RSS + 항공사 이벤트 페이지(가능한 경우)",
  "items": [
   {
@@ -21,7 +21,7 @@
    "title": "에어부산, 연말 국제선 특가 프로모션…14일부터 20일까지",
    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5mcUhvLXN4cU5wTTBtMTBpZFgzd1dqSW5JWUhUdUlyWThmSEs2RFc0N05TcTVVeTJRdUlDZXY2ZGxDbXNDekphUW1SV2FLVU5ZRjJRa19kYVROVzk1T1N4YlRHVQ?oc=5",
    "source": "Google News",
-   "pub": "2026-10-21",
+   "pub": "2026-10-18",
    "flags": [
     "부산"
    ],
@@ -50,6 +50,18 @@
     "부산"
    ],
    "snippet": "에어부산, 연말 특가 프로모션… 국제선 항공권 7만5900원부터 &nbsp;&nbsp; 브릿지경제"
+  },
+  {
+   "id": "09a5e6ba775e3074",
+   "airline": "에어부산",
+   "title": "에어부산, 국제선 특가 프로모션…편도 총액 7만 5900원부터",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5faDJaUXljV2xZOXFDci1YV2dFX01sOWMyZm5adk1rVV9TS21VeDV5aXB6RmRxOFlUbXRBbE5vWUFzZVgwV0Y2VW8yRmhoNTJQMHBLbHNVRi11S094M0k4b1lNS3F3V2wzdDBuV2VR?oc=5",
+   "source": "Google News",
+   "pub": "2026-10-13",
+   "flags": [
+    "부산"
+   ],
+   "snippet": "에어부산, 국제선 특가 프로모션…편도 총액 7만 5900원부터 &nbsp;&nbsp; 국제뉴스"
   },
   {
    "id": "b5ec7039c4f844c4",
@@ -112,16 +124,16 @@
    "snippet": "에어부산, 연말 국제선 특가…신규 노선 포함 &nbsp;&nbsp; 서울경제"
   },
   {
-   "id": "09a5e6ba775e3074",
+   "id": "77eb899cce940ce2",
    "airline": "에어부산",
-   "title": "에어부산, 국제선 특가 프로모션…편도 총액 7만 5900원부터",
-   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5faDJaUXljV2xZOXFDci1YV2dFX01sOWMyZm5adk1rVV9TS21VeDV5aXB6RmRxOFlUbXRBbE5vWUFzZVgwV0Y2VW8yRmhoNTJQMHBLbHNVRi11S094M0k4b1lNS3F3V2wzdDBuV2VR?oc=5",
+   "title": "에어부산, ‘나의 여행보고서’ 국제선 특가 프로모션 실시",
+   "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE9OTnFmRjNCQ1ROcEs0dGxpTm1qZ05oQjI2OXhaamVESkR0Uy1vMUxVZ2NGRVRWR3ljNERNQ2YzUHlqV0E?oc=5",
    "source": "Google News",
    "pub": "2026-10-13",
    "flags": [
     "부산"
    ],
-   "snippet": "에어부산, 국제선 특가 프로모션…편도 총액 7만 5900원부터 &nbsp;&nbsp; 국제뉴스"
+   "snippet": "에어부산, ‘나의 여행보고서’ 국제선 특가 프로모션 실시 &nbsp;&nbsp; 인디포커스"
   },
   {
    "id": "4012ce9510a14727",
@@ -146,18 +158,6 @@
     "부산"
    ],
    "snippet": "에어부산 연말 시즌 국제선 특가 프로모션 진행 - 머니투데이 &nbsp;&nbsp; 머니투데이"
-  },
-  {
-   "id": "77eb899cce940ce2",
-   "airline": "에어부산",
-   "title": "에어부산, ‘나의 여행보고서’ 국제선 특가 프로모션 실시",
-   "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE9OTnFmRjNCQ1ROcEs0dGxpTm1qZ05oQjI2OXhaamVESkR0Uy1vMUxVZ2NGRVRWR3ljNERNQ2YzUHlqV0E?oc=5",
-   "source": "Google News",
-   "pub": "2026-10-13",
-   "flags": [
-    "부산"
-   ],
-   "snippet": "에어부산, ‘나의 여행보고서’ 국제선 특가 프로모션 실시 &nbsp;&nbsp; 인디포커스"
   },
   {
    "id": "e5454dd13e7d665a",
