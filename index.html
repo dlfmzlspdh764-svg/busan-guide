@@ -672,11 +672,22 @@ function stay(){
 }
 
 // ===== 🏠 부동산 (아파트 전월세 실거래가) =====
-var RE=null,REL=false,reType="전체",reQ="",reOpen={};
+var RT=null,RTL=false,RE=null,REL=false,reType="전체",reQ="",reOpen={};
 const reWon=v=>{v=+v||0;if(v>=10000){const e=Math.floor(v/10000),r=v%10000;return e+"억"+(r?" "+r.toLocaleString()+"만":"")}return v.toLocaleString()+"만"};
 function reSet(k,v){if(k==="t")reType=v;else if(k==="g")reOpen[v]=!reOpen[v];render()}
 function reSearch(v){reQ=v;const y=window.scrollY;document.getElementById("reList").innerHTML=reList();window.scrollTo(0,y)}
+function rtList(){
+ const q=reQ.trim();let h="";
+ for(const g of RT.gus){
+  let rows=g.rows.filter(r=>!q||(r.nm+" "+r.dong+" "+r.road+" "+r.t).includes(q));
+  if(q&&!rows.length)continue;const s=RT.summary[g.gu];const op=reOpen["T"+g.gu]||(q&&rows.length);
+  h+=`<div class="card" style="padding:12px;margin:8px 0"><div onclick="reSet('g','T${g.gu}')" style="cursor:pointer;display:flex;justify-content:space-between;gap:8px"><b style="white-space:nowrap">${op?"▼":"▶"} ${g.gu}</b><span style="font-size:12px;opacity:.8;text-align:right">매매 ${s.n.toLocaleString()}건 · 평균 ${reWon(s.avg)}${q?` · 표시 ${rows.length}`:""}</span></div>`;
+  if(op){h+=rows.slice(0,200).map(r=>`<div style="border-top:1px solid #8883;padding:8px 0;font-size:13px"><b>${r.nm||r.road||r.dong}</b> <span style="opacity:.7">${r.dong}</span> <span style="font-size:11px;padding:1px 6px;border-radius:8px;background:#e6f4e6;color:#333">${r.t||"매매"}</span>${r.se?` <span style="font-size:11px;opacity:.8">${r.se}</span>`:""}<br>${r.ar?`연면적 ${r.ar}㎡ (${(r.ar/3.3058).toFixed(1)}평)`:""}${r.land?` · 대지 ${r.land}㎡`:""}${r.fl?` · ${r.fl}층`:""}${r.by?` · ${r.by}년식`:""}<br><b>매매가 ${reWon(r.amt)}</b> · 계약 ${r.d}${r.road?` · ${r.road}`:""}</div>`).join("");
+   if(rows.length>200)h+=`<div style="font-size:12px;opacity:.7;padding:6px 0">최근 200건만 표시 · 검색으로 좁혀보세요</div>`}
+  h+=`</div>`}
+ return h||'<div class="empty">검색 결과가 없어요</div>'}
 function reList(){
+ if(reType==="매매")return RT?rtList():'<div class="empty">매매 데이터 불러오는 중…</div>';
  const q=reQ.trim();let h="";
  for(const g of RE.gus){
   let rows=g.rows.filter(r=>(reType==="전체"||(reType==="전세"?r.mon===0:r.mon>0))&&(!q||(r.apt+" "+r.dong).includes(q)));
@@ -689,12 +700,13 @@ function reList(){
  return h||'<div class="empty">검색 결과가 없어요</div>'}
 function estate(){
  if(!RE){if(!REL){REL=true;fetch("realestate.json?t="+Date.now()).then(r=>r.json()).then(d=>{RE=d;if(tab==="estate")render()}).catch(()=>{REL=false;if(tab==="estate")document.getElementById("main").innerHTML='<div class="empty">데이터를 아직 불러오지 못했어요</div>'})}return `<div class="sec-title">🏠 부산 아파트 전월세 실거래가</div><div class="empty">불러오는 중…</div>`}
+ if(reType==="매매"&&!RT&&!RTL){RTL=true;fetch("realestate_trade.json?t="+Date.now()).then(r=>r.json()).then(d=>{RT=d;if(tab==="estate")render()}).catch(()=>{RTL=false})}
  const tot=Object.values(RE.summary).reduce((a,s)=>a+s.n,0);
  const ms=RE.months.map(m=>m.slice(0,4)+"."+m.slice(4)).reverse().join(", ");
  return `<div class="sec-title">🏠 부산 아파트 전월세 실거래가</div><div style="font-size:12px;opacity:.8;margin:0 2px 8px">${ms} 신고분 · 총 ${tot.toLocaleString()}건 · 업데이트 ${RE.upd} KST<br>출처: ${RE.src}. 신고 기한(30일) 때문에 최근 달은 건수가 적어요.</div>
- <div style="display:flex;gap:6px;margin-bottom:8px">${["전체","전세","월세"].map(t=>`<button class="chip ${t===reType?"on":""}" onclick="reSet('t','${t}')">${t}</button>`).join("")}</div>
+ <div style="display:flex;gap:6px;margin-bottom:8px">${["전체","전세","월세","매매"].map(t=>`<button class="chip ${t===reType?"on":""}" onclick="reSet('t','${t}')">${t}</button>`).join("")}</div>
  <input id="reQ" type="search" placeholder="아파트명 또는 동 검색 (예: 우동, 래미안)" value="${reQ.replace(/"/g,"&quot;")}" oninput="reSearch(this.value)" style="width:100%;box-sizing:border-box;padding:10px;border-radius:10px;border:1px solid #8885;font-size:14px;margin-bottom:4px">
- <div id="reList">${reList()}</div>`}
+ ${reType==="매매"&&RT?`<div style="font-size:12px;opacity:.8;margin:4px 2px">매매: ${RT.months.map(m=>m.slice(0,4)+"."+m.slice(4)).join(", ")} 계약분 · ${Object.values(RT.summary).reduce((a,s)=>a+s.n,0).toLocaleString()}건 · 출처: ${RT.src}</div>`:""}<div id="reList">${reList()}</div>`}
 function render(){
  renderChips();
  document.getElementById("main").innerHTML=({food,course,event,stay,estate,flight:()=>typeof flight==="function"?flight():"<div class=\"empty\">불러오는 중…</div>"}[tab]||food)();
