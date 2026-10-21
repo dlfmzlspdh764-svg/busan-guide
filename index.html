@@ -201,6 +201,7 @@ Promise.all(["events","food","news","flights"].map(n=>fetch(n+".json?t="+Date.no
   <button data-tab="food" class="on"><span class="ic">🍜</span>맛집·카페</button>
   <button data-tab="event"><span class="ic">🎉</span>행사·축제</button>
   <button data-tab="flight"><span class="ic">✈️</span>항공편</button>
+  <button data-tab="estate"><span class="ic">🏠</span>부동산</button>
 </nav>
 </div>
 <script>
@@ -669,9 +670,34 @@ function stay(){
  const tr=TRANS.filter(x=>match(x.h,x.t)).map(x=>`<div class="card"><h3>🚇 ${x.h}</h3><p class="note">${esc(x.t)}</p><div class="links">${x.u?`<a class="off" href="${x.u}" target="_blank" rel="noopener">${x.l}</a>`:mapLinks(x.q)}</div></div>`).join("");
  return `<div class="sec-title">교통 팁</div>${tr||'<div class="empty">결과 없음</div>'}<div class="sec-title">숙소 지역 추천</div><p class="hint">당일치기가 기본이지만, 축제·늦은 밤 일정엔 이 지역들이 편해요.</p>${s||'<div class="empty">결과 없음</div>'}`;
 }
+
+// ===== 🏠 부동산 (아파트 전월세 실거래가) =====
+var RE=null,REL=false,reType="전체",reQ="",reOpen={};
+const won=v=>{v=+v||0;if(v>=10000){const e=Math.floor(v/10000),r=v%10000;return e+"억"+(r?" "+r.toLocaleString()+"만":"")}return v.toLocaleString()+"만"};
+function reSet(k,v){if(k==="t")reType=v;else if(k==="g")reOpen[v]=!reOpen[v];render()}
+function reSearch(v){reQ=v;const y=window.scrollY;document.getElementById("reList").innerHTML=reList();window.scrollTo(0,y)}
+function reList(){
+ const q=reQ.trim();let h="";
+ for(const g of RE.gus){
+  let rows=g.rows.filter(r=>(reType==="전체"||(reType==="전세"?r.mon===0:r.mon>0))&&(!q||(r.apt+" "+r.dong).includes(q)));
+  const s=RE.summary[g.gu];const op=reOpen[g.gu]||(q&&rows.length);
+  h+=`<div class="card" style="padding:12px;margin:8px 0"><div onclick="reSet('g','${g.gu}')" style="cursor:pointer;display:flex;justify-content:space-between;gap:8px"><b>${op?"▼":"▶"} ${g.gu}</b><span style="font-size:12px;opacity:.8">${s.n.toLocaleString()}건 (전세 ${s.jn}·월세 ${s.wn}) · 평균 전세 ${won(s.javg)}${q||reType!=="전체"?` · 표시 ${rows.length}`:""}</span></div>`;
+  if(op){h+=rows.slice(0,200).map(r=>`<div style="border-top:1px solid #8883;padding:8px 0;font-size:13px"><b>${r.apt}</b> <span style="opacity:.7">${r.dong}</span> <span style="font-size:11px;padding:1px 6px;border-radius:8px;background:${r.mon?"#fde2e2":"#e2ecfd"};color:#333">${r.mon?"월세":"전세"}</span>${r.ct?` <span style="font-size:11px;opacity:.8">${r.ct}</span>`:""}<br>${r.ar}㎡ (${r.py}평) · ${r.fl}층${r.by?` · ${r.by}년식`:""}<br><b>보증금 ${won(r.dep)}</b>${r.mon?` · 월세 ${r.mon}만`:""} · 계약 ${r.d}${r.pdep?`<br><span style="opacity:.75">종전 보증금 ${won(r.pdep)}${r.pmon?` · 종전 월세 ${r.pmon}만`:""}</span>`:""}</div>`).join("");
+   if(rows.length>200)h+=`<div style="font-size:12px;opacity:.7;padding:6px 0">최근 200건만 표시 · 검색으로 좁혀보세요</div>`;
+   if(!rows.length)h+=`<div style="font-size:12px;opacity:.7;padding:6px 0">해당 거래 없음</div>`}
+  h+=`</div>`}
+ return h}
+function estate(){
+ if(!RE){if(!REL){REL=true;fetch("realestate.json?t="+Date.now()).then(r=>r.json()).then(d=>{RE=d;if(tab==="estate")render()}).catch(()=>{REL=false;if(tab==="estate")document.getElementById("main").innerHTML='<div class="empty">데이터를 아직 불러오지 못했어요</div>'})}return `<div class="sec-title">🏠 부산 아파트 전월세 실거래가</div><div class="empty">불러오는 중…</div>`}
+ const tot=Object.values(RE.summary).reduce((a,s)=>a+s.n,0);
+ const ms=RE.months.map(m=>m.slice(0,4)+"."+m.slice(4)).reverse().join(", ");
+ return `<div class="sec-title">🏠 부산 아파트 전월세 실거래가</div><div style="font-size:12px;opacity:.8;margin:0 2px 8px">${ms} 신고분 · 총 ${tot.toLocaleString()}건 · 업데이트 ${RE.upd} KST<br>출처: ${RE.src}. 신고 기한(30일) 때문에 최근 달은 건수가 적어요.</div>
+ <div style="display:flex;gap:6px;margin-bottom:8px">${["전체","전세","월세"].map(t=>`<button class="chip ${t===reType?"on":""}" onclick="reSet('t','${t}')">${t}</button>`).join("")}</div>
+ <input id="reQ" type="search" placeholder="아파트명 또는 동 검색 (예: 우동, 래미안)" value="${reQ.replace(/"/g,"&quot;")}" oninput="reSearch(this.value)" style="width:100%;box-sizing:border-box;padding:10px;border-radius:10px;border:1px solid #8885;font-size:14px;margin-bottom:4px">
+ <div id="reList">${reList()}</div>`}
 function render(){
  renderChips();
- document.getElementById("main").innerHTML=({food,course,event,stay,flight:()=>typeof flight==="function"?flight():"<div class=\"empty\">불러오는 중…</div>"}[tab]||food)();
+ document.getElementById("main").innerHTML=({food,course,event,stay,estate,flight:()=>typeof flight==="function"?flight():"<div class=\"empty\">불러오는 중…</div>"}[tab]||food)();
  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.tab===tab));
  const fb=document.getElementById("favOnly");fb.classList.toggle("on",favOnly);fb.setAttribute("aria-pressed",favOnly);
  document.documentElement.style.setProperty("--hh",document.getElementById("hdr").offsetHeight+"px");
