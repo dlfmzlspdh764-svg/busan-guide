@@ -673,7 +673,7 @@ function stay(){
 
 // ===== 🏠 부동산 (아파트 전월세 실거래가) =====
 var RE=null,REL=false,reType="전체",reQ="",reOpen={};
-const won=v=>{v=+v||0;if(v>=10000){const e=Math.floor(v/10000),r=v%10000;return e+"억"+(r?" "+r.toLocaleString()+"만":"")}return v.toLocaleString()+"만"};
+const reWon=v=>{v=+v||0;if(v>=10000){const e=Math.floor(v/10000),r=v%10000;return e+"억"+(r?" "+r.toLocaleString()+"만":"")}return v.toLocaleString()+"만"};
 function reSet(k,v){if(k==="t")reType=v;else if(k==="g")reOpen[v]=!reOpen[v];render()}
 function reSearch(v){reQ=v;const y=window.scrollY;document.getElementById("reList").innerHTML=reList();window.scrollTo(0,y)}
 function reList(){
@@ -681,8 +681,8 @@ function reList(){
  for(const g of RE.gus){
   let rows=g.rows.filter(r=>(reType==="전체"||(reType==="전세"?r.mon===0:r.mon>0))&&(!q||(r.apt+" "+r.dong).includes(q)));
   const s=RE.summary[g.gu];const op=reOpen[g.gu]||(q&&rows.length);
-  h+=`<div class="card" style="padding:12px;margin:8px 0"><div onclick="reSet('g','${g.gu}')" style="cursor:pointer;display:flex;justify-content:space-between;gap:8px"><b>${op?"▼":"▶"} ${g.gu}</b><span style="font-size:12px;opacity:.8">${s.n.toLocaleString()}건 (전세 ${s.jn}·월세 ${s.wn}) · 평균 전세 ${won(s.javg)}${q||reType!=="전체"?` · 표시 ${rows.length}`:""}</span></div>`;
-  if(op){h+=rows.slice(0,200).map(r=>`<div style="border-top:1px solid #8883;padding:8px 0;font-size:13px"><b>${r.apt}</b> <span style="opacity:.7">${r.dong}</span> <span style="font-size:11px;padding:1px 6px;border-radius:8px;background:${r.mon?"#fde2e2":"#e2ecfd"};color:#333">${r.mon?"월세":"전세"}</span>${r.ct?` <span style="font-size:11px;opacity:.8">${r.ct}</span>`:""}<br>${r.ar}㎡ (${r.py}평) · ${r.fl}층${r.by?` · ${r.by}년식`:""}<br><b>보증금 ${won(r.dep)}</b>${r.mon?` · 월세 ${r.mon}만`:""} · 계약 ${r.d}${r.pdep?`<br><span style="opacity:.75">종전 보증금 ${won(r.pdep)}${r.pmon?` · 종전 월세 ${r.pmon}만`:""}</span>`:""}</div>`).join("");
+  h+=`<div class="card" style="padding:12px;margin:8px 0"><div onclick="reSet('g','${g.gu}')" style="cursor:pointer;display:flex;justify-content:space-between;gap:8px"><b>${op?"▼":"▶"} ${g.gu}</b><span style="font-size:12px;opacity:.8">${s.n.toLocaleString()}건 (전세 ${s.jn}·월세 ${s.wn}) · 평균 전세 ${reWon(s.javg)}${q||reType!=="전체"?` · 표시 ${rows.length}`:""}</span></div>`;
+  if(op){h+=rows.slice(0,200).map(r=>`<div style="border-top:1px solid #8883;padding:8px 0;font-size:13px"><b>${r.apt}</b> <span style="opacity:.7">${r.dong}</span> <span style="font-size:11px;padding:1px 6px;border-radius:8px;background:${r.mon?"#fde2e2":"#e2ecfd"};color:#333">${r.mon?"월세":"전세"}</span>${r.ct?` <span style="font-size:11px;opacity:.8">${r.ct}</span>`:""}<br>${r.ar}㎡ (${r.py}평) · ${r.fl}층${r.by?` · ${r.by}년식`:""}<br><b>보증금 ${reWon(r.dep)}</b>${r.mon?` · 월세 ${r.mon}만`:""} · 계약 ${r.d}${r.pdep?`<br><span style="opacity:.75">종전 보증금 ${reWon(r.pdep)}${r.pmon?` · 종전 월세 ${r.pmon}만`:""}</span>`:""}</div>`).join("");
    if(rows.length>200)h+=`<div style="font-size:12px;opacity:.7;padding:6px 0">최근 200건만 표시 · 검색으로 좁혀보세요</div>`;
    if(!rows.length)h+=`<div style="font-size:12px;opacity:.7;padding:6px 0">해당 거래 없음</div>`}
   h+=`</div>`}
