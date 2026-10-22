@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22 08:23",
+ "updated": "2026-10-22 13:53",
  "source": "Google News RSS + 항공사 이벤트 페이지(가능한 경우)",
  "items": [
   {
@@ -124,6 +124,18 @@
    "snippet": "에어부산 '나의 여행보고서' 특가 프로모션 &nbsp;&nbsp; BBS불교방송"
   },
   {
+   "id": "1d7eb986ce2923ce",
+   "airline": "에어부산",
+   "title": "에어부산 연말 시즌 국제선 특가 프로모션 진행 - 머니투데이",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5xMjlINTRiMzdROU5UOFZtY0s1ejZYQkc1WUt2Q3l6S29jajlKLVNEc0Uxa19MOHdOMjVhRXUwcTduZk1FMlpHOHc1c3FBZWFCZm55YTdicERQa0dxNno2Uk51UXNCOUhJc1HSAW9BVV95cUxQYUxidE1hUEIyVmFBMnBCRkI1Wl90a19nNFkzQTBHZjEyZEhJWEg0aF9aVzV5MUkwbzB6NS1ydW8zZzQ3QmNYZEpIQy13VFg3VVVQRGdiOUdiNGhPelpfSGJVQ3lEbWw4cm45REpkdG8?oc=5",
+   "source": "Google News",
+   "pub": "2026-10-13",
+   "flags": [
+    "부산"
+   ],
+   "snippet": "에어부산 연말 시즌 국제선 특가 프로모션 진행 - 머니투데이 &nbsp;&nbsp; 머니투데이"
+  },
+  {
    "id": "4f00eb76dc581b34",
    "airline": "에어부산",
    "title": "에어부산, 연말 국제선 특가…신규 노선 포함",
@@ -146,18 +158,6 @@
     "부산"
    ],
    "snippet": "일본 편도 최저 7만5900원…에어부산, 연말시즌 국제선 특가 프로모션 &nbsp;&nbsp; 뉴스1"
-  },
-  {
-   "id": "1d7eb986ce2923ce",
-   "airline": "에어부산",
-   "title": "에어부산 연말 시즌 국제선 특가 프로모션 진행 - 머니투데이",
-   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5xMjlINTRiMzdROU5UOFZtY0s1ejZYQkc1WUt2Q3l6S29jajlKLVNEc0Uxa19MOHdOMjVhRXUwcTduZk1FMlpHOHc1c3FBZWFCZm55YTdicERQa0dxNno2Uk51UXNCOUhJc1HSAW9BVV95cUxQYUxidE1hUEIyVmFBMnBCRkI1Wl90a19nNFkzQTBHZjEyZEhJWEg0aF9aVzV5MUkwbzB6NS1ydW8zZzQ3QmNYZEpIQy13VFg3VVVQRGdiOUdiNGhPelpfSGJVQ3lEbWw4cm45REpkdG8?oc=5",
-   "source": "Google News",
-   "pub": "2026-10-13",
-   "flags": [
-    "부산"
-   ],
-   "snippet": "에어부산 연말 시즌 국제선 특가 프로모션 진행 - 머니투데이 &nbsp;&nbsp; 머니투데이"
   },
   {
    "id": "968851075bf4a60f",
@@ -184,28 +184,14 @@
    "snippet": "아웃리거 리조트 프로모션, 대한항공 항공권 구매하면 하와이·태국 호텔 6곳 최대 35% 할인 &nbsp;&nbsp; 이로운뉴스"
   },
   {
-   "id": "cd9b34d0328cd3af",
-   "airline": "비엣젯",
-   "title": "비엣젯항공, 국제선 네트워크 확대…한-베트남 노선 특가 프로모션 진행",
-   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9ra2FRcjlnMkQtSEMwTlNsLTZuMDVfSl81Y21JMF9IYm9Pb1BQSWctd3QzZVB0dVQzc3ZzZkZ6M2NaZ1RNWTZuQklmczgtS1pQUE0xZmMxZDZaa3lH?oc=5",
+   "id": "7a8b07874b6b162a",
+   "airline": "대한항공",
+   "title": "트리니티항공, 가을·겨울 국제선 특가 프로모션…최대 22% 할인 혜택",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQdi1mOEdvLVJGZmw3OV96WjdVcmEzVGhxdWZYNjNrOVFycG0xUWVOSzRVSnhTcVF5Y0IzRWwwdm5VVVdvaWcyVXpjM3lqLVRhNkt3U256SFB4d0EwODg3MVpmemdEMUtkcmhrXy1iZ2IxY1VGVWRfZEs0S09OUDJIMnZUTnFkdw?oc=5",
    "source": "Google News",
-   "pub": "2026-10-08",
-   "flags": [
-    "태국·베트남"
-   ],
-   "snippet": "비엣젯항공, 국제선 네트워크 확대…한-베트남 노선 특가 프로모션 진행 &nbsp;&nbsp; livesnews.com"
-  },
-  {
-   "id": "d33fd6ea1beff0f8",
-   "airline": "비엣젯",
-   "title": "비엣젯항공, 국제선 확대 기념 특가 프로모션…한국~베트남 편도 12만9천원부터",
-   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBSLW1lbWRtank1VHVULTNFaEVfU245cWRyUFAtaFhXbExqYjlsa3IwWE95X3h5eGc3TzFnUW95TXA2aDVnLWc5OE4tQ1VJZ3J1VWVUY1pKRkJ4dnhlV1hfUGRmRGVHUFR0ZWk3cw?oc=5",
-   "source": "Google News",
-   "pub": "2026-10-08",
-   "flags": [
-    "태국·베트남"
-   ],
-   "snippet": "비엣젯항공, 국제선 확대 기념 특가 프로모션…한국~베트남 편도 12만9천원부터 &nbsp;&nbsp; 뉴스플릭스"
+   "pub": "2026-10-22",
+   "flags": [],
+   "snippet": "트리니티항공, 가을·겨울 국제선 특가 프로모션…최대 22% 할인 혜택 &nbsp;&nbsp; 뷰티트래블뉴스"
   },
   {
    "id": "6c1bfb2549150835",
@@ -236,6 +222,16 @@
    "pub": "2026-10-20",
    "flags": [],
    "snippet": "연말 해외여행 '항공권 12% 뚝'…KB국민카드 'KB Pay 여행' 할인 쏜다 &nbsp;&nbsp; 매일일보"
+  },
+  {
+   "id": "a8ed2d13aedc27a6",
+   "airline": "제주항공",
+   "title": "KB국민카드, 저비용항공사 국제선 항공권 12% 즉시 할인",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA0NHB1c3pTOXBFVXZyRVk2a1R0N2Ezc3FfWXJhSXdSVlR3YVVHcTJtQTE0eHI0cEpTUnkwV1dmSkVpdllwWWJVTzhkYlZ6UC1HMEtsTnBhcWQwNHpKV19selp3SktlUDQ?oc=5",
+   "source": "Google News",
+   "pub": "2026-10-20",
+   "flags": [],
+   "snippet": "KB국민카드, 저비용항공사 국제선 항공권 12% 즉시 할인 &nbsp;&nbsp; 팍스경제TV"
   }
  ],
  "sources": {
