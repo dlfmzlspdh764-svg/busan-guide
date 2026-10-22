@@ -1,53 +1,95 @@
 {
-  "updated": "2026-10-23T00:19:40+09:00",
+  "updated": "2026-10-23T05:08:41+09:00",
   "items": [
     {
-      "title": "부산교통공사 노사 잠정 합의…23일 지하철 정상 운행",
-      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1aeENjTmJMWUQzaTI3dDJBbWxyZDljMlpmaklxeE1hNS1oUU1ONVdITkl6el9INzZkR3pIaW5MTXlWcWY1LUFjbWZRaGZybmtnUnFoY1JnbWpva21lSDIwb2FkTHE0QzB3NmtwYnJZeW9mUQ?oc=5",
-      "source": "스페셜타임스",
-      "published": "2026-10-23T00:13:53+09:00",
+      "title": "부산서 ‘로컬투어리즘’ 해법 찾는다",
+      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9FSmdlaFU5VzZnOE1iWVhReXZ1UVpfUFlzdWxXaXllNjRNVFhSVUxxSnk3dXhrT2JmVnVMNHdacUVsUjBQWW5zR3ZGX29GeXVYeGhLak9GZmlvc3RWN0VTc19aT212aWFfXzZF0gFmQVVfeXFMUDlwOFdnblRhVV90TFlyS3QtRnBzcER6akdZMjJXOVBrSVZWWVR1bjZ4TEpnRnpjcW05eGZ2cV8xczRIcGMwZGhhTk8yTk55VjlmdWp1b3BjQmdydHprQ0c1YndBb05n?oc=5",
+      "source": "동아일보",
+      "published": "2026-10-23T04:30:00+09:00",
+      "topic": "관광"
+    },
+    {
+      "title": "부산지하철 파업 피했다…막판 교섭 타결로 23일 정상운행",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBYblhlREtSOVg0bktuQjhITjd2T1hGeUtJc1BSdFZ6WU5qbWFOaDRKSENLM1JWSXk4ODJYd2d6blFXNzhLRFVFMEdEaXlTcVNGel9pdkw1TjIyUQ?oc=5",
+      "source": "경북매일",
+      "published": "2026-10-23T03:53:00+09:00",
       "topic": "교통"
     },
     {
-      "title": "부산 지하철 노사 막판 추가 교섭 타결… 파업 위기 넘겼다",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE14SkpLdlZGLXBiSHc5a19wVmFEMWxFWmUxWjBSTXlBRC1FMFpsZ3pXdENIU3JIbW1pMTNRNjZjXy1EN3JpN3E3a3lhX1hBOU8zOHpsRHlzN1hTTDdmQnhudjBZTl80UXpKQmFVLW1uUXJzalJY?oc=5",
-      "source": "부산일보",
-      "published": "2026-10-23T00:10:38+09:00",
+      "title": "부산지하철, 밤샘 협상 끝 파업 철회…첫차부터 정상 운행",
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9ocDB3Y2RVbThGS1Y3anlvMUpKUUpyMzA2M095UmljOW9sQlFncWdJSHB5WlVrNmJ6TC0tVjN0VFd1OTlILWdhdWVnTGFVQ2ZueWdYZkJrTjU0ZF9FQ3Bwanp1bFQ1QdIBZkFVX3lxTE9ocDB3Y2RVbThGS1Y3anlvMUpKUUpyMzA2M095UmljOW9sQlFncWdJSHB5WlVrNmJ6TC0tVjN0VFd1OTlILWdhdWVnTGFVQ2ZueWdYZkJrTjU0ZF9FQ3Bwanp1bFQ1QQ?oc=5",
+      "source": "동아일보",
+      "published": "2026-10-23T02:10:00+09:00",
+      "topic": "교통"
+    },
+    {
+      "title": "부산도시철도 파업 철회…노사 밤샘 협상 끝 정상 운행",
+      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5PV1F5M001aVVOdHRHZ3EyTUQzTnVGYTFhTHpWMUc4blotOUlhdmw4WGdBWjZnT0NJaGx2Z3RZTVdTZGxjeWg4YmFDLXdVMENfWWg4TFNCMnNmSVFrVTU5TWp5bFg?oc=5",
+      "source": "중도일보",
+      "published": "2026-10-23T01:32:15+09:00",
+      "topic": "교통"
+    },
+    {
+      "title": "부산지하철 노사 단체협상 잠정 합의… 23일 파업 철회",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOWm4yTUJJV3dKeDRRMWRuS0g0Rlh3NjRBWFFMN0xrdEdrRnNUNW9ZRmFfTTlBblIxeWpyZzhaM3NCTnNGcE5VSEdTa3VZcGZKeHNhRkMtdXlyOEY1RGN4djJ0Mi1qakNVdXVsT1hISjI2ekI3NUJoMkxIYTdDa082UWhPcXM5QQ?oc=5",
+      "source": "조선일보",
+      "published": "2026-10-23T01:29:00+09:00",
+      "topic": "교통"
+    },
+    {
+      "title": "부산교통공사 노사, 막판 진통 끝에 잠정 합의 도출…파업 철회",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBNMzhXenN2Rmh2eU0xWXZEbXZCc1FsRWpBMXNWU0llRllER1ltaTBid3djSWRpN0h0NTV4cWNFcmJZOVBHOHhsOG1kWEFIaVNON2FlbExwcG5VT1pqeHNZV2sweVhIY0g0a0tfeFdUbU1ValdoMkxNRdIBeEFVX3lxTFBNMzhXenN2Rmh2eU0xWXZEbXZCc1FsRWpBMXNWU0llRllER1ltaTBid3djSWRpN0h0NTV4cWNFcmJZOVBHOHhsOG1kWEFIaVNON2FlbExwcG5VT1pqeHNZV2sweVhIY0g0a0tfeFdUbU1ValdoMkxNRQ?oc=5",
+      "source": "뉴시스",
+      "published": "2026-10-23T01:26:44+09:00",
+      "topic": "교통"
+    },
+    {
+      "title": "부산교통공사 노사 극적 타결…열차 정상 운행",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1mbFpMbnhjTk9RMDlEeUJ1STlIOVlHd0J4YjVlODZ1RVVkcHpUZXpDNmtxSkJLLTFlNXRnU2dBaDJCb1lyODBaVGMzQ3FZZEluMExQeGNIUFpsZVk4QkdRWmZRN1hRMkU?oc=5",
+      "source": "연합뉴스TV",
+      "published": "2026-10-23T00:56:00+09:00",
+      "topic": "교통"
+    },
+    {
+      "title": "부산 어르신 버스비 지원 조례 발의… 김태효 부산시의원, 제도 마련 추진",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9MSXMxVkJhZG1IeXRUUTlBaHc0QW1kZl9QWENFaDJTdUdwaXBtZUVrMGJwZkdUd1htN2k5T040OGljaGZucTBnaTRYSWxpZGcwMHVmby1DRHdhVlV2eU9qbjhneV9pYms?oc=5",
+      "source": "팍스경제TV",
+      "published": "2026-10-23T00:51:41+09:00",
+      "topic": "정책"
+    },
+    {
+      "title": "부산지하철 노사 잠정 합의…총파업 철회·열차 정상 운행(상보)",
+      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5vS1MzeXNraFM5XzNzOEZwUkVROTREWk12N3VhNTVNM2FvNTAxZmY3bC1ZNWxYRGhYclY4eERDdWk5TDJBVHhIR3B3UXVCaTJxOWxBNzBmLV81OHNxT2Rr?oc=5",
+      "source": "뉴스1",
+      "published": "2026-10-23T00:39:32+09:00",
       "topic": "교통"
     },
     {
       "title": "[속보] 부산지하철 노사 단체교섭 최종 타결…23일 정상운행",
       "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBrTEE5MG90YmFjR1M0LU93YjBGZkpmSWpVOFBmUFhNcktZZDM5SV9Tb2RaNGdkVmZucDlnNE5HbzBGWjdYazhGU1pYdlpFR2p2R21wc0JEanpBTE5CM0tXNjl6dTU?oc=5",
       "source": "한겨레",
-      "published": "2026-10-23T00:03:00+09:00",
+      "published": "2026-10-23T00:35:00+09:00",
       "topic": "교통"
     },
     {
-      "title": "부산교통공사 노사, 추가 교섭 끝 타결…23일 정상 운행",
-      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9Da09nMWNnLUhuMGNQM2pmQmhBeEJaZzYyOFVlUURzU0xiU1IwRDI1TGx1QTV1U0VlZXh3YmZ5WnlWVDBnNDZfZnB2UTBnSllnUkswQVlQQlNrdl9p?oc=5",
-      "source": "뉴스핌",
-      "published": "2026-10-22T23:47:00+09:00",
-      "topic": "교통"
+      "title": "2056년까지 충렬사 정비… 서국보 부산시의원, 사업 이행 강조",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1CQnlySFZ1NXZsUUxSRGhVbUV6SVFiUnJXcDhHQm4yUVkyTEhpVFdqS3d1SW1LdzU4XzZTUlZ2bzNoZUhPZlVqeXQ5WTZTcUVJTng5YUx4cVVSZXZmbUNKLTd2bFcyV0E?oc=5",
+      "source": "팍스경제TV",
+      "published": "2026-10-23T00:22:12+09:00",
+      "topic": "정책"
     },
     {
-      "title": "[속보] 부산교통공사 노사 협상 타결…열차 정상운행",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNcldfX29lRzN2TGswWXVOTE5oSzF3UVZVUFIyVGFvVDE1Q244QzZVc3B0R0dvS3pyQmlRMmplSV9wOWU2a1NJVTZkaEVZVm9qQjk0YU9BaDJxRE9rSVRaa2lvZmU4M0tzTEhJc2FLQm5vRjJ0eHdjUHlNa1NIZjdHVA?oc=5",
-      "source": "이데일리",
-      "published": "2026-10-22T23:43:45+09:00",
-      "topic": "교통"
-    },
-    {
-      "title": "[속보] 부산지하철 노사, 최종 교섭 잠정 합의… 23일 파업 철회",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5hMElNbW5SV3haTEVDQUJFcFFZbGxZTjUzQ2VrUTZyUklfVGY2WmU3c3lpQ0hVSTJGUmpyYWF5bXBtQVdvYU5UaEE3bDJLNmxUUHlza0lRb3FoU1lrYWhUZlhmRVlsQmZzZHVkZ2JsRE5hUi1p?oc=5",
+      "title": "부산지하철 노사 막판 추가 교섭 후 잠정합의… 파업 위기 넘겼다",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5KXzdFbGFMeVgwNjlsX2ZPbVgwbHBRS2hXZnFza2pCRlZrVU43dVBkUkk3QjZLaHB0TjJNZV9YQnNQeURhekM5OVhmSTJKRmt3cFkwdV96UWF4RWRfVmMxMzhrR0c3ejRUMkZBT3BMNHBRbUZLekM2WlBBdDI?oc=5",
       "source": "부산일보",
-      "published": "2026-10-22T23:24:50+09:00",
+      "published": "2026-10-23T00:10:38+09:00",
       "topic": "교통"
     },
     {
-      "title": "[속보] 부산교통공사 노사, 추가 협상 끝에 단체교섭 최종 타결",
-      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB2ZkZwNlo4Y1UxbE1CRTg3V1B3X20yT3phZFlvblcxeHN6blJhUzJ3UlJEZ2pvNWZUQkFuZjdVZjJ3OVVOdUZrTkdMQmdtOVBldlNkdS11b3RfUmt1NGZldkh4QXpHblk?oc=5",
-      "source": "연합뉴스TV",
-      "published": "2026-10-22T23:23:00+09:00",
+      "title": "부산교통공사 노사 단체교섭 잠정 합의…지하철 정상 운행(종합)",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE8zWUFiU3VPc2ZTN0RwSG94Vi1aUzRKeVUwX2NYTEc5NUhOLUhDR21wVTg4SmMzY0FpYVVhMkZYanNzcFFoeVJ6SzZTWFl1SHQ5dlE?oc=5",
+      "source": "매일경제 마켓",
+      "published": "2026-10-23T00:08:37+09:00",
       "topic": "교통"
     },
     {
@@ -56,13 +98,6 @@
       "source": "뉴스타운",
       "published": "2026-10-22T23:01:59+09:00",
       "topic": "노동"
-    },
-    {
-      "title": "부산지하철 노사 협상 결렬…노조, 7년 만에 23일 첫차부터 파업",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5XLWtMSkVsRDJ6LU44MWtWUHh0ZFloUEdsQzd6YUd3cTMtdEF4eWlTRFFlckhuZ0hIRkF3Z3lIcTh3YXJJeVJYelktOVA3SlAzWUhpT2RLUDdSSk0?oc=5",
-      "source": "에너지경제신문",
-      "published": "2026-10-22T22:57:08+09:00",
-      "topic": "교통"
     },
     {
       "title": "부산 도시철도 파업… 출퇴근 정상 운행, 낮 시간대 운행률 최저 58%로 감축",
@@ -86,6 +121,13 @@
       "topic": "교통"
     },
     {
+      "title": "부산지하철 노조, 23일 첫차부터 파업…단체교섭 결렬",
+      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBTc1lpX0l4NUFzWTFYQkZwUkt1VGxMQUlpRldoVkk1NmdraWI0WnNqV0RGcmFfUVZGSzBFZW9FN0tOQTVpb2o3bnNReHNqM1BsUVdBY0I0Nk9iR1pNdnFrUS16cC0?oc=5",
+      "source": "한겨레",
+      "published": "2026-10-22T22:25:00+09:00",
+      "topic": "교통"
+    },
+    {
       "title": "부산지하철 7년 만에 총파업…인력 증원 놓고 협상 결렬(종합)",
       "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1zSXl5VlB3ck41NDFwVHh6T3pzemNjM3ZNcW1lOEtUbXl3Q2dpYkxHVTg2OXZpZHhTSnk2MGQ5ck45elVzMnN0ekJZRFlTLXJlR29mZV9KdEtySV9HQ0xJ?oc=5",
       "source": "뉴스1",
@@ -97,6 +139,13 @@
       "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9EdDVOWUN0MXV5RGh2TmlySmhQbzR4SnhXN2hPVjZRbTEwZjN1dmdPNDBjcXB1bV9vcGhHWXNPY0JJOEhaTmc5LUtMdjdES2Y0TlRrX3I0MWF4ZEnSAWBBVV95cUxPRklFT2pMR1Y1b1ZDbnNBb19MRTR3Q19Mbk92ZE1oeXRPYmpMeVBzQmcyblFROUdlb3ZVLUZkaEwtNWlsMUtUUlhSb01qVTdoSUxxZU5jdnA0RGhiZENFc3M?oc=5",
       "source": "연합뉴스",
       "published": "2026-10-22T22:09:24+09:00",
+      "topic": "교통"
+    },
+    {
+      "title": "부산 지하철, 23일 첫차부터 운행 차질… 노사 교섭 최종 결렬",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE16Uk1oQlZkSlkwODV3eHpaLTNfbWRsWk9CZ1Nzbl9Ua1ZmaVVydUJLZTZleGlsYlRIamJxMExLd0d2UVhsaHIxbWVMREVwajZIU0xya3YzTDVpTEFoNmVsNDgtOUh1UVBnQlVLcFNfaFpHQ1XSAXNBVV95cUxNelJNaEJWZEpZMDg1d3h6Wi0zX21kbFpPQmdTc25fVGtWZmlVcnVCS2U2ZXhpbGJUSGpicTBMS3dHdlFYbGhyMW1lTERFcGo2SFNMcmt2M0w1aUxBaDZlbDQ4LTlIdVFQZ0JVS3BTX2haR0NV?oc=5",
+      "source": "한국일보",
+      "published": "2026-10-22T22:08:00+09:00",
       "topic": "교통"
     },
     {
@@ -121,6 +170,13 @@
       "topic": "교통"
     },
     {
+      "title": "속보=부산지하철 노사, 최종 협상 결렬…23일부터 '총파업 돌입'",
+      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE12RWgtVDM0UFl0bWlFMnRwTWprX2xZeGc4R1l1bU5RNXNZT1F0Vkk2YTZuR2M5LUREeE4xeVdZNU8yaWdRNHRzQ2dLUzQ5dGxyUlItdEUtdy1BRU1pRG9HRHpRNElLN3o5Q3ZB?oc=5",
+      "source": "투데이 부산",
+      "published": "2026-10-22T21:40:11+09:00",
+      "topic": "교통"
+    },
+    {
       "title": "부산교통공사 노사 단체교섭 결렬… ‘부산 지하철 파업’ 7년만 현실화",
       "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9wYm5HZktzNG5TNXRvMHgtYVFvWXkyYndic3BhLUdRTHF5RWdibGN5STZScjlkeDFPOHZNNUZqdTludlJ6WjQ4Sjh0Vjd6ZFJIeDA3YUV6T0x2bm9GaWN1ZlMxLU1XdzF4WWxyb1ZXc1VtRlhYbzNVVjR5VEM?oc=5",
       "source": "부산일보",
@@ -132,13 +188,6 @@
       "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQMUU0SUZHZzRvTm45djZJQmtXTGNHWDh3X2YwYjZXbk91MHFCLVJ1V0J5d1RVU3IxTUNsWHFiWEZFclBlTHNyNmFFNThyWjYybHMtZmVqQzJfdzNpdFFLWGVTbkZQN1JGWkxDUzRJUTJkay1qMk5WQjlJVDNrOEJpUEJwc3VKQQ?oc=5",
       "source": "조선일보",
       "published": "2026-10-22T21:36:45+09:00",
-      "topic": "교통"
-    },
-    {
-      "title": "부산 지하철, 23일 첫 차부터 운행 안한다... 단체교섭 `결렬`",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPa2lUU1ZrcXRJbTd2NTlZaXJSRktpSUppaFU5VkVHcEI3M1d3bEpwRjkwc2Exd0Z5THZ2S0l4WmFVZEYxaVNVRVZESzJLYWxKekVZRjN6Rk0ycml5YldEZ0pDQkl1TGY2c25HVC1kQmxBZkNPY1ZTOEt3cGtYWDM3NDc4R0ZzWTlaSm02YjJn?oc=5",
-      "source": "국제신문",
-      "published": "2026-10-22T21:29:00+09:00",
       "topic": "교통"
     },
     {
@@ -156,10 +205,17 @@
       "topic": "관광"
     },
     {
-      "title": "[속보] 부산교통공사 노사 교섭 결렬…노조 파업 선언",
-      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE5sSHpiM09MTEN0S0VURDd0TlRoVHl3NWtNZFpKenhiUXc0MS1ScEMtZU9TbUw5Zk5kQ3pCMVFsUWhEMmhNOXlVOHEwUU9RV0twRFFDbjRzdlhBYUZVeGxFOUc4ZjFKczV4SEZOdGh6Rk9Odw?oc=5",
-      "source": "스페셜타임스",
-      "published": "2026-10-22T21:13:41+09:00",
+      "title": "[속보] 부산교통공사 노사, 추가 협상 끝에 단체교섭 최종 타결",
+      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFAyTXppZWFmTjlLcmxRakw3TUFhTUpXZEE2bEljSDJHYlFEZWo0SGN0YnpFOTFSVG5UYXNBVW8wVEpiTzI4S2kzZGF6NFVSWEt5aTZXWmhR?oc=5",
+      "source": "중앙일보",
+      "published": "2026-10-22T21:07:40+09:00",
+      "topic": "교통"
+    },
+    {
+      "title": "[속보] 부산교통공사 노사 단체교섭 결렬…노조 파업 선언 · 향후 전망은?",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE03ejI5Qk40dkJab3IwSVhYbXB1Y05GSERQUWdfWEVxWXhoWjQxVVAxNE9qc0F6SGpHSzgtSG9aYjhvUkY4SjE2enp5M294M0FmNWpJbFZNZ20yOG9L?oc=5",
+      "source": "supple.kr",
+      "published": "2026-10-22T21:06:04+09:00",
       "topic": "교통"
     },
     {
@@ -184,10 +240,24 @@
       "topic": "관광"
     },
     {
+      "title": "부산진해경제자유구역, 세계 경제자유구역 평가서 입주기업 관리 우수",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBBNVhwMnl4aUN3WHVBSlphbFdoTmlFdjBCRW03WEZENWdxc0pOTE5pYnJ0LU5Ibk9Bc19CZ0U5UFJ1aU85R2otWjU5cmpJbVM2UWI0MmIteU5OT05QT2RVMWFDUlZaLWhy?oc=5",
+      "source": "더쎈뉴스",
+      "published": "2026-10-22T20:44:02+09:00",
+      "topic": "경제"
+    },
+    {
       "title": "남명숙 부산시의원, 소방공무원 처우 개선과 트라우마 치유센터 조례 추진",
       "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE5GTmIxdjltZGpQcGRJcU1CbGE5Y29qVk9kMGVsYThNWjFOODZQVm5KMTloVFVNYVdPdGJEdXQ2MEdsNUViNmctN0Q0a0hWbWhhWFF4SVc2S01qWDlwclpMRzFxNUJkMnhJR2x2anFXWHY0dw?oc=5",
       "source": "웹이코노미",
       "published": "2026-10-22T20:31:17+09:00",
+      "topic": "정책"
+    },
+    {
+      "title": "[기획] ′주 20시간 단시간 근로 틀 깼다′… 부산시교육청, 장애인 근로자 ′성장사다리 직종전환′ 전격 단행",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5rNS1FM19mQTRheXlOU0o2NU1SbGNOU1pBNktQT2J2b24xcEZrTFBIMk82WmFLaGx0RnVCd3Nwa1k4U2FyMTFJNkwwTWZCaGRDTGplVDk0STUwd3RORWUxb9IBWEFVX3lxTE5zdzVRN2ZaaldYcUVLNlBnbU4xS1VqNzh6Ml9HRnlBYTFOUWFVT3BHVm1YU2ptbmJYbi1fWEoxdkFTQWR2SnEzWE1FaEtyLXRDbWdUUF9DYTU?oc=5",
+      "source": "로컬세계",
+      "published": "2026-10-22T20:30:31+09:00",
       "topic": "정책"
     },
     {
@@ -210,76 +280,6 @@
       "source": "뉴스1",
       "published": "2026-10-22T19:28:50+09:00",
       "topic": "교통"
-    },
-    {
-      "title": "민주당 서부산권 4개 구청장 첫 회동",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9PZkZJYnducTJuSUlFVTVVdU0xS2ZDWXA3Tkw5OWJLOUZnWGJ1b2gxaHpQZUVFME5MZnVwT0ZIZWQ4VEVtQXdHSkxPX3BSSXdjVnF1dEpIelAxNmJ5cjZncWhKWHlSY2F1bnNHbVE1OEdkWjZhQWNGY2xXZkY?oc=5",
-      "source": "부산일보",
-      "published": "2026-10-22T19:25:00+09:00",
-      "topic": "정책"
-    },
-    {
-      "title": "서울보다 부산! 외국인 관광객 400만 명 눈앞…노희영이 부산에서 발견한 특별한 매력 - https://www.celebinfluencernews.com/",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1taW9PaWg3LXdRb2U0Q3VBejR5YTlMcUYwMlE5clo0TkhiZ0FONm1CZmJzTlltQmhOeTk3a0pKWEtyb1dOTDdJWEtFdUY5bmtVY3R2UzZXczdOcGxJc3JnaFhRMVNWN00tcy00eUpzRkgtd1dfbmlB?oc=5",
-      "source": "https://www.celebinfluencernews.com/",
-      "published": "2026-10-22T18:57:23+09:00",
-      "topic": "관광"
-    },
-    {
-      "title": "[2026 국감] 제주공항 지연 ‘대통령 전용기’ 공방…가덕도 공사비 증액도 도마",
-      "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxOMm85LXNRVWtxbEFPcUVEbDdhV0w5ZUw2X09pUmVORDM4TlNPMC13bjRRbUpOWnFLaXFObk5Na29PcDE2eklIREhxQ19NeklDNGstbkxoTGtuMWxRR2VyOUNESkxHeGoySjhnQzYxT2gxSThJOXBZTFh6QWpHaEMxeXh0aGt4a1ltWEhIcVIxVGVISmRNS0l0NjRvdnM3NVpaSHdwY3d6WFAxQWpnblM3VGxnU2szNC0xNWkwT0VobDZSOG1zckRHMFVaeWYzU1dhU1pEQ0h2YTRFQU03VUNheVNLMG85dUFVdmNGeFBoSzVjV082VEtybQ?oc=5",
-      "source": "데일리안",
-      "published": "2026-10-22T18:45:00+09:00",
-      "topic": "항공"
-    },
-    {
-      "title": "높은 임대료가 부산 관광 개성 지웠다 [우후죽순 무인숍]",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBOM1VwWU8tZERWOF96QlQ1eFU5eWV0UnY0QzVfUFZreUtyVmoxOVo3Um1tdFZxcFJRaWx3ZUVDME1fUldLYS1oX1lqZk1LUHJHenV1cktuVWZyOHI0UjZpa0VSRk1iZ2NaRE9xWUVDNTNoTkZk?oc=5",
-      "source": "부산일보",
-      "published": "2026-10-22T18:43:14+09:00",
-      "topic": "관광"
-    },
-    {
-      "title": "광안리, 너마저… 무인숍에 점령당한 ‘부산 관광 1번지’",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9SVUJLblNtbWxneUtxelhBTFBSb3hmcEN0Ukw2Y0Z2WXpDUjJEdGZ5TkYxbWZjVUxDdXM4dmxNNjhjdGRxZEtrU0M5ejNWckxtZzhHYnF1WUtGUHo5Q2tWRmd0cTlTS1YtaThFWnJvRGxndm9jTi1CUGd0bXA?oc=5",
-      "source": "부산일보",
-      "published": "2026-10-22T18:34:00+09:00",
-      "topic": "관광"
-    },
-    {
-      "title": "가덕도 신공항 ‘올인’ 대우건설…이라크 신항만 이끈 소장 투입",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1EdlRhWlVFcS1oZDZPeDRUUEEtVENLQzg4ZFdWYXRGemJTelVteXA3Tk1GaDF6TVNsT1FXOVdQRWlFSVdjbFJ6VTZiWXVrWmFCMmfSAVNBVV95cUxNdV9DWElPNm1YV0xNSHBodUduYTFneEdGVmJyeXlVbkw0Ym9xanB4RHRKMlByZmNtUWQ3OUNfeW8zeUhQRGNYcU1abGYzRGs5X0F1aw?oc=5",
-      "source": "서울경제",
-      "published": "2026-10-22T18:30:44+09:00",
-      "topic": "항공"
-    },
-    {
-      "title": "100명 vs 20명 내외… 부산도시철도 노사 ‘인력 충원’ 팽팽",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5xc01HaGVFUnExaGEtN3VhdXdQNjBKNWcwbDRDZUVOV09tZzZFYnprR1pxQm55LUJpM0x3dm1USjB0MUd3RHJUMHNvc2hfYXNXVm1nTUhwUDYxeS1WQmhuWTVJMUtNSldvMnplMGJGb3hVMXVBY0JQWTZLelg?oc=5",
-      "source": "부산일보",
-      "published": "2026-10-22T18:28:37+09:00",
-      "topic": "교통"
-    },
-    {
-      "title": "부산은 지금 ‘축제 공화국’인가…22개 행사 한 달간 묶은 ‘페스티벌 시월’의 허와 실",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE53dnhvaFlRZlc2eHpzd0phSThGVHRERzhITmdHZ2E0VW9MTHFzUFpHbHRERWk4NWR5MGdscVZtQUlidDlHSElRdUhaQjl2dkhDYnl2VE9XNXhiaExkdERVNGkxYUdPdUJtYm1WMmtJQ0ctandZRkdn?oc=5",
-      "source": "진주인터넷뉴스",
-      "published": "2026-10-22T18:20:34+09:00",
-      "topic": "관광"
-    },
-    {
-      "title": "“시장님, 질문 있어요!”… 부산시 어린이신문 기자단, 해양수도 부산의 미래를 묻다",
-      "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9VekFITGVESXhFajFPdHloZXFfVlZCRTNoQmtzTThhTFRFNHhEczlWZkNLREV0YUZzeWtMOU44M2FXQ3J0dnp5TlpNWWxWb3ljNlE5Zm94OV9wa3ZPQ0E?oc=5",
-      "source": "한국방송뉴스",
-      "published": "2026-10-22T18:14:29+09:00",
-      "topic": "해양"
-    },
-    {
-      "title": "[2026 국감] 가덕도신공항 공사비 현실화는 언제?...핑퐁행정에 업체 이탈 가속",
-      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5PM0l4ZTFjYTh4Yzd4cjVDQV80R1ZReDhDZWhZMnh6RDZ1ZU04R1hZVGRadHJIWUtPS2k4bjhTbUdmMFdZdUgzZE9aTjVrcGJuS3EweGFFdGtWYXlQZDhDQmg5eGl2azFXandsejVB0gFyQVVfeXFMTlNlWV9SN05WRE0xY1p5ZU9fYkV2TnZkS29uT3NhdGZsZ01NdkxlX3lJMVZ2TGZzb2pkOHVVbkdvRUhGTEpUbFNjUG56VTVzX2dXVWtBS2s4R0JHY1pxUWZ1S1VVRkU2aEZOLV96ZzJKZFln?oc=5",
-      "source": "팝콘뉴스",
-      "published": "2026-10-22T18:09:25+09:00",
-      "topic": "항공"
     }
   ]
 }
