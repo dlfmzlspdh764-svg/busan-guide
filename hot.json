@@ -1,12 +1,57 @@
 {
-  "updated": "2026-10-23 01:57",
+  "updated": "2026-10-23 06:23",
   "basis": "뉴스·블로그·유튜브 최근 7일에서 상호 발견 → 카카오 부산 장소 검증 (틱톡 제외)",
   "sources": {
-    "news": 113,
-    "blog": 316,
-    "youtube": 161
+    "news": 115,
+    "blog": 308,
+    "youtube": 183
   },
   "places": [
+    {
+      "id": "992075969",
+      "n": "감성양고기",
+      "gu": "수영구",
+      "c": "육류,고기",
+      "addr": "부산 수영구 황령대로481번길 10-9 1층",
+      "sc": 4.8,
+      "rc": 5,
+      "im": null,
+      "ims": [],
+      "mentions": 7,
+      "by": {
+        "news": 0,
+        "blog": 6,
+        "youtube": 1
+      },
+      "sample": [
+        "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
+        "부산 전포동 카페 추천 어나더미네스, 폭신한 수플레가 맛있는 감성 카페 내돈내산"
+      ],
+      "map": "https://map.kakao.com/?q=%EA%B0%90%EC%84%B1%EC%96%91%EA%B3%A0%EA%B8%B0",
+      "tel": ""
+    },
+    {
+      "id": "7913306",
+      "n": "해운대해수욕장",
+      "gu": "해운대구",
+      "c": "여행 관광,명소 해수욕장,해변",
+      "addr": "부산 해운대구 우동",
+      "sc": 4.6,
+      "rc": 604,
+      "im": null,
+      "ims": [],
+      "mentions": 6,
+      "by": {
+        "news": 0,
+        "blog": 0,
+        "youtube": 6
+      },
+      "sample": [
+        "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
+      ],
+      "map": "https://map.kakao.com/?q=%ED%95%B4%EC%9A%B4%EB%8C%80%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5",
+      "tel": ""
+    },
     {
       "id": "280823157",
       "n": "오우라 롯데백화점부산본점",
@@ -31,26 +76,31 @@
       "tel": ""
     },
     {
-      "id": "992075969",
-      "n": "감성양고기",
-      "gu": "수영구",
-      "c": "육류,고기",
-      "addr": "부산 수영구 황령대로481번길 10-9 1층",
-      "sc": 4.8,
-      "rc": 5,
-      "im": null,
-      "ims": [],
+      "id": "1878852238",
+      "n": "송도해상케이블카",
+      "gu": "서구",
+      "c": "케이블카",
+      "addr": "부산 서구 송도해변로 171 3층",
+      "sc": 4.0,
+      "rc": 299,
+      "im": "https://t1.kakaocdn.net/mystore/A6F0BC1CD059475B9E94291771D8D48A",
+      "ims": [
+        "https://t1.kakaocdn.net/mystore/A6F0BC1CD059475B9E94291771D8D48A",
+        "https://t1.kakaocdn.net/mystore/B8571F71DFC7434895FA5C7FF389F94F",
+        "https://t1.kakaocdn.net/mystore/A5D08BA75DB0448980EA09CAB1591639",
+        "https://t1.kakaocdn.net/mystore/3794D326010845119E66B140A7CBD6F8",
+        "https://t1.kakaocdn.net/mystore/E2EDDA5B142246ED8F83287C40368382"
+      ],
       "mentions": 5,
       "by": {
         "news": 0,
-        "blog": 4,
-        "youtube": 1
+        "blog": 5,
+        "youtube": 0
       },
       "sample": [
-        "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
-        "서면 대형 카페 분위기 좋은 감성 카페 라숲 신상 후기"
+        "늦가을 부산 가볼만한곳 추천 BEST 4, 겨울 오기 전 감성 여행 코스"
       ],
-      "map": "https://map.kakao.com/?q=%EA%B0%90%EC%84%B1%EC%96%91%EA%B3%A0%EA%B8%B0",
+      "map": "https://map.kakao.com/?q=%EC%86%A1%EB%8F%84%ED%95%B4%EC%83%81%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4",
       "tel": ""
     },
     {
@@ -69,17 +119,40 @@
         "https://t1.kakaocdn.net/one/store/20250227105601-c81d3fe6-1da2-40de-bdcd-e924de4bbf5d.jpg",
         "https://t1.kakaocdn.net/one/store/20250227105601-3cad40a1-35b3-46d9-879a-ed810a218465.jpg"
       ],
-      "mentions": 4,
+      "mentions": 5,
       "by": {
         "news": 0,
         "blog": 1,
-        "youtube": 3
+        "youtube": 4
       },
       "sample": [
         "기장 카페 다 가본 현지인이 추천하는 오션뷰 카페 BEST 3",
         "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
       ],
       "map": "https://map.kakao.com/?q=%EC%8B%A0%EB%9D%BC%EC%8A%A4%ED%85%8C%EC%9D%B4%20%ED%95%B4%EC%9A%B4%EB%8C%80",
+      "tel": ""
+    },
+    {
+      "id": "2116074814",
+      "n": "CGV 부산명지",
+      "gu": "서구",
+      "c": "영화관",
+      "addr": "부산 강서구 명지국제8로10번길 38 명지플러스시네마 9층",
+      "sc": 4.1,
+      "rc": 23,
+      "im": null,
+      "ims": [],
+      "mentions": 5,
+      "by": {
+        "news": 0,
+        "blog": 0,
+        "youtube": 5
+      },
+      "sample": [
+        "부산 북항에 나타난 3m 상어 ‘부캉이’｜도대체 왜 아직도 여기에 있을까? #shorts #busan #bukangi",
+        "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
+      ],
+      "map": "https://map.kakao.com/?q=CGV%20%EB%B6%80%EC%82%B0%EB%AA%85%EC%A7%80",
       "tel": ""
     },
     {
@@ -112,78 +185,53 @@
       "tel": ""
     },
     {
-      "id": "2116074814",
-      "n": "CGV 부산명지",
-      "gu": "서구",
-      "c": "영화관",
-      "addr": "부산 강서구 명지국제8로10번길 38 명지플러스시네마 9층",
-      "sc": 4.1,
-      "rc": 23,
-      "im": null,
-      "ims": [],
+      "id": "25661344",
+      "n": "전포카페거리",
+      "gu": "부산진구",
+      "c": "테마거리",
+      "addr": "부산 부산진구 전포대로209번길 26",
+      "sc": 3.7,
+      "rc": 19,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f281ac07c18d0f449002b027fa7e65028151891c?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f281ac07c18d0f449002b027fa7e65028151891c?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/e11009a665d9c12c62284e9884ee6770d73c9c2f?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/030265b409b5a312e675e4abb92db794a0932760?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/7887f9012978f2c73c0351056d43d3fdf4e5d566?original"
+      ],
       "mentions": 4,
       "by": {
         "news": 0,
-        "blog": 0,
-        "youtube": 4
+        "blog": 3,
+        "youtube": 1
       },
       "sample": [
-        "부산 북항에 나타난 3m 상어 ‘부캉이’｜도대체 왜 아직도 여기에 있을까? #shorts #busan #bukangi",
-        "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
+        "부산 전포동 신상카페 추천☕️ 색감부터 디저트까지 완벽한 진공미학💛 | 네이버 알림받기 10% 할인!#부산카페 #전포동카페 #진공미학 #부산신상카페 #전포동신상카페 #부산카페",
+        "부산 전포동 카페 추천 어나더미네스, 폭신한 수플레가 맛있는 감성 카페 내돈내산"
       ],
-      "map": "https://map.kakao.com/?q=CGV%20%EB%B6%80%EC%82%B0%EB%AA%85%EC%A7%80",
+      "map": "https://map.kakao.com/?q=%EC%A0%84%ED%8F%AC%EC%B9%B4%ED%8E%98%EA%B1%B0%EB%A6%AC",
       "tel": ""
     },
     {
-      "id": "1638177614",
-      "n": "디저트시네마",
-      "gu": "연제구",
-      "c": "카페",
-      "addr": "부산 연제구 연산동 2145-15 1층",
-      "sc": 4.0,
-      "rc": 45,
+      "id": "8202423",
+      "n": "광안리해수욕장",
+      "gu": "수영구",
+      "c": "여행 관광,명소 해수욕장,해변",
+      "addr": "부산 수영구 광안동 192-20",
+      "sc": 4.7,
+      "rc": 627,
       "im": null,
       "ims": [],
       "mentions": 3,
       "by": {
         "news": 0,
-        "blog": 3,
-        "youtube": 0
+        "blog": 0,
+        "youtube": 3
       },
       "sample": [
-        "부산 해리단길 카페 로우앤스윗 휘낭시에 디저트 맛집",
-        "광안리 카페 부아장 | 정원 감성 가득한 디저트 맛집에서 만난 인생 밤티라미수"
+        "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
       ],
-      "map": "https://map.kakao.com/?q=%EB%94%94%EC%A0%80%ED%8A%B8%EC%8B%9C%EB%84%A4%EB%A7%88",
-      "tel": ""
-    },
-    {
-      "id": "2129883393",
-      "n": "샤브애진심",
-      "gu": "남구",
-      "c": "한식",
-      "addr": "부산 남구 분포로 66-17 3층",
-      "sc": 4.3,
-      "rc": 33,
-      "im": "https://t1.kakaocdn.net/mystore/591C13E548934BCA8720469127EA8949",
-      "ims": [
-        "https://t1.kakaocdn.net/mystore/591C13E548934BCA8720469127EA8949",
-        "https://t1.kakaocdn.net/mystore/7CC71262D32645BD8329D1122335BFD4",
-        "https://t1.kakaocdn.net/mystore/5C51EC00991C4256B02A2CCAF3E13EF9",
-        "https://t1.kakaocdn.net/mystore/079B98B433D54188A4A06574E979ED18",
-        "https://t1.kakaocdn.net/mystore/AD78ABBC8456474D9976E615F09F9E80"
-      ],
-      "mentions": 3,
-      "by": {
-        "news": 0,
-        "blog": 2,
-        "youtube": 1
-      },
-      "sample": [
-        "왕복 18만 원 나혼자 삿포로🇯🇵38만원으로 삿포로 1박2일 솔직후기 (현지인 맛집 싹 다 털고 옴)｜추성훈 아이스크림 위스키바·미슐랭 3스타 밀푀유·해산물 스프카레",
-        "[2026 최신] 서면맛집 총정리, 실패 없는 현지인 추천 BEST 10"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%83%A4%EB%B8%8C%EC%95%A0%EC%A7%84%EC%8B%AC",
+      "map": "https://map.kakao.com/?q=%EA%B4%91%EC%95%88%EB%A6%AC%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5",
       "tel": ""
     },
     {
@@ -214,62 +262,32 @@
       ],
       "map": "https://map.kakao.com/?q=%EC%95%84%EC%82%B0%EC%9D%B4%EC%9E%90%EC%B9%B4%EC%95%BC",
       "tel": ""
-    },
-    {
-      "id": "978777638",
-      "n": "소잉팩토리 부산서면점",
-      "gu": "부산진구",
-      "c": "미싱판매",
-      "addr": "부산 부산진구 중앙대로 799-1 부라더빌딩 2층",
-      "sc": 3.2,
-      "rc": 11,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/448ebffa4c885843f153da4f56761eee1ded8c96?original",
-      "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/448ebffa4c885843f153da4f56761eee1ded8c96?original"
-      ],
-      "mentions": 3,
-      "by": {
-        "news": 3,
-        "blog": 0,
-        "youtube": 0
-      },
-      "sample": [
-        "백화점으로 들어온 재봉틀… 롯데百 부산본점, '소잉팩토리' 재봉틀 팝업",
-        "롯데백화점 부산본점, ‘소잉팩토리’ 팝업…미싱·자수 체험 한자리"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%86%8C%EC%9E%89%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%B6%80%EC%82%B0%EC%84%9C%EB%A9%B4%EC%A0%90",
-      "tel": ""
-    },
-    {
-      "id": "9833021",
-      "n": "소라여행기획",
-      "gu": "중구",
-      "c": "여행사",
-      "addr": "부산 중구 중앙대로 44 2층",
-      "sc": null,
-      "rc": 0,
-      "im": null,
-      "ims": [],
-      "mentions": 3,
-      "by": {
-        "news": 0,
-        "blog": 3,
-        "youtube": 0
-      },
-      "sample": [
-        "히숨이의 여행과 맛집 리뷰",
-        "잘먹고 잘살기, 여행과 맛집"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%86%8C%EB%9D%BC%EC%97%AC%ED%96%89%EA%B8%B0%ED%9A%8D",
-      "tel": ""
     }
   ],
   "keywords": [
     {
       "k": "부캉이",
+      "n": 10,
+      "ch": 3,
+      "arrow": "▲"
+    },
+    {
+      "k": "감성",
       "n": 7,
-      "ch": -1,
-      "arrow": "▼"
+      "ch": 2,
+      "arrow": "▲"
+    },
+    {
+      "k": "마이너",
+      "n": 7,
+      "ch": 7,
+      "arrow": "▲"
+    },
+    {
+      "k": "감성양고기",
+      "n": 7,
+      "ch": 2,
+      "arrow": "▲"
     },
     {
       "k": "Y-3",
@@ -284,45 +302,27 @@
       "arrow": "–"
     },
     {
+      "k": "해운대해수욕장",
+      "n": 6,
+      "ch": 6,
+      "arrow": "▲"
+    },
+    {
       "k": "데카트론",
       "n": 5,
       "ch": 0,
       "arrow": "–"
     },
     {
-      "k": "감성",
-      "n": 5,
-      "ch": 5,
-      "arrow": "▲"
-    },
-    {
-      "k": "감성양고기",
-      "n": 5,
-      "ch": 5,
-      "arrow": "▲"
-    },
-    {
-      "k": "황금예찬",
-      "n": 4,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
       "k": "busan",
-      "n": 4,
-      "ch": 0,
-      "arrow": "–"
+      "n": 5,
+      "ch": 1,
+      "arrow": "▲"
     },
     {
       "k": "오션뷰",
-      "n": 4,
-      "ch": 4,
-      "arrow": "▲"
-    },
-    {
-      "k": "대형",
-      "n": 4,
-      "ch": 4,
+      "n": 5,
+      "ch": 1,
       "arrow": "▲"
     }
   ]
