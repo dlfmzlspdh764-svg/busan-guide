@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23 13:55",
+ "updated": "2026-10-23 19:07",
  "source": "Google News RSS + 항공사 이벤트 페이지(가능한 경우)",
  "items": [
   {
@@ -112,18 +112,6 @@
    "snippet": "에어부산 '나의 여행보고서' 특가 프로모션 &nbsp;&nbsp; BBS불교방송"
   },
   {
-   "id": "77eb899cce940ce2",
-   "airline": "에어부산",
-   "title": "에어부산, ‘나의 여행보고서’ 국제선 특가 프로모션 실시",
-   "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE9OTnFmRjNCQ1ROcEs0dGxpTm1qZ05oQjI2OXhaamVESkR0Uy1vMUxVZ2NGRVRWR3ljNERNQ2YzUHlqV0E?oc=5",
-   "source": "Google News",
-   "pub": "2026-10-13",
-   "flags": [
-    "부산"
-   ],
-   "snippet": "에어부산, ‘나의 여행보고서’ 국제선 특가 프로모션 실시 &nbsp;&nbsp; 인디포커스"
-  },
-  {
    "id": "4f00eb76dc581b34",
    "airline": "에어부산",
    "title": "에어부산, 연말 국제선 특가…신규 노선 포함",
@@ -158,6 +146,16 @@
     "부산"
    ],
    "snippet": "에어부산 연말 시즌 국제선 특가 프로모션 진행 - 머니투데이 &nbsp;&nbsp; 머니투데이"
+  },
+  {
+   "id": "c7f0bdcc380f6614",
+   "airline": "제주항공",
+   "title": "제주항공, 인천~센다이 신규 취항…오는 8일까지 항공권 20% 할인 혜택도",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9FZHVPRzhrSkZwc1dnNkdWMEhuOERGb1NRREYxenFaOWdjNmx6d2hDZ1RXWHBJai1FVm1ObVFZLXl1YkVzMEV4MXdlVFBNQUViRTVCYk9ZMUpYcXR2ZVYtUnpRdUlvSnM?oc=5",
+   "source": "Google News",
+   "pub": "2026-10-23",
+   "flags": [],
+   "snippet": "제주항공, 인천~센다이 신규 취항…오는 8일까지 항공권 20% 할인 혜택도 &nbsp;&nbsp; 팍스경제TV"
   },
   {
    "id": "dd02928972c4d8d1",
@@ -210,16 +208,6 @@
    "snippet": "연말 해외여행 '항공권 12% 뚝'…KB국민카드 'KB Pay 여행' 할인 쏜다 &nbsp;&nbsp; 매일일보"
   },
   {
-   "id": "a8ed2d13aedc27a6",
-   "airline": "제주항공",
-   "title": "KB국민카드, 저비용항공사 국제선 항공권 12% 즉시 할인",
-   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA0NHB1c3pTOXBFVXZyRVk2a1R0N2Ezc3FfWXJhSXdSVlR3YVVHcTJtQTE0eHI0cEpTUnkwV1dmSkVpdllwWWJVTzhkYlZ6UC1HMEtsTnBhcWQwNHpKV19selp3SktlUDQ?oc=5",
-   "source": "Google News",
-   "pub": "2026-10-20",
-   "flags": [],
-   "snippet": "KB국민카드, 저비용항공사 국제선 항공권 12% 즉시 할인 &nbsp;&nbsp; 팍스경제TV"
-  },
-  {
    "id": "3035fd8b0a5a1851",
    "airline": "제주항공",
    "title": "KB국민카드, 국제선 항공권 최대 12% 할인…KB Pay 여행 혜택 확대",
@@ -228,6 +216,16 @@
    "pub": "2026-10-20",
    "flags": [],
    "snippet": "KB국민카드, 국제선 항공권 최대 12% 할인…KB Pay 여행 혜택 확대 &nbsp;&nbsp; Korea IT Times"
+  },
+  {
+   "id": "293147174d0f8f67",
+   "airline": "제주항공",
+   "title": "KB국민카드, LCC 국제선 항공권 12% 할인…최대 2만5000원",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8yV0J2T2xuTWt0SkRXYUVDZHdFQUZMUEJ2Z2FwNG1rdkVXendISllRNTlyb3cwMGZhaC1YYXhvbzVUNHpiSjFjYnpJakNxVVExVW44dHRkWmY?oc=5",
+   "source": "Google News",
+   "pub": "2026-10-20",
+   "flags": [],
+   "snippet": "KB국민카드, LCC 국제선 항공권 12% 할인…최대 2만5000원 &nbsp;&nbsp; 더트래커"
   }
  ],
  "sources": {
