@@ -1,39 +1,38 @@
 {
-  "updated": "2026-10-24 01:49",
+  "updated": "2026-10-24 06:14",
   "basis": "뉴스·블로그·유튜브 최근 7일에서 상호 발견 → 카카오 부산 장소 검증 (틱톡 제외)",
   "sources": {
-    "news": 114,
-    "blog": 304,
-    "youtube": 173
+    "news": 118,
+    "blog": 301,
+    "youtube": 174
   },
   "places": [
     {
-      "id": "1295735325",
-      "n": "신라스테이 해운대",
+      "id": "7913306",
+      "n": "해운대해수욕장",
       "gu": "해운대구",
-      "c": "호텔",
-      "addr": "부산 해운대구 해운대로570번길 46",
-      "sc": 3.5,
-      "rc": 213,
-      "im": "https://t1.kakaocdn.net/mystore/CF7A7A052C5E4C6D903CF5DA82BE4787",
+      "c": "해수욕장,해변",
+      "addr": "부산 해운대구 우동",
+      "sc": 4.6,
+      "rc": 604,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/972da4e11c4c26e300a1cd0769a18143b3aa784c?original",
       "ims": [
-        "https://t1.kakaocdn.net/mystore/CF7A7A052C5E4C6D903CF5DA82BE4787",
-        "https://t1.kakaocdn.net/one/store/20250227105601-8ce56f06-3958-4425-ac08-42d1b4638f3f.jpg",
-        "https://t1.kakaocdn.net/one/store/20250227105601-82d40a55-f57d-40a5-a077-a753ddff7b30.jpg",
-        "https://t1.kakaocdn.net/one/store/20250227105601-c81d3fe6-1da2-40de-bdcd-e924de4bbf5d.jpg",
-        "https://t1.kakaocdn.net/one/store/20250227105601-3cad40a1-35b3-46d9-879a-ed810a218465.jpg"
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/972da4e11c4c26e300a1cd0769a18143b3aa784c?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/ab99b27822c34f1c5d5b3977d876ba3bf39f52fe?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/c289b7ee7ad694d9669cfd3df44ae3f42b725566?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/3878b22b2e791dfa2c73790b03de8b99d0b11691?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/457986b073364dca8a0974d9f8f39507848fbdf4?original"
       ],
       "mentions": 6,
       "by": {
-        "news": 2,
-        "blog": 1,
-        "youtube": 3
+        "news": 0,
+        "blog": 0,
+        "youtube": 6
       },
       "sample": [
-        "\"여기 제주 아니었어?\" 바다 위에 떠 있는 회색 상자… 요즘 창원에서 가장 핫한 신상 오션뷰 카페",
         "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
       ],
-      "map": "https://map.kakao.com/?q=%EC%8B%A0%EB%9D%BC%EC%8A%A4%ED%85%8C%EC%9D%B4%20%ED%95%B4%EC%9A%B4%EB%8C%80",
+      "map": "https://map.kakao.com/?q=%ED%95%B4%EC%9A%B4%EB%8C%80%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5",
       "tel": ""
     },
     {
@@ -57,6 +56,35 @@
         "롯데백화점 부산본점, 영남 첫 ‘오우라’ 스마트링 팝업"
       ],
       "map": "https://map.kakao.com/?q=%EC%98%A4%EC%9A%B0%EB%9D%BC%20%EB%A1%AF%EB%8D%B0%EB%B0%B1%ED%99%94%EC%A0%90%EB%B6%80%EC%82%B0%EB%B3%B8%EC%A0%90",
+      "tel": ""
+    },
+    {
+      "id": "1295735325",
+      "n": "신라스테이 해운대",
+      "gu": "해운대구",
+      "c": "호텔",
+      "addr": "부산 해운대구 해운대로570번길 46",
+      "sc": 3.5,
+      "rc": 213,
+      "im": "https://t1.kakaocdn.net/mystore/CF7A7A052C5E4C6D903CF5DA82BE4787",
+      "ims": [
+        "https://t1.kakaocdn.net/mystore/CF7A7A052C5E4C6D903CF5DA82BE4787",
+        "https://t1.kakaocdn.net/one/store/20250227105601-8ce56f06-3958-4425-ac08-42d1b4638f3f.jpg",
+        "https://t1.kakaocdn.net/one/store/20250227105601-82d40a55-f57d-40a5-a077-a753ddff7b30.jpg",
+        "https://t1.kakaocdn.net/one/store/20250227105601-c81d3fe6-1da2-40de-bdcd-e924de4bbf5d.jpg",
+        "https://t1.kakaocdn.net/one/store/20250227105601-3cad40a1-35b3-46d9-879a-ed810a218465.jpg"
+      ],
+      "mentions": 5,
+      "by": {
+        "news": 2,
+        "blog": 0,
+        "youtube": 3
+      },
+      "sample": [
+        "\"여기 제주 아니었어?\" 바다 위에 떠 있는 회색 상자… 요즘 창원에서 가장 핫한 신상 오션뷰 카페",
+        "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%8B%A0%EB%9D%BC%EC%8A%A4%ED%85%8C%EC%9D%B4%20%ED%95%B4%EC%9A%B4%EB%8C%80",
       "tel": ""
     },
     {
@@ -112,6 +140,35 @@
       "tel": ""
     },
     {
+      "id": "17747938",
+      "n": "타카라",
+      "gu": "중구",
+      "c": "일본식주점",
+      "addr": "부산 중구 광복로85번길 10-1 1층",
+      "sc": 4.1,
+      "rc": 43,
+      "im": "https://t1.kakaocdn.net/mystore/980E5F76F5D949F79631BAC04DFD17D7",
+      "ims": [
+        "https://t1.kakaocdn.net/mystore/980E5F76F5D949F79631BAC04DFD17D7",
+        "https://t1.kakaocdn.net/mystore/F9EC5DAD6F4C4B599D92D28C7743E357",
+        "https://t1.kakaocdn.net/mystore/2024EEF839BB459597532E0581341E05",
+        "https://t1.kakaocdn.net/mystore/68B16FF7062F476EB8E7FCF6F124B00A",
+        "https://t1.kakaocdn.net/mystore/C7C95222BF1D463F88C33C5EF1A50170"
+      ],
+      "mentions": 4,
+      "by": {
+        "news": 0,
+        "blog": 4,
+        "youtube": 0
+      },
+      "sample": [
+        "서면 핫플 술집 맛집 전포카페거리 밥집 추천",
+        "부산 전포 술집 추천 분위기 좋은 와인바 전포 오아시스"
+      ],
+      "map": "https://map.kakao.com/?q=%ED%83%80%EC%B9%B4%EB%9D%BC",
+      "tel": ""
+    },
+    {
       "id": "17405448",
       "n": "앵콜반점",
       "gu": "부산진구",
@@ -125,127 +182,27 @@
         "https://t1.kakaocdn.net/local/kakaomapPhoto/review/dce3b9f4270731aa5aca575c2653262db21d0df2?original",
         "https://t1.kakaocdn.net/local/kakaomapPhoto/review/109e9e5f58d059b92721ecb653a1a303c64cbdca?original"
       ],
-      "mentions": 5,
+      "mentions": 4,
       "by": {
-        "news": 5,
+        "news": 4,
         "blog": 0,
         "youtube": 0
       },
       "sample": [
         "\"부산서 다시 만나는 Y-3\" 무신사, 센텀시티에 앵콜 팝업",
-        "무신사, ‘Y-3’ 부산 신세계百 센텀시티점 앵콜 팝업 개최"
+        "무신사, 부산 신세계百 센텀시티점서 ‘와이쓰리’ 앵콜 팝업"
       ],
       "map": "https://map.kakao.com/?q=%EC%95%B5%EC%BD%9C%EB%B0%98%EC%A0%90",
       "tel": ""
     },
     {
-      "id": "569981964",
-      "n": "대저농협하나로마트 로컬푸드직매장 본점",
-      "gu": "서구",
-      "c": "대형슈퍼",
-      "addr": "부산 강서구 대저로 229",
-      "sc": null,
-      "rc": 0,
-      "im": "https://t1.kakaocdn.net/cfile/2152173C52CB98F215",
-      "ims": [
-        "https://t1.kakaocdn.net/cfile/2152173C52CB98F215"
-      ],
-      "mentions": 5,
-      "by": {
-        "news": 0,
-        "blog": 3,
-        "youtube": 2
-      },
-      "sample": [
-        "치앙마이 근교 여행, 람푼 당일치기🌳 도이수텝 원조는 여기있다!!✨찐 로컬 맛집 발견🐷 람푼 카페 추천 Ep.17 국제커플 International Couple 태국 Vlog",
-        "지역별로 골라보는 로컬 맛집 인스타그램 TOP5 — 경상도편"
-      ],
-      "map": "https://map.kakao.com/?q=%EB%8C%80%EC%A0%80%EB%86%8D%ED%98%91%ED%95%98%EB%82%98%EB%A1%9C%EB%A7%88%ED%8A%B8%20%EB%A1%9C%EC%BB%AC%ED%91%B8%EB%93%9C%EC%A7%81%EB%A7%A4%EC%9E%A5%20%EB%B3%B8%EC%A0%90",
-      "tel": ""
-    },
-    {
-      "id": "11128820",
-      "n": "수복센타",
-      "gu": "중구",
-      "c": "맛집",
-      "addr": "부산 중구 남포동2가 15-1 1층",
-      "sc": 3.8,
-      "rc": 63,
-      "im": null,
-      "ims": [],
-      "mentions": 4,
-      "by": {
-        "news": 0,
-        "blog": 4,
-        "youtube": 0
-      },
-      "sample": [
-        "서면 핫플 술집 맛집 전포카페거리 밥집 추천",
-        "부산 전포 술집 추천 분위기 좋은 와인바 전포 오아시스"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%88%98%EB%B3%B5%EC%84%BC%ED%83%80",
-      "tel": ""
-    },
-    {
-      "id": "598039994",
-      "n": "이터널선샤인",
-      "gu": "부산진구",
-      "c": "카페",
-      "addr": "부산 부산진구 서전로47번길 27 2층",
-      "sc": 3.9,
-      "rc": 56,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/46bda1e72325323cc2481d223e11ec7d464fde84?original",
-      "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/46bda1e72325323cc2481d223e11ec7d464fde84?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/744115cd2e5971ec03669334bad7333af788daa5?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/0579ce893f1979b1caf019d9f9ff519a5f2f1b21?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/aeb63c957fbfe39952b445580ddfef90ad270a78?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/30333a43e1a505f8e41b19ec2b827e9e74c1264f?original"
-      ],
-      "mentions": 4,
-      "by": {
-        "news": 0,
-        "blog": 4,
-        "youtube": 0
-      },
-      "sample": [
-        "[전포 카페 추천] 전포 수플레 맛집 추천_어나더미네스",
-        "[ 전포 카페 추천] 전포 수플레 맛집 추천_어나더미네스"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%9D%B4%ED%84%B0%EB%84%90%EC%84%A0%EC%83%A4%EC%9D%B8",
-      "tel": ""
-    },
-    {
-      "id": "1483321521",
-      "n": "10월10일",
-      "gu": "기장군",
-      "c": "가정,생활 꽃집,꽃배달",
-      "addr": "부산 기장군 기장읍 대라리 312-2",
-      "sc": null,
-      "rc": 0,
-      "im": null,
-      "ims": [],
-      "mentions": 4,
-      "by": {
-        "news": 0,
-        "blog": 4,
-        "youtube": 0
-      },
-      "sample": [
-        "부산 서면 10월 팝업 스토어 롯데 백화점 롯백 가볼만한곳 깡자칩",
-        "부산 10월 팝업스토어 2차 총정리 | 기장·센텀시티·서면·범일 12곳"
-      ],
-      "map": "https://map.kakao.com/?q=10%EC%9B%9410%EC%9D%BC",
-      "tel": ""
-    },
-    {
-      "id": "7913306",
-      "n": "해운대해수욕장",
-      "gu": "해운대구",
+      "id": "8202423",
+      "n": "광안리해수욕장",
+      "gu": "수영구",
       "c": "여행 관광,명소 해수욕장,해변",
-      "addr": "부산 해운대구 우동",
-      "sc": 4.6,
-      "rc": 604,
+      "addr": "부산 수영구 광안동 192-20",
+      "sc": 4.7,
+      "rc": 627,
       "im": null,
       "ims": [],
       "mentions": 3,
@@ -257,25 +214,82 @@
       "sample": [
         "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
       ],
-      "map": "https://map.kakao.com/?q=%ED%95%B4%EC%9A%B4%EB%8C%80%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5",
+      "map": "https://map.kakao.com/?q=%EA%B4%91%EC%95%88%EB%A6%AC%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5",
+      "tel": ""
+    },
+    {
+      "id": "25618927",
+      "n": "허심청 호텔농심",
+      "gu": "동래구",
+      "c": "온천",
+      "addr": "부산 동래구 온천장로107번길 32 4-5층",
+      "sc": 4.2,
+      "rc": 256,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d9e268b3d7abdaed8f3d2dbce8c3ade86d7cc6a4?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d9e268b3d7abdaed8f3d2dbce8c3ade86d7cc6a4?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/1b734620783c4625d55f1cc2151b156ddb929a1a?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/16dfb0bd9d6d9af29817e098d0ac1747b60ca921?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/eed4385324d6c4cb6dbebfe2d37f6b324594244b?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/b4c633bec02e7c0131947a27b2d0821443992a88?original"
+      ],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 2,
+        "youtube": 1
+      },
+      "sample": [
+        "이원일 셰프가 극찬한 카레? 동래 주민들의 찐맛집 #동래맛집 #동래밥집 #일본카레 #일본여행",
+        "[동래 맛집] 동래역 도보 1분 겉바속촉 역대급 인생 막창 뎐벼락막창 동래점 솔직 후기"
+      ],
+      "map": "https://map.kakao.com/?q=%ED%97%88%EC%8B%AC%EC%B2%AD%20%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC",
+      "tel": ""
+    },
+    {
+      "id": "1283745287",
+      "n": "뉴시즈엘시티레지던스",
+      "gu": "해운대구",
+      "c": "여행 숙박 호텔",
+      "addr": "부산 해운대구 중동 1829 엘시티 랜드마크타워동 7008호",
+      "sc": 4.9,
+      "rc": 48,
+      "im": null,
+      "ims": [],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 0,
+        "youtube": 3
+      },
+      "sample": [
+        "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
+      ],
+      "map": "https://map.kakao.com/?q=%EB%89%B4%EC%8B%9C%EC%A6%88%EC%97%98%EC%8B%9C%ED%8B%B0%EB%A0%88%EC%A7%80%EB%8D%98%EC%8A%A4",
       "tel": ""
     }
   ],
   "keywords": [
     {
-      "k": "Y-3",
+      "k": "마이너",
       "n": 8,
+      "ch": 8,
+      "arrow": "▲"
+    },
+    {
+      "k": "Y-3",
+      "n": 7,
       "ch": -1,
       "arrow": "▼"
     },
     {
-      "k": "부캉이",
+      "k": "데카트론",
       "n": 6,
-      "ch": 0,
-      "arrow": "–"
+      "ch": 1,
+      "arrow": "▲"
     },
     {
-      "k": "오션뷰",
+      "k": "부캉이",
       "n": 6,
       "ch": 0,
       "arrow": "–"
@@ -287,40 +301,34 @@
       "arrow": "–"
     },
     {
-      "k": "신라스테이 해운대",
+      "k": "해운대해수욕장",
       "n": 6,
-      "ch": 0,
-      "arrow": "–"
+      "ch": 6,
+      "arrow": "▲"
     },
     {
-      "k": "데카트론",
+      "k": "오션뷰",
       "n": 5,
       "ch": -1,
       "arrow": "▼"
     },
     {
-      "k": "앵콜",
+      "k": "busan",
       "n": 5,
       "ch": 0,
       "arrow": "–"
     },
     {
-      "k": "busan",
-      "n": 5,
-      "ch": 5,
-      "arrow": "▲"
-    },
-    {
-      "k": "로컬",
-      "n": 5,
-      "ch": 5,
-      "arrow": "▲"
-    },
-    {
       "k": "디저트",
       "n": 5,
-      "ch": 5,
-      "arrow": "▲"
+      "ch": 0,
+      "arrow": "–"
+    },
+    {
+      "k": "신라스테이 해운대",
+      "n": 5,
+      "ch": -1,
+      "arrow": "▼"
     }
   ]
 }
