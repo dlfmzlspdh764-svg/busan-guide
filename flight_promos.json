@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23 08:25",
+ "updated": "2026-10-23 13:55",
  "source": "Google News RSS + 항공사 이벤트 페이지(가능한 경우)",
  "items": [
   {
@@ -14,18 +14,6 @@
     "태국·베트남"
    ],
    "snippet": "에어부산, 연말 여행객 일본·중국·동남아 노선 특가 행사 &nbsp;&nbsp; 연합뉴스"
-  },
-  {
-   "id": "7a495fbf1e1e22b8",
-   "airline": "에어부산",
-   "title": "에어부산, 연말 국제선 특가 프로모션…14일부터 20일까지",
-   "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5mcUhvLXN4cU5wTTBtMTBpZFgzd1dqSW5JWUhUdUlyWThmSEs2RFc0N05TcTVVeTJRdUlDZXY2ZGxDbXNDekphUW1SV2FLVU5ZRjJRa19kYVROVzk1T1N4YlRHVQ?oc=5",
-   "source": "Google News",
-   "pub": "2026-10-21",
-   "flags": [
-    "부산"
-   ],
-   "snippet": "에어부산, 연말 국제선 특가 프로모션…14일부터 20일까지 &nbsp;&nbsp; 쿠키뉴스"
   },
   {
    "id": "f63745024d03f978",
@@ -136,18 +124,6 @@
    "snippet": "에어부산, ‘나의 여행보고서’ 국제선 특가 프로모션 실시 &nbsp;&nbsp; 인디포커스"
   },
   {
-   "id": "1d7eb986ce2923ce",
-   "airline": "에어부산",
-   "title": "에어부산 연말 시즌 국제선 특가 프로모션 진행 - 머니투데이",
-   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5xMjlINTRiMzdROU5UOFZtY0s1ejZYQkc1WUt2Q3l6S29jajlKLVNEc0Uxa19MOHdOMjVhRXUwcTduZk1FMlpHOHc1c3FBZWFCZm55YTdicERQa0dxNno2Uk51UXNCOUhJc1HSAW9BVV95cUxQYUxidE1hUEIyVmFBMnBCRkI1Wl90a19nNFkzQTBHZjEyZEhJWEg0aF9aVzV5MUkwbzB6NS1ydW8zZzQ3QmNYZEpIQy13VFg3VVVQRGdiOUdiNGhPelpfSGJVQ3lEbWw4cm45REpkdG8?oc=5",
-   "source": "Google News",
-   "pub": "2026-10-13",
-   "flags": [
-    "부산"
-   ],
-   "snippet": "에어부산 연말 시즌 국제선 특가 프로모션 진행 - 머니투데이 &nbsp;&nbsp; 머니투데이"
-  },
-  {
    "id": "4f00eb76dc581b34",
    "airline": "에어부산",
    "title": "에어부산, 연말 국제선 특가…신규 노선 포함",
@@ -170,6 +146,28 @@
     "부산"
    ],
    "snippet": "일본 편도 최저 7만5900원…에어부산, 연말시즌 국제선 특가 프로모션 &nbsp;&nbsp; 뉴스1"
+  },
+  {
+   "id": "1d7eb986ce2923ce",
+   "airline": "에어부산",
+   "title": "에어부산 연말 시즌 국제선 특가 프로모션 진행 - 머니투데이",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5xMjlINTRiMzdROU5UOFZtY0s1ejZYQkc1WUt2Q3l6S29jajlKLVNEc0Uxa19MOHdOMjVhRXUwcTduZk1FMlpHOHc1c3FBZWFCZm55YTdicERQa0dxNno2Uk51UXNCOUhJc1HSAW9BVV95cUxQYUxidE1hUEIyVmFBMnBCRkI1Wl90a19nNFkzQTBHZjEyZEhJWEg0aF9aVzV5MUkwbzB6NS1ydW8zZzQ3QmNYZEpIQy13VFg3VVVQRGdiOUdiNGhPelpfSGJVQ3lEbWw4cm45REpkdG8?oc=5",
+   "source": "Google News",
+   "pub": "2026-10-13",
+   "flags": [
+    "부산"
+   ],
+   "snippet": "에어부산 연말 시즌 국제선 특가 프로모션 진행 - 머니투데이 &nbsp;&nbsp; 머니투데이"
+  },
+  {
+   "id": "dd02928972c4d8d1",
+   "airline": "대한항공",
+   "title": "대한항공·아시아나 “파리행 항공권 환불 수수료 면제”…佛 시위 격화에 취소 늘어",
+   "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5ibkgwbzA0Vk4tbFVWSkZndmtvUVBER3ZzbTYtd3lfdEM5RUhzWFFBSW5hWXRLeWstY3E1bk51WUVaV21LVmRZVHJ0U1Z6Zw?oc=5",
+   "source": "Google News",
+   "pub": "2026-10-23",
+   "flags": [],
+   "snippet": "대한항공·아시아나 “파리행 항공권 환불 수수료 면제”…佛 시위 격화에 취소 늘어 &nbsp;&nbsp; 전자신문"
   },
   {
    "id": "7a8b07874b6b162a",
