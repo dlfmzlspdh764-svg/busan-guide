@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24 00:07",
+ "updated": "2026-10-24 04:17",
  "source": "Google News RSS + 항공사 이벤트 페이지(가능한 경우)",
  "items": [
   {
@@ -15,34 +15,10 @@
    "snippet": "에어부산, 연말 특가 프로모션… 국제선 항공권 7만5900원부터 &nbsp;&nbsp; 브릿지경제"
   },
   {
-   "id": "9d45bb45af882736",
-   "airline": "에어부산",
-   "title": "에어부산, 국제선 특가…日노선 7만5900원부터 판매",
-   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5ERm5SdzBYWmduRzRVN2FrVWRaMDljaTM1YVVhY1hPeUN4aUxIU2hyLUdCX2tGel83cTRkQ2VOSDMta3pWdGthcThHTHdpXzFtcFdMeXNKbE8tZnpFUnRSa9IBeEFVX3lxTE5PMFZRbzdhUXYtOE9Ja0hEVHM2cFJKa2xiTjVzbW5UOWhNdWRFNG93ajdpZ2pnLVIzcVAwQkxjanFCWUoybk1CNGc0TFB2X01rVVZyUUdON3oxellucE0zYVd6WDFlQWFVblZoWThxOE5DY251b2hHbA?oc=5",
-   "source": "Google News",
-   "pub": "2026-10-13",
-   "flags": [
-    "부산"
-   ],
-   "snippet": "에어부산, 국제선 특가…日노선 7만5900원부터 판매 &nbsp;&nbsp; 뉴시스"
-  },
-  {
-   "id": "e5454dd13e7d665a",
-   "airline": "에어부산",
-   "title": "일본 편도 최저 7만5900원…에어부산, 연말시즌 국제선 특가 프로모션",
-   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5Kb1lya1I2bkk3aF8xMTlOWEVvd1FxYVNIRThtTG9PY3NWd2pEQVhQYUl1Vm5sSUJTU3hpNjNLYjEwVk1ILVJDQ0F6anBwNElYdzV1eXgtNER4U2h6VUpz?oc=5",
-   "source": "Google News",
-   "pub": "2026-10-13",
-   "flags": [
-    "부산"
-   ],
-   "snippet": "일본 편도 최저 7만5900원…에어부산, 연말시즌 국제선 특가 프로모션 &nbsp;&nbsp; 뉴스1"
-  },
-  {
    "id": "c7f0bdcc380f6614",
    "airline": "제주항공",
    "title": "제주항공, 인천~센다이 신규 취항…오는 8일까지 항공권 20% 할인 혜택도",
-   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9FZHVPRzhrSkZwc1dnNkdWMEhuOERGb1NRREYxenFaOWdjNmx6d2hDZ1RXWHBJai1FVm1ObVFZLXl1YkVzMEV4MXdlVFBNQUViRTVCYk9ZMUpYcXR2ZVYtUnpRdUlvSnM?oc=5",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBZZjRQVklWZ1lnM2ZkM0JqUWY0dDd0LU91V0NVUkJ0TVIwT2dockxEY09CZVBTR2R2SkVaV3EtQUJKNTExUU9ZR05VZjhET0R2QXZFX2hQdUJFZXZablMyQy1Md053cy0z?oc=5",
    "source": "Google News",
    "pub": "2026-10-23",
    "flags": [],
@@ -207,6 +183,26 @@
    "pub": "2026-10-20",
    "flags": [],
    "snippet": "KB국민카드, 국제선 항공권 최대 12% 할인…KB Pay 여행 혜택 확대 &nbsp;&nbsp; Korea IT Times"
+  },
+  {
+   "id": "f04fc5221407c5df",
+   "airline": "진에어",
+   "title": "KB국민카드, LCC 국제선 항공권 12% 할인…최대 2만5000원",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8yV0J2T2xuTWt0SkRXYUVDZHdFQUZMUEJ2Z2FwNG1rdkVXendISllRNTlyb3cwMGZhaC1YYXhvbzVUNHpiSjFjYnpJakNxVVExVW44dHRkWmY?oc=5",
+   "source": "Google News",
+   "pub": "2026-10-20",
+   "flags": [],
+   "snippet": "KB국민카드, LCC 국제선 항공권 12% 할인…최대 2만5000원 &nbsp;&nbsp; 더트래커"
+  },
+  {
+   "id": "7e434e39dfafc8cf",
+   "airline": "진에어",
+   "title": "KB국민카드, ‘KB Pay 여행’ 국제선 항공권 12% 할인 이벤트 실시",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE4ybFFvSjhCdGJ4Qm13LUFscndST2U3OTEya3EtY3ppZm8tRmJNVGY4Zjg2Wk9QYXV5SUZmVXd4ZzNleHBUenVSVkVoQzUteFlZSDFjc3ZWMWdULThTajRyc29PVHU0MjgyeURVRUJR0gFuQVVfeXFMTjJsUW9KOEJ0YnhCbXctQWxyd1JPZTc5MTJrcS1jemlmby1GYk1UZjhmODZaT1BhdXlJRmZVd3hnM2V4cFR6dVJWRWhDNS14WVlIMWNzdlYxZ1QtOFNqNHJzb09UdTQyODJ5RFVFQlE?oc=5",
+   "source": "Google News",
+   "pub": "2026-10-20",
+   "flags": [],
+   "snippet": "KB국민카드, ‘KB Pay 여행’ 국제선 항공권 12% 할인 이벤트 실시 &nbsp;&nbsp; 파이낸셜투데이"
   }
  ],
  "sources": {
