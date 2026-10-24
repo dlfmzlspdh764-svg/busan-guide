@@ -1,12 +1,35 @@
 {
-  "updated": "2026-10-24 13:06",
+  "updated": "2026-10-24 19:39",
   "basis": "뉴스·블로그·유튜브 최근 7일에서 상호 발견 → 카카오 부산 장소 검증 (틱톡 제외)",
   "sources": {
-    "news": 98,
-    "blog": 305,
-    "youtube": 183
+    "news": 114,
+    "blog": 0,
+    "youtube": 134
   },
   "places": [
+    {
+      "id": "280823157",
+      "n": "오우라 롯데백화점부산본점",
+      "gu": "부산진구",
+      "c": "전자제품판매",
+      "addr": "부산 부산진구 가야대로 772 6층",
+      "sc": null,
+      "rc": 0,
+      "im": null,
+      "ims": [],
+      "mentions": 6,
+      "by": {
+        "news": 6,
+        "blog": 0,
+        "youtube": 0
+      },
+      "sample": [
+        "[유통소식] 롯데百 부산본점 핀란드 스마트링 ‘오우라’ 팝업 外",
+        "롯데백화점 부산본점, 영남 첫 ‘오우라’ 스마트링 팝업"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%98%A4%EC%9A%B0%EB%9D%BC%20%EB%A1%AF%EB%8D%B0%EB%B0%B1%ED%99%94%EC%A0%90%EB%B6%80%EC%82%B0%EB%B3%B8%EC%A0%90",
+      "tel": ""
+    },
     {
       "id": "12976118",
       "n": "강릉송정해변막국수 부산분점",
@@ -23,10 +46,10 @@
         "https://t1.kakaocdn.net/local/kakaomapPhoto/review/cbf4c713cb8e3852a4b8762d9f0f151f76d8262e?original",
         "https://t1.kakaocdn.net/local/kakaomapPhoto/review/445506e4cc528756e1898c24d6380b628ee78355?original"
       ],
-      "mentions": 7,
+      "mentions": 5,
       "by": {
         "news": 4,
-        "blog": 2,
+        "blog": 0,
         "youtube": 1
       },
       "sample": [
@@ -34,64 +57,6 @@
         "강릉 vlog l 신상호텔 신라모노그램에 호캉스 다녀왔어요🧸 𓂃 𓈒 𓏸 ☁️ㅣ강릉여행, 강릉맛집, 강릉카페, 송정해변, 엄지네포장마차, 강릉옥수수닭강정"
       ],
       "map": "https://map.kakao.com/?q=%EA%B0%95%EB%A6%89%EC%86%A1%EC%A0%95%ED%95%B4%EB%B3%80%EB%A7%89%EA%B5%AD%EC%88%98%20%EB%B6%80%EC%82%B0%EB%B6%84%EC%A0%90",
-      "tel": ""
-    },
-    {
-      "id": "327520717",
-      "n": "시그니엘 부산",
-      "gu": "해운대구",
-      "c": "호텔",
-      "addr": "부산 해운대구 달맞이길 30",
-      "sc": 3.8,
-      "rc": 218,
-      "im": "https://t1.kakaocdn.net/one/store/20261021150041-c08a5515-76de-48a6-98fa-841090be7f63.jpg",
-      "ims": [
-        "https://t1.kakaocdn.net/one/store/20261021150041-c08a5515-76de-48a6-98fa-841090be7f63.jpg",
-        "https://t1.kakaocdn.net/one/store/20261001110603-5f1af823-5ec1-4273-a3a2-dcaf6a673dc7.png",
-        "https://t1.kakaocdn.net/one/store/20260709170801-b82a5c54-17bb-4691-ba5d-73f081e5433d.png",
-        "https://t1.kakaocdn.net/one/store/20261001110603-e6d44d7c-8851-4ff7-88a5-644f0d664c8b.png",
-        "https://t1.kakaocdn.net/one/store/20260709170801-66b8075a-f049-49c1-a854-9baa603e374d.png"
-      ],
-      "mentions": 5,
-      "by": {
-        "news": 0,
-        "blog": 2,
-        "youtube": 3
-      },
-      "sample": [
-        "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
-        "아산 곡교천뷰 힐링 대형카페 루티니아 #아산카페 #곡교천 #루프탑카페 #테라스카페 #베이커리카페 #연못"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%97%98%20%EB%B6%80%EC%82%B0",
-      "tel": ""
-    },
-    {
-      "id": "1295735325",
-      "n": "신라스테이 해운대",
-      "gu": "해운대구",
-      "c": "호텔",
-      "addr": "부산 해운대구 해운대로570번길 46",
-      "sc": 3.5,
-      "rc": 213,
-      "im": "https://t1.kakaocdn.net/mystore/CF7A7A052C5E4C6D903CF5DA82BE4787",
-      "ims": [
-        "https://t1.kakaocdn.net/mystore/CF7A7A052C5E4C6D903CF5DA82BE4787",
-        "https://t1.kakaocdn.net/one/store/20250227105601-8ce56f06-3958-4425-ac08-42d1b4638f3f.jpg",
-        "https://t1.kakaocdn.net/one/store/20250227105601-82d40a55-f57d-40a5-a077-a753ddff7b30.jpg",
-        "https://t1.kakaocdn.net/one/store/20250227105601-c81d3fe6-1da2-40de-bdcd-e924de4bbf5d.jpg",
-        "https://t1.kakaocdn.net/one/store/20250227105601-3cad40a1-35b3-46d9-879a-ed810a218465.jpg"
-      ],
-      "mentions": 5,
-      "by": {
-        "news": 2,
-        "blog": 0,
-        "youtube": 3
-      },
-      "sample": [
-        "\"여기 제주 아니었어?\" 바다 위에 떠 있는 회색 상자… 요즘 창원에서 가장 핫한 신상 오션뷰 카페",
-        "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%8B%A0%EB%9D%BC%EC%8A%A4%ED%85%8C%EC%9D%B4%20%ED%95%B4%EC%9A%B4%EB%8C%80",
       "tel": ""
     },
     {
@@ -104,74 +69,17 @@
       "rc": 23,
       "im": null,
       "ims": [],
-      "mentions": 5,
+      "mentions": 4,
       "by": {
         "news": 0,
         "blog": 0,
-        "youtube": 5
+        "youtube": 4
       },
       "sample": [
         "부산 북항에 나타난 3m 상어 ‘부캉이’｜도대체 왜 아직도 여기에 있을까? #shorts #busan #bukangi",
         "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
       ],
       "map": "https://map.kakao.com/?q=CGV%20%EB%B6%80%EC%82%B0%EB%AA%85%EC%A7%80",
-      "tel": ""
-    },
-    {
-      "id": "25661344",
-      "n": "전포카페거리",
-      "gu": "부산진구",
-      "c": "테마거리",
-      "addr": "부산 부산진구 전포대로209번길 26",
-      "sc": 3.7,
-      "rc": 19,
-      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f281ac07c18d0f449002b027fa7e65028151891c?original",
-      "ims": [
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f281ac07c18d0f449002b027fa7e65028151891c?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/e11009a665d9c12c62284e9884ee6770d73c9c2f?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/030265b409b5a312e675e4abb92db794a0932760?original",
-        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/7887f9012978f2c73c0351056d43d3fdf4e5d566?original"
-      ],
-      "mentions": 5,
-      "by": {
-        "news": 0,
-        "blog": 4,
-        "youtube": 1
-      },
-      "sample": [
-        "부산 전포동 신상카페 추천☕️ 색감부터 디저트까지 완벽한 진공미학💛 | 네이버 알림받기 10% 할인!#부산카페 #전포동카페 #진공미학 #부산신상카페 #전포동신상카페 #부산카페",
-        "전포동 맛집 뻐끔수산 생새우회 모듬회 세트 전포 술집 서면 횟집 추천"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%A0%84%ED%8F%AC%EC%B9%B4%ED%8E%98%EA%B1%B0%EB%A6%AC",
-      "tel": ""
-    },
-    {
-      "id": "2129883393",
-      "n": "샤브애진심",
-      "gu": "남구",
-      "c": "한식",
-      "addr": "부산 남구 분포로 66-17 3층",
-      "sc": 4.3,
-      "rc": 33,
-      "im": "https://t1.kakaocdn.net/mystore/591C13E548934BCA8720469127EA8949",
-      "ims": [
-        "https://t1.kakaocdn.net/mystore/591C13E548934BCA8720469127EA8949",
-        "https://t1.kakaocdn.net/mystore/7CC71262D32645BD8329D1122335BFD4",
-        "https://t1.kakaocdn.net/mystore/5C51EC00991C4256B02A2CCAF3E13EF9",
-        "https://t1.kakaocdn.net/mystore/079B98B433D54188A4A06574E979ED18",
-        "https://t1.kakaocdn.net/mystore/AD78ABBC8456474D9976E615F09F9E80"
-      ],
-      "mentions": 4,
-      "by": {
-        "news": 0,
-        "blog": 3,
-        "youtube": 1
-      },
-      "sample": [
-        "왕복 18만 원 나혼자 삿포로🇯🇵38만원으로 삿포로 1박2일 솔직후기 (현지인 맛집 싹 다 털고 옴)｜추성훈 아이스크림 위스키바·미슐랭 3스타 밀푀유·해산물 스프카레",
-        "[2026 최신] 서면맛집 총정리, 실패 없는 현지인 추천 BEST 10"
-      ],
-      "map": "https://map.kakao.com/?q=%EC%83%A4%EB%B8%8C%EC%95%A0%EC%A7%84%EC%8B%AC",
       "tel": ""
     },
     {
@@ -202,59 +110,50 @@
       "tel": ""
     },
     {
-      "id": "8202423",
-      "n": "광안리해수욕장",
-      "gu": "수영구",
-      "c": "여행 관광,명소 해수욕장,해변",
-      "addr": "부산 수영구 광안동 192-20",
-      "sc": 4.7,
-      "rc": 627,
-      "im": null,
-      "ims": [],
-      "mentions": 3,
-      "by": {
-        "news": 0,
-        "blog": 0,
-        "youtube": 3
-      },
-      "sample": [
-        "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
-      ],
-      "map": "https://map.kakao.com/?q=%EA%B4%91%EC%95%88%EB%A6%AC%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5",
-      "tel": ""
-    },
-    {
-      "id": "7913306",
-      "n": "해운대해수욕장",
+      "id": "1295735325",
+      "n": "신라스테이 해운대",
       "gu": "해운대구",
-      "c": "여행 관광,명소 해수욕장,해변",
-      "addr": "부산 해운대구 우동",
-      "sc": 4.6,
-      "rc": 604,
-      "im": null,
-      "ims": [],
+      "c": "호텔",
+      "addr": "부산 해운대구 해운대로570번길 46",
+      "sc": 3.5,
+      "rc": 213,
+      "im": "https://t1.kakaocdn.net/mystore/CF7A7A052C5E4C6D903CF5DA82BE4787",
+      "ims": [
+        "https://t1.kakaocdn.net/mystore/CF7A7A052C5E4C6D903CF5DA82BE4787",
+        "https://t1.kakaocdn.net/one/store/20250227105601-8ce56f06-3958-4425-ac08-42d1b4638f3f.jpg",
+        "https://t1.kakaocdn.net/one/store/20250227105601-82d40a55-f57d-40a5-a077-a753ddff7b30.jpg",
+        "https://t1.kakaocdn.net/one/store/20250227105601-c81d3fe6-1da2-40de-bdcd-e924de4bbf5d.jpg",
+        "https://t1.kakaocdn.net/one/store/20250227105601-3cad40a1-35b3-46d9-879a-ed810a218465.jpg"
+      ],
       "mentions": 3,
       "by": {
-        "news": 0,
+        "news": 2,
         "blog": 0,
-        "youtube": 3
+        "youtube": 1
       },
       "sample": [
+        "\"여기 제주 아니었어?\" 바다 위에 떠 있는 회색 상자… 요즘 창원에서 가장 핫한 신상 오션뷰 카페",
         "해운대해수욕장 #해운대 #해운대여행 #부산여행 #바다여행 #쇼츠 #shorts #beach #haeundae #busan #travel #엘시티 #마린시티 #웨스턴조선 #오션뷰"
       ],
-      "map": "https://map.kakao.com/?q=%ED%95%B4%EC%9A%B4%EB%8C%80%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5",
+      "map": "https://map.kakao.com/?q=%EC%8B%A0%EB%9D%BC%EC%8A%A4%ED%85%8C%EC%9D%B4%20%ED%95%B4%EC%9A%B4%EB%8C%80",
       "tel": ""
     },
     {
-      "id": "702562122",
-      "n": "아산이자카야",
-      "gu": "수영구",
-      "c": "맛집",
-      "addr": "부산 수영구 민락동 129-6 2층",
-      "sc": 4.6,
-      "rc": 18,
-      "im": null,
-      "ims": [],
+      "id": "9650856",
+      "n": "BIFF광장",
+      "gu": "중구",
+      "c": "테마거리",
+      "addr": "부산 중구 남포동3가 15-1",
+      "sc": 3.6,
+      "rc": 67,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d3195848d7777a164e3647f1575bc43a24fb7c16?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/d3195848d7777a164e3647f1575bc43a24fb7c16?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/405a986924818e19a16a9afcc8b426188a2d61bb?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/4eeca65d8dece243d3f26c91a6cbb52eedd81ffd?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/7565b544e68f7193c6156eaab5798f64e5a4f338?original",
+        "https://blog.kakaocdn.net/dn/bn6o3W/btsQK3eOJG2/FEkknFKuZlL2NCr32XJ2EK/img.png"
+      ],
       "mentions": 3,
       "by": {
         "news": 0,
@@ -262,72 +161,175 @@
         "youtube": 3
       },
       "sample": [
-        "아산 배방 감성 대형카페 이내 #아산카페 #감성카페 #분위기좋은카페 #베이커리카페 #흑임자 #몽블랑 #테라스카페",
-        "아산 곡교천뷰 힐링 대형카페 루티니아 #아산카페 #곡교천 #루프탑카페 #테라스카페 #베이커리카페 #연못"
+        "Busan Hidden Gem! Love & Communication Cafe in Nampo-dong ☕️📚 #Shorts#남포동카페#부산여행#남포동핫플#러브앤커뮤니케이션",
+        "부산 남포동 2번포차🌶️칠리야키우동🔥 남포동포장마차거리 핫플🔥🔥 #부산여행 #부산맛집 #남포동 #남포동포장마차"
       ],
-      "map": "https://map.kakao.com/?q=%EC%95%84%EC%82%B0%EC%9D%B4%EC%9E%90%EC%B9%B4%EC%95%BC",
+      "map": "https://map.kakao.com/?q=BIFF%EA%B4%91%EC%9E%A5",
+      "tel": ""
+    },
+    {
+      "id": "25661344",
+      "n": "전포카페거리",
+      "gu": "부산진구",
+      "c": "테마거리",
+      "addr": "부산 부산진구 전포대로209번길 26",
+      "sc": 3.7,
+      "rc": 19,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f281ac07c18d0f449002b027fa7e65028151891c?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f281ac07c18d0f449002b027fa7e65028151891c?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/e11009a665d9c12c62284e9884ee6770d73c9c2f?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/030265b409b5a312e675e4abb92db794a0932760?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/7887f9012978f2c73c0351056d43d3fdf4e5d566?original"
+      ],
+      "mentions": 3,
+      "by": {
+        "news": 0,
+        "blog": 0,
+        "youtube": 3
+      },
+      "sample": [
+        "'커피로 잇는 전포의 10년' #전포커피축제 #전포카페거리 #부산진구 #부산축제 #부산가볼만한곳 #전포동핫플 #부산커피축제 #가을축제 #커피문화 #골목여행",
+        "우연히 들어갔다가 대만족! 🧢 부산 전포동에서 3분 만에 나만의 모자 만들기 💛#Shorts #부산여행 #전포동핫플 #어캡스튜디오 #모자커스텀 #커스텀모자 #부산데이트"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%A0%84%ED%8F%AC%EC%B9%B4%ED%8E%98%EA%B1%B0%EB%A6%AC",
+      "tel": ""
+    },
+    {
+      "id": "20548602",
+      "n": "신세계사이먼 부산프리미엄아울렛",
+      "gu": "기장군",
+      "c": "상설할인매장",
+      "addr": "부산 기장군 장안읍 정관로 1133 1층",
+      "sc": 4.1,
+      "rc": 158,
+      "im": "https://t1.kakaocdn.net/local/kakaomapPhoto/review/187ec8cdb92560b357394b116627629c70bd7aa3?original",
+      "ims": [
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/187ec8cdb92560b357394b116627629c70bd7aa3?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/108d5ea79ca7332b7700c967bbdd27dd03ad360a?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/ce7a72026adeb2b84998016894acecb65816095e?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/bd62e5bae3406a32b78b2d688036822042b23052?original",
+        "https://t1.kakaocdn.net/local/kakaomapPhoto/review/f625c60826e72dc32ad5e96efbd2b4913cfc859a?original"
+      ],
+      "mentions": 2,
+      "by": {
+        "news": 2,
+        "blog": 0,
+        "youtube": 0
+      },
+      "sample": [
+        "씰리침대, 부산 프리미엄 아울렛 팝업 운영…동남권 고객 접점 확대",
+        "씰리침대, 부산 프리미엄 아울렛 팝업 오픈... 대표 매트리스 체험 강화"
+      ],
+      "map": "https://map.kakao.com/?q=%EC%8B%A0%EC%84%B8%EA%B3%84%EC%82%AC%EC%9D%B4%EB%A8%BC%20%EB%B6%80%EC%82%B0%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%95%84%EC%9A%B8%EB%A0%9B",
+      "tel": ""
+    },
+    {
+      "id": "84882413",
+      "n": "라마다 앙코르 부산역 호텔",
+      "gu": "동구",
+      "c": "여행 숙박 호텔",
+      "addr": "부산 동구 초량동 1204-1",
+      "sc": 3.7,
+      "rc": 82,
+      "im": null,
+      "ims": [],
+      "mentions": 2,
+      "by": {
+        "news": 2,
+        "blog": 0,
+        "youtube": 0
+      },
+      "sample": [
+        "무신사, 부산 신세계 센텀시티점서 Y-3 앙코르 팝업",
+        "무신사, Y-3 부산 앙코르 팝업…글로벌 브랜드 유통 강화"
+      ],
+      "map": "https://map.kakao.com/?q=%EB%9D%BC%EB%A7%88%EB%8B%A4%20%EC%95%99%EC%BD%94%EB%A5%B4%20%EB%B6%80%EC%82%B0%EC%97%AD%20%ED%98%B8%ED%85%94",
+      "tel": ""
+    },
+    {
+      "id": "1309756273",
+      "n": "부산콘서트홀",
+      "gu": "부산진구",
+      "c": "문화,예술 문화시설 공연장,연극극장",
+      "addr": "부산 부산진구 연지동 60",
+      "sc": 3.8,
+      "rc": 30,
+      "im": null,
+      "ims": [],
+      "mentions": 2,
+      "by": {
+        "news": 0,
+        "blog": 0,
+        "youtube": 2
+      },
+      "sample": [
+        "지나치게 현실적인 31살 솔로 노가다남 #지상렬 #김승진 #코미디 #공연 #개그 #토크 #지상렬의아가미 #토크콘서트 #토크쇼 #스탠드업코미디 #부산여행 #부산 #대구핫플 #대구",
+        "10월31일 가볼만한 직장인밴드 공연 핫플예인뮤직페스티발"
+      ],
+      "map": "https://map.kakao.com/?q=%EB%B6%80%EC%82%B0%EC%BD%98%EC%84%9C%ED%8A%B8%ED%99%80",
       "tel": ""
     }
   ],
   "keywords": [
     {
       "k": "부캉이",
-      "n": 7,
-      "ch": 1,
+      "n": 9,
+      "ch": 2,
       "arrow": "▲"
     },
     {
-      "k": "강릉송정해변막국수",
-      "n": 7,
-      "ch": 7,
+      "k": "데카트론",
+      "n": 6,
+      "ch": 1,
       "arrow": "▲"
     },
     {
       "k": "Y-3",
       "n": 6,
-      "ch": -1,
-      "arrow": "▼"
+      "ch": 0,
+      "arrow": "–"
     },
     {
-      "k": "마이너",
+      "k": "오우라",
       "n": 6,
+      "ch": 6,
+      "arrow": "▲"
+    },
+    {
+      "k": "물나이트",
+      "n": 6,
+      "ch": 6,
+      "arrow": "▲"
+    },
+    {
+      "k": "연산동물나이트",
+      "n": 6,
+      "ch": 6,
+      "arrow": "▲"
+    },
+    {
+      "k": "물나이트주임추천소개",
+      "n": 6,
+      "ch": 6,
+      "arrow": "▲"
+    },
+    {
+      "k": "물나이트주임",
+      "n": 6,
+      "ch": 6,
+      "arrow": "▲"
+    },
+    {
+      "k": "강릉송정해변막국수",
+      "n": 5,
       "ch": -2,
       "arrow": "▼"
     },
     {
-      "k": "데카트론",
-      "n": 5,
-      "ch": -1,
-      "arrow": "▼"
-    },
-    {
-      "k": "오션뷰",
-      "n": 5,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
-      "k": "busan",
-      "n": 5,
-      "ch": 0,
-      "arrow": "–"
-    },
-    {
-      "k": "테라스",
-      "n": 5,
-      "ch": 5,
-      "arrow": "▲"
-    },
-    {
-      "k": "전포동",
-      "n": 5,
-      "ch": 5,
-      "arrow": "▲"
-    },
-    {
-      "k": "시그니엘 부산",
-      "n": 5,
-      "ch": 5,
+      "k": "황금예찬",
+      "n": 4,
+      "ch": 4,
       "arrow": "▲"
     }
   ]
